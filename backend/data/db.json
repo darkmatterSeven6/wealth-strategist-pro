@@ -193,85 +193,85 @@
   "funds": [
     {
       "id": "fund-atram-tech",
-      "name": "ATRAM Global Tech Feeder Fund",
+      "name": "ATRAM Global Technology Feeder Fund",
       "provider": "ATRAM Trust Corporation",
-      "platform": "GInvest / GFunds (GCash)",
+      "platform": "GCash GInvest",
       "targetFund": "Fidelity Funds - Global Technology Fund",
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 269.75,
-      "previousNavpu": 268.67,
+      "previousNavpu": 268.9,
       "navpuDate": "2026-08-04",
       "unitsHeld": 1452.841,
-      "averageCost": 218.5,
       "investedCapital": 317445.76,
+      "averageCost": 218.5,
       "currentMarketValue": 391903.86,
       "unrealizedGain": 74458.1,
       "unrealizedGainPercent": 23.46,
+      "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 31.4,
+        "oneYearReturn": 27.54,
         "threeYearCagr": 19.85,
-        "fiveYearCagr": 22.1,
-        "volatility30d": 17.8,
-        "volatility90d": 16.4,
-        "sharpeRatio": 1.45,
-        "maxDrawdown": -18.2,
-        "alphaVsBenchmark": 8.4,
-        "beta": 1.18
+        "fiveYearCagr": 18.2,
+        "volatility30d": 16.5,
+        "sharpeRatio": 1.34,
+        "maxDrawdown": -14.2,
+        "alpha": 4.8,
+        "beta": 1.15
       },
       "historicalNavpu": [
         {
-          "date": "2025-08-04",
-          "navpu": 204.28
+          "date": "2025-08-01",
+          "navpu": 211.5023
         },
         {
           "date": "2025-09-01",
-          "navpu": 211.5
+          "navpu": 216.8544
         },
         {
           "date": "2025-10-01",
-          "navpu": 208.9
+          "navpu": 220.5868
         },
         {
-          "date": "2025-11-01",
-          "navpu": 222.4
+          "date": "2025-11-03",
+          "navpu": 224.09
         },
         {
           "date": "2025-12-01",
-          "navpu": 234.1
+          "navpu": 229.1805
         },
         {
           "date": "2026-01-02",
-          "navpu": 242.8
+          "navpu": 234.7248
         },
         {
           "date": "2026-02-02",
-          "navpu": 249.15
+          "navpu": 238.7459
         },
         {
           "date": "2026-03-02",
-          "navpu": 244.6
+          "navpu": 242.0978
         },
         {
           "date": "2026-04-01",
-          "navpu": 253.2
+          "navpu": 246.8782
         },
         {
           "date": "2026-05-02",
-          "navpu": 258.9
+          "navpu": 252.5299
         },
         {
           "date": "2026-06-01",
-          "navpu": 263.1
+          "navpu": 256.8764
         },
         {
           "date": "2026-07-01",
-          "navpu": 265.5
+          "navpu": 260.1669
         },
         {
           "date": "2026-08-03",
-          "navpu": 268.42
+          "navpu": 264.6133
         },
         {
           "date": "2026-08-04",
@@ -283,83 +283,83 @@
       "id": "fund-atram-infra",
       "name": "ATRAM Global Infra Equity Feeder Fund",
       "provider": "ATRAM Trust Corporation",
-      "platform": "GInvest / GFunds (GCash)",
-      "targetFund": "ATRAM Global Infrastructure Equity Fund",
+      "platform": "GCash GInvest",
+      "targetFund": "Franklin Global Listed Infrastructure Fund",
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 143,
-      "previousNavpu": 142.49,
+      "previousNavpu": 142.15,
       "navpuDate": "2026-08-04",
       "unitsHeld": 1050,
-      "averageCost": 128,
       "investedCapital": 134400,
+      "averageCost": 128,
       "currentMarketValue": 150150,
       "unrealizedGain": 15750,
       "unrealizedGainPercent": 11.72,
+      "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 14.8,
+        "oneYearReturn": 13.4,
         "threeYearCagr": 11.2,
-        "fiveYearCagr": 12.8,
-        "volatility30d": 12.1,
-        "volatility90d": 11.5,
-        "sharpeRatio": 0.95,
-        "maxDrawdown": -12.4,
-        "alphaVsBenchmark": 3.2,
+        "fiveYearCagr": 10.5,
+        "volatility30d": 11.4,
+        "sharpeRatio": 0.69,
+        "maxDrawdown": -11.5,
+        "alpha": 1.2,
         "beta": 0.85
       },
       "historicalNavpu": [
         {
-          "date": "2025-08-04",
-          "navpu": 123.82
+          "date": "2025-08-01",
+          "navpu": 126.1023
         },
         {
           "date": "2025-09-01",
-          "navpu": 126.1
+          "navpu": 127.6549
         },
         {
           "date": "2025-10-01",
-          "navpu": 124.5
+          "navpu": 128.7377
         },
         {
-          "date": "2025-11-01",
-          "navpu": 129.8
+          "date": "2025-11-03",
+          "navpu": 129.754
         },
         {
           "date": "2025-12-01",
-          "navpu": 133.4
+          "navpu": 131.2308
         },
         {
           "date": "2026-01-02",
-          "navpu": 135.2
+          "navpu": 132.8392
         },
         {
           "date": "2026-02-02",
-          "navpu": 137.8
+          "navpu": 134.0057
         },
         {
           "date": "2026-03-02",
-          "navpu": 136.1
+          "navpu": 134.9781
         },
         {
           "date": "2026-04-01",
-          "navpu": 138.9
+          "navpu": 136.3649
         },
         {
           "date": "2026-05-02",
-          "navpu": 140.2
+          "navpu": 138.0044
         },
         {
           "date": "2026-06-01",
-          "navpu": 141
+          "navpu": 139.2654
         },
         {
           "date": "2026-07-01",
-          "navpu": 141.6
+          "navpu": 140.2199
         },
         {
           "date": "2026-08-03",
-          "navpu": 142.15
+          "navpu": 141.5098
         },
         {
           "date": "2026-08-04",
@@ -369,7 +369,7 @@
     },
     {
       "id": "fund-alfm-multi-asset",
-      "name": "ALFM Global Multi-Asset Income Fund",
+      "name": "ALFM Global Multi-Asset Income Fund Inc - PHP",
       "provider": "BPI Wealth / ALFM",
       "platform": "GCash GInvest, Maya Funds",
       "targetFund": "BlackRock Global Multi-Asset Income Fund",
@@ -380,76 +380,74 @@
       "previousNavpu": 52.83,
       "navpuDate": "2026-08-04",
       "unitsHeld": 3800,
-      "averageCost": 50.2,
       "investedCapital": 190760,
+      "averageCost": 50.2,
       "currentMarketValue": 201286,
       "unrealizedGain": 10526,
       "unrealizedGainPercent": 5.52,
       "dividendYieldPAnnum": 5.85,
-      "monthlyDividendEstimate": 978.12,
       "metrics": {
         "oneYearReturn": 9.2,
         "threeYearCagr": 7.6,
         "fiveYearCagr": 8.1,
         "volatility30d": 6.8,
-        "volatility90d": 6.4,
         "sharpeRatio": 0.78,
         "maxDrawdown": -6.8,
-        "alphaVsBenchmark": 1.9,
-        "beta": 0.48
+        "alpha": 1.1,
+        "beta": 0.62
       },
       "historicalNavpu": [
         {
-          "date": "2025-08-04",
-          "navpu": 48.35
+          "date": "2025-08-01",
+          "navpu": 48.5073
         },
         {
           "date": "2025-09-01",
-          "navpu": 49
+          "navpu": 48.9174
         },
         {
           "date": "2025-10-01",
-          "navpu": 48.8
+          "navpu": 49.2033
         },
         {
-          "date": "2025-11-01",
-          "navpu": 49.7
+          "date": "2025-11-03",
+          "navpu": 49.4717
         },
         {
           "date": "2025-12-01",
-          "navpu": 50.6
+          "navpu": 49.8618
         },
         {
           "date": "2026-01-02",
-          "navpu": 51.1
+          "navpu": 50.2865
         },
         {
           "date": "2026-02-02",
-          "navpu": 51.5
+          "navpu": 50.5946
         },
         {
           "date": "2026-03-02",
-          "navpu": 51.2
+          "navpu": 50.8514
         },
         {
           "date": "2026-04-01",
-          "navpu": 51.9
+          "navpu": 51.2177
         },
         {
           "date": "2026-05-02",
-          "navpu": 52.3
+          "navpu": 51.6507
         },
         {
           "date": "2026-06-01",
-          "navpu": 52.5
+          "navpu": 51.9837
         },
         {
           "date": "2026-07-01",
-          "navpu": 52.65
+          "navpu": 52.2358
         },
         {
           "date": "2026-08-03",
-          "navpu": 52.8
+          "navpu": 52.5764
         },
         {
           "date": "2026-08-04",
@@ -461,85 +459,83 @@
       "id": "fund-manulife-reit",
       "name": "Manulife Global REIT Feeder Fund",
       "provider": "Manulife Investment Management",
-      "platform": "GInvest / GFunds (GCash)",
+      "platform": "GCash GInvest",
       "targetFund": "Manulife Global Fund - Asian REIT Fund",
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
       "currentNavpu": 109.35,
-      "previousNavpu": 109.36,
+      "previousNavpu": 108.9,
       "navpuDate": "2026-08-04",
       "unitsHeld": 1200,
-      "averageCost": 102.5,
       "investedCapital": 123000,
+      "averageCost": 102.5,
       "currentMarketValue": 131220,
       "unrealizedGain": 8220,
       "unrealizedGainPercent": 6.68,
       "dividendYieldPAnnum": 6.3,
-      "monthlyDividendEstimate": 686.07,
       "metrics": {
         "oneYearReturn": 11.2,
         "threeYearCagr": 8.4,
         "fiveYearCagr": 9.2,
         "volatility30d": 9.5,
-        "volatility90d": 9.1,
         "sharpeRatio": 0.82,
         "maxDrawdown": -8.9,
-        "alphaVsBenchmark": 2.6,
-        "beta": 0.62
+        "alpha": 1.6,
+        "beta": 0.74
       },
       "historicalNavpu": [
         {
-          "date": "2025-08-04",
-          "navpu": 97.93
+          "date": "2025-08-01",
+          "navpu": 98.3363
         },
         {
           "date": "2025-09-01",
-          "navpu": 99.4
+          "navpu": 99.3483
         },
         {
           "date": "2025-10-01",
-          "navpu": 98.6
+          "navpu": 100.0541
         },
         {
-          "date": "2025-11-01",
-          "navpu": 101.2
+          "date": "2025-11-03",
+          "navpu": 100.7165
         },
         {
           "date": "2025-12-01",
-          "navpu": 103.8
+          "navpu": 101.679
         },
         {
           "date": "2026-01-02",
-          "navpu": 105
+          "navpu": 102.7273
         },
         {
           "date": "2026-02-02",
-          "navpu": 106.3
+          "navpu": 103.4876
         },
         {
           "date": "2026-03-02",
-          "navpu": 105.5
+          "navpu": 104.1214
         },
         {
           "date": "2026-04-01",
-          "navpu": 107
+          "navpu": 105.0253
         },
         {
           "date": "2026-05-02",
-          "navpu": 107.8
+          "navpu": 106.094
         },
         {
           "date": "2026-06-01",
-          "navpu": 108.1
+          "navpu": 106.9158
         },
         {
           "date": "2026-07-01",
-          "navpu": 108.3
+          "navpu": 107.538
         },
         {
           "date": "2026-08-03",
-          "navpu": 108.9
+          "navpu": 108.3787
         },
         {
           "date": "2026-08-04",
@@ -551,87 +547,967 @@
       "id": "fund-atram-money-market",
       "name": "ATRAM Peso Money Market Fund",
       "provider": "ATRAM Trust Corporation",
-      "platform": "GInvest / GFunds (GCash)",
-      "targetFund": "ATRAM Peso Money Market Fund",
+      "platform": "GCash GInvest",
+      "targetFund": "Philippine Short-Term Treasury Bills & Time Deposits",
       "category": "Money Market / Liquidity",
       "currency": "PHP",
       "riskRating": "Conservative",
       "currentNavpu": 136.56,
-      "previousNavpu": 136.04,
+      "previousNavpu": 136.45,
       "navpuDate": "2026-08-04",
       "unitsHeld": 1650,
-      "averageCost": 130.8,
       "investedCapital": 215820,
+      "averageCost": 130.8,
       "currentMarketValue": 225324,
       "unrealizedGain": 9504,
       "unrealizedGainPercent": 4.4,
+      "dividendYieldPAnnum": 0,
       "metrics": {
         "oneYearReturn": 4.75,
         "threeYearCagr": 4.35,
         "fiveYearCagr": 3.9,
         "volatility30d": 0.42,
-        "volatility90d": 0.4,
         "sharpeRatio": 0.15,
         "maxDrawdown": -0.05,
-        "alphaVsBenchmark": 0.05,
+        "alpha": 0.05,
         "beta": 0.02
       },
       "historicalNavpu": [
         {
-          "date": "2025-08-04",
-          "navpu": 130.26
+          "date": "2025-08-01",
+          "navpu": 130.3675
         },
         {
           "date": "2025-09-01",
-          "navpu": 130.8
+          "navpu": 130.9365
         },
         {
           "date": "2025-10-01",
-          "navpu": 131.3
+          "navpu": 131.3333
         },
         {
-          "date": "2025-11-01",
-          "navpu": 131.85
+          "date": "2025-11-03",
+          "navpu": 131.7058
         },
         {
           "date": "2025-12-01",
-          "navpu": 132.4
+          "navpu": 132.247
         },
         {
           "date": "2026-01-02",
-          "navpu": 132.95
+          "navpu": 132.8364
         },
         {
           "date": "2026-02-02",
-          "navpu": 133.5
+          "navpu": 133.2639
         },
         {
           "date": "2026-03-02",
-          "navpu": 134.05
+          "navpu": 133.6202
         },
         {
           "date": "2026-04-01",
-          "navpu": 134.6
+          "navpu": 134.1284
         },
         {
           "date": "2026-05-02",
-          "navpu": 135.2
+          "navpu": 134.7293
         },
         {
           "date": "2026-06-01",
-          "navpu": 135.75
+          "navpu": 135.1914
         },
         {
           "date": "2026-07-01",
-          "navpu": 136.2
+          "navpu": 135.5412
         },
         {
           "date": "2026-08-03",
-          "navpu": 136.45
+          "navpu": 136.0139
         },
         {
           "date": "2026-08-04",
           "navpu": 136.56
+        }
+      ]
+    },
+    {
+      "id": "fund-atram-ph-smart-index",
+      "name": "ATRAM Philippine Equity Smart Index Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GCash GInvest",
+      "targetFund": "FactSet Philippines Smart Equity Index",
+      "category": "Domestic Equity Index",
+      "currency": "PHP",
+      "riskRating": "Aggressive",
+      "currentNavpu": 11.82,
+      "previousNavpu": 11.75,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 4500,
+      "investedCapital": 50400,
+      "averageCost": 11.2,
+      "currentMarketValue": 53190,
+      "unrealizedGain": 2790,
+      "unrealizedGainPercent": 5.54,
+      "dividendYieldPAnnum": 0,
+      "metrics": {
+        "oneYearReturn": 7.45,
+        "threeYearCagr": 4.1,
+        "fiveYearCagr": 3.8,
+        "volatility30d": 12.8,
+        "sharpeRatio": 0.38,
+        "maxDrawdown": -14.1,
+        "alpha": 0.85,
+        "beta": 0.96
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 11.0005
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 11.0758
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 11.1283
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 11.1776
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 11.2492
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 11.3272
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 11.3838
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 11.4309
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 11.4982
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 11.5777
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 11.6389
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 11.6852
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 11.7477
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 11.82
+        }
+      ]
+    },
+    {
+      "id": "fund-atram-medium-term-bond",
+      "name": "ATRAM Medium Term Peso Bond Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GCash GInvest",
+      "targetFund": "Markit iBoxx ALBI Philippines Sovereign & Corporate Bonds",
+      "category": "Fixed Income / Bond",
+      "currency": "PHP",
+      "riskRating": "Moderate",
+      "currentNavpu": 2.285,
+      "previousNavpu": 2.281,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 25000,
+      "investedCapital": 55000,
+      "averageCost": 2.2,
+      "currentMarketValue": 57125,
+      "unrealizedGain": 2125,
+      "unrealizedGainPercent": 3.86,
+      "dividendYieldPAnnum": 0,
+      "metrics": {
+        "oneYearReturn": 5.85,
+        "threeYearCagr": 4.6,
+        "fiveYearCagr": 4.25,
+        "volatility30d": 2.45,
+        "sharpeRatio": 0.62,
+        "maxDrawdown": -2.15,
+        "alpha": 0.35,
+        "beta": 0.3
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 2.1587
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 2.1703
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 2.1784
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 2.186
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 2.197
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 2.2091
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 2.2178
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 2.225
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 2.2354
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 2.2477
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 2.2571
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 2.2642
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 2.2739
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 2.285
+        }
+      ]
+    },
+    {
+      "id": "fund-atram-consumer-trends",
+      "name": "ATRAM Global Consumer Trends Feeder Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GCash GInvest",
+      "targetFund": "Fidelity Funds - Global Consumer Industries Fund",
+      "category": "Global Thematic Feeder",
+      "currency": "PHP",
+      "riskRating": "Aggressive",
+      "currentNavpu": 174.6,
+      "previousNavpu": 173.8,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 320,
+      "investedCapital": 51200,
+      "averageCost": 160,
+      "currentMarketValue": 55872,
+      "unrealizedGain": 4672,
+      "unrealizedGainPercent": 9.13,
+      "dividendYieldPAnnum": 0,
+      "metrics": {
+        "oneYearReturn": 15.2,
+        "threeYearCagr": 12.4,
+        "fiveYearCagr": 11.8,
+        "volatility30d": 13.5,
+        "sharpeRatio": 0.88,
+        "maxDrawdown": -12.4,
+        "alpha": 2.4,
+        "beta": 1.05
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 151.5625
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 153.6793
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 155.1555
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 156.541
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 158.5544
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 160.7472
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 162.3376
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 163.6633
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 165.554
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 167.7893
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 169.5084
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 170.8098
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 172.5684
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 174.6
+        }
+      ]
+    },
+    {
+      "id": "fund-atram-health-care",
+      "name": "ATRAM Global Health Care Feeder Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GCash GInvest",
+      "targetFund": "Wellington Global Health Care Fund",
+      "category": "Global Thematic Feeder",
+      "currency": "PHP",
+      "riskRating": "Aggressive",
+      "currentNavpu": 196.4,
+      "previousNavpu": 195.8,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 280,
+      "investedCapital": 51800,
+      "averageCost": 185,
+      "currentMarketValue": 54992,
+      "unrealizedGain": 3192,
+      "unrealizedGainPercent": 6.16,
+      "dividendYieldPAnnum": 0,
+      "metrics": {
+        "oneYearReturn": 8.9,
+        "threeYearCagr": 7.45,
+        "fiveYearCagr": 8.8,
+        "volatility30d": 11.2,
+        "sharpeRatio": 0.58,
+        "maxDrawdown": -9.8,
+        "alpha": 0.75,
+        "beta": 0.78
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 180.3489
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 181.8238
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 182.8523
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 183.8177
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 185.2205
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 186.7483
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 187.8563
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 188.78
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 190.0973
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 191.6547
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 192.8525
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 193.7592
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 194.9845
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 196.4
+        }
+      ]
+    },
+    {
+      "id": "fund-atram-sdg-fund",
+      "name": "ATRAM Philippine Sustainable Development And Growth Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GCash GInvest",
+      "targetFund": "Philippine Equities with High UN SDG Impact",
+      "category": "Domestic Equity ESG",
+      "currency": "PHP",
+      "riskRating": "Aggressive",
+      "currentNavpu": 1.284,
+      "previousNavpu": 1.278,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 40000,
+      "investedCapital": 48800,
+      "averageCost": 1.22,
+      "currentMarketValue": 51360,
+      "unrealizedGain": 2560,
+      "unrealizedGainPercent": 5.25,
+      "dividendYieldPAnnum": 0,
+      "metrics": {
+        "oneYearReturn": 7.1,
+        "threeYearCagr": 4.25,
+        "fiveYearCagr": 4.5,
+        "volatility30d": 12.1,
+        "sharpeRatio": 0.36,
+        "maxDrawdown": -13.5,
+        "alpha": 0.6,
+        "beta": 0.92
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 1.1989
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 1.2067
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 1.2122
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 1.2173
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 1.2247
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 1.2328
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 1.2387
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 1.2436
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 1.2506
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 1.2588
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 1.2652
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 1.27
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 1.2765
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 1.284
+        }
+      ]
+    },
+    {
+      "id": "fund-manulife-preferred-income",
+      "name": "Manulife Global Preferred Income Feeder Fund",
+      "provider": "Manulife Investment Management",
+      "platform": "GCash GInvest",
+      "targetFund": "Manulife Global Fund - Preferred Securities Income Fund",
+      "category": "Fixed Income / Preferred Securities",
+      "currency": "PHP",
+      "riskRating": "Moderate",
+      "currentNavpu": 1.135,
+      "previousNavpu": 1.13,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 50000,
+      "investedCapital": 53500,
+      "averageCost": 1.07,
+      "currentMarketValue": 56750,
+      "unrealizedGain": 3250,
+      "unrealizedGainPercent": 6.07,
+      "dividendYieldPAnnum": 5.25,
+      "metrics": {
+        "oneYearReturn": 7.95,
+        "threeYearCagr": 6.1,
+        "fiveYearCagr": 6.8,
+        "volatility30d": 5.4,
+        "sharpeRatio": 0.74,
+        "maxDrawdown": -4.9,
+        "alpha": 0.95,
+        "beta": 0.48
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 1.0514
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 1.0591
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 1.0644
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 1.0695
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 1.0768
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 1.0847
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 1.0905
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 1.0953
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 1.1022
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 1.1103
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 1.1165
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 1.1212
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 1.1276
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 1.135
+        }
+      ]
+    },
+    {
+      "id": "fund-manulife-apac-reit",
+      "name": "Manulife Asia Pacific REIT Fund of Funds",
+      "provider": "Manulife Investment Management",
+      "platform": "GCash GInvest",
+      "targetFund": "Asia Pacific Real Estate Investment Trusts Basket",
+      "category": "Global REIT Feeder",
+      "currency": "PHP",
+      "riskRating": "Moderate",
+      "currentNavpu": 1.265,
+      "previousNavpu": 1.258,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 45000,
+      "investedCapital": 52650,
+      "averageCost": 1.17,
+      "currentMarketValue": 56925,
+      "unrealizedGain": 4275,
+      "unrealizedGainPercent": 8.12,
+      "dividendYieldPAnnum": 6.15,
+      "metrics": {
+        "oneYearReturn": 10.85,
+        "threeYearCagr": 7.9,
+        "fiveYearCagr": 8.6,
+        "volatility30d": 9.6,
+        "sharpeRatio": 0.78,
+        "maxDrawdown": -9.1,
+        "alpha": 1.45,
+        "beta": 0.72
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 1.1412
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 1.1526
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 1.1605
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 1.1679
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 1.1788
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 1.1905
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 1.1991
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 1.2062
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 1.2164
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 1.2284
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 1.2376
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 1.2446
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 1.2541
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 1.265
+        }
+      ]
+    },
+    {
+      "id": "fund-atram-equity-opportunity",
+      "name": "ATRAM Global Equity Opportunity Feeder Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GCash GInvest",
+      "targetFund": "Morgan Stanley Investment Funds - Global Opportunity Fund",
+      "category": "Global Equity Feeder",
+      "currency": "PHP",
+      "riskRating": "Aggressive",
+      "currentNavpu": 194.5,
+      "previousNavpu": 193.6,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 300,
+      "investedCapital": 51900,
+      "averageCost": 173,
+      "currentMarketValue": 58350,
+      "unrealizedGain": 6450,
+      "unrealizedGainPercent": 12.43,
+      "dividendYieldPAnnum": 0,
+      "metrics": {
+        "oneYearReturn": 18.6,
+        "threeYearCagr": 14.8,
+        "fiveYearCagr": 15.2,
+        "volatility30d": 15.2,
+        "sharpeRatio": 1.08,
+        "maxDrawdown": -15.4,
+        "alpha": 3.2,
+        "beta": 1.12
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 163.9966
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 166.7994
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 168.754
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 170.5886
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 173.2544
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 176.1579
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 178.2637
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 180.019
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 182.5224
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 185.4821
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 187.7583
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 189.4815
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 191.81
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 194.5
+        }
+      ]
+    },
+    {
+      "id": "fund-bpi-philippine-stock-index",
+      "name": "Philippine Stock Index Fund (Units)",
+      "provider": "BPI Wealth",
+      "platform": "GCash GInvest",
+      "targetFund": "Philippine Stock Exchange Composite Index (PSEi)",
+      "category": "Domestic Equity Index",
+      "currency": "PHP",
+      "riskRating": "Aggressive",
+      "currentNavpu": 772.4,
+      "previousNavpu": 768.1,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 80,
+      "investedCapital": 58400,
+      "averageCost": 730,
+      "currentMarketValue": 61792,
+      "unrealizedGain": 3392,
+      "unrealizedGainPercent": 5.81,
+      "dividendYieldPAnnum": 0,
+      "metrics": {
+        "oneYearReturn": 6.8,
+        "threeYearCagr": 3.2,
+        "fiveYearCagr": 2.9,
+        "volatility30d": 12.6,
+        "sharpeRatio": 0.34,
+        "maxDrawdown": -14.3,
+        "alpha": 0.2,
+        "beta": 1
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 723.221
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 727.7398
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 730.8911
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 733.8489
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 738.1469
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 742.8279
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 746.223
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 749.053
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 753.0892
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 757.8609
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 761.5307
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 764.3089
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 768.063
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 772.4
+        }
+      ]
+    },
+    {
+      "id": "fund-manulife-asia-dynamic-bond",
+      "name": "Manulife Asia Dynamic Bond Feeder Fund",
+      "provider": "Manulife Investment Management",
+      "platform": "GCash GInvest",
+      "targetFund": "Manulife Global Fund - Asian High Yield Fund",
+      "category": "Fixed Income / Bond",
+      "currency": "PHP",
+      "riskRating": "Moderate",
+      "currentNavpu": 1.162,
+      "previousNavpu": 1.157,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 48000,
+      "investedCapital": 52800,
+      "averageCost": 1.1,
+      "currentMarketValue": 55776,
+      "unrealizedGain": 2976,
+      "unrealizedGainPercent": 5.64,
+      "dividendYieldPAnnum": 4.85,
+      "metrics": {
+        "oneYearReturn": 7.1,
+        "threeYearCagr": 5.4,
+        "fiveYearCagr": 5.8,
+        "volatility30d": 4.8,
+        "sharpeRatio": 0.67,
+        "maxDrawdown": -5,
+        "alpha": 0.8,
+        "beta": 0.42
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-01",
+          "navpu": 1.085
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 1.092
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 1.097
+        },
+        {
+          "date": "2025-11-03",
+          "navpu": 1.1016
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 1.1083
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 1.1157
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 1.121
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 1.1254
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 1.1318
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 1.1392
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 1.145
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 1.1493
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 1.1552
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 1.162
         }
       ]
     }

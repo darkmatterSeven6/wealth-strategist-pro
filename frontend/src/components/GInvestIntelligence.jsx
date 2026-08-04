@@ -8,6 +8,7 @@ import {
   Layers, 
   BarChart3,
   Sparkles,
+  Search,
   ExternalLink,
   ShieldCheck
 } from 'lucide-react';
@@ -22,6 +23,10 @@ export default function GInvestIntelligence({
   const funds = fundsData?.funds || [];
   const summary = fundsData?.summary || {};
   const riskFreeRate = fundsData?.riskFreeRate || 5.50;
+
+  // Search & Filter State
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('ALL');
 
   // Edit Holding State
   const [editingFund, setEditingFund] = useState(null);
@@ -42,13 +47,54 @@ export default function GInvestIntelligence({
     dividendYieldPAnnum: '0'
   });
 
-  const [selectedCategory, setSelectedCategory] = useState('ALL');
+  const categories = [
+    'ALL', 
+    'Global Equity / Tech', 
+    'Global Thematic', 
+    'Multi-Asset & Bonds', 
+    'Global REITs', 
+    'Domestic Equity', 
+    'Money Market'
+  ];
 
-  const categories = ['ALL', 'Global Equity / Tech', 'Global Thematic', 'Multi-Asset Dividend', 'Global REIT', 'Money Market'];
+  const filteredFunds = funds.filter(fund => {
+    // Search query matching
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = !q || 
+      fund.name.toLowerCase().includes(q) ||
+      (fund.category && fund.category.toLowerCase().includes(q)) ||
+      (fund.platform && fund.platform.toLowerCase().includes(q)) ||
+      (fund.provider && fund.provider.toLowerCase().includes(q));
 
-  const filteredFunds = selectedCategory === 'ALL'
-    ? funds
-    : funds.filter(f => f.category === selectedCategory);
+    if (!matchesSearch) return false;
+
+    // Category matching
+    if (selectedCategory === 'ALL') return true;
+    if (selectedCategory === 'Global Equity / Tech') {
+      return (fund.category?.includes('Global Equity') || fund.category?.includes('Tech')) && !fund.category?.includes('Thematic');
+    }
+    if (selectedCategory === 'Global Thematic') {
+      return fund.category?.includes('Thematic') || fund.category?.includes('Consumer') || fund.category?.includes('Health');
+    }
+    if (selectedCategory === 'Multi-Asset & Bonds') {
+      return fund.category?.includes('Multi-Asset') || fund.category?.includes('Bond') || fund.category?.includes('Income') || fund.category?.includes('Preferred');
+    }
+    if (selectedCategory === 'Global REITs') {
+      return fund.category?.includes('REIT');
+    }
+    if (selectedCategory === 'Domestic Equity') {
+      return fund.category?.includes('Domestic') || fund.category?.includes('Philippine') || fund.category?.includes('Stock') || fund.category?.includes('ESG');
+    }
+    if (selectedCategory === 'Money Market') {
+      return fund.category?.includes('Money Market') || fund.category?.includes('Liquidity');
+    }
+    return fund.category === selectedCategory;
+  });
+
+  const formatNavpu = (navpu) => {
+    if (navpu === undefined || navpu === null) return '0.00';
+    return navpu < 10 ? navpu.toFixed(4) : navpu.toFixed(2);
+  };
 
   const renderPlatformBadges = (platformStr) => {
     const p = (platformStr || '').toLowerCase();
@@ -106,7 +152,7 @@ export default function GInvestIntelligence({
       );
     }
 
-    // Fallback if no specific tag matched
+    // Fallback
     if (badges.length === 0 && platformStr) {
       badges.push(
         <span 
@@ -233,7 +279,7 @@ export default function GInvestIntelligence({
         <div className="p-4 rounded-2xl glass-panel border border-cyan-500/20 bg-gradient-to-br from-cyan-950/20 to-slate-900/60">
           <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Weighted Sharpe Ratio</span>
           <div className="text-2xl font-extrabold text-cyan-400 font-mono mt-1">
-            {summary.weightedSharpe || '1.15'}
+            {summary.weightedSharpe || '0.98'}
           </div>
           <div className="text-xs text-slate-400 font-semibold mt-1">
             Excess return over 5.50% T-Bills
@@ -251,21 +297,36 @@ export default function GInvestIntelligence({
         </div>
       </div>
 
-      {/* Category Filter Tabs */}
-      <div className="flex overflow-x-auto space-x-2 pb-1 no-scrollbar">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
-              selectedCategory === cat
-                ? 'bg-purple-600 text-white shadow-glow-purple font-bold'
-                : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800'
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
+      {/* Filter and Search Bar */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+        {/* Category Filter Tabs */}
+        <div className="flex overflow-x-auto space-x-2 pb-1 no-scrollbar">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
+                selectedCategory === cat
+                  ? 'bg-purple-600 text-white shadow-glow-purple font-bold'
+                  : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* Quick Search */}
+        <div className="relative min-w-[240px]">
+          <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            placeholder="Search funds, feeder or platform..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-slate-900/90 border border-slate-800 rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-purple-500"
+          />
+        </div>
       </div>
 
       {/* Quant Intelligence Table */}
@@ -274,7 +335,7 @@ export default function GInvestIntelligence({
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/90 text-slate-400 uppercase font-bold text-[10px] tracking-wider border-b border-slate-800">
               <tr>
-                <th className="py-3.5 px-4 min-w-[300px]">Fund Name & Platform</th>
+                <th className="py-3.5 px-4 min-w-[320px]">Fund Name & Platform</th>
                 <th className="py-3.5 px-4 text-right">Latest NAVPU</th>
                 <th className="py-3.5 px-4 text-right">Units & Position Value</th>
                 <th className="py-3.5 px-4 text-right">Unrealized Gain</th>
@@ -287,132 +348,140 @@ export default function GInvestIntelligence({
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60 font-medium text-slate-200">
-              {filteredFunds.map((fund) => {
-                const m = fund.metrics || {};
-                const isGain = (fund.unrealizedGain || 0) >= 0;
-                return (
-                  <tr key={fund.id} className="hover:bg-slate-800/40 transition">
-                    
-                    {/* Fund Name, Type & Badges (Matching User's Reference Layout) */}
-                    <td className="py-4 px-4">
-                      <div className="space-y-1.5">
-                        {/* 1. Fund Name */}
-                        <div className="font-bold text-white text-sm tracking-tight">
-                          {fund.name}
+              {filteredFunds.length === 0 ? (
+                <tr>
+                  <td colSpan={10} className="py-8 text-center text-slate-400">
+                    No funds found matching your criteria.
+                  </td>
+                </tr>
+              ) : (
+                filteredFunds.map((fund) => {
+                  const m = fund.metrics || {};
+                  const isGain = (fund.unrealizedGain || 0) >= 0;
+                  return (
+                    <tr key={fund.id} className="hover:bg-slate-800/40 transition">
+                      
+                      {/* Fund Name, Type & Badges (Matching User's Reference Layout) */}
+                      <td className="py-4 px-4">
+                        <div className="space-y-1.5">
+                          {/* 1. Fund Name */}
+                          <div className="font-bold text-white text-sm tracking-tight">
+                            {fund.name}
+                          </div>
+
+                          {/* 2. Fund Type / Category & Metadata */}
+                          <div className="text-[11px] text-slate-400 flex items-center space-x-1.5">
+                            <span className="text-slate-300 font-medium">{fund.category}</span>
+                            <span>•</span>
+                            <span>{fund.currency}</span>
+                            {fund.riskRating && (
+                              <>
+                                <span>•</span>
+                                <span className={`font-semibold ${
+                                  fund.riskRating === 'Aggressive' ? 'text-rose-400' :
+                                  fund.riskRating === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'
+                                }`}>{fund.riskRating}</span>
+                              </>
+                            )}
+                          </div>
+
+                          {/* 3. Platform Badges and Dividend Yield placed directly under Fund Type */}
+                          <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                            {renderPlatformBadges(fund.platform)}
+                            {fund.dividendYieldPAnnum > 0 && (
+                              <span className="px-2 py-0.5 text-[10px] font-bold bg-[#2b2111] text-[#f59e0b] border border-[#523e16] rounded-md">
+                                {fund.dividendYieldPAnnum}% Div
+                              </span>
+                            )}
+                          </div>
                         </div>
+                      </td>
 
-                        {/* 2. Fund Type / Category & Metadata */}
-                        <div className="text-[11px] text-slate-400 flex items-center space-x-1.5">
-                          <span className="text-slate-300 font-medium">{fund.category}</span>
-                          <span>•</span>
-                          <span>{fund.currency}</span>
-                          {fund.riskRating && (
-                            <>
-                              <span>•</span>
-                              <span className={`font-semibold ${
-                                fund.riskRating === 'Aggressive' ? 'text-rose-400' :
-                                fund.riskRating === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'
-                              }`}>{fund.riskRating}</span>
-                            </>
-                          )}
+                      {/* NAVPU */}
+                      <td className="py-4 px-4 text-right">
+                        <div className="font-mono font-bold text-white text-sm">
+                          ₱{formatNavpu(fund.currentNavpu)}
                         </div>
-
-                        {/* 3. Platform Badges and Dividend Yield placed directly under Fund Type */}
-                        <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                          {renderPlatformBadges(fund.platform)}
-                          {fund.dividendYieldPAnnum > 0 && (
-                            <span className="px-2 py-0.5 text-[10px] font-bold bg-[#2b2111] text-[#f59e0b] border border-[#523e16] rounded-md">
-                              {fund.dividendYieldPAnnum}% Div
-                            </span>
-                          )}
+                        <div className="text-[10px] text-slate-500">
+                          {fund.navpuDate || 'Latest'}
                         </div>
-                      </div>
-                    </td>
+                      </td>
 
-                    {/* NAVPU */}
-                    <td className="py-4 px-4 text-right">
-                      <div className="font-mono font-bold text-white text-sm">
-                        ₱{fund.currentNavpu?.toFixed(2)}
-                      </div>
-                      <div className="text-[10px] text-slate-500">
-                        {fund.navpuDate || 'Latest'}
-                      </div>
-                    </td>
+                      {/* Units & Position Value */}
+                      <td className="py-4 px-4 text-right">
+                        <div className="font-mono font-bold text-white text-sm">
+                          ₱{(fund.currentMarketValue || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                        </div>
+                        <div className="text-[11px] text-slate-400 font-mono">
+                          {fund.unitsHeld?.toFixed(4)} units
+                        </div>
+                      </td>
 
-                    {/* Units & Position Value */}
-                    <td className="py-4 px-4 text-right">
-                      <div className="font-mono font-bold text-white text-sm">
-                        ₱{(fund.currentMarketValue || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                      </div>
-                      <div className="text-[11px] text-slate-400 font-mono">
-                        {fund.unitsHeld?.toFixed(4)} units
-                      </div>
-                    </td>
+                      {/* Unrealized Gain */}
+                      <td className="py-4 px-4 text-right">
+                        <div className={`font-mono font-bold text-sm ${isGain ? 'text-emerald-400' : 'text-rose-400'}`}>
+                          {isGain ? '+' : ''}₱{(fund.unrealizedGain || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                        </div>
+                        <div className={`text-[10px] font-bold ${isGain ? 'text-emerald-400' : 'text-rose-400'}`}>
+                          {isGain ? '+' : ''}{fund.unrealizedGainPercent?.toFixed(2)}%
+                        </div>
+                      </td>
 
-                    {/* Unrealized Gain */}
-                    <td className="py-4 px-4 text-right">
-                      <div className={`font-mono font-bold text-sm ${isGain ? 'text-emerald-400' : 'text-rose-400'}`}>
-                        {isGain ? '+' : ''}₱{(fund.unrealizedGain || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                      </div>
-                      <div className={`text-[10px] font-bold ${isGain ? 'text-emerald-400' : 'text-rose-400'}`}>
-                        {isGain ? '+' : ''}{fund.unrealizedGainPercent?.toFixed(2)}%
-                      </div>
-                    </td>
+                      {/* 1-Yr Return */}
+                      <td className="py-4 px-4 text-right">
+                        <span className={`font-mono font-bold ${(m.oneYearReturn || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
+                          {(m.oneYearReturn || 0) >= 0 ? '+' : ''}{m.oneYearReturn}%
+                        </span>
+                      </td>
 
-                    {/* 1-Yr Return */}
-                    <td className="py-4 px-4 text-right">
-                      <span className={`font-mono font-bold ${(m.oneYearReturn || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400'}`}>
-                        {(m.oneYearReturn || 0) >= 0 ? '+' : ''}{m.oneYearReturn}%
-                      </span>
-                    </td>
+                      {/* 3-Yr CAGR */}
+                      <td className="py-4 px-4 text-right">
+                        <span className="font-mono font-semibold text-slate-200">
+                          {m.threeYearCagr ? `${m.threeYearCagr}%` : 'N/A'}
+                        </span>
+                      </td>
 
-                    {/* 3-Yr CAGR */}
-                    <td className="py-4 px-4 text-right">
-                      <span className="font-mono font-semibold text-slate-200">
-                        {m.threeYearCagr ? `${m.threeYearCagr}%` : 'N/A'}
-                      </span>
-                    </td>
+                      {/* Sharpe Ratio */}
+                      <td className="py-4 px-4 text-right">
+                        <span className={`px-2 py-0.5 rounded font-mono font-bold text-xs ${
+                          (m.sharpeRatio || 0) >= 1.0 
+                            ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' 
+                            : (m.sharpeRatio || 0) >= 0.5 
+                            ? 'bg-cyan-500/10 text-cyan-400' 
+                            : 'bg-slate-800 text-slate-400'
+                        }`}>
+                          {m.sharpeRatio?.toFixed(2) || '0.00'}
+                        </span>
+                      </td>
 
-                    {/* Sharpe Ratio */}
-                    <td className="py-4 px-4 text-right">
-                      <span className={`px-2 py-0.5 rounded font-mono font-bold text-xs ${
-                        (m.sharpeRatio || 0) >= 1.0 
-                          ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' 
-                          : (m.sharpeRatio || 0) >= 0.5 
-                          ? 'bg-cyan-500/10 text-cyan-400' 
-                          : 'bg-slate-800 text-slate-400'
-                      }`}>
-                        {m.sharpeRatio?.toFixed(2) || '0.00'}
-                      </span>
-                    </td>
+                      {/* Volatility */}
+                      <td className="py-4 px-4 text-right">
+                        <span className="font-mono text-slate-300">
+                          {m.volatility30d}%
+                        </span>
+                      </td>
 
-                    {/* Volatility */}
-                    <td className="py-4 px-4 text-right">
-                      <span className="font-mono text-slate-300">
-                        {m.volatility30d}%
-                      </span>
-                    </td>
+                      {/* Max Drawdown */}
+                      <td className="py-4 px-4 text-right">
+                        <span className="font-mono text-rose-400 font-semibold">
+                          {m.maxDrawdown}%
+                        </span>
+                      </td>
 
-                    {/* Max Drawdown */}
-                    <td className="py-4 px-4 text-right">
-                      <span className="font-mono text-rose-400 font-semibold">
-                        {m.maxDrawdown}%
-                      </span>
-                    </td>
-
-                    {/* Edit Holding */}
-                    <td className="py-4 px-4 text-center">
-                      <button
-                        onClick={() => handleOpenEdit(fund)}
-                        className="p-1.5 bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-300 rounded-lg border border-slate-700 transition shadow-sm"
-                        title="Edit Holding & Platform"
-                      >
-                        <Edit3 className="w-3.5 h-3.5" />
-                      </button>
-                    </td>
-                  </tr>
-                );
-              })}
+                      {/* Edit Holding */}
+                      <td className="py-4 px-4 text-center">
+                        <button
+                          onClick={() => handleOpenEdit(fund)}
+                          className="p-1.5 bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-300 rounded-lg border border-slate-700 transition shadow-sm"
+                          title="Edit Holding & Platform"
+                        >
+                          <Edit3 className="w-3.5 h-3.5" />
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              )}
             </tbody>
           </table>
         </div>
@@ -469,7 +538,7 @@ export default function GInvestIntelligence({
                 </label>
                 <input
                   type="number"
-                  step="0.01"
+                  step="0.0001"
                   value={editCost}
                   onChange={(e) => setEditCost(e.target.value)}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-purple-500"
@@ -480,7 +549,7 @@ export default function GInvestIntelligence({
               <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-xs space-y-1">
                 <div className="flex justify-between text-slate-400">
                   <span>Current NAVPU:</span>
-                  <span className="font-mono font-bold text-white">₱{editingFund.currentNavpu?.toFixed(2)}</span>
+                  <span className="font-mono font-bold text-white">₱{formatNavpu(editingFund.currentNavpu)}</span>
                 </div>
                 <div className="flex justify-between text-slate-400">
                   <span>Projected Value:</span>
@@ -570,7 +639,9 @@ export default function GInvestIntelligence({
                     <option value="Multi-Asset Dividend Income">Multi-Asset Dividend Income</option>
                     <option value="Global REIT Feeder">Global REIT Feeder</option>
                     <option value="Money Market / Liquidity">Money Market / Liquidity</option>
-                    <option value="Domestic Equity">Domestic Equity</option>
+                    <option value="Domestic Equity Index">Domestic Equity Index</option>
+                    <option value="Domestic Equity ESG">Domestic Equity ESG</option>
+                    <option value="Fixed Income / Bond">Fixed Income / Bond</option>
                   </select>
                 </div>
               </div>
@@ -582,7 +653,7 @@ export default function GInvestIntelligence({
                   </label>
                   <input
                     type="number"
-                    step="0.01"
+                    step="0.0001"
                     placeholder="100.00"
                     value={newFund.currentNavpu}
                     onChange={(e) => setNewFund({ ...newFund, currentNavpu: e.target.value })}
@@ -610,7 +681,7 @@ export default function GInvestIntelligence({
                   </label>
                   <input
                     type="number"
-                    step="0.01"
+                    step="0.0001"
                     placeholder="Same as NAVPU"
                     value={newFund.averageCost}
                     onChange={(e) => setNewFund({ ...newFund, averageCost: e.target.value })}

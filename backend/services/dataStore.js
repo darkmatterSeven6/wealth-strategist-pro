@@ -32,6 +32,11 @@ class DataStore {
     return this.data;
   }
 
+  reloadFromDisk() {
+    this.init();
+    return this.data;
+  }
+
   saveDb(newData) {
     this.data = { ...this.data, ...newData };
     try {

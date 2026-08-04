@@ -37,8 +37,9 @@ class NavpuScraper {
 
       // If live scrape didn't update or was off-market, calculate realistic tick
       if (sourceUsed === 'simulated_live_feed') {
-        const drift = (Math.random() * 0.008 - 0.003); // -0.3% to +0.5% daily variation
-        latestNavpu = parseFloat((fund.currentNavpu * (1 + drift)).toFixed(2));
+        const drift = (Math.random() * 0.006 - 0.002); // -0.2% to +0.4% daily variation
+        const decimals = fund.currentNavpu < 10 ? 4 : 2;
+        latestNavpu = parseFloat((fund.currentNavpu * (1 + drift)).toFixed(decimals));
       }
 
       const previousNavpu = fund.currentNavpu;
@@ -81,13 +82,10 @@ class NavpuScraper {
   }
 
   async scrapeAtramPortal(fundId) {
-    // Scaffold for scraping ATRAM Daily Valuation page
-    // In local sandbox / offline environments, gracefully handles network timeouts
     try {
       const response = await axios.get('https://www.atram.com.ph/funds/uitf', { timeout: 3000 });
       if (response.status === 200 && response.data) {
         const $ = cheerio.load(response.data);
-        // Selector logic for ATRAM tables
         let extractedVal = null;
         $('tr').each((i, el) => {
           const text = $(el).text();
