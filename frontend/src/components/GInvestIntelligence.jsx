@@ -16,7 +16,7 @@ export default function GInvestIntelligence({
   fundsData, 
   onScrapeNavpu, 
   onUpdateHolding, 
-  onCreateFund,
+  onCreateFund, 
   isScraping 
 }) {
   const funds = fundsData?.funds || [];
@@ -50,47 +50,76 @@ export default function GInvestIntelligence({
     ? funds
     : funds.filter(f => f.category === selectedCategory);
 
-  const getPlatformBadge = (platform) => {
-    const p = (platform || '').toLowerCase();
-    if (p.includes('maya') && (p.includes('gcash') || p.includes('ginvest'))) {
-      return (
-        <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center space-x-1 shadow-sm">
-          <span>🟣</span>
-          <span>GCash & Maya</span>
+  const renderPlatformBadges = (platformStr) => {
+    const p = (platformStr || '').toLowerCase();
+    const badges = [];
+
+    // GCash GInvest
+    if (p.includes('gcash') || p.includes('ginvest')) {
+      badges.push(
+        <span 
+          key="gcash" 
+          className="inline-flex items-center space-x-1.5 px-2.5 py-1 text-[11px] font-medium rounded-lg bg-[#112338] text-[#5ba4fc] border border-[#1d3d66]"
+        >
+          <span className="w-2 h-2 rounded-full bg-[#3b82f6] shadow-[0_0_6px_rgba(59,130,246,0.8)] shrink-0"></span>
+          <span>GCash GInvest</span>
         </span>
       );
     }
+
+    // Maya Funds
     if (p.includes('maya')) {
-      return (
-        <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center space-x-1 shadow-sm">
-          <span>🟢</span>
+      badges.push(
+        <span 
+          key="maya" 
+          className="inline-flex items-center space-x-1.5 px-2.5 py-1 text-[11px] font-medium rounded-lg bg-[#0d2a21] text-[#34d399] border border-[#144f3c]"
+        >
+          <span className="w-2 h-2 rounded-full bg-[#10b981] shadow-[0_0_6px_rgba(16,185,129,0.8)] shrink-0"></span>
           <span>Maya Funds</span>
         </span>
       );
     }
+
+    // BPI Wealth
     if (p.includes('bpi')) {
-      return (
-        <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center space-x-1 shadow-sm">
-          <span>🔴</span>
+      badges.push(
+        <span 
+          key="bpi" 
+          className="inline-flex items-center space-x-1.5 px-2.5 py-1 text-[11px] font-medium rounded-lg bg-[#2e151c] text-[#fb7185] border border-[#521d2b]"
+        >
+          <span className="w-2 h-2 rounded-full bg-[#f43f5e] shadow-[0_0_6px_rgba(244,63,94,0.8)] shrink-0"></span>
           <span>BPI Wealth</span>
         </span>
       );
     }
+
+    // GoTyme
     if (p.includes('gotyme') || p.includes('seedbox')) {
-      return (
-        <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center space-x-1 shadow-sm">
-          <span>🔷</span>
+      badges.push(
+        <span 
+          key="gotyme" 
+          className="inline-flex items-center space-x-1.5 px-2.5 py-1 text-[11px] font-medium rounded-lg bg-[#0e2733] text-[#38bdf8] border border-[#154a5c]"
+        >
+          <span className="w-2 h-2 rounded-full bg-[#0ea5e9] shadow-[0_0_6px_rgba(14,165,233,0.8)] shrink-0"></span>
           <span>GoTyme</span>
         </span>
       );
     }
-    // Default to GCash GInvest
-    return (
-      <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30 flex items-center space-x-1 shadow-sm">
-        <span>🔵</span>
-        <span>GCash GInvest</span>
-      </span>
-    );
+
+    // Fallback if no specific tag matched
+    if (badges.length === 0 && platformStr) {
+      badges.push(
+        <span 
+          key="other" 
+          className="inline-flex items-center space-x-1.5 px-2.5 py-1 text-[11px] font-medium rounded-lg bg-slate-900 text-slate-300 border border-slate-700"
+        >
+          <span className="w-2 h-2 rounded-full bg-slate-400 shrink-0"></span>
+          <span>{platformStr}</span>
+        </span>
+      );
+    }
+
+    return badges;
   };
 
   const handleOpenEdit = (fund) => {
@@ -245,7 +274,7 @@ export default function GInvestIntelligence({
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/90 text-slate-400 uppercase font-bold text-[10px] tracking-wider border-b border-slate-800">
               <tr>
-                <th className="py-3.5 px-4 min-w-[280px]">Fund Name & Platform</th>
+                <th className="py-3.5 px-4 min-w-[300px]">Fund Name & Platform</th>
                 <th className="py-3.5 px-4 text-right">Latest NAVPU</th>
                 <th className="py-3.5 px-4 text-right">Units & Position Value</th>
                 <th className="py-3.5 px-4 text-right">Unrealized Gain</th>
@@ -264,18 +293,15 @@ export default function GInvestIntelligence({
                 return (
                   <tr key={fund.id} className="hover:bg-slate-800/40 transition">
                     
-                    {/* Fund Name & Category with Platform Badge */}
+                    {/* Fund Name, Type & Badges (Matching User's Reference Layout) */}
                     <td className="py-4 px-4">
                       <div className="space-y-1.5">
-                        <div className="flex flex-wrap items-center gap-1.5">
-                          <span className="font-bold text-white text-sm">{fund.name}</span>
-                          {getPlatformBadge(fund.platform)}
-                          {fund.dividendYieldPAnnum > 0 && (
-                            <span className="px-1.5 py-0.5 text-[9px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/25 rounded">
-                              {fund.dividendYieldPAnnum}% Div
-                            </span>
-                          )}
+                        {/* 1. Fund Name */}
+                        <div className="font-bold text-white text-sm tracking-tight">
+                          {fund.name}
                         </div>
+
+                        {/* 2. Fund Type / Category & Metadata */}
                         <div className="text-[11px] text-slate-400 flex items-center space-x-1.5">
                           <span className="text-slate-300 font-medium">{fund.category}</span>
                           <span>•</span>
@@ -288,6 +314,16 @@ export default function GInvestIntelligence({
                                 fund.riskRating === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'
                               }`}>{fund.riskRating}</span>
                             </>
+                          )}
+                        </div>
+
+                        {/* 3. Platform Badges and Dividend Yield placed directly under Fund Type */}
+                        <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                          {renderPlatformBadges(fund.platform)}
+                          {fund.dividendYieldPAnnum > 0 && (
+                            <span className="px-2 py-0.5 text-[10px] font-bold bg-[#2b2111] text-[#f59e0b] border border-[#523e16] rounded-md">
+                              {fund.dividendYieldPAnnum}% Div
+                            </span>
                           )}
                         </div>
                       </div>
@@ -406,7 +442,7 @@ export default function GInvestIntelligence({
                 >
                   <option value="GCash GInvest">🔵 GCash GInvest (GFunds)</option>
                   <option value="Maya Funds">🟢 Maya Funds</option>
-                  <option value="GCash & Maya">🟣 GCash & Maya (Multi-Platform)</option>
+                  <option value="GCash GInvest, Maya Funds">🟣 Both GCash GInvest & Maya Funds</option>
                   <option value="BPI Wealth">🔴 BPI Wealth / BPI Trade</option>
                   <option value="GoTyme">🔷 GoTyme (Seedbox)</option>
                   <option value="Other Platform">⚪ Other Broker / App</option>
@@ -513,7 +549,7 @@ export default function GInvestIntelligence({
                   >
                     <option value="GCash GInvest">🔵 GCash GInvest (GFunds)</option>
                     <option value="Maya Funds">🟢 Maya Funds</option>
-                    <option value="GCash & Maya">🟣 GCash & Maya</option>
+                    <option value="GCash GInvest, Maya Funds">🟣 Both GCash GInvest & Maya Funds</option>
                     <option value="BPI Wealth">🔴 BPI Wealth / BPI Trade</option>
                     <option value="GoTyme">🔷 GoTyme (Seedbox)</option>
                     <option value="Other Platform">⚪ Other Broker / App</option>
