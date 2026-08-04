@@ -4,31 +4,44 @@ import {
   TrendingDown, 
   RefreshCw, 
   Edit3, 
-  Zap, 
-  ShieldAlert, 
-  Percent, 
-  Activity, 
-  ArrowUpRight, 
-  CheckCircle2, 
+  PlusCircle, 
   Layers, 
   BarChart3,
-  Calendar,
-  Sparkles
+  Sparkles,
+  ExternalLink,
+  ShieldCheck
 } from 'lucide-react';
 
 export default function GInvestIntelligence({ 
   fundsData, 
   onScrapeNavpu, 
   onUpdateHolding, 
+  onCreateFund,
   isScraping 
 }) {
   const funds = fundsData?.funds || [];
   const summary = fundsData?.summary || {};
   const riskFreeRate = fundsData?.riskFreeRate || 5.50;
 
+  // Edit Holding State
   const [editingFund, setEditingFund] = useState(null);
   const [editUnits, setEditUnits] = useState('');
   const [editCost, setEditCost] = useState('');
+  const [editPlatform, setEditPlatform] = useState('GCash GInvest');
+
+  // Add Fund Modal State
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [newFund, setNewFund] = useState({
+    name: '',
+    platform: 'GCash GInvest',
+    category: 'Global Equity Feeder',
+    riskRating: 'Aggressive',
+    currentNavpu: '',
+    unitsHeld: '0',
+    averageCost: '',
+    dividendYieldPAnnum: '0'
+  });
+
   const [selectedCategory, setSelectedCategory] = useState('ALL');
 
   const categories = ['ALL', 'Global Equity / Tech', 'Global Thematic', 'Multi-Asset Dividend', 'Global REIT', 'Money Market'];
@@ -37,10 +50,54 @@ export default function GInvestIntelligence({
     ? funds
     : funds.filter(f => f.category === selectedCategory);
 
+  const getPlatformBadge = (platform) => {
+    const p = (platform || '').toLowerCase();
+    if (p.includes('maya') && (p.includes('gcash') || p.includes('ginvest'))) {
+      return (
+        <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center space-x-1 shadow-sm">
+          <span>🟣</span>
+          <span>GCash & Maya</span>
+        </span>
+      );
+    }
+    if (p.includes('maya')) {
+      return (
+        <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center space-x-1 shadow-sm">
+          <span>🟢</span>
+          <span>Maya Funds</span>
+        </span>
+      );
+    }
+    if (p.includes('bpi')) {
+      return (
+        <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center space-x-1 shadow-sm">
+          <span>🔴</span>
+          <span>BPI Wealth</span>
+        </span>
+      );
+    }
+    if (p.includes('gotyme') || p.includes('seedbox')) {
+      return (
+        <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center space-x-1 shadow-sm">
+          <span>🔷</span>
+          <span>GoTyme</span>
+        </span>
+      );
+    }
+    // Default to GCash GInvest
+    return (
+      <span className="px-2 py-0.5 text-[10px] font-bold rounded-md bg-blue-500/20 text-blue-300 border border-blue-500/30 flex items-center space-x-1 shadow-sm">
+        <span>🔵</span>
+        <span>GCash GInvest</span>
+      </span>
+    );
+  };
+
   const handleOpenEdit = (fund) => {
     setEditingFund(fund);
     setEditUnits(fund.unitsHeld.toString());
     setEditCost(fund.averageCost.toString());
+    setEditPlatform(fund.platform || 'GCash GInvest');
   };
 
   const handleSaveHolding = (e) => {
@@ -49,15 +106,44 @@ export default function GInvestIntelligence({
     onUpdateHolding({
       fundId: editingFund.id,
       unitsHeld: parseFloat(editUnits),
-      averageCost: parseFloat(editCost)
+      averageCost: parseFloat(editCost),
+      platform: editPlatform
     });
     setEditingFund(null);
+  };
+
+  const handleCreateFundSubmit = (e) => {
+    e.preventDefault();
+    if (!newFund.name || !newFund.currentNavpu) return;
+    if (onCreateFund) {
+      onCreateFund({
+        name: newFund.name,
+        platform: newFund.platform,
+        category: newFund.category,
+        riskRating: newFund.riskRating,
+        currentNavpu: parseFloat(newFund.currentNavpu),
+        unitsHeld: parseFloat(newFund.unitsHeld) || 0,
+        averageCost: parseFloat(newFund.averageCost) || parseFloat(newFund.currentNavpu),
+        dividendYieldPAnnum: parseFloat(newFund.dividendYieldPAnnum) || 0
+      });
+    }
+    setIsAddModalOpen(false);
+    setNewFund({
+      name: '',
+      platform: 'GCash GInvest',
+      category: 'Global Equity Feeder',
+      riskRating: 'Aggressive',
+      currentNavpu: '',
+      unitsHeld: '0',
+      averageCost: '',
+      dividendYieldPAnnum: '0'
+    });
   };
 
   return (
     <div className="space-y-6 pb-12">
       
-      {/* Header & Live Scraper Trigger */}
+      {/* Header & Live Scraper / Add Fund Trigger */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
@@ -69,11 +155,19 @@ export default function GInvestIntelligence({
             </span>
           </div>
           <p className="text-sm text-slate-400">
-            Live Philippine UITF NAVPUs, 1-Yr Net Returns, 3-Yr CAGR, Sharpe Ratios (Rf: {riskFreeRate}% 3M T-Bill), and Volatility metrics.
+            Live Philippine UITFs across GCash GInvest & Maya Funds with 1-Yr Returns, 3-Yr CAGR, and Sharpe Ratios ($R_f$: {riskFreeRate}%).
           </p>
         </div>
 
         <div className="flex items-center space-x-3">
+          <button
+            onClick={() => setIsAddModalOpen(true)}
+            className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition"
+          >
+            <PlusCircle className="w-3.5 h-3.5 text-purple-400" />
+            <span>Add Fund / Feeder</span>
+          </button>
+
           <button
             onClick={onScrapeNavpu}
             disabled={isScraping}
@@ -151,13 +245,13 @@ export default function GInvestIntelligence({
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/90 text-slate-400 uppercase font-bold text-[10px] tracking-wider border-b border-slate-800">
               <tr>
-                <th className="py-3.5 px-4">Fund Name & Category</th>
+                <th className="py-3.5 px-4 min-w-[280px]">Fund Name & Platform</th>
                 <th className="py-3.5 px-4 text-right">Latest NAVPU</th>
                 <th className="py-3.5 px-4 text-right">Units & Position Value</th>
                 <th className="py-3.5 px-4 text-right">Unrealized Gain</th>
                 <th className="py-3.5 px-4 text-right">1-Yr Return</th>
                 <th className="py-3.5 px-4 text-right">3-Yr CAGR</th>
-                <th className="py-3.5 px-4 text-right">Sharpe (Rf 5.5%)</th>
+                <th className="py-3.5 px-4 text-right">Sharpe ($R_f$ 5.5%)</th>
                 <th className="py-3.5 px-4 text-right">Vol (30d)</th>
                 <th className="py-3.5 px-4 text-right">Max Drawdown</th>
                 <th className="py-3.5 px-4 text-center">Action</th>
@@ -169,19 +263,32 @@ export default function GInvestIntelligence({
                 const isGain = (fund.unrealizedGain || 0) >= 0;
                 return (
                   <tr key={fund.id} className="hover:bg-slate-800/40 transition">
-                    {/* Name */}
+                    
+                    {/* Fund Name & Category with Platform Badge */}
                     <td className="py-4 px-4">
-                      <div>
-                        <div className="font-bold text-white text-sm flex items-center space-x-1.5">
-                          <span>{fund.name}</span>
+                      <div className="space-y-1.5">
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          <span className="font-bold text-white text-sm">{fund.name}</span>
+                          {getPlatformBadge(fund.platform)}
                           {fund.dividendYieldPAnnum > 0 && (
-                            <span className="px-1.5 py-0.5 text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded">
+                            <span className="px-1.5 py-0.5 text-[9px] font-bold bg-amber-500/15 text-amber-400 border border-amber-500/25 rounded">
                               {fund.dividendYieldPAnnum}% Div
                             </span>
                           )}
                         </div>
-                        <div className="text-[11px] text-slate-400 mt-0.5">
-                          {fund.category} • {fund.currency}
+                        <div className="text-[11px] text-slate-400 flex items-center space-x-1.5">
+                          <span className="text-slate-300 font-medium">{fund.category}</span>
+                          <span>•</span>
+                          <span>{fund.currency}</span>
+                          {fund.riskRating && (
+                            <>
+                              <span>•</span>
+                              <span className={`font-semibold ${
+                                fund.riskRating === 'Aggressive' ? 'text-rose-400' :
+                                fund.riskRating === 'Moderate' ? 'text-amber-400' : 'text-emerald-400'
+                              }`}>{fund.riskRating}</span>
+                            </>
+                          )}
                         </div>
                       </div>
                     </td>
@@ -261,8 +368,8 @@ export default function GInvestIntelligence({
                     <td className="py-4 px-4 text-center">
                       <button
                         onClick={() => handleOpenEdit(fund)}
-                        className="p-1.5 bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-300 rounded-lg border border-slate-700 transition"
-                        title="Edit Units / Acquisition Cost"
+                        className="p-1.5 bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-300 rounded-lg border border-slate-700 transition shadow-sm"
+                        title="Edit Holding & Platform"
                       >
                         <Edit3 className="w-3.5 h-3.5" />
                       </button>
@@ -281,13 +388,31 @@ export default function GInvestIntelligence({
           <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div>
-                <h3 className="text-lg font-bold text-white">Adjust GInvest Holding</h3>
+                <h3 className="text-lg font-bold text-white">Adjust Fund Holding</h3>
                 <p className="text-xs text-purple-400">{editingFund.name}</p>
               </div>
               <button onClick={() => setEditingFund(null)} className="text-slate-400 hover:text-white text-sm font-bold">✕</button>
             </div>
 
             <form onSubmit={handleSaveHolding} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                  Platform / App
+                </label>
+                <select
+                  value={editPlatform}
+                  onChange={(e) => setEditPlatform(e.target.value)}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white text-xs font-semibold focus:outline-none focus:border-purple-500"
+                >
+                  <option value="GCash GInvest">🔵 GCash GInvest (GFunds)</option>
+                  <option value="Maya Funds">🟢 Maya Funds</option>
+                  <option value="GCash & Maya">🟣 GCash & Maya (Multi-Platform)</option>
+                  <option value="BPI Wealth">🔴 BPI Wealth / BPI Trade</option>
+                  <option value="GoTyme">🔷 GoTyme (Seedbox)</option>
+                  <option value="Other Platform">⚪ Other Broker / App</option>
+                </select>
+              </div>
+
               <div>
                 <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
                   Units Held
@@ -342,6 +467,166 @@ export default function GInvestIntelligence({
                   className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl shadow-glow-purple"
                 >
                   Update Holding
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* Add Custom Fund Modal */}
+      {isAddModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div>
+                <h3 className="text-lg font-bold text-white">Add New Fund / Feeder</h3>
+                <p className="text-xs text-slate-400">Track any UITF, Mutual Fund, or REIT with automated quant metrics</p>
+              </div>
+              <button onClick={() => setIsAddModalOpen(false)} className="text-slate-400 hover:text-white text-sm font-bold">✕</button>
+            </div>
+
+            <form onSubmit={handleCreateFundSubmit} className="space-y-3.5">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                  Fund Name *
+                </label>
+                <input
+                  type="text"
+                  placeholder="e.g. BPI US Equity Feeder Fund"
+                  value={newFund.name}
+                  onChange={(e) => setNewFund({ ...newFund, name: e.target.value })}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none focus:border-purple-500"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Platform / App *
+                  </label>
+                  <select
+                    value={newFund.platform}
+                    onChange={(e) => setNewFund({ ...newFund, platform: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs font-semibold focus:outline-none focus:border-purple-500"
+                  >
+                    <option value="GCash GInvest">🔵 GCash GInvest (GFunds)</option>
+                    <option value="Maya Funds">🟢 Maya Funds</option>
+                    <option value="GCash & Maya">🟣 GCash & Maya</option>
+                    <option value="BPI Wealth">🔴 BPI Wealth / BPI Trade</option>
+                    <option value="GoTyme">🔷 GoTyme (Seedbox)</option>
+                    <option value="Other Platform">⚪ Other Broker / App</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Category
+                  </label>
+                  <select
+                    value={newFund.category}
+                    onChange={(e) => setNewFund({ ...newFund, category: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs font-semibold focus:outline-none focus:border-purple-500"
+                  >
+                    <option value="Global Equity Feeder">Global Equity Feeder</option>
+                    <option value="Global Thematic">Global Thematic</option>
+                    <option value="Multi-Asset Dividend Income">Multi-Asset Dividend Income</option>
+                    <option value="Global REIT Feeder">Global REIT Feeder</option>
+                    <option value="Money Market / Liquidity">Money Market / Liquidity</option>
+                    <option value="Domestic Equity">Domestic Equity</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Current NAVPU (₱) *
+                  </label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    placeholder="100.00"
+                    value={newFund.currentNavpu}
+                    onChange={(e) => setNewFund({ ...newFund, currentNavpu: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-purple-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Units Held
+                  </label>
+                  <input
+                    type="number"
+                    step="0.0001"
+                    value={newFund.unitsHeld}
+                    onChange={(e) => setNewFund({ ...newFund, unitsHeld: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Avg Cost / NAVPU (₱)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.01"
+                    placeholder="Same as NAVPU"
+                    value={newFund.averageCost}
+                    onChange={(e) => setNewFund({ ...newFund, averageCost: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Risk Rating
+                  </label>
+                  <select
+                    value={newFund.riskRating}
+                    onChange={(e) => setNewFund({ ...newFund, riskRating: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs font-semibold focus:outline-none focus:border-purple-500"
+                  >
+                    <option value="Conservative">Conservative (Low Risk)</option>
+                    <option value="Moderate">Moderate (Medium Risk)</option>
+                    <option value="Aggressive">Aggressive (High Growth)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Dividend Yield (% p.a.)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    placeholder="0"
+                    value={newFund.dividendYieldPAnnum}
+                    onChange={(e) => setNewFund({ ...newFund, dividendYieldPAnnum: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono text-xs focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end space-x-2 pt-4 border-t border-slate-800">
+                <button
+                  type="button"
+                  onClick={() => setIsAddModalOpen(false)}
+                  className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold rounded-xl"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl shadow-glow-purple"
+                >
+                  Save & Add Fund
                 </button>
               </div>
             </form>

@@ -46,6 +46,14 @@ export const api = {
     });
     return res.json();
   },
+  createFund: async (data) => {
+    const res = await fetch(`${API_BASE}/ginvest/fund`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
 
   // Rebalancing
   getModels: async () => {

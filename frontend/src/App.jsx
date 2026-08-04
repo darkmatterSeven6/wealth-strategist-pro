@@ -117,6 +117,11 @@ export default function App() {
     await loadAllData();
   };
 
+  const handleCreateFund = async (payload) => {
+    await api.createFund(payload);
+    await loadAllData();
+  };
+
   const handleAnalyzeRebalance = async (modelKey) => {
     const res = await api.analyzeRebalancing(modelKey);
     if (res.success) {
@@ -191,6 +196,7 @@ export default function App() {
             fundsData={fundsData}
             onScrapeNavpu={handleScrapeNavpu}
             onUpdateHolding={handleUpdateHolding}
+            onCreateFund={handleCreateFund}
             isScraping={isScraping}
           />
         )}
