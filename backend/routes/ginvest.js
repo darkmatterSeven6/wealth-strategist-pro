@@ -23,7 +23,7 @@ router.get('/funds', (req, res) => {
 
 // POST update units held, average cost, or platform metadata
 router.post('/update-holding', (req, res) => {
-  const { fundId, unitsHeld, averageCost, investedCapital, platform, category, dividendYieldPAnnum } = req.body;
+  const { fundId, unitsHeld, averageCost, investedCapital, platform, category, dividendYieldPAnnum, pendingBuyOrders, pendingSellOrders } = req.body;
   if (!fundId) {
     return res.status(400).json({ success: false, error: 'fundId is required.' });
   }
@@ -40,10 +40,12 @@ router.post('/update-holding', (req, res) => {
   if (platform) fund.platform = platform;
   if (category) fund.category = category;
   if (dividendYieldPAnnum !== undefined) fund.dividendYieldPAnnum = parseFloat(dividendYieldPAnnum);
+  if (pendingBuyOrders !== undefined) fund.pendingBuyOrders = parseFloat(pendingBuyOrders);
+  if (pendingSellOrders !== undefined) fund.pendingSellOrders = parseFloat(pendingSellOrders);
 
   if (investedCapital !== undefined) {
     fund.investedCapital = parseFloat(investedCapital);
-  } else if (fund.unitsHeld && fund.averageCost) {
+  } else if (fund.unitsHeld !== undefined && fund.averageCost !== undefined) {
     fund.investedCapital = parseFloat((fund.unitsHeld * fund.averageCost).toFixed(2));
   }
 

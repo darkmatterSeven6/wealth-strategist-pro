@@ -10,7 +10,8 @@ import {
   Sparkles,
   Search,
   ExternalLink,
-  ShieldCheck
+  ShieldCheck,
+  Clock
 } from 'lucide-react';
 
 export default function GInvestIntelligence({ 
@@ -33,6 +34,8 @@ export default function GInvestIntelligence({
   const [editUnits, setEditUnits] = useState('');
   const [editCost, setEditCost] = useState('');
   const [editPlatform, setEditPlatform] = useState('GCash GInvest');
+  const [editPendingBuy, setEditPendingBuy] = useState('0');
+  const [editPendingSell, setEditPendingSell] = useState('0');
 
   // Add Fund Modal State
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -44,7 +47,8 @@ export default function GInvestIntelligence({
     currentNavpu: '',
     unitsHeld: '0',
     averageCost: '',
-    dividendYieldPAnnum: '0'
+    dividendYieldPAnnum: '0',
+    pendingBuyOrders: '0'
   });
 
   const categories = [
@@ -170,9 +174,11 @@ export default function GInvestIntelligence({
 
   const handleOpenEdit = (fund) => {
     setEditingFund(fund);
-    setEditUnits(fund.unitsHeld.toString());
-    setEditCost(fund.averageCost.toString());
+    setEditUnits(fund.unitsHeld !== undefined ? fund.unitsHeld.toString() : '0');
+    setEditCost(fund.averageCost !== undefined ? fund.averageCost.toString() : (fund.currentNavpu || '0').toString());
     setEditPlatform(fund.platform || 'GCash GInvest');
+    setEditPendingBuy((fund.pendingBuyOrders || 0).toString());
+    setEditPendingSell((fund.pendingSellOrders || 0).toString());
   };
 
   const handleSaveHolding = (e) => {
@@ -180,9 +186,11 @@ export default function GInvestIntelligence({
     if (!editingFund) return;
     onUpdateHolding({
       fundId: editingFund.id,
-      unitsHeld: parseFloat(editUnits),
-      averageCost: parseFloat(editCost),
-      platform: editPlatform
+      unitsHeld: parseFloat(editUnits) || 0,
+      averageCost: parseFloat(editCost) || (editingFund.currentNavpu || 0),
+      platform: editPlatform,
+      pendingBuyOrders: parseFloat(editPendingBuy) || 0,
+      pendingSellOrders: parseFloat(editPendingSell) || 0
     });
     setEditingFund(null);
   };
@@ -199,7 +207,8 @@ export default function GInvestIntelligence({
         currentNavpu: parseFloat(newFund.currentNavpu),
         unitsHeld: parseFloat(newFund.unitsHeld) || 0,
         averageCost: parseFloat(newFund.averageCost) || parseFloat(newFund.currentNavpu),
-        dividendYieldPAnnum: parseFloat(newFund.dividendYieldPAnnum) || 0
+        dividendYieldPAnnum: parseFloat(newFund.dividendYieldPAnnum) || 0,
+        pendingBuyOrders: parseFloat(newFund.pendingBuyOrders) || 0
       });
     }
     setIsAddModalOpen(false);
@@ -211,7 +220,8 @@ export default function GInvestIntelligence({
       currentNavpu: '',
       unitsHeld: '0',
       averageCost: '',
-      dividendYieldPAnnum: '0'
+      dividendYieldPAnnum: '0',
+      pendingBuyOrders: '0'
     });
   };
 
@@ -230,7 +240,7 @@ export default function GInvestIntelligence({
             </span>
           </div>
           <p className="text-sm text-slate-400">
-            Live Philippine UITFs across GCash GInvest & Maya Funds with 1-Yr Returns, 3-Yr CAGR, and Sharpe Ratios ($R_f$: {riskFreeRate}%).
+            Live Philippine UITFs & Feeder Funds with Total Units, Investment Values, 1-Yr Returns, 3-Yr CAGR, and Sharpe Ratios ($R_f$: {riskFreeRate}%).
           </p>
         </div>
 
@@ -257,29 +267,31 @@ export default function GInvestIntelligence({
       {/* Portfolio Quant Summary Banner */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="p-4 rounded-2xl glass-panel border border-purple-500/20 bg-gradient-to-br from-purple-950/20 to-slate-900/60">
-          <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Total Market Value</span>
+          <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Total Investment Value</span>
           <div className="text-2xl font-extrabold text-white font-mono mt-1">
             ₱{summary.totalGInvest?.toLocaleString('en-US', { minimumFractionDigits: 2 }) || '0.00'}
           </div>
           <div className="text-xs text-emerald-400 font-semibold mt-1">
-            Invested Capital: ₱{summary.totalInvestedCapital?.toLocaleString() || '0'}
+            Invested Capital: ₱{summary.totalInvestedCapital?.toLocaleString('en-US', { minimumFractionDigits: 2 }) || '0.00'}
           </div>
         </div>
 
         <div className="p-4 rounded-2xl glass-panel border border-emerald-500/20 bg-gradient-to-br from-emerald-950/20 to-slate-900/60">
           <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Total Unrealized Gain</span>
-          <div className="text-2xl font-extrabold text-emerald-400 font-mono mt-1">
-            +₱{summary.totalGInvestGain?.toLocaleString('en-US', { minimumFractionDigits: 2 }) || '0.00'}
+          <div className={`text-2xl font-extrabold font-mono mt-1 ${
+            (summary.totalGInvestGain || 0) >= 0 ? 'text-emerald-400' : 'text-rose-400'
+          }`}>
+            {(summary.totalGInvestGain || 0) >= 0 ? '+' : ''}₱{summary.totalGInvestGain?.toLocaleString('en-US', { minimumFractionDigits: 2 }) || '0.00'}
           </div>
-          <div className="text-xs text-emerald-300 font-semibold mt-1">
-            +{summary.totalGInvestGainPercent?.toFixed(2) || '0.00'}% Net Return
+          <div className="text-xs text-slate-400 font-semibold mt-1">
+            {(summary.totalGInvestGainPercent || 0) >= 0 ? '+' : ''}{summary.totalGInvestGainPercent?.toFixed(2) || '0.00'}% Net Return
           </div>
         </div>
 
         <div className="p-4 rounded-2xl glass-panel border border-cyan-500/20 bg-gradient-to-br from-cyan-950/20 to-slate-900/60">
           <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Weighted Sharpe Ratio</span>
           <div className="text-2xl font-extrabold text-cyan-400 font-mono mt-1">
-            {summary.weightedSharpe || '0.98'}
+            {summary.weightedSharpe || '0.78'}
           </div>
           <div className="text-xs text-slate-400 font-semibold mt-1">
             Excess return over 5.50% T-Bills
@@ -292,7 +304,7 @@ export default function GInvestIntelligence({
             ₱{summary.annualDividendIncome?.toLocaleString('en-US', { minimumFractionDigits: 2 }) || '0.00'}<span className="text-xs text-slate-400 font-normal"> / yr</span>
           </div>
           <div className="text-xs text-amber-300 font-semibold mt-1">
-            ₱{summary.monthlyDividendIncome?.toLocaleString() || '0'}/month from ALFM & REITs
+            ₱{summary.monthlyDividendIncome?.toLocaleString('en-US', { minimumFractionDigits: 2 }) || '0.00'}/month from ALFM & REITs
           </div>
         </div>
       </div>
@@ -335,22 +347,23 @@ export default function GInvestIntelligence({
           <table className="w-full text-left text-xs">
             <thead className="bg-slate-900/90 text-slate-400 uppercase font-bold text-[10px] tracking-wider border-b border-slate-800">
               <tr>
-                <th className="py-3.5 px-4 min-w-[320px]">Fund Name & Platform</th>
+                <th className="py-3.5 px-4 min-w-[300px]">Fund Name & Platform</th>
                 <th className="py-3.5 px-4 text-right">Latest NAVPU</th>
-                <th className="py-3.5 px-4 text-right">Units & Position Value</th>
+                <th className="py-3.5 px-4 text-right">Total Units</th>
+                <th className="py-3.5 px-4 text-right">Total Investment Value</th>
+                <th className="py-3.5 px-4 text-right">Invested Capital</th>
                 <th className="py-3.5 px-4 text-right">Unrealized Gain</th>
                 <th className="py-3.5 px-4 text-right">1-Yr Return</th>
                 <th className="py-3.5 px-4 text-right">3-Yr CAGR</th>
                 <th className="py-3.5 px-4 text-right">Sharpe ($R_f$ 5.5%)</th>
                 <th className="py-3.5 px-4 text-right">Vol (30d)</th>
-                <th className="py-3.5 px-4 text-right">Max Drawdown</th>
                 <th className="py-3.5 px-4 text-center">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60 font-medium text-slate-200">
               {filteredFunds.length === 0 ? (
                 <tr>
-                  <td colSpan={10} className="py-8 text-center text-slate-400">
+                  <td colSpan={11} className="py-8 text-center text-slate-400">
                     No funds found matching your criteria.
                   </td>
                 </tr>
@@ -358,15 +371,23 @@ export default function GInvestIntelligence({
                 filteredFunds.map((fund) => {
                   const m = fund.metrics || {};
                   const isGain = (fund.unrealizedGain || 0) >= 0;
+                  const hasPosition = (fund.unitsHeld || 0) > 0 || (fund.pendingBuyOrders || 0) > 0;
+
                   return (
-                    <tr key={fund.id} className="hover:bg-slate-800/40 transition">
+                    <tr 
+                      key={fund.id} 
+                      className={`hover:bg-slate-800/40 transition ${hasPosition ? 'bg-purple-950/10' : ''}`}
+                    >
                       
                       {/* Fund Name, Type & Badges (Matching User's Reference Layout) */}
                       <td className="py-4 px-4">
                         <div className="space-y-1.5">
                           {/* 1. Fund Name */}
-                          <div className="font-bold text-white text-sm tracking-tight">
-                            {fund.name}
+                          <div className="font-bold text-white text-sm tracking-tight flex items-center space-x-1.5">
+                            <span>{fund.name}</span>
+                            {hasPosition && (
+                              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" title="Active Holding" />
+                            )}
                           </div>
 
                           {/* 2. Fund Type / Category & Metadata */}
@@ -393,6 +414,12 @@ export default function GInvestIntelligence({
                                 {fund.dividendYieldPAnnum}% Div
                               </span>
                             )}
+                            {fund.pendingBuyOrders > 0 && (
+                              <span className="inline-flex items-center space-x-1 px-2 py-0.5 text-[10px] font-bold bg-indigo-950 text-indigo-300 border border-indigo-700/50 rounded-md">
+                                <Clock className="w-2.5 h-2.5 text-indigo-400" />
+                                <span>+₱{fund.pendingBuyOrders.toFixed(2)} Pending</span>
+                              </span>
+                            )}
                           </div>
                         </div>
                       </td>
@@ -407,19 +434,41 @@ export default function GInvestIntelligence({
                         </div>
                       </td>
 
-                      {/* Units & Position Value */}
+                      {/* Total Units */}
                       <td className="py-4 px-4 text-right">
-                        <div className="font-mono font-bold text-white text-sm">
-                          ₱{(fund.currentMarketValue || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                        <div className="font-mono font-bold text-slate-100 text-sm">
+                          {(fund.unitsHeld || 0).toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 })}
                         </div>
-                        <div className="text-[11px] text-slate-400 font-mono">
-                          {fund.unitsHeld?.toFixed(4)} units
+                        <div className="text-[10px] text-slate-500">
+                          units
+                        </div>
+                      </td>
+
+                      {/* Total Investment Value */}
+                      <td className="py-4 px-4 text-right">
+                        <div className="font-mono font-bold text-emerald-400 text-sm">
+                          ₱{(fund.currentMarketValue || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                        </div>
+                        {fund.pendingBuyOrders > 0 && (
+                          <div className="text-[10px] text-indigo-400 font-mono">
+                            +₱{fund.pendingBuyOrders.toFixed(2)} buy order
+                          </div>
+                        )}
+                      </td>
+
+                      {/* Invested Capital */}
+                      <td className="py-4 px-4 text-right">
+                        <div className="font-mono font-medium text-slate-300 text-xs">
+                          ₱{(fund.investedCapital || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                        </div>
+                        <div className="text-[10px] text-slate-500 font-mono">
+                          @ ₱{formatNavpu(fund.averageCost || fund.currentNavpu)}
                         </div>
                       </td>
 
                       {/* Unrealized Gain */}
                       <td className="py-4 px-4 text-right">
-                        <div className={`font-mono font-bold text-sm ${isGain ? 'text-emerald-400' : 'text-rose-400'}`}>
+                        <div className={`font-mono font-bold text-xs ${isGain ? 'text-emerald-400' : 'text-rose-400'}`}>
                           {isGain ? '+' : ''}₱{(fund.unrealizedGain || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                         </div>
                         <div className={`text-[10px] font-bold ${isGain ? 'text-emerald-400' : 'text-rose-400'}`}>
@@ -461,19 +510,12 @@ export default function GInvestIntelligence({
                         </span>
                       </td>
 
-                      {/* Max Drawdown */}
-                      <td className="py-4 px-4 text-right">
-                        <span className="font-mono text-rose-400 font-semibold">
-                          {m.maxDrawdown}%
-                        </span>
-                      </td>
-
                       {/* Edit Holding */}
                       <td className="py-4 px-4 text-center">
                         <button
                           onClick={() => handleOpenEdit(fund)}
                           className="p-1.5 bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-300 rounded-lg border border-slate-700 transition shadow-sm"
-                          title="Edit Holding & Platform"
+                          title="Edit Holding & Orders"
                         >
                           <Edit3 className="w-3.5 h-3.5" />
                         </button>
@@ -493,7 +535,7 @@ export default function GInvestIntelligence({
           <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between border-b border-slate-800 pb-3">
               <div>
-                <h3 className="text-lg font-bold text-white">Adjust Fund Holding</h3>
+                <h3 className="text-lg font-bold text-white">Adjust Fund Investment</h3>
                 <p className="text-xs text-purple-400">{editingFund.name}</p>
               </div>
               <button onClick={() => setEditingFund(null)} className="text-slate-400 hover:text-white text-sm font-bold">✕</button>
@@ -518,43 +560,79 @@ export default function GInvestIntelligence({
                 </select>
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
-                  Units Held
-                </label>
-                <input
-                  type="number"
-                  step="0.0001"
-                  value={editUnits}
-                  onChange={(e) => setEditUnits(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-purple-500"
-                  required
-                />
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Total Units
+                  </label>
+                  <input
+                    type="number"
+                    step="0.0001"
+                    value={editUnits}
+                    onChange={(e) => setEditUnits(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-white font-mono focus:outline-none focus:border-purple-500"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Avg Cost / NAVPU (₱)
+                  </label>
+                  <input
+                    type="number"
+                    step="0.0001"
+                    value={editCost}
+                    onChange={(e) => setEditCost(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-white font-mono focus:outline-none focus:border-purple-500"
+                    required
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
-                  Average Acquisition NAVPU (₱)
-                </label>
-                <input
-                  type="number"
-                  step="0.0001"
-                  value={editCost}
-                  onChange={(e) => setEditCost(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white font-mono focus:outline-none focus:border-purple-500"
-                  required
-                />
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Pending Buy Orders (₱)
+                  </label>
+                  <input
+                    type="number"
+                    step="1"
+                    value={editPendingBuy}
+                    onChange={(e) => setEditPendingBuy(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-white font-mono focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Pending Sell Orders (₱)
+                  </label>
+                  <input
+                    type="number"
+                    step="1"
+                    value={editPendingSell}
+                    onChange={(e) => setEditPendingSell(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-white font-mono focus:outline-none focus:border-purple-500"
+                  />
+                </div>
               </div>
 
-              <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-xs space-y-1">
+              <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-xs space-y-1.5">
                 <div className="flex justify-between text-slate-400">
                   <span>Current NAVPU:</span>
                   <span className="font-mono font-bold text-white">₱{formatNavpu(editingFund.currentNavpu)}</span>
                 </div>
                 <div className="flex justify-between text-slate-400">
-                  <span>Projected Value:</span>
+                  <span>Calculated Total Investment Value:</span>
                   <span className="font-mono font-bold text-emerald-400">
-                    ₱{((parseFloat(editUnits) || 0) * editingFund.currentNavpu).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                    ₱{((parseFloat(editUnits) || 0) * (editingFund.currentNavpu || 0)).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                  </span>
+                </div>
+                <div className="flex justify-between text-slate-400">
+                  <span>Calculated Invested Capital:</span>
+                  <span className="font-mono font-bold text-slate-300">
+                    ₱{((parseFloat(editUnits) || 0) * (parseFloat(editCost) || editingFund.currentNavpu || 0)).toLocaleString('en-US', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
               </div>
@@ -571,7 +649,7 @@ export default function GInvestIntelligence({
                   type="submit"
                   className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl shadow-glow-purple"
                 >
-                  Update Holding
+                  Save Investment
                 </button>
               </div>
             </form>
@@ -664,7 +742,7 @@ export default function GInvestIntelligence({
 
                 <div>
                   <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
-                    Units Held
+                    Total Units
                   </label>
                   <input
                     type="number"
