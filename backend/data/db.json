@@ -200,13 +200,13 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 269.75,
-      "previousNavpu": 268.9,
-      "navpuDate": "2026-08-04",
-      "unitsHeld": 0,
-      "investedCapital": 0,
-      "averageCost": 218.5,
-      "currentMarketValue": 0,
+      "currentNavpu": 478.811055,
+      "previousNavpu": 476.95,
+      "navpuDate": "2026-08-03",
+      "unitsHeld": 2.0885,
+      "investedCapital": 1000,
+      "averageCost": 478.811055,
+      "currentMarketValue": 1000,
       "unrealizedGain": 0,
       "unrealizedGainPercent": 0,
       "dividendYieldPAnnum": 0,
@@ -223,61 +223,61 @@
       "historicalNavpu": [
         {
           "date": "2025-08-01",
-          "navpu": 211.5023
+          "navpu": 375.42
         },
         {
           "date": "2025-09-01",
-          "navpu": 216.8544
+          "navpu": 384.91
         },
         {
           "date": "2025-10-01",
-          "navpu": 220.5868
+          "navpu": 391.53
         },
         {
           "date": "2025-11-03",
-          "navpu": 224.09
+          "navpu": 397.75
         },
         {
           "date": "2025-12-01",
-          "navpu": 229.1805
+          "navpu": 406.8
         },
         {
           "date": "2026-01-02",
-          "navpu": 234.7248
+          "navpu": 416.64
         },
         {
           "date": "2026-02-02",
-          "navpu": 238.7459
+          "navpu": 423.78
         },
         {
           "date": "2026-03-02",
-          "navpu": 242.0978
+          "navpu": 429.72
         },
         {
           "date": "2026-04-01",
-          "navpu": 246.8782
+          "navpu": 438.21
         },
         {
-          "date": "2026-05-02",
-          "navpu": 252.5299
+          "date": "2026-05-04",
+          "navpu": 449.6
         },
         {
           "date": "2026-06-01",
-          "navpu": 256.8764
+          "navpu": 461.15
         },
         {
           "date": "2026-07-01",
-          "navpu": 260.1669
+          "navpu": 472.3
         },
         {
           "date": "2026-08-03",
-          "navpu": 264.6133
-        },
-        {
-          "date": "2026-08-04",
-          "navpu": 269.75
+          "navpu": 478.811055
         }
-      ]
+      ],
+      "pendingBuyOrders": 1000,
+      "pendingSellOrders": 0,
+      "orderNumber": "SGC2608015853033",
+      "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)"
     },
     {
       "id": "fund-atram-infra",
@@ -371,7 +371,7 @@
       "id": "fund-alfm-multi-asset",
       "name": "ALFM Global Multi-Asset Income Fund Inc - PHP",
       "provider": "BPI Wealth / ALFM",
-      "platform": "GCash GInvest, Maya Funds",
+      "platform": "GCash GInvest",
       "targetFund": "BlackRock Global Multi-Asset Income Fund",
       "category": "Multi-Asset Dividend Income",
       "currency": "PHP",
@@ -379,12 +379,12 @@
       "currentNavpu": 47.1875,
       "previousNavpu": 47.165,
       "navpuDate": "2026-07-31",
-      "unitsHeld": 2.1192,
-      "investedCapital": 100,
-      "averageCost": 47.1875,
-      "currentMarketValue": 99.99,
-      "unrealizedGain": -0.01,
-      "unrealizedGainPercent": -0.01,
+      "unitsHeld": 4.2384,
+      "investedCapital": 212.77,
+      "averageCost": 50.2,
+      "currentMarketValue": 200,
+      "unrealizedGain": -12.77,
+      "unrealizedGainPercent": -6,
       "dividendYieldPAnnum": 5.85,
       "metrics": {
         "oneYearReturn": 5,
@@ -454,7 +454,7 @@
           "navpu": 52.97
         }
       ],
-      "pendingBuyOrders": 100,
+      "pendingBuyOrders": 0,
       "pendingSellOrders": 0
     },
     {
@@ -1654,6 +1654,27 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1785829571213-hezt",
+      "timestamp": "2026-08-04T07:46:11.213Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Global Technology Feeder Fund (GCash GInvest): 2.0885 units."
+    },
+    {
+      "id": "log-1785829463429-o1cy",
+      "timestamp": "2026-08-04T07:44:23.429Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ALFM Global Multi-Asset Income Fund Inc - PHP (GCash GInvest): 4.2384 units."
+    },
+    {
+      "id": "log-1785829218618-mw9b",
+      "timestamp": "2026-08-04T07:40:18.618Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ALFM Global Multi-Asset Income Fund Inc - PHP (GCash GInvest): 2.1192 units."
+    },
     {
       "id": "log-1785821633747-lkuu",
       "timestamp": "2026-08-04T05:33:53.747Z",

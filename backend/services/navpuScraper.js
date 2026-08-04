@@ -37,8 +37,8 @@ class NavpuScraper {
 
       // If live scrape didn't update or was off-market, calculate realistic tick
       if (sourceUsed === 'simulated_live_feed') {
-        const drift = (Math.random() * 0.006 - 0.002); // -0.2% to +0.4% daily variation
-        const decimals = fund.currentNavpu < 10 ? 4 : 2;
+        const drift = (Math.random() * 0.004 - 0.001); // -0.1% to +0.3% daily variation
+        const decimals = fund.currentNavpu < 10 ? 4 : 4;
         latestNavpu = parseFloat((fund.currentNavpu * (1 + drift)).toFixed(decimals));
       }
 

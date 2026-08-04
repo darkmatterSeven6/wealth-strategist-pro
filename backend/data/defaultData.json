@@ -200,13 +200,13 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 269.75,
-      "previousNavpu": 268.9,
-      "navpuDate": "2026-08-04",
-      "unitsHeld": 0,
-      "investedCapital": 0,
-      "averageCost": 218.5,
-      "currentMarketValue": 0,
+      "currentNavpu": 478.811055,
+      "previousNavpu": 476.95,
+      "navpuDate": "2026-08-03",
+      "unitsHeld": 2.0885,
+      "investedCapital": 1000,
+      "averageCost": 478.811055,
+      "currentMarketValue": 1000,
       "unrealizedGain": 0,
       "unrealizedGainPercent": 0,
       "dividendYieldPAnnum": 0,
@@ -223,61 +223,61 @@
       "historicalNavpu": [
         {
           "date": "2025-08-01",
-          "navpu": 211.5023
+          "navpu": 375.42
         },
         {
           "date": "2025-09-01",
-          "navpu": 216.8544
+          "navpu": 384.91
         },
         {
           "date": "2025-10-01",
-          "navpu": 220.5868
+          "navpu": 391.53
         },
         {
           "date": "2025-11-03",
-          "navpu": 224.09
+          "navpu": 397.75
         },
         {
           "date": "2025-12-01",
-          "navpu": 229.1805
+          "navpu": 406.8
         },
         {
           "date": "2026-01-02",
-          "navpu": 234.7248
+          "navpu": 416.64
         },
         {
           "date": "2026-02-02",
-          "navpu": 238.7459
+          "navpu": 423.78
         },
         {
           "date": "2026-03-02",
-          "navpu": 242.0978
+          "navpu": 429.72
         },
         {
           "date": "2026-04-01",
-          "navpu": 246.8782
+          "navpu": 438.21
         },
         {
-          "date": "2026-05-02",
-          "navpu": 252.5299
+          "date": "2026-05-04",
+          "navpu": 449.6
         },
         {
           "date": "2026-06-01",
-          "navpu": 256.8764
+          "navpu": 461.15
         },
         {
           "date": "2026-07-01",
-          "navpu": 260.1669
+          "navpu": 472.3
         },
         {
           "date": "2026-08-03",
-          "navpu": 264.6133
-        },
-        {
-          "date": "2026-08-04",
-          "navpu": 269.75
+          "navpu": 478.811055
         }
-      ]
+      ],
+      "pendingBuyOrders": 1000,
+      "pendingSellOrders": 0,
+      "orderNumber": "SGC2608015853033",
+      "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)"
     },
     {
       "id": "fund-atram-infra",

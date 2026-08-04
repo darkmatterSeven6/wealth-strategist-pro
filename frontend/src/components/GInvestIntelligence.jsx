@@ -97,6 +97,10 @@ export default function GInvestIntelligence({
 
   const formatNavpu = (navpu) => {
     if (navpu === undefined || navpu === null) return '0.00';
+    const str = navpu.toString();
+    if (str.includes('.') && str.split('.')[1].length > 2) {
+      return navpu.toFixed(4);
+    }
     return navpu < 10 ? navpu.toFixed(4) : navpu.toFixed(2);
   };
 
