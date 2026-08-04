@@ -1,0 +1,19 @@
+{
+  "name": "finflow-pro-backend",
+  "version": "1.0.0",
+  "description": "Local Fintech & Wealth Aggregator Backend for FinFlow Pro",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5",
+    "ws": "^8.18.0",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}

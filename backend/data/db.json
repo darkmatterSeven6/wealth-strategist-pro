@@ -1,0 +1,829 @@
+{
+  "profile": {
+    "name": "Daniel Santos",
+    "currency": "PHP",
+    "riskProfile": "Aggressive Growth",
+    "targetMonthlyLivingExpenses": 55000,
+    "targetEmergencyFundMonths": 3,
+    "lastSyncTimestamp": "2026-08-04T04:56:22.478Z"
+  },
+  "macroRegime": {
+    "phThreeMonthTBillRate": 5.5,
+    "bspPolicyRate": 6.25,
+    "usFedFundsRate": 4.75,
+    "techMomentumScore": 82.5,
+    "dividendYieldAppeal": 68,
+    "inflationRate": 3.4,
+    "marketRegimeSummary": "AI & Semiconductor structural tailwind with softening rate expectations favoring tech feeders and high-yield multi-asset buffers."
+  },
+  "accounts": [
+    {
+      "id": "acc-maribank-01",
+      "name": "MariBank Savings",
+      "institution": "MariBank Philippines",
+      "type": "digital_bank",
+      "accountNumber": "•••• 8824",
+      "balance": 200000,
+      "baseApy": 3.75,
+      "currentApy": 3.75,
+      "dailyInterestEstimate": 20.55,
+      "tierInfo": "3.75% p.a. credited daily, zero minimum balance",
+      "color": "#ff5722",
+      "icon": "MariBank",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-04T04:56:23.344Z"
+    },
+    {
+      "id": "acc-maya-01",
+      "name": "Maya Bank (Boosted Tier)",
+      "institution": "Maya Bank",
+      "type": "digital_bank",
+      "accountNumber": "•••• 3912",
+      "balance": 240000,
+      "baseApy": 3.5,
+      "currentApy": 10,
+      "dailyInterestEstimate": 65.75,
+      "tierInfo": "Base 3.5% + 6.5% Mission Boost (Spend ₱30k+ via Maya Card & Bills paid)",
+      "color": "#00d084",
+      "icon": "Maya",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-04T04:56:22.478Z",
+      "subAccounts": [
+        {
+          "name": "Personal Goals: Japan 2027",
+          "balance": 75000,
+          "apy": 4
+        },
+        {
+          "name": "Emergency Liquidity Stash",
+          "balance": 165000,
+          "apy": 10
+        }
+      ]
+    },
+    {
+      "id": "acc-gotyme-01",
+      "name": "GoTyme Bank (GoSave)",
+      "institution": "GoTyme Bank",
+      "type": "digital_bank",
+      "accountNumber": "•••• 5521",
+      "balance": 130000,
+      "baseApy": 3,
+      "currentApy": 3,
+      "dailyInterestEstimate": 10.68,
+      "tierInfo": "3.00% p.a. across up to 5 GoSave Stashes",
+      "color": "#00bcd4",
+      "icon": "GoTyme",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-04T04:56:22.478Z",
+      "subAccounts": [
+        {
+          "name": "Auto & Insurance Buffer",
+          "balance": 55000,
+          "apy": 3
+        },
+        {
+          "name": "Gadget Upgrade Stash",
+          "balance": 75000,
+          "apy": 3
+        }
+      ]
+    },
+    {
+      "id": "acc-atome-01",
+      "name": "Atome Savings (Netbank)",
+      "institution": "Netbank (via Atome)",
+      "type": "digital_bank",
+      "accountNumber": "•••• 1948",
+      "balance": 92000,
+      "baseApy": 3.25,
+      "currentApy": 3.25,
+      "dailyInterestEstimate": 8.19,
+      "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
+      "color": "#facc15",
+      "icon": "Atome",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-04T04:56:22.478Z"
+    },
+    {
+      "id": "acc-tonik-01",
+      "name": "Tonik Bank",
+      "institution": "Tonik Digital Bank",
+      "type": "digital_bank",
+      "accountNumber": "•••• 7703",
+      "balance": 115000,
+      "baseApy": 4,
+      "currentApy": 4.5,
+      "dailyInterestEstimate": 14.18,
+      "tierInfo": "Group Stash 4.50% + 6.00% 6-Month Time Deposit",
+      "color": "#7c3aed",
+      "icon": "Tonik",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-04T04:56:22.478Z",
+      "subAccounts": [
+        {
+          "name": "Group Stash (Family)",
+          "balance": 65000,
+          "apy": 4.5
+        },
+        {
+          "name": "6-Mo Time Deposit",
+          "balance": 50000,
+          "apy": 6
+        }
+      ]
+    },
+    {
+      "id": "acc-bpi-01",
+      "name": "BPI Preferred Checking & Savings",
+      "institution": "Bank of the Philippine Islands",
+      "type": "traditional_bank",
+      "accountNumber": "•••• 4410",
+      "balance": 350000,
+      "baseApy": 0.0625,
+      "currentApy": 0.0625,
+      "dailyInterestEstimate": 0.6,
+      "tierInfo": "Primary Payroll & Wire Settlement Account",
+      "color": "#b91c1c",
+      "icon": "BPI",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-04T04:56:22.478Z"
+    },
+    {
+      "id": "acc-gcash-wallet-01",
+      "name": "GCash E-Wallet",
+      "institution": "Mynt / GCash",
+      "type": "e_wallet",
+      "accountNumber": "0917 •••• 981",
+      "balance": 28400,
+      "baseApy": 0,
+      "currentApy": 0,
+      "dailyInterestEstimate": 0,
+      "tierInfo": "GInvest staging & daily payment rails",
+      "color": "#007dfe",
+      "icon": "GCash",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-04T04:56:22.478Z"
+    },
+    {
+      "id": "acc-maya-wallet-01",
+      "name": "Maya Wallet",
+      "institution": "Maya Philippines",
+      "type": "e_wallet",
+      "accountNumber": "0917 •••• 981",
+      "balance": 12850,
+      "baseApy": 0,
+      "currentApy": 0,
+      "dailyInterestEstimate": 0,
+      "tierInfo": "Everyday QR payments & Maya Credit settlement",
+      "color": "#10b981",
+      "icon": "MayaWallet",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-04T04:56:22.478Z"
+    }
+  ],
+  "funds": [
+    {
+      "id": "fund-atram-tech",
+      "name": "ATRAM Global Tech Feeder Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GInvest / GFunds (GCash)",
+      "targetFund": "Fidelity Funds - Global Technology Fund",
+      "category": "Global Equity Feeder",
+      "currency": "PHP",
+      "riskRating": "Aggressive",
+      "currentNavpu": 269.75,
+      "previousNavpu": 268.67,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 1452.841,
+      "averageCost": 218.5,
+      "investedCapital": 317445.76,
+      "currentMarketValue": 391903.86,
+      "unrealizedGain": 74458.1,
+      "unrealizedGainPercent": 23.46,
+      "metrics": {
+        "oneYearReturn": 31.4,
+        "threeYearCagr": 19.85,
+        "fiveYearCagr": 22.1,
+        "volatility30d": 17.8,
+        "volatility90d": 16.4,
+        "sharpeRatio": 1.45,
+        "maxDrawdown": -18.2,
+        "alphaVsBenchmark": 8.4,
+        "beta": 1.18
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-04",
+          "navpu": 204.28
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 211.5
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 208.9
+        },
+        {
+          "date": "2025-11-01",
+          "navpu": 222.4
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 234.1
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 242.8
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 249.15
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 244.6
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 253.2
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 258.9
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 263.1
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 265.5
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 268.42
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 269.75
+        }
+      ]
+    },
+    {
+      "id": "fund-atram-infra",
+      "name": "ATRAM Global Infra Equity Feeder Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GInvest / GFunds (GCash)",
+      "targetFund": "ATRAM Global Infrastructure Equity Fund",
+      "category": "Global Equity Feeder",
+      "currency": "PHP",
+      "riskRating": "Aggressive",
+      "currentNavpu": 143,
+      "previousNavpu": 142.49,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 1050,
+      "averageCost": 128,
+      "investedCapital": 134400,
+      "currentMarketValue": 150150,
+      "unrealizedGain": 15750,
+      "unrealizedGainPercent": 11.72,
+      "metrics": {
+        "oneYearReturn": 14.8,
+        "threeYearCagr": 11.2,
+        "fiveYearCagr": 12.8,
+        "volatility30d": 12.1,
+        "volatility90d": 11.5,
+        "sharpeRatio": 0.95,
+        "maxDrawdown": -12.4,
+        "alphaVsBenchmark": 3.2,
+        "beta": 0.85
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-04",
+          "navpu": 123.82
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 126.1
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 124.5
+        },
+        {
+          "date": "2025-11-01",
+          "navpu": 129.8
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 133.4
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 135.2
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 137.8
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 136.1
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 138.9
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 140.2
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 141
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 141.6
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 142.15
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 143
+        }
+      ]
+    },
+    {
+      "id": "fund-alfm-multi-asset",
+      "name": "ALFM Global Multi-Asset Income Fund",
+      "provider": "BPI Wealth / ALFM",
+      "platform": "GInvest / GFunds & BPI",
+      "targetFund": "BlackRock Global Multi-Asset Income Fund",
+      "category": "Multi-Asset Dividend Income",
+      "currency": "PHP",
+      "riskRating": "Moderate",
+      "currentNavpu": 52.97,
+      "previousNavpu": 52.83,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 3800,
+      "averageCost": 50.2,
+      "investedCapital": 190760,
+      "currentMarketValue": 201286,
+      "unrealizedGain": 10526,
+      "unrealizedGainPercent": 5.52,
+      "dividendYieldPAnnum": 5.85,
+      "monthlyDividendEstimate": 978.12,
+      "metrics": {
+        "oneYearReturn": 9.2,
+        "threeYearCagr": 7.6,
+        "fiveYearCagr": 8.1,
+        "volatility30d": 6.8,
+        "volatility90d": 6.4,
+        "sharpeRatio": 0.78,
+        "maxDrawdown": -6.8,
+        "alphaVsBenchmark": 1.9,
+        "beta": 0.48
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-04",
+          "navpu": 48.35
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 49
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 48.8
+        },
+        {
+          "date": "2025-11-01",
+          "navpu": 49.7
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 50.6
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 51.1
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 51.5
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 51.2
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 51.9
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 52.3
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 52.5
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 52.65
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 52.8
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 52.97
+        }
+      ]
+    },
+    {
+      "id": "fund-manulife-reit",
+      "name": "Manulife Global REIT Feeder Fund",
+      "provider": "Manulife Investment Management",
+      "platform": "GInvest / GFunds (GCash)",
+      "targetFund": "Manulife Global Fund - Asian REIT Fund",
+      "category": "Global REIT Feeder",
+      "currency": "PHP",
+      "riskRating": "Moderate",
+      "currentNavpu": 109.35,
+      "previousNavpu": 109.36,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 1200,
+      "averageCost": 102.5,
+      "investedCapital": 123000,
+      "currentMarketValue": 131220,
+      "unrealizedGain": 8220,
+      "unrealizedGainPercent": 6.68,
+      "dividendYieldPAnnum": 6.3,
+      "monthlyDividendEstimate": 686.07,
+      "metrics": {
+        "oneYearReturn": 11.2,
+        "threeYearCagr": 8.4,
+        "fiveYearCagr": 9.2,
+        "volatility30d": 9.5,
+        "volatility90d": 9.1,
+        "sharpeRatio": 0.82,
+        "maxDrawdown": -8.9,
+        "alphaVsBenchmark": 2.6,
+        "beta": 0.62
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-04",
+          "navpu": 97.93
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 99.4
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 98.6
+        },
+        {
+          "date": "2025-11-01",
+          "navpu": 101.2
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 103.8
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 105
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 106.3
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 105.5
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 107
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 107.8
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 108.1
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 108.3
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 108.9
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 109.35
+        }
+      ]
+    },
+    {
+      "id": "fund-atram-money-market",
+      "name": "ATRAM Peso Money Market Fund",
+      "provider": "ATRAM Trust Corporation",
+      "platform": "GInvest / GFunds (GCash)",
+      "targetFund": "ATRAM Peso Money Market Fund",
+      "category": "Money Market / Liquidity",
+      "currency": "PHP",
+      "riskRating": "Conservative",
+      "currentNavpu": 136.56,
+      "previousNavpu": 136.04,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 1650,
+      "averageCost": 130.8,
+      "investedCapital": 215820,
+      "currentMarketValue": 225324,
+      "unrealizedGain": 9504,
+      "unrealizedGainPercent": 4.4,
+      "metrics": {
+        "oneYearReturn": 4.75,
+        "threeYearCagr": 4.35,
+        "fiveYearCagr": 3.9,
+        "volatility30d": 0.42,
+        "volatility90d": 0.4,
+        "sharpeRatio": 0.15,
+        "maxDrawdown": -0.05,
+        "alphaVsBenchmark": 0.05,
+        "beta": 0.02
+      },
+      "historicalNavpu": [
+        {
+          "date": "2025-08-04",
+          "navpu": 130.26
+        },
+        {
+          "date": "2025-09-01",
+          "navpu": 130.8
+        },
+        {
+          "date": "2025-10-01",
+          "navpu": 131.3
+        },
+        {
+          "date": "2025-11-01",
+          "navpu": 131.85
+        },
+        {
+          "date": "2025-12-01",
+          "navpu": 132.4
+        },
+        {
+          "date": "2026-01-02",
+          "navpu": 132.95
+        },
+        {
+          "date": "2026-02-02",
+          "navpu": 133.5
+        },
+        {
+          "date": "2026-03-02",
+          "navpu": 134.05
+        },
+        {
+          "date": "2026-04-01",
+          "navpu": 134.6
+        },
+        {
+          "date": "2026-05-02",
+          "navpu": 135.2
+        },
+        {
+          "date": "2026-06-01",
+          "navpu": 135.75
+        },
+        {
+          "date": "2026-07-01",
+          "navpu": 136.2
+        },
+        {
+          "date": "2026-08-03",
+          "navpu": 136.45
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 136.56
+        }
+      ]
+    }
+  ],
+  "liabilities": [
+    {
+      "id": "liab-atome-card",
+      "name": "Atome Card / PayLater",
+      "provider": "Atome Philippines",
+      "type": "bnpl",
+      "outstandingBalance": 9450,
+      "creditLimit": 50000,
+      "billingCycleDueDate": "2026-08-18",
+      "nominalMonthlyRate": 0,
+      "effectiveApr": 34.8,
+      "monthlyAdminFee": 150,
+      "monthlyPayment": 3150,
+      "remainingTermsMonths": 3,
+      "isZeroInterestPromo": true,
+      "daysUntilDue": 14,
+      "latePenaltyPercent": 5,
+      "status": "active"
+    },
+    {
+      "id": "liab-maya-credit",
+      "name": "Maya Credit",
+      "provider": "Maya Bank",
+      "type": "revolving_credit",
+      "outstandingBalance": 16500,
+      "creditLimit": 30000,
+      "billingCycleDueDate": "2026-08-13",
+      "nominalMonthlyRate": 3.99,
+      "effectiveApr": 59.9,
+      "monthlyAdminFee": 0,
+      "monthlyPayment": 16500,
+      "remainingTermsMonths": 1,
+      "isZeroInterestPromo": false,
+      "daysUntilDue": 9,
+      "latePenaltyPercent": 5,
+      "status": "warning"
+    },
+    {
+      "id": "liab-ggives",
+      "name": "GGives Installment (Gadget)",
+      "provider": "Fuse Lending / GCash",
+      "type": "bnpl",
+      "outstandingBalance": 24800,
+      "creditLimit": 60000,
+      "billingCycleDueDate": "2026-08-22",
+      "nominalMonthlyRate": 1.99,
+      "effectiveApr": 26.85,
+      "monthlyAdminFee": 0,
+      "monthlyPayment": 4546.67,
+      "remainingTermsMonths": 6,
+      "isZeroInterestPromo": false,
+      "daysUntilDue": 18,
+      "latePenaltyPercent": 3,
+      "status": "active"
+    },
+    {
+      "id": "liab-lazpaylater",
+      "name": "LazPayLater",
+      "provider": "Lazada Philippines",
+      "type": "bnpl",
+      "outstandingBalance": 5800,
+      "creditLimit": 25000,
+      "billingCycleDueDate": "2026-08-16",
+      "nominalMonthlyRate": 2.5,
+      "effectiveApr": 34.5,
+      "monthlyAdminFee": 0,
+      "monthlyPayment": 2045,
+      "remainingTermsMonths": 3,
+      "isZeroInterestPromo": false,
+      "daysUntilDue": 12,
+      "latePenaltyPercent": 5,
+      "status": "active"
+    },
+    {
+      "id": "liab-bpi-cc",
+      "name": "BPI Visa Signature Card",
+      "provider": "Bank of the Philippine Islands",
+      "type": "credit_card",
+      "outstandingBalance": 38450,
+      "creditLimit": 300000,
+      "billingCycleDueDate": "2026-08-25",
+      "nominalMonthlyRate": 3,
+      "effectiveApr": 42.58,
+      "monthlyAdminFee": 0,
+      "monthlyPayment": 38450,
+      "remainingTermsMonths": 1,
+      "isZeroInterestPromo": true,
+      "daysUntilDue": 21,
+      "latePenaltyPercent": 5,
+      "status": "active"
+    }
+  ],
+  "cashFlow": {
+    "monthlyInflow": 175000,
+    "incomeSources": [
+      {
+        "name": "Tech Strategy & Consulting",
+        "amount": 140000,
+        "frequency": "monthly"
+      },
+      {
+        "name": "ALFM & Manulife REIT Dividends",
+        "amount": 1664.19,
+        "frequency": "monthly"
+      },
+      {
+        "name": "High-Yield Digital Bank Interest",
+        "amount": 3335.81,
+        "frequency": "monthly"
+      },
+      {
+        "name": "Advisory Retainer",
+        "amount": 30000,
+        "frequency": "monthly"
+      }
+    ],
+    "fixedExpenses": [
+      {
+        "name": "Condo Rent & HOA",
+        "amount": 28000,
+        "category": "Housing"
+      },
+      {
+        "name": "Utilities, Fiber & Subscriptions",
+        "amount": 8500,
+        "category": "Utilities"
+      },
+      {
+        "name": "Health, Term & Car Insurance",
+        "amount": 9500,
+        "category": "Insurance"
+      },
+      {
+        "name": "Groceries & Daily Allowance",
+        "amount": 12000,
+        "category": "Living"
+      }
+    ]
+  },
+  "syncLogs": [
+    {
+      "id": "log-1785819383345-k1h6",
+      "timestamp": "2026-08-04T04:56:23.345Z",
+      "source": "MariBank Ingestion Rail",
+      "status": "success",
+      "message": "Ingested MariBank payload: ₱200,000"
+    },
+    {
+      "id": "log-1785819383337-bwok",
+      "timestamp": "2026-08-04T04:56:23.337Z",
+      "source": "NAVPU Scraper Worker",
+      "status": "success",
+      "message": "Updated NAVPUs for 5 Philippine UITF/Feeder Funds."
+    },
+    {
+      "id": "log-1785819383051-wwap",
+      "timestamp": "2026-08-04T04:56:23.051Z",
+      "source": "NAVPU Scraper Worker",
+      "status": "success",
+      "message": "Updated NAVPUs for 5 Philippine UITF/Feeder Funds."
+    },
+    {
+      "id": "log-1785819382479-w5pv",
+      "timestamp": "2026-08-04T04:56:22.479Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 8 accounts with live accruals and statement hooks."
+    },
+    {
+      "id": "log-01",
+      "timestamp": "2026-08-04T12:00:00.000Z",
+      "source": "ATRAM NAVPU Live Scraper",
+      "status": "success",
+      "message": "Fetched 5 UITF daily valuation feeds from ATRAM & UITF portal successfully."
+    },
+    {
+      "id": "log-02",
+      "timestamp": "2026-08-04T11:50:00.000Z",
+      "source": "Maya Bank Ingestion Rail",
+      "status": "success",
+      "message": "Processed webhook for Maya Savings boosted 10.0% tier."
+    },
+    {
+      "id": "log-03",
+      "timestamp": "2026-08-04T11:45:00.000Z",
+      "source": "MariBank Daily Accrual Worker",
+      "status": "success",
+      "message": "Calculated daily interest accrual of ₱19.05 @ 3.75% p.a."
+    }
+  ]
+}
