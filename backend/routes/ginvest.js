@@ -11,6 +11,21 @@ router.get('/funds', (req, res) => {
   const riskFreeRate = db.macroRegime?.phThreeMonthTBillRate || 5.50;
 
   const enrichedFunds = quantEngine.enrichFundMetrics(rawFunds, riskFreeRate);
+  
+  // Sort funds so active holdings (units > 0 or pending buy > 0) are always at the top
+  enrichedFunds.sort((a, b) => {
+    const aActive = (a.unitsHeld > 0 || (a.pendingBuyOrders || 0) > 0 || (a.investedCapital || 0) > 0) ? 1 : 0;
+    const bActive = (b.unitsHeld > 0 || (b.pendingBuyOrders || 0) > 0 || (b.investedCapital || 0) > 0) ? 1 : 0;
+    if (aActive !== bActive) return bActive - aActive;
+
+    if (aActive && bActive) {
+      const aVal = (a.currentMarketValue || 0) + (a.pendingBuyOrders || 0);
+      const bVal = (b.currentMarketValue || 0) + (b.pendingBuyOrders || 0);
+      return bVal - aVal;
+    }
+    return (b.metrics?.oneYearReturn || 0) - (a.metrics?.oneYearReturn || 0);
+  });
+
   const summary = quantEngine.calculatePortfolioSummary(enrichedFunds, db.accounts || [], riskFreeRate);
 
   res.json({

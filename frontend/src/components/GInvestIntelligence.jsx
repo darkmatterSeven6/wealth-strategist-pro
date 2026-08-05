@@ -51,8 +51,11 @@ export default function GInvestIntelligence({
     pendingBuyOrders: '0'
   });
 
+  const activeHoldingsCount = funds.filter(f => (f.unitsHeld || 0) > 0 || (f.pendingBuyOrders || 0) > 0 || (f.investedCapital || 0) > 0).length;
+
   const categories = [
     'ALL', 
+    `⭐ My Active Holdings (${activeHoldingsCount})`,
     'Global Equity / Tech', 
     'Global Thematic', 
     'Multi-Asset & Bonds', 
@@ -74,6 +77,9 @@ export default function GInvestIntelligence({
 
     // Category matching
     if (selectedCategory === 'ALL') return true;
+    if (selectedCategory.startsWith('⭐ My Active Holdings')) {
+      return (fund.unitsHeld || 0) > 0 || (fund.pendingBuyOrders || 0) > 0 || (fund.investedCapital || 0) > 0;
+    }
     if (selectedCategory === 'Global Equity / Tech') {
       return (fund.category?.includes('Global Equity') || fund.category?.includes('Tech')) && !fund.category?.includes('Thematic');
     }
@@ -93,6 +99,25 @@ export default function GInvestIntelligence({
       return fund.category?.includes('Money Market') || fund.category?.includes('Liquidity');
     }
     return fund.category === selectedCategory;
+  });
+
+  // Always sort active holdings to the top of the table
+  const displayedFunds = [...filteredFunds].sort((a, b) => {
+    const aActive = ((a.unitsHeld || 0) > 0 || (a.pendingBuyOrders || 0) > 0 || (a.investedCapital || 0) > 0) ? 1 : 0;
+    const bActive = ((b.unitsHeld || 0) > 0 || (b.pendingBuyOrders || 0) > 0 || (b.investedCapital || 0) > 0) ? 1 : 0;
+
+    // 1. Funds with active holdings or pending buy orders ALWAYS come first
+    if (aActive !== bActive) return bActive - aActive;
+
+    // 2. Among active funds, sort by highest total market value + pending buy orders
+    if (aActive && bActive) {
+      const aVal = (a.currentMarketValue || 0) + (a.pendingBuyOrders || 0);
+      const bVal = (b.currentMarketValue || 0) + (b.pendingBuyOrders || 0);
+      if (bVal !== aVal) return bVal - aVal;
+    }
+
+    // 3. For uninvested funds, sort by 1-Yr Return descending
+    return (b.metrics?.oneYearReturn || 0) - (a.metrics?.oneYearReturn || 0);
   });
 
   const formatNavpu = (navpu) => {
@@ -365,32 +390,39 @@ export default function GInvestIntelligence({
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/60 font-medium text-slate-200">
-              {filteredFunds.length === 0 ? (
+              {displayedFunds.length === 0 ? (
                 <tr>
                   <td colSpan={11} className="py-8 text-center text-slate-400">
                     No funds found matching your criteria.
                   </td>
                 </tr>
               ) : (
-                filteredFunds.map((fund) => {
+                displayedFunds.map((fund) => {
                   const m = fund.metrics || {};
                   const isGain = (fund.unrealizedGain || 0) >= 0;
-                  const hasPosition = (fund.unitsHeld || 0) > 0 || (fund.pendingBuyOrders || 0) > 0;
+                  const hasPosition = (fund.unitsHeld || 0) > 0 || (fund.pendingBuyOrders || 0) > 0 || (fund.investedCapital || 0) > 0;
 
                   return (
                     <tr 
                       key={fund.id} 
-                      className={`hover:bg-slate-800/40 transition ${hasPosition ? 'bg-purple-950/10' : ''}`}
+                      className={`hover:bg-slate-800/40 transition ${
+                        hasPosition 
+                          ? 'bg-gradient-to-r from-purple-950/25 via-emerald-950/15 to-transparent border-l-2 border-emerald-400' 
+                          : ''
+                      }`}
                     >
                       
                       {/* Fund Name, Type & Badges (Matching User's Reference Layout) */}
                       <td className="py-4 px-4">
                         <div className="space-y-1.5">
-                          {/* 1. Fund Name */}
-                          <div className="font-bold text-white text-sm tracking-tight flex items-center space-x-1.5">
+                          {/* 1. Fund Name & Active Status */}
+                          <div className="font-bold text-white text-sm tracking-tight flex items-center flex-wrap gap-1.5">
                             <span>{fund.name}</span>
                             {hasPosition && (
-                              <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]" title="Active Holding" />
+                              <span className="inline-flex items-center space-x-1 px-2 py-0.5 text-[10px] font-extrabold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.25)]">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                <span>ACTIVE HOLDING</span>
+                              </span>
                             )}
                           </div>
 
