@@ -139,6 +139,16 @@ export default function App() {
     await loadAllData();
   };
 
+  const handleUpdateLiability = async (payload) => {
+    await api.updateLiability(payload);
+    await loadAllData();
+  };
+
+  const handleDeleteLiability = async (id) => {
+    await api.deleteLiability(id);
+    await loadAllData();
+  };
+
   const handlePostMockRail = async (rail, payload) => {
     const res = await api.postMockRail(rail, payload);
     await loadAllData();
@@ -216,6 +226,8 @@ export default function App() {
             liabilitiesData={liabilitiesData}
             onPayLiability={handlePayLiability}
             onCreateLiability={handleCreateLiability}
+            onUpdateLiability={handleUpdateLiability}
+            onDeleteLiability={handleDeleteLiability}
           />
         )}
 

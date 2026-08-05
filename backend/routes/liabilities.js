@@ -101,4 +101,85 @@ router.post('/pay', (req, res) => {
   });
 });
 
+// POST update existing liability
+router.post('/update', (req, res) => {
+  const {
+    id,
+    name,
+    provider,
+    type,
+    outstandingBalance,
+    creditLimit,
+    billingCycleDueDate,
+    nominalMonthlyRate,
+    monthlyAdminFee,
+    monthlyPayment,
+    remainingTermsMonths,
+    isZeroInterestPromo,
+    status
+  } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ success: false, error: 'Liability ID is required.' });
+  }
+
+  const db = dataStore.getDb();
+  const idx = db.liabilities.findIndex(l => l.id === id);
+  if (idx === -1) {
+    return res.status(404).json({ success: false, error: 'Liability not found.' });
+  }
+
+  const existing = db.liabilities[idx];
+  const balance = outstandingBalance !== undefined ? parseFloat(outstandingBalance) : existing.outstandingBalance;
+  const limit = creditLimit !== undefined ? parseFloat(creditLimit) : (existing.creditLimit || balance * 2);
+  const nominalRate = nominalMonthlyRate !== undefined ? parseFloat(nominalMonthlyRate) : (existing.nominalMonthlyRate || 0);
+  const adminFee = monthlyAdminFee !== undefined ? parseFloat(monthlyAdminFee) : (existing.monthlyAdminFee || 0);
+  const effectiveApr = bnplEngine.calculateEffectiveApr(nominalRate, adminFee, balance);
+
+  const updatedLiab = {
+    ...existing,
+    name: name || existing.name,
+    provider: provider || existing.provider,
+    type: type || existing.type,
+    outstandingBalance: balance,
+    creditLimit: limit,
+    billingCycleDueDate: billingCycleDueDate || existing.billingCycleDueDate,
+    nominalMonthlyRate: nominalRate,
+    effectiveApr,
+    monthlyAdminFee: adminFee,
+    monthlyPayment: monthlyPayment !== undefined ? parseFloat(monthlyPayment) : existing.monthlyPayment,
+    remainingTermsMonths: remainingTermsMonths !== undefined ? parseInt(remainingTermsMonths) : existing.remainingTermsMonths,
+    isZeroInterestPromo: isZeroInterestPromo !== undefined ? Boolean(isZeroInterestPromo) : existing.isZeroInterestPromo,
+    status: status || (balance === 0 ? 'paid_off' : existing.status || 'active')
+  };
+
+  db.liabilities[idx] = updatedLiab;
+  dataStore.saveDb(db);
+  dataStore.addSyncLog('Liabilities Tracker', 'success', `Updated liability: ${updatedLiab.name} (Balance: ₱${balance.toLocaleString()}, Limit: ₱${limit.toLocaleString()})`);
+
+  res.json({
+    success: true,
+    liability: updatedLiab
+  });
+});
+
+// DELETE liability
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dataStore.getDb();
+  const idx = db.liabilities.findIndex(l => l.id === id);
+  if (idx === -1) {
+    return res.status(404).json({ success: false, error: 'Liability not found.' });
+  }
+
+  const removed = db.liabilities.splice(idx, 1)[0];
+  dataStore.saveDb(db);
+  dataStore.addSyncLog('Liabilities Tracker', 'info', `Removed liability line: ${removed.name}`);
+
+  res.json({
+    success: true,
+    message: `Removed ${removed.name}`
+  });
+});
+
 module.exports = router;

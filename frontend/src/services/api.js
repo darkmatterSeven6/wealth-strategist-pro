@@ -90,6 +90,20 @@ export const api = {
     });
     return res.json();
   },
+  updateLiability: async (data) => {
+    const res = await fetch(`${API_BASE}/liabilities/update`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
+  deleteLiability: async (id) => {
+    const res = await fetch(`${API_BASE}/liabilities/${id}`, {
+      method: 'DELETE'
+    });
+    return res.json();
+  },
 
   // Analytics & Summary
   getNetWorthSummary: async () => {

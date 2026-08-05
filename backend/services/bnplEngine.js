@@ -48,11 +48,21 @@ class BnplEngine {
     let totalMonthlyDebtPayments = 0;
     let totalAnnualInterestDrag = 0;
     let highInterestDebtTotal = 0; // APR > 20%
+    let totalCreditLimit = 0;
+    let totalAvailableCredit = 0;
 
     const enrichedLiabilities = liabilities.map(item => {
       const balance = item.outstandingBalance || 0;
+      const creditLimit = item.creditLimit !== undefined && item.creditLimit !== null 
+        ? item.creditLimit 
+        : (balance > 0 ? balance * 2 : 10000);
+      const availableCredit = Math.max(0, parseFloat((creditLimit - balance).toFixed(2)));
+      const utilizationPercent = creditLimit > 0 ? parseFloat(((balance / creditLimit) * 100).toFixed(1)) : 0;
+
       totalOutstandingDebt += balance;
       totalMonthlyDebtPayments += item.monthlyPayment || 0;
+      totalCreditLimit += creditLimit;
+      totalAvailableCredit += availableCredit;
 
       const effectiveApr = item.effectiveApr || this.calculateEffectiveApr(
         item.nominalMonthlyRate || 0,
@@ -90,6 +100,9 @@ class BnplEngine {
 
       return {
         ...item,
+        creditLimit,
+        availableCredit,
+        utilizationPercent,
         effectiveApr,
         annualInterestCost: parseFloat(annualInterestCost.toFixed(2)),
         monthlyInterestCost: parseFloat((annualInterestCost / 12).toFixed(2)),
@@ -104,9 +117,15 @@ class BnplEngine {
     const totalCommittedOutflow = totalFixedBills + totalMonthlyDebtPayments;
     const netInvestableSurplus = monthlyIncome - totalCommittedOutflow;
     const debtToIncomeRatio = monthlyIncome > 0 ? (totalMonthlyDebtPayments / monthlyIncome) * 100 : 0;
+    const overallCreditUtilization = totalCreditLimit > 0 
+      ? parseFloat(((totalOutstandingDebt / totalCreditLimit) * 100).toFixed(1)) 
+      : 0;
 
     return {
       totalOutstandingDebt: parseFloat(totalOutstandingDebt.toFixed(2)),
+      totalCreditLimit: parseFloat(totalCreditLimit.toFixed(2)),
+      totalAvailableCredit: parseFloat(totalAvailableCredit.toFixed(2)),
+      overallCreditUtilization,
       totalMonthlyDebtPayments: parseFloat(totalMonthlyDebtPayments.toFixed(2)),
       totalAnnualInterestDrag: parseFloat(totalAnnualInterestDrag.toFixed(2)),
       monthlyInterestDrag: parseFloat(monthlyInterestDrag.toFixed(2)),
