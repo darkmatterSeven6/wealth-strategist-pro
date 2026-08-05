@@ -415,15 +415,9 @@ export default function GInvestIntelligence({
                       {/* Fund Name, Type & Badges (Matching User's Reference Layout) */}
                       <td className="py-4 px-4">
                         <div className="space-y-1.5">
-                          {/* 1. Fund Name & Active Status */}
-                          <div className="font-bold text-white text-sm tracking-tight flex items-center flex-wrap gap-1.5">
-                            <span>{fund.name}</span>
-                            {hasPosition && (
-                              <span className="inline-flex items-center space-x-1 px-2 py-0.5 text-[10px] font-extrabold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.25)]">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                                <span>ACTIVE HOLDING</span>
-                              </span>
-                            )}
+                          {/* 1. Fund Name */}
+                          <div className="font-bold text-white text-sm tracking-tight">
+                            {fund.name}
                           </div>
 
                           {/* 2. Fund Type / Category & Metadata */}
@@ -442,7 +436,7 @@ export default function GInvestIntelligence({
                             )}
                           </div>
 
-                          {/* 3. Platform Badges and Dividend Yield placed directly under Fund Type */}
+                          {/* 3. Platform Badges and Dividend / Pending placed directly under Fund Type */}
                           <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
                             {renderPlatformBadges(fund.platform)}
                             {fund.dividendYieldPAnnum > 0 && (
@@ -457,6 +451,16 @@ export default function GInvestIntelligence({
                               </span>
                             )}
                           </div>
+
+                          {/* 4. Active Holding Badge placed at the bottom */}
+                          {hasPosition && (
+                            <div className="pt-0.5">
+                              <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 text-[10px] font-extrabold bg-[#062c24] text-[#2dd4bf] border border-[#0d594c] rounded-full shadow-[0_0_8px_rgba(45,212,191,0.18)]">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#2dd4bf] animate-pulse"></span>
+                                <span>ACTIVE HOLDING</span>
+                              </span>
+                            </div>
+                          )}
                         </div>
                       </td>
 
