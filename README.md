@@ -1,6 +1,6 @@
-# 🚀 FinFlow Pro | Philippine Wealth & Quantitative Aggregator
+# 🚀 DV Financials | Philippine Wealth & Quantitative Aggregator
 
-**FinFlow Pro** is an automated, unified Wealth Management & Cash Flow Hub optimized to run locally on your desktop. It aggregates digital bank accounts, tracks investments in GCash GInvest (GFunds) & Maya Funds, monitors high-yield savings (MariBank, Maya, GoTyme, Atome Save, Tonik), mitigates BNPL credit drag penalties, and executes quantitative portfolio analysis to recommend asset rebalancing.
+**DV Financials** is an automated, unified Wealth Management & Cash Flow Hub optimized to run locally on your desktop. It aggregates digital bank accounts, tracks investments in GCash GInvest (GFunds) & Maya Funds, monitors high-yield savings (MariBank, Maya, GoTyme, Atome Save, Tonik), mitigates BNPL credit drag penalties, and executes quantitative portfolio analysis to recommend asset rebalancing.
 
 ---
 

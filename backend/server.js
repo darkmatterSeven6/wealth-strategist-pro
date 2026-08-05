@@ -33,7 +33,7 @@ app.use('/api/analytics', analyticsRoute);
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'healthy',
-    system: 'FinFlow Pro Backend',
+    system: 'DV Financials Backend',
     version: '1.0.0',
     timestamp: new Date().toISOString()
   });
@@ -82,7 +82,7 @@ function broadcastEvent(event, data) {
 // Start Server
 server.listen(PORT, () => {
   console.log(`====================================================`);
-  console.log(`  🚀 FINFLOW PRO BACKEND RUNNING ON PORT: ${PORT}`);
+  console.log(`  🚀 DV FINANCIALS BACKEND RUNNING ON PORT: ${PORT}`);
   console.log(`  🔗 REST API:  http://localhost:${PORT}/api/health`);
   console.log(`  ⚡ WEBSOCKET: ws://localhost:${PORT}/ws`);
   console.log(`====================================================`);

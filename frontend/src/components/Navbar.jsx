@@ -49,7 +49,7 @@ export default function Navbar({
               <div>
                 <div className="flex items-center space-x-2">
                   <span className="font-extrabold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-100 to-slate-300">
-                    FINFLOW <span className="text-emerald-400">PRO</span>
+                    DV <span className="text-emerald-400">FINANCIALS</span>
                   </span>
                   <span className="px-2 py-0.5 text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full">
                     LOCAL v1.0

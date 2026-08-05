@@ -1,7 +1,7 @@
 {
-  "name": "finflow-pro-frontend",
+  "name": "dv-financials-frontend",
   "version": "1.0.0",
-  "description": "Local Fintech & Wealth Aggregator Frontend for FinFlow Pro",
+  "description": "Local Fintech & Wealth Aggregator Frontend for DV Financials",
   "type": "module",
   "scripts": {
     "dev": "vite",

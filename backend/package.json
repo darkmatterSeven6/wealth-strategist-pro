@@ -1,7 +1,7 @@
 {
-  "name": "finflow-pro-backend",
+  "name": "dv-financials-backend",
   "version": "1.0.0",
-  "description": "Local Fintech & Wealth Aggregator Backend for FinFlow Pro",
+  "description": "Local Fintech & Wealth Aggregator Backend for DV Financials",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {

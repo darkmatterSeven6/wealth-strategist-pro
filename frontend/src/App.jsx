@@ -48,7 +48,7 @@ export default function App() {
       if (logsRes.success) setSyncLogs(logsRes.logs);
       if (macroRes.success) setMacroData(macroRes.macro);
     } catch (err) {
-      console.error('Failed loading FinFlow Pro state:', err);
+      console.error('Failed loading DV Financials state:', err);
     }
   }, []);
 
@@ -253,7 +253,7 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-slate-800/60 py-6 text-center text-xs text-slate-500 bg-[#080c14]">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>FinFlow Pro v1.0 • Local Philippine Wealth & Quantitative Engine</span>
+          <span>DV Financials v1.0 • Local Philippine Wealth & Quantitative Engine</span>
           <span className="text-slate-400">Zero Cloud Dependencies • 100% Local JSON Persistence</span>
         </div>
       </footer>

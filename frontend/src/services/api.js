@@ -1,5 +1,5 @@
 /**
- * FinFlow Pro Frontend API Service Client
+ * DV Financials Frontend API Service Client
  */
 
 const API_BASE = '/api';
