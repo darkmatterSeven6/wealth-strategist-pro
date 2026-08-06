@@ -10,6 +10,7 @@ const rebalanceRoute = require('./routes/rebalance');
 const liabilitiesRoute = require('./routes/liabilities');
 const syncRoute = require('./routes/sync');
 const analyticsRoute = require('./routes/analytics');
+const systemRoute = require('./routes/system');
 const dataStore = require('./services/dataStore');
 
 const app = express();
@@ -28,6 +29,7 @@ app.use('/api/rebalance', rebalanceRoute);
 app.use('/api/liabilities', liabilitiesRoute);
 app.use('/api/sync', syncRoute);
 app.use('/api/analytics', analyticsRoute);
+app.use('/api/system', systemRoute);
 
 // Health Check
 app.get('/api/health', (req, res) => {

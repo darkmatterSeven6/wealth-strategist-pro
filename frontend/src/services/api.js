@@ -149,5 +149,25 @@ export const api = {
       body: JSON.stringify(payload)
     });
     return res.json();
+  },
+
+  // System Save & Cloud Sync (Local + GitHub)
+  saveAndPushToGitHub: async (message = null) => {
+    const res = await fetch(`${API_BASE}/system/save-and-push`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message })
+    });
+    return res.json();
+  },
+  getSystemSyncStatus: async () => {
+    const res = await fetch(`${API_BASE}/system/sync-status`);
+    return res.json();
+  },
+  shutdownSystem: async () => {
+    const res = await fetch(`${API_BASE}/system/shutdown`, {
+      method: 'POST'
+    });
+    return res.json();
   }
 };
