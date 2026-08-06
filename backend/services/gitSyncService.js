@@ -43,7 +43,17 @@ class GitSyncService {
     const defaultMsg = `chore: Sync & save latest financial state [${timestamp}]`;
     const message = customMessage || defaultMsg;
 
+    // Log in system sync logs before staging so db.json is clean after commit
+    dataStore.addSyncLog(
+      'GitHub Cloud Sync',
+      'success',
+      `Manual / Auto save operation recorded at ${timestamp}`
+    );
+
     try {
+      // 1. Flush memory state to db.json on disk
+      dataStore.saveDb(dataStore.getDb());
+
       // 2. Stage all modifications (database, configs, overrides)
       await runGitCommand('git add .');
 
@@ -66,15 +76,6 @@ class GitSyncService {
       // 5. Get latest commit hash
       const logRes = await runGitCommand('git log -1 --format="%h - %s (%cr)"');
       const lastCommit = logRes.stdout || 'Latest commit';
-
-      // Log in system sync logs
-      dataStore.addSyncLog(
-        'GitHub Cloud Sync',
-        pushSuccess ? 'success' : 'warning',
-        pushSuccess
-          ? `Synced state to GitHub (${hasChanges ? 'new commit pushed' : 'already up-to-date'})`
-          : `Saved locally; GitHub push warning: ${pushRes.stderr || pushRes.error}`
-      );
 
       return {
         success: true,
