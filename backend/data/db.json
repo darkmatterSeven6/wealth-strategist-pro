@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-08T10:42:12.146Z"
+    "lastSyncTimestamp": "2026-08-08T10:59:32.726Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -23,7 +23,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• 8824",
-      "balance": 1116.88,
+      "balance": 1116.98,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.1,
@@ -32,7 +32,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.145Z"
+      "lastSynced": "2026-08-08T10:59:32.726Z"
     },
     {
       "id": "acc-maya-01",
@@ -49,7 +49,7 @@
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.146Z",
+      "lastSynced": "2026-08-08T10:59:32.726Z",
       "subAccounts": [
         {
           "name": "Personal Goals: Japan 2027",
@@ -78,7 +78,7 @@
       "icon": "GoTyme",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.146Z",
+      "lastSynced": "2026-08-08T10:59:32.726Z",
       "subAccounts": [
         {
           "name": "Auto & Insurance Buffer",
@@ -107,7 +107,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.146Z"
+      "lastSynced": "2026-08-08T10:59:32.726Z"
     },
     {
       "id": "acc-tonik-01",
@@ -124,7 +124,7 @@
       "icon": "Tonik",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.146Z",
+      "lastSynced": "2026-08-08T10:59:32.726Z",
       "subAccounts": [
         {
           "name": "Group Stash (Family)",
@@ -153,7 +153,7 @@
       "icon": "BPI",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.146Z"
+      "lastSynced": "2026-08-08T10:59:32.726Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -170,7 +170,7 @@
       "icon": "GCash",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.146Z"
+      "lastSynced": "2026-08-08T10:59:32.726Z"
     },
     {
       "id": "acc-maya-wallet-01",
@@ -187,7 +187,7 @@
       "icon": "MayaWallet",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.146Z"
+      "lastSynced": "2026-08-08T10:59:32.726Z"
     },
     {
       "id": "acc-custom-1786121765629",
@@ -204,7 +204,7 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T10:42:12.146Z"
+      "lastSynced": "2026-08-08T10:59:32.726Z"
     }
   ],
   "funds": [
@@ -217,15 +217,15 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 487.0653,
-      "previousNavpu": 485.7855,
+      "currentNavpu": 487.1238,
+      "previousNavpu": 487.0653,
       "navpuDate": "2026-08-08",
       "unitsHeld": 2.0885,
       "investedCapital": 1000,
       "averageCost": 478.811055,
-      "currentMarketValue": 1017.24,
-      "unrealizedGain": 17.24,
-      "unrealizedGainPercent": 1.72,
+      "currentMarketValue": 1017.36,
+      "unrealizedGain": 17.36,
+      "unrealizedGainPercent": 1.74,
       "dividendYieldPAnnum": 0,
       "metrics": {
         "oneYearReturn": 27.54,
@@ -300,7 +300,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 487.0653
+          "navpu": 487.1238
         }
       ],
       "pendingBuyOrders": 1000,
@@ -317,8 +317,8 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 144.3707,
-      "previousNavpu": 144.1536,
+      "currentNavpu": 144.2845,
+      "previousNavpu": 144.3707,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -400,7 +400,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 144.3707
+          "navpu": 144.2845
         }
       ]
     },
@@ -413,15 +413,15 @@
       "category": "Multi-Asset Dividend Income",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 47.9977,
-      "previousNavpu": 48.0369,
+      "currentNavpu": 48.1393,
+      "previousNavpu": 47.9977,
       "navpuDate": "2026-08-08",
       "unitsHeld": 4.2384,
       "investedCapital": 212.77,
       "averageCost": 50.2,
-      "currentMarketValue": 203.43,
-      "unrealizedGain": -9.34,
-      "unrealizedGainPercent": -4.39,
+      "currentMarketValue": 204.03,
+      "unrealizedGain": -8.74,
+      "unrealizedGainPercent": -4.11,
       "dividendYieldPAnnum": 5.85,
       "metrics": {
         "oneYearReturn": 5,
@@ -496,7 +496,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 47.9977
+          "navpu": 48.1393
         }
       ],
       "pendingBuyOrders": 0,
@@ -511,8 +511,8 @@
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 111.3708,
-      "previousNavpu": 111.3177,
+      "currentNavpu": 111.5841,
+      "previousNavpu": 111.3708,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -594,7 +594,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 111.3708
+          "navpu": 111.5841
         }
       ]
     },
@@ -607,8 +607,8 @@
       "category": "Money Market / Liquidity",
       "currency": "PHP",
       "riskRating": "Conservative",
-      "currentNavpu": 139.5808,
-      "previousNavpu": 139.2945,
+      "currentNavpu": 139.8341,
+      "previousNavpu": 139.5808,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -690,7 +690,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 139.5808
+          "navpu": 139.8341
         }
       ]
     },
@@ -703,8 +703,8 @@
       "category": "Domestic Equity Index",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 12.0481,
-      "previousNavpu": 12.0179,
+      "currentNavpu": 12.0399,
+      "previousNavpu": 12.0481,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -786,7 +786,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 12.0481
+          "navpu": 12.0399
         }
       ]
     },
@@ -799,8 +799,8 @@
       "category": "Fixed Income / Bond",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 2.3303,
-      "previousNavpu": 2.3322,
+      "currentNavpu": 2.3341,
+      "previousNavpu": 2.3303,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -882,7 +882,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 2.3303
+          "navpu": 2.3341
         }
       ]
     },
@@ -895,8 +895,8 @@
       "category": "Global Thematic Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 177.4548,
-      "previousNavpu": 177.4947,
+      "currentNavpu": 177.4458,
+      "previousNavpu": 177.4548,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -978,7 +978,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 177.4548
+          "navpu": 177.4458
         }
       ]
     },
@@ -991,8 +991,8 @@
       "category": "Global Thematic Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 200.9634,
-      "previousNavpu": 200.5329,
+      "currentNavpu": 201.1999,
+      "previousNavpu": 200.9634,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1074,7 +1074,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 200.9634
+          "navpu": 201.1999
         }
       ]
     },
@@ -1087,8 +1087,8 @@
       "category": "Domestic Equity ESG",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 1.3014,
-      "previousNavpu": 1.3019,
+      "currentNavpu": 1.3015,
+      "previousNavpu": 1.3014,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1170,7 +1170,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 1.3014
+          "navpu": 1.3015
         }
       ]
     },
@@ -1183,8 +1183,8 @@
       "category": "Fixed Income / Preferred Securities",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.1594,
-      "previousNavpu": 1.1595,
+      "currentNavpu": 1.1619,
+      "previousNavpu": 1.1594,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1266,7 +1266,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 1.1594
+          "navpu": 1.1619
         }
       ]
     },
@@ -1279,8 +1279,8 @@
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.2894,
-      "previousNavpu": 1.286,
+      "currentNavpu": 1.2881,
+      "previousNavpu": 1.2894,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1362,7 +1362,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 1.2894
+          "navpu": 1.2881
         }
       ]
     },
@@ -1375,8 +1375,8 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 198.6545,
-      "previousNavpu": 198.355,
+      "currentNavpu": 199.2182,
+      "previousNavpu": 198.6545,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1458,7 +1458,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 198.6545
+          "navpu": 199.2182
         }
       ]
     },
@@ -1471,8 +1471,8 @@
       "category": "Domestic Equity Index",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 784.7776,
-      "previousNavpu": 784.7592,
+      "currentNavpu": 786.5027,
+      "previousNavpu": 784.7776,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1554,7 +1554,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 784.7776
+          "navpu": 786.5027
         }
       ]
     },
@@ -1567,8 +1567,8 @@
       "category": "Fixed Income / Bond",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.1791,
-      "previousNavpu": 1.1774,
+      "currentNavpu": 1.1821,
+      "previousNavpu": 1.1791,
       "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1650,7 +1650,7 @@
         },
         {
           "date": "2026-08-08",
-          "navpu": 1.1791
+          "navpu": 1.1821
         }
       ]
     }
@@ -1777,6 +1777,27 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1786186783129-tmon",
+      "timestamp": "2026-08-08T10:59:43.129Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 10:59:43"
+    },
+    {
+      "id": "log-1786186773304-ggz2",
+      "timestamp": "2026-08-08T10:59:33.304Z",
+      "source": "NAVPU Scraper Worker",
+      "status": "success",
+      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
+    },
+    {
+      "id": "log-1786186772728-xtsa",
+      "timestamp": "2026-08-08T10:59:32.728Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
+    },
     {
       "id": "log-1786186236342-23j5",
       "timestamp": "2026-08-08T10:50:36.343Z",
@@ -2105,27 +2126,6 @@
       "source": "GitHub Cloud Sync",
       "status": "success",
       "message": "Synced state to GitHub (new commit pushed)"
-    },
-    {
-      "id": "log-1786000419570-go15",
-      "timestamp": "2026-08-06T07:13:39.570Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Synced state to GitHub (new commit pushed)"
-    },
-    {
-      "id": "log-1785974297551-l8k4",
-      "timestamp": "2026-08-05T23:58:17.551Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1785974243646-2twy",
-      "timestamp": "2026-08-05T23:57:23.646Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
     }
   ],
   "transactions": [
