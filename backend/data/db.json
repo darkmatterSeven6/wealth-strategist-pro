@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-08T15:20:40.802Z"
+    "lastSyncTimestamp": "2026-08-08T16:01:00.049Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -23,16 +23,16 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 7280",
-      "balance": 100006.58,
+      "balance": 100013.16,
       "baseApy": 3.5,
       "currentApy": 3,
-      "dailyInterestEstimate": 8.22,
+      "dailyInterestEstimate": 6.58,
       "tierInfo": "Base 3.5% + 6.5% Mission Boost (Spend ₱30k+ via Maya Card & Bills paid)",
       "color": "#00d084",
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T15:20:40.801Z",
+      "lastSynced": "2026-08-08T16:01:00.049Z",
       "subAccounts": [
         {
           "name": "Personal Goals: Japan 2027",
@@ -52,7 +52,7 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 5798",
-      "balance": 5000.44,
+      "balance": 5000.88,
       "baseApy": 4,
       "currentApy": 4,
       "dailyInterestEstimate": 0.44,
@@ -61,7 +61,7 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T15:20:40.801Z"
+      "lastSynced": "2026-08-08T16:01:00.049Z"
     },
     {
       "id": "acc-maya-wallet-01",
@@ -86,16 +86,16 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1115.88,
+      "balance": 1115.96,
       "baseApy": 3.75,
       "currentApy": 3.25,
-      "dailyInterestEstimate": 0.1,
+      "dailyInterestEstimate": 0.08,
       "tierInfo": "3.75% p.a. credited daily, zero minimum balance",
       "color": "#ff5722",
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T15:20:40.801Z"
+      "lastSynced": "2026-08-08T16:01:00.049Z"
     },
     {
       "id": "acc-atome-01",
@@ -103,16 +103,16 @@
       "institution": "Atome (via Netbank )",
       "type": "digital_bank",
       "accountNumber": "•••• •••• ••2626",
-      "balance": 701.13,
+      "balance": 701.18,
       "baseApy": 3.25,
       "currentApy": 3.25,
-      "dailyInterestEstimate": 0.06,
+      "dailyInterestEstimate": 0.05,
       "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
       "color": "#facc15",
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T15:20:40.801Z"
+      "lastSynced": "2026-08-08T16:01:00.049Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -217,18 +217,18 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 497.009196,
+      "currentNavpu": 488.4863,
       "previousNavpu": 488.4863,
-      "navpuDate": "2026-08-05",
-      "unitsHeld": 2.0419,
+      "navpuDate": "2026-08-08",
+      "unitsHeld": 2.0885,
       "investedCapital": 1000,
-      "averageCost": 489.74,
-      "currentMarketValue": 1014.84,
-      "unrealizedGain": 14.84,
-      "unrealizedGainPercent": 1.48,
+      "averageCost": 478.811055,
+      "currentMarketValue": 1020.2,
+      "unrealizedGain": 20.2,
+      "unrealizedGainPercent": 2.02,
       "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 33.93,
+        "oneYearReturn": 27.54,
         "threeYearCagr": 19.85,
         "fiveYearCagr": 18.2,
         "volatility30d": 16.5,
@@ -303,7 +303,7 @@
           "navpu": 488.4863
         }
       ],
-      "pendingBuyOrders": 0,
+      "pendingBuyOrders": 1000,
       "pendingSellOrders": 0,
       "orderNumber": "SGC2608015853033",
       "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)"
@@ -1823,11 +1823,18 @@
   },
   "syncLogs": [
     {
-      "id": "log-1786203637316-h13u",
-      "timestamp": "2026-08-08T15:40:37.316Z",
-      "source": "GInvest Ingestion",
+      "id": "log-1786205144638-owq0",
+      "timestamp": "2026-08-08T16:05:44.638Z",
+      "source": "GitHub Cloud Sync",
       "status": "success",
-      "message": "Synchronized ATRAM Global Technology Feeder Fund from GFunds statement: 2.0419 units @ ₱497.009196."
+      "message": "Manual / Auto save operation recorded at 2026-08-08 16:05:44"
+    },
+    {
+      "id": "log-1786204860064-c55q",
+      "timestamp": "2026-08-08T16:01:00.064Z",
+      "source": "Midnight Net Yield Accrual (Cron)",
+      "status": "success",
+      "message": "Accrued ₱7.14 net interest across 4 digital bank accounts (₱1.79 20% WHT deducted)."
     },
     {
       "id": "log-1786203573212-c760",
@@ -2164,16 +2171,69 @@
       "source": "Account Manager",
       "status": "info",
       "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786187252334-xpbm",
-      "timestamp": "2026-08-08T11:07:32.334Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 11:07:32"
     }
   ],
   "transactions": [
+    {
+      "id": "tx-yield-1786204860052-acc-atome-01",
+      "institution": "Atome (via Netbank )",
+      "referenceNumber": "NET-YIELD-acc-atome-01-2026-08-08",
+      "type": "INTEREST_CREDIT",
+      "amount": 0.05,
+      "grossAmount": 0.06,
+      "withholdingTax": 0.01,
+      "taxRate": "20% Withholding Tax",
+      "grossApy": 3.25,
+      "runningBalance": 701.18,
+      "subject": "Daily Net Interest Credited (3.25% p.a. less 20% WHT)",
+      "timestamp": "2026-08-08T16:01:00.049Z",
+      "parsedAt": "2026-08-08T16:01:00.049Z"
+    },
+    {
+      "id": "tx-yield-1786204860052-acc-maribank-01",
+      "institution": "MariBank Philippines",
+      "referenceNumber": "NET-YIELD-acc-maribank-01-2026-08-08",
+      "type": "INTEREST_CREDIT",
+      "amount": 0.08,
+      "grossAmount": 0.1,
+      "withholdingTax": 0.02,
+      "taxRate": "20% Withholding Tax",
+      "grossApy": 3.25,
+      "runningBalance": 1115.96,
+      "subject": "Daily Net Interest Credited (3.25% p.a. less 20% WHT)",
+      "timestamp": "2026-08-08T16:01:00.049Z",
+      "parsedAt": "2026-08-08T16:01:00.049Z"
+    },
+    {
+      "id": "tx-yield-1786204860052-acc-custom-1786121765629",
+      "institution": "Maya Bank",
+      "referenceNumber": "NET-YIELD-acc-custom-1786121765629-2026-08-08",
+      "type": "INTEREST_CREDIT",
+      "amount": 0.44,
+      "grossAmount": 0.55,
+      "withholdingTax": 0.11,
+      "taxRate": "20% Withholding Tax",
+      "grossApy": 4,
+      "runningBalance": 5000.88,
+      "subject": "Daily Net Interest Credited (4% p.a. less 20% WHT)",
+      "timestamp": "2026-08-08T16:01:00.049Z",
+      "parsedAt": "2026-08-08T16:01:00.049Z"
+    },
+    {
+      "id": "tx-yield-1786204860049-acc-maya-01",
+      "institution": "Maya Bank",
+      "referenceNumber": "NET-YIELD-acc-maya-01-2026-08-08",
+      "type": "INTEREST_CREDIT",
+      "amount": 6.58,
+      "grossAmount": 8.22,
+      "withholdingTax": 1.64,
+      "taxRate": "20% Withholding Tax",
+      "grossApy": 3,
+      "runningBalance": 100013.16,
+      "subject": "Daily Net Interest Credited (3% p.a. less 20% WHT)",
+      "timestamp": "2026-08-08T16:01:00.049Z",
+      "parsedAt": "2026-08-08T16:01:00.049Z"
+    },
     {
       "id": "tx-yield-1786174414745-acc-custom-1786121765629",
       "institution": "Maya Bank ",
