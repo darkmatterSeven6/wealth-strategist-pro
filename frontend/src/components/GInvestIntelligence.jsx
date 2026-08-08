@@ -264,7 +264,7 @@ export default function GInvestIntelligence({
     <div className="space-y-6 pb-12">
       
       {/* Header & Live Scraper / Add Fund Trigger */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
             <h2 className="text-2xl font-extrabold text-white tracking-tight">
@@ -274,34 +274,34 @@ export default function GInvestIntelligence({
               QUANT SUITE
             </span>
           </div>
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-slate-400 mt-1">
             Live Philippine UITFs & Feeder Funds with Total Units, Investment Values, 1-Yr Returns, 3-Yr CAGR, and Sharpe Ratios ($R_f$: {riskFreeRate}%).
           </p>
         </div>
 
-        <div className="flex items-center space-x-2.5 flex-wrap gap-y-2">
+        <div className="flex items-center space-x-3 shrink-0 flex-wrap gap-y-2">
           <button
             onClick={() => setIsScreenshotModalOpen(true)}
-            className="flex items-center space-x-1.5 px-3.5 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-xl border border-emerald-500/30 transition shadow-sm"
+            className="flex items-center space-x-2 px-4 py-2.5 bg-emerald-950/40 hover:bg-emerald-900/60 text-emerald-400 text-xs font-bold rounded-xl border border-emerald-500/40 transition shadow-sm cursor-pointer"
           >
-            <Camera className="w-3.5 h-3.5" />
+            <Camera className="w-4 h-4 text-emerald-400" />
             <span>Import Screenshot</span>
           </button>
 
           <button
             onClick={() => setIsAddModalOpen(true)}
-            className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition"
+            className="flex items-center space-x-2 px-4 py-2.5 bg-slate-800/90 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700/80 transition cursor-pointer"
           >
-            <PlusCircle className="w-3.5 h-3.5 text-purple-400" />
+            <PlusCircle className="w-4 h-4 text-purple-400" />
             <span>Add Fund</span>
           </button>
 
           <button
             onClick={onScrapeNavpu}
             disabled={isScraping}
-            className="flex items-center space-x-1.5 px-4 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold rounded-xl shadow-glow-purple transition disabled:opacity-50"
+            className="flex items-center space-x-2 px-4.5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold rounded-xl shadow-glow-purple transition disabled:opacity-50 cursor-pointer"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isScraping ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`w-4 h-4 ${isScraping ? 'animate-spin' : ''}`} />
             <span>{isScraping ? 'Scraping Feeds...' : 'Fetch Live NAVPUs'}</span>
           </button>
         </div>
