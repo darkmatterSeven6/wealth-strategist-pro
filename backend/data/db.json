@@ -1808,6 +1808,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786216530597-psa3",
+      "timestamp": "2026-08-08T19:15:30.597Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 19:15:30"
+    },
+    {
       "id": "log-1786216511832-61r5",
       "timestamp": "2026-08-08T19:15:11.832Z",
       "source": "GitHub Cloud Sync",
@@ -2146,13 +2153,6 @@
     {
       "id": "log-1786195317875-tkat",
       "timestamp": "2026-08-08T13:21:57.875Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786195310428-u35y",
-      "timestamp": "2026-08-08T13:21:50.428Z",
       "source": "Account Manager",
       "status": "info",
       "message": "Updated account card display order."
