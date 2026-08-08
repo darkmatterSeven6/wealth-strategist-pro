@@ -234,14 +234,21 @@ export default function App() {
   // Core Data Mutation Handlers (Each marks hasUnsavedChanges = true)
   const handleTriggerSync = async () => {
     setIsSyncing(true);
+    console.log('[UI] "Sync Data" clicked. Dispatching POST /api/sync-data...');
     try {
-      await api.runFullSync();
+      const res = await api.syncData();
+      console.log('[UI] Sync response:', res);
       await loadAllData();
       setHasUnsavedChanges(true);
+      return res;
+    } catch (err) {
+      console.error('[UI Sync Error]:', err);
+      throw err;
     } finally {
       setIsSyncing(false);
     }
   };
+
 
   const handleScrapeNavpu = async () => {
     setIsScraping(true);

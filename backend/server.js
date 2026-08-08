@@ -33,6 +33,7 @@ app.use('/api/ginvest', ginvestRoute);
 app.use('/api/rebalance', rebalanceRoute);
 app.use('/api/liabilities', liabilitiesRoute);
 app.use('/api/sync', syncRoute);
+app.use('/api/sync-data', syncRoute);
 app.use('/api/analytics', analyticsRoute);
 app.use('/api/system', systemRoute);
 
@@ -142,11 +143,12 @@ server.on('clientError', (err, socket) => {
 });
 
 // Start Server
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`====================================================`);
   console.log(`  🚀 DV FINANCIALS BACKEND RUNNING ON PORT: ${PORT}`);
   console.log(`  🔗 REST API:  http://localhost:${PORT}/api/health`);
   console.log(`  ⚡ WEBSOCKET: ws://localhost:${PORT}/ws`);
   console.log(`====================================================`);
 });
+
 

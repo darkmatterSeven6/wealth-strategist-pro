@@ -41,6 +41,26 @@ export default function Navbar({
 
   const netWorth = summary?.netWorth || 0;
 
+  const handleSyncData = async () => {
+    console.log('[UI] "Sync Data" clicked. Dispatching POST /api/sync-data...');
+    try {
+      if (onTriggerSync) {
+        await onTriggerSync();
+      } else {
+        const response = await fetch('http://localhost:5001/api/sync-data', { 
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        const data = await response.json();
+        console.log('[UI] Sync response:', data);
+      }
+      alert('IMAP Email Sync triggered successfully! Check terminal for live logs.');
+    } catch (err) {
+      console.error('[UI Sync Error]:', err);
+      alert('Sync request failed. Verify backend process on PORT 5001.');
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-[#070b14]/95 backdrop-blur-xl">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6">
@@ -132,7 +152,7 @@ export default function Navbar({
 
             {/* Sync Data Button */}
             <button
-              onClick={onTriggerSync}
+              onClick={handleSyncData}
               disabled={isSyncing}
               className="hidden sm:flex items-center space-x-2 px-2.5 py-1.5 bg-[#0b1220] hover:bg-slate-800/80 text-slate-200 rounded-lg border border-slate-800/90 transition shadow-sm disabled:opacity-50"
               title="Run Automated Account & NAVPU Ingestion"

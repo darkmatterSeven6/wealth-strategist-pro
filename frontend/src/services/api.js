@@ -124,6 +124,13 @@ export const api = {
   },
 
   // Sync & Rails
+  syncData: async () => {
+    const res = await fetch(`${API_BASE}/sync-data`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' }
+    });
+    return res.json();
+  },
   runFullSync: async () => {
     const res = await fetch(`${API_BASE}/sync/run-all`, {
       method: 'POST'
