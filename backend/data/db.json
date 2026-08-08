@@ -18,23 +18,6 @@
   },
   "accounts": [
     {
-      "id": "acc-maribank-01",
-      "name": "MariBank Savings",
-      "institution": "MariBank Philippines",
-      "type": "digital_bank",
-      "accountNumber": "•••• 8824",
-      "balance": 1117.18,
-      "baseApy": 3.75,
-      "currentApy": 3.25,
-      "dailyInterestEstimate": 0.1,
-      "tierInfo": "3.75% p.a. credited daily, zero minimum balance",
-      "color": "#ff5722",
-      "icon": "MariBank",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.225Z"
-    },
-    {
       "id": "acc-maya-01",
       "name": "Maya Bank (Boosted Tier)",
       "institution": "Maya Bank",
@@ -62,6 +45,23 @@
           "apy": 10
         }
       ]
+    },
+    {
+      "id": "acc-maribank-01",
+      "name": "MariBank Savings",
+      "institution": "MariBank Philippines",
+      "type": "digital_bank",
+      "accountNumber": "•••• 8824",
+      "balance": 1117.18,
+      "baseApy": 3.75,
+      "currentApy": 3.25,
+      "dailyInterestEstimate": 0.1,
+      "tierInfo": "3.75% p.a. credited daily, zero minimum balance",
+      "color": "#ff5722",
+      "icon": "MariBank",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T11:07:01.225Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -1778,6 +1778,20 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786189172630-z7bl",
+      "timestamp": "2026-08-08T11:39:32.630Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 11:39:32"
+    },
+    {
+      "id": "log-1786188864340-66ay",
+      "timestamp": "2026-08-08T11:34:24.340Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
       "id": "log-1786187252334-xpbm",
       "timestamp": "2026-08-08T11:07:32.334Z",
       "source": "GitHub Cloud Sync",
@@ -2112,20 +2126,6 @@
       "source": "Manual Fast-Override",
       "status": "success",
       "message": "Updated Atome Savings (Netbank) balance to ₱701.13 @ 3.25% APY."
-    },
-    {
-      "id": "log-1786121984379-dr7y",
-      "timestamp": "2026-08-07T16:59:44.379Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya Wallet balance to ₱2,000.46 @ 0% APY."
-    },
-    {
-      "id": "log-1786121914737-jt5d",
-      "timestamp": "2026-08-07T16:58:34.737Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya - Rainy Days Fund account balance to ₱5,000 @ 4% APY."
     }
   ],
   "transactions": [
