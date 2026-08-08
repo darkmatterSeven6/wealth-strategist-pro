@@ -17,43 +17,7 @@ import {
   Landmark
 } from 'lucide-react';
 
-import toast from 'react-hot-toast';
-
-const showSuccessToast = (message) => {
-  toast.success(message, {
-    style: {
-      background: '#0F172A',
-      color: '#34D399',
-      border: '1px solid #059669',
-      borderRadius: '8px',
-      fontSize: '13px',
-      fontWeight: '600',
-      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)'
-    },
-    iconTheme: {
-      primary: '#10B981',
-      secondary: '#0F172A',
-    },
-  });
-};
-
-const showErrorToast = (message) => {
-  toast.error(message, {
-    style: {
-      background: '#0F172A',
-      color: '#F87171',
-      border: '1px solid #DC2626',
-      borderRadius: '8px',
-      fontSize: '13px',
-      fontWeight: '600',
-      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)'
-    },
-    iconTheme: {
-      primary: '#EF4444',
-      secondary: '#0F172A',
-    },
-  });
-};
+import { showSuccessToast, showErrorToast } from '../utils/toast';
 
 export default function Navbar({ 
   activeTab, 
