@@ -19,20 +19,20 @@
   "accounts": [
     {
       "id": "acc-maya-01",
-      "name": "Maya Bank (Boosted Tier)",
+      "name": "Maya Savings",
       "institution": "Maya Bank",
       "type": "digital_bank",
-      "accountNumber": "•••• 3912",
+      "accountNumber": "•••• 7280",
       "balance": 100006.58,
       "baseApy": 3.5,
       "currentApy": 3,
-      "dailyInterestEstimate": 8.22,
+      "dailyInterestEstimate": 6.58,
       "tierInfo": "Base 3.5% + 6.5% Mission Boost (Spend ₱30k+ via Maya Card & Bills paid)",
       "color": "#00d084",
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.226Z",
+      "lastSynced": "2026-08-08T12:23:09.094Z",
       "subAccounts": [
         {
           "name": "Personal Goals: Japan 2027",
@@ -48,10 +48,10 @@
     },
     {
       "id": "acc-custom-1786121765629",
-      "name": "Maya - Rainy Days Fund account",
-      "institution": "Maya Bank ",
+      "name": "Maya - Rainy Days Fund",
+      "institution": "Maya Bank",
       "type": "digital_bank",
-      "accountNumber": "•••• 6554",
+      "accountNumber": "•••• 5798",
       "balance": 5000.44,
       "baseApy": 4,
       "currentApy": 4,
@@ -61,24 +61,24 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.226Z"
+      "lastSynced": "2026-08-08T12:24:41.752Z"
     },
     {
       "id": "acc-atome-01",
-      "name": "Atome Savings (Netbank)",
-      "institution": "Netbank (via Atome)",
+      "name": "Atome Savings",
+      "institution": "Atome (via Netbank )",
       "type": "digital_bank",
-      "accountNumber": "•••• 1948",
-      "balance": 701.18,
+      "accountNumber": "•••• •••• ••2626",
+      "balance": 701.13,
       "baseApy": 3.25,
       "currentApy": 3.25,
-      "dailyInterestEstimate": 0.06,
+      "dailyInterestEstimate": 0.05,
       "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
       "color": "#facc15",
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.226Z"
+      "lastSynced": "2026-08-08T12:41:56.290Z"
     },
     {
       "id": "acc-maribank-01",
@@ -1778,6 +1778,48 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786192930152-ktix",
+      "timestamp": "2026-08-08T12:42:10.152Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 12:42:10"
+    },
+    {
+      "id": "log-1786192916314-8709",
+      "timestamp": "2026-08-08T12:41:56.314Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Atome Savings (•••• •••• ••2626) balance to ₱701.13 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786192105241-d4nk",
+      "timestamp": "2026-08-08T12:28:25.241Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Atome Savings (•••• •••• ••2626) balance to ₱701.18 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786191881756-97wh",
+      "timestamp": "2026-08-08T12:24:41.757Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,000.44 @ 4% APY."
+    },
+    {
+      "id": "log-1786191789097-yfc1",
+      "timestamp": "2026-08-08T12:23:09.097Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya Savings (•••• 7280) balance to ₱100,006.58 @ 3% APY."
+    },
+    {
+      "id": "log-1786191622149-iq0j",
+      "timestamp": "2026-08-08T12:20:22.149Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (8088 3230 7280) balance to ₱5,000.44 @ 4% APY."
+    },
+    {
       "id": "log-1786191056629-drj7",
       "timestamp": "2026-08-08T12:10:56.629Z",
       "source": "GitHub Cloud Sync",
@@ -2084,48 +2126,6 @@
       "source": "NAVPU Scraper Worker",
       "status": "success",
       "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786183093385-6jpf",
-      "timestamp": "2026-08-08T09:58:13.385Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786182629749-1f13",
-      "timestamp": "2026-08-08T09:50:29.749Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786182629273-zdig",
-      "timestamp": "2026-08-08T09:50:29.273Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786179667471-im4f",
-      "timestamp": "2026-08-08T09:01:07.471Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 09:01:07"
-    },
-    {
-      "id": "log-1786179652005-602l",
-      "timestamp": "2026-08-08T09:00:52.005Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786179651634-93hj",
-      "timestamp": "2026-08-08T09:00:51.634Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
     }
   ],
   "transactions": [
