@@ -1823,6 +1823,20 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786207399536-zezh",
+      "timestamp": "2026-08-08T16:43:19.536Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 16:43:19"
+    },
+    {
+      "id": "log-1786206183818-98tb",
+      "timestamp": "2026-08-08T16:23:03.818Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
       "id": "log-1786205628325-o0ha",
       "timestamp": "2026-08-08T16:13:48.325Z",
       "source": "GitHub Cloud Sync",
@@ -2154,20 +2168,6 @@
     {
       "id": "log-1786189703255-eshr",
       "timestamp": "2026-08-08T11:48:23.255Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786189678842-nav4",
-      "timestamp": "2026-08-08T11:47:58.842Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786189671334-az4m",
-      "timestamp": "2026-08-08T11:47:51.334Z",
       "source": "Account Manager",
       "status": "info",
       "message": "Updated account card display order."
