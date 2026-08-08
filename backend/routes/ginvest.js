@@ -1,14 +1,45 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+const fs = require('fs');
 const dataStore = require('../services/dataStore');
 const quantEngine = require('../services/quantEngine');
 const navpuScraper = require('../services/navpuScraper');
 
+// Load seed holdings as fallback
+let seedHoldings = [];
+try {
+  const seedPath = path.join(__dirname, '..', 'data', 'seedHoldings.json');
+  if (fs.existsSync(seedPath)) {
+    seedHoldings = JSON.parse(fs.readFileSync(seedPath, 'utf8'));
+  }
+} catch (e) {
+  console.error('Could not load seedHoldings in ginvest route:', e);
+}
+
 // GET all funds enriched with quant metrics
 router.get('/funds', (req, res) => {
   const db = dataStore.getDb();
-  const rawFunds = db.funds || [];
+  let rawFunds = db.funds || [];
   const riskFreeRate = db.macroRegime?.phThreeMonthTBillRate || 5.50;
+
+  // Enrich funds with top_holdings if not present
+  rawFunds = rawFunds.map(fund => {
+    if (!fund.top_holdings || fund.top_holdings.length === 0) {
+      const match = seedHoldings.find(s => s.fund_id === fund.id || s.fund_name?.toLowerCase() === fund.name?.toLowerCase());
+      if (match) {
+        return {
+          ...fund,
+          targetFund: match.target_fund || fund.targetFund,
+          targetFundManager: match.target_fund_manager || fund.targetFundManager,
+          benchmark: match.benchmark || fund.benchmark,
+          top10Weight: match.top_10_weight || fund.top10Weight,
+          top_holdings: match.holdings
+        };
+      }
+    }
+    return fund;
+  });
 
   const enrichedFunds = quantEngine.enrichFundMetrics(rawFunds, riskFreeRate);
   

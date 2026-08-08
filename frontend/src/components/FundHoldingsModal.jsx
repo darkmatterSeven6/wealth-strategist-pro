@@ -16,6 +16,7 @@ import {
   Info,
   DollarSign
 } from 'lucide-react';
+import { getFundHoldingsData } from '../data/seedHoldings';
 
 export default function FundHoldingsModal({ 
   isOpen, 
@@ -38,11 +39,12 @@ export default function FundHoldingsModal({
 
   if (!isOpen || !fund) return null;
 
-  const holdings = fund.top_holdings || fund.topHoldings || [];
-  const targetFundName = fund.targetFund || fund.target_fund || `${fund.name} (Underlying Portfolio)`;
-  const targetManager = fund.targetFundManager || fund.provider || 'Institutional Asset Manager';
-  const benchmark = fund.benchmark || 'Global Multi-Asset Benchmark';
-  const top10Weight = fund.top10Weight || fund.top_10_weight || '40.00%';
+  const holdingsData = getFundHoldingsData(fund) || {};
+  const holdings = holdingsData.holdings || [];
+  const targetFundName = holdingsData.targetFund || fund.targetFund || fund.target_fund || `${fund.name} (Underlying Portfolio)`;
+  const targetManager = holdingsData.targetFundManager || fund.targetFundManager || fund.provider || 'Institutional Asset Manager';
+  const benchmark = holdingsData.benchmark || fund.benchmark || 'Global Multi-Asset Benchmark';
+  const top10Weight = holdingsData.top10Weight || fund.top10Weight || '40.00%';
 
   // Extract unique sectors
   const allSectors = Array.from(new Set(holdings.map(h => h.sector).filter(Boolean)));
