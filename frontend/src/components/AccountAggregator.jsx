@@ -201,14 +201,14 @@ export default function AccountAggregator({
                             </div>
 
                             {/* APY Badge */}
-                            <div className="text-right">
-                              <span className={`px-2.5 py-1 rounded-lg text-xs font-extrabold border ${
+                            <div className="shrink-0 ml-2">
+                              <div className={`shrink-0 whitespace-nowrap h-auto py-1 px-3 border text-xs font-semibold tracking-wide rounded-full flex items-center justify-center shadow-sm ${
                                 isBoosted 
-                                  ? 'bg-amber-500/10 text-amber-400 border-amber-500/30 animate-pulse' 
-                                  : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                                  ? 'bg-amber-950/60 border-amber-800/40 text-amber-400 animate-pulse' 
+                                  : 'bg-emerald-950/60 border-emerald-800/40 text-emerald-400'
                               }`}>
                                 {acc.currentApy}% p.a.
-                              </span>
+                              </div>
                             </div>
                           </div>
 
