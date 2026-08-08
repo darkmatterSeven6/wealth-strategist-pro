@@ -217,18 +217,18 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 488.4863,
-      "previousNavpu": 488.4863,
-      "navpuDate": "2026-08-08",
-      "unitsHeld": 2.0885,
+      "currentNavpu": 497.009196,
+      "previousNavpu": 497.009196,
+      "navpuDate": "2026-08-05",
+      "unitsHeld": 2.0419,
       "investedCapital": 1000,
-      "averageCost": 478.811055,
-      "currentMarketValue": 1020.2,
-      "unrealizedGain": 20.2,
-      "unrealizedGainPercent": 2.02,
+      "averageCost": 489.7399,
+      "currentMarketValue": 1014.84,
+      "unrealizedGain": 14.84,
+      "unrealizedGainPercent": 1.48,
       "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 27.54,
+        "oneYearReturn": 33.93,
         "threeYearCagr": 19.85,
         "fiveYearCagr": 18.2,
         "volatility30d": 16.5,
@@ -296,14 +296,14 @@
         },
         {
           "date": "2026-08-05",
-          "navpu": 480.7079
+          "navpu": 497.009196
         },
         {
           "date": "2026-08-08",
-          "navpu": 488.4863
+          "navpu": 497.009196
         }
       ],
-      "pendingBuyOrders": 1000,
+      "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "orderNumber": "SGC2608015853033",
       "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)"
@@ -1823,6 +1823,27 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786205628325-o0ha",
+      "timestamp": "2026-08-08T16:13:48.325Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 16:13:48"
+    },
+    {
+      "id": "log-1786205480376-rh2c",
+      "timestamp": "2026-08-08T16:11:20.376Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786205469305-3ei4",
+      "timestamp": "2026-08-08T16:11:09.305Z",
+      "source": "Screenshot OCR Ingestion",
+      "status": "success",
+      "message": "Imported screenshot statement for \"ATRAM Global Technology Feeder Fund\" on GCash GInvest: 2.0419 units @ ₱497.009196 (Market Value: ₱1,014.84)."
+    },
+    {
       "id": "log-1786205144638-owq0",
       "timestamp": "2026-08-08T16:05:44.638Z",
       "source": "GitHub Cloud Sync",
@@ -2147,27 +2168,6 @@
     {
       "id": "log-1786189671334-az4m",
       "timestamp": "2026-08-08T11:47:51.334Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786189583078-ec3b",
-      "timestamp": "2026-08-08T11:46:23.078Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786189172630-z7bl",
-      "timestamp": "2026-08-08T11:39:32.630Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 11:39:32"
-    },
-    {
-      "id": "log-1786188864340-66ay",
-      "timestamp": "2026-08-08T11:34:24.340Z",
       "source": "Account Manager",
       "status": "info",
       "message": "Updated account card display order."
