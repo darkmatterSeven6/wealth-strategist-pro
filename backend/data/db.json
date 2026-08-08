@@ -1702,24 +1702,6 @@
   ],
   "liabilities": [
     {
-      "id": "liab-atome-card",
-      "name": "Atome Card / PayLater",
-      "provider": "Atome Philippines",
-      "type": "bnpl",
-      "outstandingBalance": 1648.58,
-      "creditLimit": 7460,
-      "billingCycleDueDate": "2026-09-11",
-      "nominalMonthlyRate": 0,
-      "effectiveApr": 0,
-      "monthlyAdminFee": 150,
-      "monthlyPayment": 3150,
-      "remainingTermsMonths": 3,
-      "isZeroInterestPromo": true,
-      "daysUntilDue": 14,
-      "latePenaltyPercent": 5,
-      "status": "active"
-    },
-    {
       "id": "liab-maya-credit",
       "name": "Maya Credit",
       "provider": "Maya Bank",
@@ -1822,6 +1804,20 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1786212725662-ppdh",
+      "timestamp": "2026-08-08T18:12:05.662Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 18:12:05"
+    },
+    {
+      "id": "log-1786212715831-r00g",
+      "timestamp": "2026-08-08T18:11:55.831Z",
+      "source": "Liabilities Tracker",
+      "status": "success",
+      "message": "Deleted liability: Atome Card / PayLater"
+    },
     {
       "id": "log-1786212615434-aiu7",
       "timestamp": "2026-08-08T18:10:15.434Z",
@@ -2157,20 +2153,6 @@
       "source": "Manual Fast-Override",
       "status": "success",
       "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,000.44 @ 4% APY."
-    },
-    {
-      "id": "log-1786191789097-yfc1",
-      "timestamp": "2026-08-08T12:23:09.097Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya Savings (•••• 7280) balance to ₱100,006.58 @ 3% APY."
-    },
-    {
-      "id": "log-1786191622149-iq0j",
-      "timestamp": "2026-08-08T12:20:22.149Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya - Rainy Days Fund (8088 3230 7280) balance to ₱5,000.44 @ 4% APY."
     }
   ],
   "transactions": [
