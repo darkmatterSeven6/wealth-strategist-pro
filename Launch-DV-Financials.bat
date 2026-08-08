@@ -28,14 +28,23 @@ if %ERRORLEVEL% NEQ 0 (
     echo       Frontend is active on port 5173.
 )
 
-echo [3/3] Opening DV Financials Dashboard in Browser...
+echo [3/3] Opening DV Financials Dashboard in Google Chrome...
 ping 127.0.0.1 -n 3 >nul
-start http://localhost:5173
+
+if exist "C:\Program Files\Google\Chrome\Application\chrome.exe" (
+    start "" "C:\Program Files\Google\Chrome\Application\chrome.exe" "http://localhost:5173"
+) else if exist "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" (
+    start "" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "http://localhost:5173"
+) else if exist "%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe" (
+    start "" "%LOCALAPPDATA%\Google\Chrome\Application\chrome.exe" "http://localhost:5173"
+) else (
+    start chrome "http://localhost:5173" 2>nul || start http://localhost:5173
+)
 
 echo.
 echo ================================================================
-echo   DV Financials is running at http://localhost:5173
+echo   DV Financials is running at http://localhost:5173 (Chrome)
 echo   (You can close or minimize this prompt anytime)
 echo ================================================================
-ping 127.0.0.1 -n 3 >nul
+ping 127.0.0.1 -n 2 >nul
 exit
