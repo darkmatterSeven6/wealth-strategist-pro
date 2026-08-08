@@ -1823,6 +1823,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786203573212-c760",
+      "timestamp": "2026-08-08T15:39:33.212Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 15:39:33"
+    },
+    {
       "id": "log-1786202469906-np6k",
       "timestamp": "2026-08-08T15:21:09.906Z",
       "source": "GitHub Cloud Sync",
@@ -2164,13 +2171,6 @@
       "source": "GitHub Cloud Sync",
       "status": "success",
       "message": "Manual / Auto save operation recorded at 2026-08-08 11:07:08"
-    },
-    {
-      "id": "log-1786187221902-i1ct",
-      "timestamp": "2026-08-08T11:07:01.902Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
     }
   ],
   "transactions": [

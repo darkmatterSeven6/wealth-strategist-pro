@@ -151,6 +151,8 @@ router.post('/fund', (req, res) => {
   res.json({ success: true, fund: newFund });
 });
 
+const screenshotParser = require('../services/screenshotParser');
+
 // POST trigger live NAVPU scraper
 router.post('/scrape', async (req, res) => {
   try {
@@ -164,6 +166,126 @@ router.post('/scrape', async (req, res) => {
       message: 'Successfully scraped and updated all Philippine UITF NAVPUs.',
       funds: enriched
     });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST parse OCR text from screenshot
+router.post('/parse-text', (req, res) => {
+  try {
+    const { rawText, metadata } = req.body;
+    const parseResult = screenshotParser.parseFundStatementText(rawText, metadata);
+    res.json(parseResult);
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST apply screenshot parsed fund data to database
+router.post('/import-screenshot-data', (req, res) => {
+  try {
+    const {
+      fundId,
+      fundName,
+      platform,
+      unitsHeld,
+      currentNavpu,
+      currentMarketValue,
+      investedCapital,
+      pendingBuyOrders,
+      pendingSellOrders,
+      navpuDate,
+      oneYearReturn
+    } = req.body;
+
+    const db = dataStore.getDb();
+    db.funds = db.funds || [];
+
+    let fund = db.funds.find(f => f.id === fundId || f.name.toLowerCase() === (fundName || '').toLowerCase());
+
+    const units = parseFloat(unitsHeld) || 0;
+    const navpu = parseFloat(currentNavpu) || (fund ? fund.currentNavpu : 100);
+    const mktVal = currentMarketValue ? parseFloat(currentMarketValue) : parseFloat((units * navpu).toFixed(2));
+    const invCap = investedCapital ? parseFloat(investedCapital) : (fund && fund.investedCapital ? fund.investedCapital : mktVal);
+    const unGain = parseFloat((mktVal - invCap).toFixed(2));
+    const unGainPct = invCap > 0 ? parseFloat(((unGain / invCap) * 100).toFixed(2)) : 0;
+    const dateStr = navpuDate || new Date().toISOString().split('T')[0];
+
+    if (fund) {
+      fund.unitsHeld = units;
+      fund.currentNavpu = navpu;
+      fund.currentMarketValue = mktVal;
+      fund.investedCapital = invCap;
+      fund.averageCost = units > 0 ? parseFloat((invCap / units).toFixed(4)) : navpu;
+      fund.unrealizedGain = unGain;
+      fund.unrealizedGainPercent = unGainPct;
+      fund.navpuDate = dateStr;
+      if (platform) fund.platform = platform;
+      if (pendingBuyOrders !== undefined) fund.pendingBuyOrders = parseFloat(pendingBuyOrders) || 0;
+      if (pendingSellOrders !== undefined) fund.pendingSellOrders = parseFloat(pendingSellOrders) || 0;
+      if (oneYearReturn !== undefined && fund.metrics) {
+        fund.metrics.oneYearReturn = parseFloat(oneYearReturn);
+      }
+
+      // Add to historical NAVPU if fresh
+      fund.historicalNavpu = fund.historicalNavpu || [];
+      const histIdx = fund.historicalNavpu.findIndex(h => h.date === dateStr);
+      if (histIdx >= 0) {
+        fund.historicalNavpu[histIdx].navpu = navpu;
+      } else {
+        fund.historicalNavpu.push({ date: dateStr, navpu });
+      }
+    } else {
+      // Create new fund entry
+      fund = {
+        id: `fund-${Date.now()}`,
+        name: fundName || 'New Fund',
+        provider: 'Philippine Fund Manager',
+        platform: platform || 'GCash GInvest',
+        targetFund: fundName || 'Target Asset',
+        category: 'Global Equity Feeder',
+        currency: 'PHP',
+        riskRating: 'Aggressive',
+        currentNavpu: navpu,
+        previousNavpu: navpu,
+        navpuDate: dateStr,
+        unitsHeld: units,
+        averageCost: units > 0 ? parseFloat((invCap / units).toFixed(4)) : navpu,
+        investedCapital: invCap,
+        currentMarketValue: mktVal,
+        unrealizedGain: unGain,
+        unrealizedGainPercent: unGainPct,
+        dividendYieldPAnnum: 0,
+        pendingBuyOrders: parseFloat(pendingBuyOrders) || 0,
+        pendingSellOrders: parseFloat(pendingSellOrders) || 0,
+        metrics: {
+          oneYearReturn: oneYearReturn ? parseFloat(oneYearReturn) : 10.0,
+          threeYearCagr: 8.0,
+          fiveYearCagr: 8.5,
+          volatility30d: 12.0,
+          sharpeRatio: 0.8,
+          maxDrawdown: -10.0
+        },
+        historicalNavpu: [
+          { date: dateStr, navpu }
+        ]
+      };
+      db.funds.push(fund);
+    }
+
+    dataStore.saveDb(db);
+    dataStore.addSyncLog(
+      'Screenshot OCR Ingestion',
+      'success',
+      `Imported screenshot statement for "${fund.name}" on ${fund.platform}: ${fund.unitsHeld} units @ ₱${fund.currentNavpu} (Market Value: ₱${fund.currentMarketValue.toLocaleString()}).`
+    );
+
+    if (typeof global.broadcastEvent === 'function') {
+      global.broadcastEvent('DATA_UPDATED', { type: 'FUNDS_SYNC', fundId: fund.id });
+    }
+
+    res.json({ success: true, message: 'Screenshot data imported successfully.', fund });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

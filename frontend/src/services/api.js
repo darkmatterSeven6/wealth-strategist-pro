@@ -62,6 +62,22 @@ export const api = {
     });
     return res.json();
   },
+  parseScreenshotText: async (rawText, metadata) => {
+    const res = await fetch(`${API_BASE}/ginvest/parse-text`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ rawText, metadata })
+    });
+    return res.json();
+  },
+  importScreenshotData: async (data) => {
+    const res = await fetch(`${API_BASE}/ginvest/import-screenshot-data`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
 
   // Rebalancing
   getModels: async () => {

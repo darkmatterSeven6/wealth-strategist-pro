@@ -11,8 +11,11 @@ import {
   Search,
   ExternalLink,
   ShieldCheck,
-  Clock
+  Clock,
+  Camera,
+  UploadCloud
 } from 'lucide-react';
+import FundScreenshotUploadModal from './FundScreenshotUploadModal';
 
 export default function GInvestIntelligence({ 
   fundsData, 
@@ -36,6 +39,9 @@ export default function GInvestIntelligence({
   const [editPlatform, setEditPlatform] = useState('GCash GInvest');
   const [editPendingBuy, setEditPendingBuy] = useState('0');
   const [editPendingSell, setEditPendingSell] = useState('0');
+
+  // Screenshot OCR Modal State
+  const [isScreenshotModalOpen, setIsScreenshotModalOpen] = useState(false);
 
   // Add Fund Modal State
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -273,13 +279,21 @@ export default function GInvestIntelligence({
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-2.5 flex-wrap gap-y-2">
+          <button
+            onClick={() => setIsScreenshotModalOpen(true)}
+            className="flex items-center space-x-1.5 px-3.5 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded-xl border border-emerald-500/30 transition shadow-sm"
+          >
+            <Camera className="w-3.5 h-3.5" />
+            <span>Import Screenshot</span>
+          </button>
+
           <button
             onClick={() => setIsAddModalOpen(true)}
             className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition"
           >
             <PlusCircle className="w-3.5 h-3.5 text-purple-400" />
-            <span>Add Fund / Feeder</span>
+            <span>Add Fund</span>
           </button>
 
           <button
@@ -857,7 +871,15 @@ export default function GInvestIntelligence({
             </form>
           </div>
         </div>
-      )}
+      {/* Fund Screenshot OCR Import Modal */}
+      <FundScreenshotUploadModal
+        isOpen={isScreenshotModalOpen}
+        onClose={() => setIsScreenshotModalOpen(false)}
+        funds={funds}
+        onSuccess={() => {
+          if (onScrapeNavpu) onScrapeNavpu();
+        }}
+      />
 
     </div>
   );
