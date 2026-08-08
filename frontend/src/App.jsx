@@ -89,28 +89,60 @@ export default function App() {
 
   // Connect WebSocket for Live Real-Time Data Push
   useEffect(() => {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}/ws`;
-    let ws;
+    let ws = null;
+    let reconnectTimeout = null;
+    let isUnmounted = false;
 
-    try {
-      ws = new WebSocket(wsUrl);
-      ws.onmessage = (event) => {
-        try {
-          const payload = JSON.parse(event.data);
-          if (payload.event === 'SYNC_COMPLETE' || payload.event === 'DATA_UPDATED') {
-            loadAllData();
+    const connectWs = () => {
+      if (isUnmounted) return;
+      const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const wsUrl = `${protocol}//${window.location.host}/ws`;
+
+      try {
+        ws = new WebSocket(wsUrl);
+
+        ws.onopen = () => {
+          // Connected cleanly
+        };
+
+        ws.onmessage = (event) => {
+          try {
+            const payload = JSON.parse(event.data);
+            if (payload.event === 'SYNC_COMPLETE' || payload.event === 'DATA_UPDATED') {
+              loadAllData();
+            }
+          } catch (e) {}
+        };
+
+        ws.onerror = () => {
+          // Handled gracefully without uncaught exceptions
+        };
+
+        ws.onclose = () => {
+          if (!isUnmounted) {
+            reconnectTimeout = setTimeout(connectWs, 3000);
           }
-        } catch (e) {}
-      };
-    } catch (e) {
-      console.warn('WebSocket connection not ready, using polling fallback');
-    }
+        };
+      } catch (e) {
+        if (!isUnmounted) {
+          reconnectTimeout = setTimeout(connectWs, 5000);
+        }
+      }
+    };
+
+    connectWs();
 
     return () => {
-      if (ws) ws.close();
+      isUnmounted = true;
+      if (reconnectTimeout) clearTimeout(reconnectTimeout);
+      if (ws) {
+        ws.onclose = null;
+        ws.onerror = null;
+        ws.close();
+      }
     };
   }, [loadAllData]);
+
 
   // Browser beforeunload prompt if unsaved changes exist
   useEffect(() => {

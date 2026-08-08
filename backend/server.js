@@ -50,24 +50,46 @@ app.get('/api/health', (req, res) => {
 const wss = new WebSocketServer({ server, path: '/ws' });
 
 wss.on('connection', (ws) => {
+  ws.isAlive = true;
   console.log('[WebSocket] Client connected to live market & sync feed');
-  
-  // Send initial handshake state
-  const db = dataStore.getDb();
-  ws.send(JSON.stringify({
-    event: 'INIT_STATE',
-    timestamp: new Date().toISOString(),
-    profile: db.profile
-  }));
+
+  ws.on('pong', () => {
+    ws.isAlive = true;
+  });
+
+  ws.on('error', (error) => {
+    // Gracefully handle socket write aborts, reset, or proxy disconnects
+    if (error.code === 'ECONNABORTED' || error.code === 'ECONNRESET' || error.code === 'EPIPE') {
+      console.log(`[WebSocket] Client connection reset (${error.code})`);
+    } else {
+      console.warn('[WebSocket Error]:', error.message);
+    }
+  });
+
+  // Send initial handshake state safely
+  try {
+    const db = dataStore.getDb();
+    if (ws.readyState === 1) {
+      ws.send(JSON.stringify({
+        event: 'INIT_STATE',
+        timestamp: new Date().toISOString(),
+        profile: db.profile
+      }));
+    }
+  } catch (err) {
+    // ignore initial send error
+  }
 
   ws.on('message', (message) => {
     try {
       const parsed = JSON.parse(message);
       if (parsed.type === 'PING') {
-        ws.send(JSON.stringify({ event: 'PONG', timestamp: new Date().toISOString() }));
+        if (ws.readyState === 1) {
+          ws.send(JSON.stringify({ event: 'PONG', timestamp: new Date().toISOString() }));
+        }
       }
     } catch (e) {
-      // ignore
+      // ignore malformed message
     }
   });
 
@@ -76,15 +98,48 @@ wss.on('connection', (ws) => {
   });
 });
 
+wss.on('error', (err) => {
+  console.warn('[WebSocket Server Error]:', err.message);
+});
+
+// Periodic heartbeat to terminate dead sockets
+const heartbeatInterval = setInterval(() => {
+  wss.clients.forEach((ws) => {
+    if (ws.isAlive === false) {
+      return ws.terminate();
+    }
+    ws.isAlive = false;
+    try {
+      ws.ping();
+    } catch (e) {}
+  });
+}, 30000);
+
+wss.on('close', () => {
+  clearInterval(heartbeatInterval);
+});
+
 // Broadcast helper
 function broadcastEvent(event, data) {
   const payload = JSON.stringify({ event, data, timestamp: new Date().toISOString() });
   wss.clients.forEach((client) => {
     if (client.readyState === 1) {
-      client.send(payload);
+      try {
+        client.send(payload);
+      } catch (err) {
+        // ignore write error on closing client
+      }
     }
   });
 }
+
+// Global server client error handler
+server.on('clientError', (err, socket) => {
+  if (err.code === 'ECONNRESET' || !socket.writable) {
+    return;
+  }
+  socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+});
 
 // Start Server
 server.listen(PORT, () => {
@@ -94,3 +149,4 @@ server.listen(PORT, () => {
   console.log(`  ⚡ WEBSOCKET: ws://localhost:${PORT}/ws`);
   console.log(`====================================================`);
 });
+
