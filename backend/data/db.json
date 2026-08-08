@@ -85,17 +85,17 @@
       "name": "MariBank Savings",
       "institution": "MariBank Philippines",
       "type": "digital_bank",
-      "accountNumber": "•••• 8824",
-      "balance": 1117.18,
+      "accountNumber": "•••• •••• 046",
+      "balance": 1115.68,
       "baseApy": 3.75,
       "currentApy": 3.25,
-      "dailyInterestEstimate": 0.1,
+      "dailyInterestEstimate": 0.08,
       "tierInfo": "3.75% p.a. credited daily, zero minimum balance",
       "color": "#ff5722",
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.225Z"
+      "lastSynced": "2026-08-08T12:58:36.768Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -1778,6 +1778,27 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786193923406-kwab",
+      "timestamp": "2026-08-08T12:58:43.406Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 12:58:43"
+    },
+    {
+      "id": "log-1786193916772-ziuv",
+      "timestamp": "2026-08-08T12:58:36.773Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated MariBank Savings (•••• •••• 046) balance to ₱1,115.68 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786193489608-qj6c",
+      "timestamp": "2026-08-08T12:51:29.608Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated MariBank Savings (•••• •••• 046) balance to ₱1,117.18 @ 3.25% APY."
+    },
+    {
       "id": "log-1786192930152-ktix",
       "timestamp": "2026-08-08T12:42:10.152Z",
       "source": "GitHub Cloud Sync",
@@ -2102,27 +2123,6 @@
     {
       "id": "log-1786183137585-z2xp",
       "timestamp": "2026-08-08T09:58:57.585Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786183137247-d384",
-      "timestamp": "2026-08-08T09:58:57.247Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786183098822-33ly",
-      "timestamp": "2026-08-08T09:58:18.823Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 09:58:18"
-    },
-    {
-      "id": "log-1786183093897-70t2",
-      "timestamp": "2026-08-08T09:58:13.897Z",
       "source": "NAVPU Scraper Worker",
       "status": "success",
       "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
