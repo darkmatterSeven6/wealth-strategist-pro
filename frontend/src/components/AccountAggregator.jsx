@@ -174,7 +174,7 @@ export default function AccountAggregator({
             <div 
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[200px]"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[300px]"
             >
               {accounts.map((acc, index) => {
                 const isBoosted = acc.currentApy >= 6.0;
@@ -184,39 +184,46 @@ export default function AccountAggregator({
                       <div 
                         ref={provided.innerRef}
                         {...provided.draggableProps}
-                        className={`transition-all duration-200 ease-in-out ${
+                        {...provided.dragHandleProps}
+                        style={{
+                          ...provided.draggableProps.style,
+                          // Prevent unwanted scale displacement on drag start in CSS Grid
+                          transform: snapshot.isDragging
+                            ? provided.draggableProps.style?.transform
+                            : 'none',
+                        }}
+                        className={`transition-all duration-150 ease-out ${
                           snapshot.isDragging 
-                            ? 'opacity-95 scale-[1.03] shadow-2xl shadow-emerald-950/80 z-50 ring-2 ring-emerald-500 rounded-2xl bg-slate-900' 
-                            : ''
+                            ? 'opacity-90 scale-105 shadow-2xl z-50 ring-2 ring-emerald-500 rounded-2xl bg-slate-900/95 backdrop-blur-md cursor-grabbing' 
+                            : 'cursor-grab'
                         }`}
                       >
-                        <div className="p-5 rounded-2xl glass-panel-interactive border border-slate-800/80 relative flex flex-col justify-between group h-full">
+                        <div className="p-5 rounded-2xl glass-panel-interactive border border-slate-800/80 relative flex flex-col justify-between group h-full select-none">
                           <div>
                             {/* Card Top Row */}
                             <div className="flex items-start justify-between">
                               <div className="flex items-center space-x-3">
-                                {/* Drag Handle */}
+                                {/* Drag Handle Affordance */}
                                 <div 
-                                  {...provided.dragHandleProps}
-                                  className="p-1.5 -ml-1 text-slate-500 hover:text-emerald-400 cursor-grab active:cursor-grabbing rounded-lg hover:bg-slate-800/60 transition"
+                                  className="p-1.5 -ml-1 text-slate-500 hover:text-emerald-400 rounded-lg hover:bg-slate-800/60 transition pointer-events-none"
                                   title="Drag to reorder account"
                                 >
                                   <GripVertical className="w-4 h-4" />
                                 </div>
                                 <div 
-                                  className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-slate-950 shadow-md shrink-0"
+                                  className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-slate-950 shadow-md shrink-0 pointer-events-none"
                                   style={{ backgroundColor: acc.color || '#3b82f6' }}
                                 >
                                   <Wallet className="w-5 h-5 text-white" />
                                 </div>
-                                <div>
+                                <div className="pointer-events-none">
                                   <h4 className="font-bold text-slate-100 text-sm">{acc.name}</h4>
                                   <p className="text-xs text-slate-400 font-mono">{acc.institution} • {acc.accountNumber}</p>
                                 </div>
                               </div>
 
                               {/* APY Badge */}
-                              <div className="shrink-0 ml-2">
+                              <div className="shrink-0 ml-2 pointer-events-none">
                                 <div className={`shrink-0 whitespace-nowrap h-auto py-1 px-3 border text-xs font-semibold tracking-wide rounded-full flex items-center justify-center shadow-sm ${
                                   isBoosted 
                                     ? 'bg-amber-950/60 border-amber-800/40 text-amber-400 animate-pulse' 
@@ -228,7 +235,7 @@ export default function AccountAggregator({
                             </div>
 
                             {/* Balance Display */}
-                            <div className="mt-4 pt-3 border-t border-slate-800/60">
+                            <div className="mt-4 pt-3 border-t border-slate-800/60 pointer-events-none">
                               <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Current Balance</span>
                               <div className="text-xl sm:text-2xl font-extrabold text-white font-mono mt-0.5">
                                 ₱{acc.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
@@ -236,7 +243,7 @@ export default function AccountAggregator({
                             </div>
 
                             {/* Tier Info & Sub-Accounts */}
-                            <div className="mt-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs">
+                            <div className="mt-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs pointer-events-none">
                               <div className="flex items-center justify-between text-slate-300">
                                 <span className="text-[11px] text-slate-400">Interest Tier</span>
                                 <span className="font-semibold text-emerald-400">{acc.tierInfo}</span>
@@ -251,7 +258,7 @@ export default function AccountAggregator({
 
                             {/* Sub Accounts / Stashes if any */}
                             {acc.subAccounts && acc.subAccounts.length > 0 && (
-                              <div className="mt-2.5 space-y-1">
+                              <div className="mt-2.5 space-y-1 pointer-events-none">
                                 <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Pockets & Stashes</span>
                                 {acc.subAccounts.map((stash, idx) => (
                                   <div key={idx} className="flex items-center justify-between text-[11px] px-2 py-1 bg-slate-900/40 rounded-lg">
@@ -265,14 +272,18 @@ export default function AccountAggregator({
 
                           {/* Card Footer Actions */}
                           <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between">
-                            <div className="flex items-center space-x-1.5 text-[10px] text-slate-500">
+                            <div className="flex items-center space-x-1.5 text-[10px] text-slate-500 pointer-events-none">
                               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                               <span>Synced {acc.lastSynced ? new Date(acc.lastSynced).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Live'}</span>
                             </div>
 
                             <button
-                              onClick={() => handleOpenOverride(acc)}
-                              className="px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition flex items-center space-x-1"
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleOpenOverride(acc);
+                              }}
+                              className="px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition flex items-center space-x-1 cursor-pointer z-10"
                             >
                               <Sliders className="w-3 h-3 text-cyan-400" />
                               <span>Override</span>
