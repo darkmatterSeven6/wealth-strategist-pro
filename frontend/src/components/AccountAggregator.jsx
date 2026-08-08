@@ -12,13 +12,16 @@ import {
   Sliders,
   DollarSign,
   ArrowRight,
-  Shield
+  Shield,
+  GripVertical
 } from 'lucide-react';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 
 export default function AccountAggregator({ 
   accounts, 
   onOverrideAccount, 
-  onCreateAccount 
+  onCreateAccount,
+  onReorderAccounts
 }) {
   const [selectedAccount, setSelectedAccount] = useState(null);
   const [isOverrideOpen, setIsOverrideOpen] = useState(false);
@@ -39,6 +42,19 @@ export default function AccountAggregator({
 
   const totalDailyInterest = accounts.reduce((sum, a) => sum + (a.dailyInterestEstimate || 0), 0);
   const totalAnnualInterest = totalDailyInterest * 365;
+
+  const handleDragEnd = (result) => {
+    if (!result.destination) return;
+    if (result.destination.index === result.source.index) return;
+
+    const items = Array.from(accounts);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    if (onReorderAccounts) {
+      onReorderAccounts(items);
+    }
+  };
 
   const handleOpenOverride = (acc) => {
     setSelectedAccount(acc);
@@ -89,6 +105,11 @@ export default function AccountAggregator({
         </div>
 
         <div className="flex items-center space-x-3">
+          <div className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 bg-slate-900/80 border border-slate-800 rounded-xl text-xs text-slate-400 font-medium">
+            <GripVertical className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Drag cards to reorder</span>
+          </div>
+
           <button
             onClick={() => setIsAddOpen(true)}
             className="flex items-center space-x-1.5 px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-xl border border-slate-700 transition"
@@ -132,98 +153,126 @@ export default function AccountAggregator({
         </div>
       </div>
 
-      {/* Account Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {accounts.map((acc) => {
-          const isBoosted = acc.currentApy >= 6.0;
-          return (
+      {/* Account Cards Grid with Drag-and-Drop */}
+      <DragDropContext onDragEnd={handleDragEnd}>
+        <Droppable droppableId="accounts-droppable-grid" direction="horizontal">
+          {(provided) => (
             <div 
-              key={acc.id}
-              className="p-5 rounded-2xl glass-panel-interactive border border-slate-800/80 relative flex flex-col justify-between group"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
             >
-              <div>
-                {/* Card Top Row */}
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center space-x-3">
-                    <div 
-                      className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-slate-950 shadow-md"
-                      style={{ backgroundColor: acc.color || '#3b82f6' }}
-                    >
-                      <Wallet className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-slate-100 text-sm">{acc.name}</h4>
-                      <p className="text-xs text-slate-400">{acc.institution} • {acc.accountNumber}</p>
-                    </div>
-                  </div>
+              {accounts.map((acc, index) => {
+                const isBoosted = acc.currentApy >= 6.0;
+                return (
+                  <Draggable key={acc.id} draggableId={acc.id} index={index}>
+                    {(provided, snapshot) => (
+                      <div 
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        className={`p-5 rounded-2xl glass-panel-interactive border relative flex flex-col justify-between group transition-all duration-200 ${
+                          snapshot.isDragging 
+                            ? 'border-emerald-500/80 shadow-2xl shadow-emerald-950/80 bg-slate-900 ring-2 ring-emerald-500/50 z-50 scale-[1.02]' 
+                            : 'border-slate-800/80'
+                        }`}
+                      >
+                        <div>
+                          {/* Card Top Row */}
+                          <div className="flex items-start justify-between">
+                            <div className="flex items-center space-x-3">
+                              {/* Drag Handle */}
+                              <div 
+                                {...provided.dragHandleProps}
+                                className="p-1 -ml-1 text-slate-500 hover:text-emerald-400 cursor-grab active:cursor-grabbing rounded transition"
+                                title="Drag to reorder account"
+                              >
+                                <GripVertical className="w-4 h-4" />
+                              </div>
+                              <div 
+                                className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-slate-950 shadow-md shrink-0"
+                                style={{ backgroundColor: acc.color || '#3b82f6' }}
+                              >
+                                <Wallet className="w-5 h-5 text-white" />
+                              </div>
+                              <div>
+                                <h4 className="font-bold text-slate-100 text-sm">{acc.name}</h4>
+                                <p className="text-xs text-slate-400">{acc.institution} • {acc.accountNumber}</p>
+                              </div>
+                            </div>
 
-                  {/* APY Badge */}
-                  <div className="text-right">
-                    <span className={`px-2.5 py-1 rounded-lg text-xs font-extrabold border ${
-                      isBoosted 
-                        ? 'bg-amber-500/10 text-amber-400 border-amber-500/30 animate-pulse' 
-                        : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
-                    }`}>
-                      {acc.currentApy}% p.a.
-                    </span>
-                  </div>
-                </div>
+                            {/* APY Badge */}
+                            <div className="text-right">
+                              <span className={`px-2.5 py-1 rounded-lg text-xs font-extrabold border ${
+                                isBoosted 
+                                  ? 'bg-amber-500/10 text-amber-400 border-amber-500/30 animate-pulse' 
+                                  : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30'
+                              }`}>
+                                {acc.currentApy}% p.a.
+                              </span>
+                            </div>
+                          </div>
 
-                {/* Balance Display */}
-                <div className="mt-4 pt-3 border-t border-slate-800/60">
-                  <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Current Balance</span>
-                  <div className="text-xl sm:text-2xl font-extrabold text-white font-mono mt-0.5">
-                    ₱{acc.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                  </div>
-                </div>
+                          {/* Balance Display */}
+                          <div className="mt-4 pt-3 border-t border-slate-800/60">
+                            <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Current Balance</span>
+                            <div className="text-xl sm:text-2xl font-extrabold text-white font-mono mt-0.5">
+                              ₱{acc.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                            </div>
+                          </div>
 
-                {/* Tier Info & Sub-Accounts */}
-                <div className="mt-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs">
-                  <div className="flex items-center justify-between text-slate-300">
-                    <span className="text-[11px] text-slate-400">Interest Tier</span>
-                    <span className="font-semibold text-emerald-400">{acc.tierInfo}</span>
-                  </div>
-                  {acc.dailyInterestEstimate > 0 && (
-                    <div className="flex items-center justify-between text-slate-300 mt-1">
-                      <span className="text-[11px] text-slate-400">Est. Daily Gain</span>
-                      <span className="font-mono font-bold text-white">+₱{acc.dailyInterestEstimate.toFixed(2)}</span>
-                    </div>
-                  )}
-                </div>
+                          {/* Tier Info & Sub-Accounts */}
+                          <div className="mt-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs">
+                            <div className="flex items-center justify-between text-slate-300">
+                              <span className="text-[11px] text-slate-400">Interest Tier</span>
+                              <span className="font-semibold text-emerald-400">{acc.tierInfo}</span>
+                            </div>
+                            {acc.dailyInterestEstimate > 0 && (
+                              <div className="flex items-center justify-between text-slate-300 mt-1">
+                                <span className="text-[11px] text-slate-400">Est. Daily Gain</span>
+                                <span className="font-mono font-bold text-white">+₱{acc.dailyInterestEstimate.toFixed(2)}</span>
+                              </div>
+                            )}
+                          </div>
 
-                {/* Sub Accounts / Stashes if any */}
-                {acc.subAccounts && acc.subAccounts.length > 0 && (
-                  <div className="mt-2.5 space-y-1">
-                    <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Pockets & Stashes</span>
-                    {acc.subAccounts.map((stash, idx) => (
-                      <div key={idx} className="flex items-center justify-between text-[11px] px-2 py-1 bg-slate-900/40 rounded-lg">
-                        <span className="text-slate-300">{stash.name}</span>
-                        <span className="font-mono text-slate-200">₱{stash.balance.toLocaleString()}</span>
+                          {/* Sub Accounts / Stashes if any */}
+                          {acc.subAccounts && acc.subAccounts.length > 0 && (
+                            <div className="mt-2.5 space-y-1">
+                              <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Pockets & Stashes</span>
+                              {acc.subAccounts.map((stash, idx) => (
+                                <div key={idx} className="flex items-center justify-between text-[11px] px-2 py-1 bg-slate-900/40 rounded-lg">
+                                  <span className="text-slate-300">{stash.name}</span>
+                                  <span className="font-mono text-slate-200">₱{stash.balance.toLocaleString()}</span>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Card Footer Actions */}
+                        <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between">
+                          <div className="flex items-center space-x-1.5 text-[10px] text-slate-500">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                            <span>Synced {acc.lastSynced ? new Date(acc.lastSynced).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Live'}</span>
+                          </div>
+
+                          <button
+                            onClick={() => handleOpenOverride(acc)}
+                            className="px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition flex items-center space-x-1"
+                          >
+                            <Sliders className="w-3 h-3 text-cyan-400" />
+                            <span>Override</span>
+                          </button>
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Card Footer Actions */}
-              <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between">
-                <div className="flex items-center space-x-1.5 text-[10px] text-slate-500">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span>Synced {acc.lastSynced ? new Date(acc.lastSynced).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Live'}</span>
-                </div>
-
-                <button
-                  onClick={() => handleOpenOverride(acc)}
-                  className="px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition flex items-center space-x-1"
-                >
-                  <Sliders className="w-3 h-3 text-cyan-400" />
-                  <span>Override</span>
-                </button>
-              </div>
+                    )}
+                  </Draggable>
+                );
+              })}
+              {provided.placeholder}
             </div>
-          );
-        })}
-      </div>
+          )}
+        </Droppable>
+      </DragDropContext>
 
       {/* Manual Override Modal */}
       {isOverrideOpen && selectedAccount && (

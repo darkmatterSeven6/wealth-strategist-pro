@@ -288,6 +288,16 @@ export default function App() {
     setHasUnsavedChanges(true);
   };
 
+  const handleReorderAccounts = async (reorderedAccounts) => {
+    setAccounts(reorderedAccounts);
+    setHasUnsavedChanges(true);
+    try {
+      await api.reorderAccounts(reorderedAccounts.map(a => a.id));
+    } catch (err) {
+      console.warn('[Reorder Accounts Error]:', err);
+    }
+  };
+
   const handleCreateAccount = async (payload) => {
     await api.createAccount(payload);
     await loadAllData();
@@ -434,6 +444,7 @@ export default function App() {
             accounts={accounts}
             onOverrideAccount={handleOverrideAccount}
             onCreateAccount={handleCreateAccount}
+            onReorderAccounts={handleReorderAccounts}
           />
         )}
 

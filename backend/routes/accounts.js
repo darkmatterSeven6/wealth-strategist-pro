@@ -104,5 +104,41 @@ router.post('/', (req, res) => {
   res.json({ success: true, account: newAccount });
 });
 
+// POST /api/accounts/reorder - Save new drag-and-drop order
+router.post('/reorder', (req, res) => {
+  const { accountIds } = req.body;
+  if (!Array.isArray(accountIds)) {
+    return res.status(400).json({ success: false, error: 'accountIds must be an array of account IDs.' });
+  }
+
+  const db = dataStore.getDb();
+  const currentAccounts = db.accounts || [];
+
+  const accountMap = new Map(currentAccounts.map(acc => [acc.id, acc]));
+  const reordered = [];
+
+  for (const id of accountIds) {
+    if (accountMap.has(id)) {
+      reordered.push(accountMap.get(id));
+      accountMap.delete(id);
+    }
+  }
+
+  // Append any accounts not included in accountIds to prevent data loss
+  for (const remaining of accountMap.values()) {
+    reordered.push(remaining);
+  }
+
+  db.accounts = reordered;
+  dataStore.saveDb(db);
+  dataStore.addSyncLog('Account Manager', 'info', `Updated account card display order.`);
+
+  res.json({
+    success: true,
+    message: 'Accounts reordered successfully.',
+    accounts: db.accounts
+  });
+});
+
 module.exports = router;
 

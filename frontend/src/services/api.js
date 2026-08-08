@@ -26,6 +26,14 @@ export const api = {
     });
     return res.json();
   },
+  reorderAccounts: async (accountIds) => {
+    const res = await fetch(`${API_BASE}/accounts/reorder`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ accountIds })
+    });
+    return res.json();
+  },
 
   // GInvest & Quant
   getFunds: async () => {
