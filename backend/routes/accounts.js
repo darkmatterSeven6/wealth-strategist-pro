@@ -31,9 +31,9 @@ router.post('/run-accruals', async (req, res) => {
   }
 });
 
-// POST fast override balance or APY
+// POST fast override balance, APY, Name, Account Number, or Tier
 router.post('/override', (req, res) => {
-  const { accountId, balance, currentApy, tierInfo } = req.body;
+  const { accountId, name, institution, accountNumber, balance, currentApy, tierInfo } = req.body;
   if (!accountId) {
     return res.status(400).json({ success: false, error: 'accountId is required.' });
   }
@@ -45,14 +45,23 @@ router.post('/override', (req, res) => {
   }
 
   const acc = db.accounts[accIndex];
-  if (balance !== undefined && balance !== null) {
+  if (name !== undefined && name !== null && name.trim() !== '') {
+    acc.name = name.trim();
+  }
+  if (institution !== undefined && institution !== null) {
+    acc.institution = institution.trim();
+  }
+  if (accountNumber !== undefined && accountNumber !== null) {
+    acc.accountNumber = accountNumber.trim();
+  }
+  if (balance !== undefined && balance !== null && balance !== '') {
     acc.balance = parseFloat(balance);
   }
-  if (currentApy !== undefined && currentApy !== null) {
+  if (currentApy !== undefined && currentApy !== null && currentApy !== '') {
     acc.currentApy = parseFloat(currentApy);
   }
-  if (tierInfo) {
-    acc.tierInfo = tierInfo;
+  if (tierInfo !== undefined && tierInfo !== null) {
+    acc.tierInfo = tierInfo.trim();
   }
 
   // Recalculate daily net interest (less 20% withholding tax)
@@ -60,7 +69,7 @@ router.post('/override', (req, res) => {
   acc.lastSynced = new Date().toISOString();
 
   dataStore.saveDb(db);
-  dataStore.addSyncLog('Manual Fast-Override', 'success', `Updated ${acc.name} balance to ₱${acc.balance.toLocaleString()} @ ${acc.currentApy}% APY.`);
+  dataStore.addSyncLog('Manual Fast-Override', 'success', `Updated ${acc.name} (${acc.accountNumber}) balance to ₱${acc.balance.toLocaleString()} @ ${acc.currentApy}% APY.`);
 
   res.json({
     success: true,
