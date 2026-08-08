@@ -1,17 +1,17 @@
 /**
- * DV Financials - Non-Invasive Email Receipt & Notification Parser
- * Extracts transaction reference numbers, amounts (PHP), transaction types
- * (Deposit, Debit, Daily Interest Earned, Fund Purchases), and balances.
- * 
- * Target Senders:
- * - Maya: no-reply@maya.ph, notifications@maya.ph
- * - MariBank: notifications@maribank.ph, service@maribank.ph
- * - GoTyme: support@gotyme.com.ph, notifications@gotyme.com.ph
- * - GCash / GInvest: no-reply@gcash.com, notifications@gcash.com
- * - Tonik: no-reply@tonikbank.com
- * - Atome: service@atome.ph
+ * DV Financials - Non-Invasive Live IMAP & Email Receipt Parser Engine
+ * Connects securely to Gmail IMAP (imap.gmail.com, Port 993, SSL)
+ * to search unseen bank receipts from:
+ *  - Maya: no-reply@maya.ph, notifications@maya.ph
+ *  - MariBank: notifications@maribank.ph, service@maribank.ph
+ *  - GoTyme: support@gotyme.com.ph, notifications@gotyme.com.ph
+ *  - GCash: no-reply@gcash.com
+ *  - Tonik: no-reply@tonikbank.com
+ *  - Atome: service@atome.ph
  */
 
+const { ImapFlow } = require('imapflow');
+const { simpleParser } = require('mailparser');
 const dataStore = require('./dataStore');
 
 class EmailParser {
@@ -24,6 +24,111 @@ class EmailParser {
       tonik: /@tonikbank\.com/i,
       atome: /@atome\.ph/i
     };
+
+    this.client = null;
+  }
+
+  /**
+   * Get IMAP configuration from environment variables
+   */
+  getConfig() {
+    return {
+      host: process.env.IMAP_HOST || 'imap.gmail.com',
+      port: parseInt(process.env.IMAP_PORT || '993', 10),
+      secure: process.env.IMAP_SECURE !== 'false',
+      auth: {
+        user: process.env.IMAP_USER || '',
+        pass: process.env.IMAP_PASSWORD || ''
+      },
+      logger: false
+    };
+  }
+
+  /**
+   * Check if live IMAP credentials are configured
+   */
+  isConfigured() {
+    const config = this.getConfig();
+    return Boolean(config.auth.user && config.auth.pass);
+  }
+
+  /**
+   * Connect to Gmail IMAP and fetch unseen bank receipts
+   */
+  async syncFromImap() {
+    if (!this.isConfigured()) {
+      return {
+        success: false,
+        isConfigured: false,
+        message: 'IMAP credentials (IMAP_USER, IMAP_PASSWORD) not configured in .env'
+      };
+    }
+
+    const config = this.getConfig();
+    const client = new ImapFlow(config);
+    const ingested = [];
+
+    try {
+      await client.connect();
+      const lock = await client.getMailboxLock('INBOX');
+
+      try {
+        // Search for unseen messages from target digital bank domains
+        const searchCriteria = {
+          unseen: true,
+          or: [
+            { from: 'maya.ph' },
+            { from: 'maribank.ph' },
+            { from: 'gotyme.com.ph' },
+            { from: 'gcash.com' },
+            { from: 'tonikbank.com' },
+            { from: 'atome.ph' }
+          ]
+        };
+
+        const messages = client.fetch(searchCriteria, { source: true, envelope: true });
+
+        for await (const message of messages) {
+          const parsedMail = await simpleParser(message.source);
+          const emailPayload = {
+            from: parsedMail.from?.text || '',
+            subject: parsedMail.subject || '',
+            body: parsedMail.text || parsedMail.html || '',
+            date: parsedMail.date ? parsedMail.date.toISOString() : new Date().toISOString()
+          };
+
+          const record = this.ingestAndApply(emailPayload);
+          if (record && record.success) {
+            ingested.push(record.transaction);
+          }
+        }
+      } finally {
+        lock.release();
+      }
+
+      await client.logout();
+
+      dataStore.addSyncLog(
+        'IMAP Email Ingestion Engine',
+        'success',
+        `Scanned IMAP inbox: Ingested ${ingested.length} new bank receipts.`
+      );
+
+      return {
+        success: true,
+        isConfigured: true,
+        ingestedCount: ingested.length,
+        transactions: ingested
+      };
+    } catch (err) {
+      console.error('IMAP sync error:', err);
+      dataStore.addSyncLog('IMAP Ingestion Error', 'error', `IMAP connection failed: ${err.message}`);
+      return {
+        success: false,
+        isConfigured: true,
+        error: err.message
+      };
+    }
   }
 
   /**
@@ -95,11 +200,18 @@ class EmailParser {
     const db = dataStore.getDb();
 
     if (!db.transactions) db.transactions = [];
+
+    // Avoid duplicate reference numbers
+    const exists = db.transactions.some(t => t.referenceNumber === record.referenceNumber && record.referenceNumber.startsWith('REF-') === false);
+    if (exists) {
+      return { success: false, message: 'Transaction already ingested.', transaction: record };
+    }
+
     db.transactions.unshift(record);
 
-    // Keep last 200 transactions
-    if (db.transactions.length > 200) {
-      db.transactions = db.transactions.slice(0, 200);
+    // Keep last 300 transactions
+    if (db.transactions.length > 300) {
+      db.transactions = db.transactions.slice(0, 300);
     }
 
     // Auto-update matched account if applicable
@@ -123,7 +235,7 @@ class EmailParser {
 
     dataStore.saveDb(db);
     dataStore.addSyncLog(
-      `Email Parser (${record.institution})`,
+      `Email Ingestion (${record.institution})`,
       'success',
       `Parsed receipt [${record.referenceNumber}]: ${record.type} ₱${record.amount.toLocaleString()}`
     );

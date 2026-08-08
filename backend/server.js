@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
@@ -12,10 +13,14 @@ const syncRoute = require('./routes/sync');
 const analyticsRoute = require('./routes/analytics');
 const systemRoute = require('./routes/system');
 const dataStore = require('./services/dataStore');
+const accrualEngine = require('./services/accrualEngine');
 
 const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 5001;
+
+// Initialize Midnight Net Yield Accrual Engine (12:01 AM Asia/Manila Cron)
+accrualEngine.init();
 
 // Middleware
 app.use(cors({ origin: '*' }));

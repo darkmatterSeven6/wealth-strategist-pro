@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const dataStore = require('../services/dataStore');
+const accrualEngine = require('../services/accrualEngine');
 
 // GET all accounts
 router.get('/', (req, res) => {
@@ -18,6 +19,16 @@ router.get('/', (req, res) => {
     count: accounts.length,
     accounts
   });
+});
+
+// POST trigger daily net interest accruals (Midnight Net Yield Engine)
+router.post('/run-accruals', async (req, res) => {
+  try {
+    const result = await accrualEngine.runDailyAccrual(true);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
 });
 
 // POST fast override balance or APY
@@ -44,8 +55,8 @@ router.post('/override', (req, res) => {
     acc.tierInfo = tierInfo;
   }
 
-  // Recalculate daily interest
-  acc.dailyInterestEstimate = parseFloat(((acc.balance * (acc.currentApy / 100)) / 365).toFixed(2));
+  // Recalculate daily net interest (less 20% withholding tax)
+  acc.dailyInterestEstimate = parseFloat(((acc.balance * (acc.currentApy / 100) * 0.80) / 365).toFixed(2));
   acc.lastSynced = new Date().toISOString();
 
   dataStore.saveDb(db);
@@ -77,7 +88,7 @@ router.post('/', (req, res) => {
     balance: numBalance,
     baseApy: apy,
     currentApy: apy,
-    dailyInterestEstimate: parseFloat(((numBalance * (apy / 100)) / 365).toFixed(2)),
+    dailyInterestEstimate: parseFloat(((numBalance * (apy / 100) * 0.80) / 365).toFixed(2)),
     tierInfo: tierInfo || `${apy}% p.a. custom account`,
     color: color || '#3b82f6',
     icon: 'CustomBank',
@@ -94,3 +105,4 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
