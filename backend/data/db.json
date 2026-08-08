@@ -1778,6 +1778,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786184482263-bguk",
+      "timestamp": "2026-08-08T10:21:22.263Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 10:21:22"
+    },
+    {
       "id": "log-1786184419306-qktt",
       "timestamp": "2026-08-08T10:20:19.306Z",
       "source": "GitHub Cloud Sync",
@@ -2119,13 +2126,6 @@
       "source": "Automated Aggregation Pipeline",
       "status": "success",
       "message": "Synchronized 8 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1785894999615-xgzm",
-      "timestamp": "2026-08-05T01:56:39.615Z",
-      "source": "Liabilities Tracker",
-      "status": "success",
-      "message": "Updated liability: Maya Credit (Balance: ₱16,500, Limit: ₱30,000)"
     }
   ],
   "transactions": [
