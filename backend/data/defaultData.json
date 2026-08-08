@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-04T12:00:00.000Z"
+    "lastSyncTimestamp": "2026-08-08T15:20:40.802Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -18,38 +18,21 @@
   },
   "accounts": [
     {
-      "id": "acc-maribank-01",
-      "name": "MariBank Savings",
-      "institution": "MariBank Philippines",
-      "type": "digital_bank",
-      "accountNumber": "•••• 8824",
-      "balance": 185450,
-      "baseApy": 3.75,
-      "currentApy": 3.75,
-      "dailyInterestEstimate": 19.05,
-      "tierInfo": "3.75% p.a. credited daily, zero minimum balance",
-      "color": "#ff5722",
-      "icon": "MariBank",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-04T11:45:00.000Z"
-    },
-    {
       "id": "acc-maya-01",
-      "name": "Maya Bank (Boosted Tier)",
+      "name": "Maya Savings",
       "institution": "Maya Bank",
       "type": "digital_bank",
-      "accountNumber": "•••• 3912",
-      "balance": 240000,
+      "accountNumber": "•••• 7280",
+      "balance": 100006.58,
       "baseApy": 3.5,
-      "currentApy": 10,
-      "dailyInterestEstimate": 65.75,
+      "currentApy": 3,
+      "dailyInterestEstimate": 8.22,
       "tierInfo": "Base 3.5% + 6.5% Mission Boost (Spend ₱30k+ via Maya Card & Bills paid)",
       "color": "#00d084",
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-04T11:50:00.000Z",
+      "lastSynced": "2026-08-08T15:20:40.801Z",
       "subAccounts": [
         {
           "name": "Personal Goals: Japan 2027",
@@ -64,21 +47,123 @@
       ]
     },
     {
+      "id": "acc-custom-1786121765629",
+      "name": "Maya - Rainy Days Fund",
+      "institution": "Maya Bank",
+      "type": "digital_bank",
+      "accountNumber": "•••• 5798",
+      "balance": 5000.44,
+      "baseApy": 4,
+      "currentApy": 4,
+      "dailyInterestEstimate": 0.44,
+      "tierInfo": "4% p.a. custom account",
+      "color": "#3b82f6",
+      "icon": "CustomBank",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T15:20:40.801Z"
+    },
+    {
+      "id": "acc-maya-wallet-01",
+      "name": "Maya Wallet",
+      "institution": "Maya Philippines",
+      "type": "e_wallet",
+      "accountNumber": "0917 •••• 981",
+      "balance": 2000.46,
+      "baseApy": 0,
+      "currentApy": 0,
+      "dailyInterestEstimate": 0,
+      "tierInfo": "Everyday QR payments & Maya Credit settlement",
+      "color": "#10b981",
+      "icon": "MayaWallet",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T15:20:40.801Z"
+    },
+    {
+      "id": "acc-maribank-01",
+      "name": "MariBank Savings",
+      "institution": "MariBank Philippines",
+      "type": "digital_bank",
+      "accountNumber": "•••• •••• 046",
+      "balance": 1115.88,
+      "baseApy": 3.75,
+      "currentApy": 3.25,
+      "dailyInterestEstimate": 0.1,
+      "tierInfo": "3.75% p.a. credited daily, zero minimum balance",
+      "color": "#ff5722",
+      "icon": "MariBank",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T15:20:40.801Z"
+    },
+    {
+      "id": "acc-atome-01",
+      "name": "Atome Savings",
+      "institution": "Atome (via Netbank )",
+      "type": "digital_bank",
+      "accountNumber": "•••• •••• ••2626",
+      "balance": 701.13,
+      "baseApy": 3.25,
+      "currentApy": 3.25,
+      "dailyInterestEstimate": 0.06,
+      "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
+      "color": "#facc15",
+      "icon": "Atome",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T15:20:40.801Z"
+    },
+    {
+      "id": "acc-gcash-wallet-01",
+      "name": "GCash (E-Wallet)",
+      "institution": "GCash",
+      "type": "e_wallet",
+      "accountNumber": "•••• ••• 5676",
+      "balance": 2706.59,
+      "baseApy": 0,
+      "currentApy": 0,
+      "dailyInterestEstimate": 0,
+      "tierInfo": "GInvest staging & daily payment rails",
+      "color": "#007dfe",
+      "icon": "GCash",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T15:20:40.801Z"
+    },
+    {
+      "id": "acc-bpi-01",
+      "name": "BPI Preferred Checking & Savings",
+      "institution": "Bank of the Philippine Islands",
+      "type": "traditional_bank",
+      "accountNumber": "•••• 4410",
+      "balance": 0,
+      "baseApy": 0.0625,
+      "currentApy": 0.0625,
+      "dailyInterestEstimate": 0,
+      "tierInfo": "Primary Payroll & Wire Settlement Account",
+      "color": "#b91c1c",
+      "icon": "BPI",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T15:20:40.801Z"
+    },
+    {
       "id": "acc-gotyme-01",
       "name": "GoTyme Bank (GoSave)",
       "institution": "GoTyme Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 5521",
-      "balance": 130000,
+      "balance": 0,
       "baseApy": 3,
       "currentApy": 3,
-      "dailyInterestEstimate": 10.68,
+      "dailyInterestEstimate": 0,
       "tierInfo": "3.00% p.a. across up to 5 GoSave Stashes",
       "color": "#00bcd4",
       "icon": "GoTyme",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-04T10:30:00.000Z",
+      "lastSynced": "2026-08-08T15:20:40.802Z",
       "subAccounts": [
         {
           "name": "Auto & Insurance Buffer",
@@ -93,38 +178,21 @@
       ]
     },
     {
-      "id": "acc-atome-01",
-      "name": "Atome Savings (Netbank)",
-      "institution": "Netbank (via Atome)",
-      "type": "digital_bank",
-      "accountNumber": "•••• 1948",
-      "balance": 92000,
-      "baseApy": 3.25,
-      "currentApy": 3.25,
-      "dailyInterestEstimate": 8.19,
-      "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
-      "color": "#facc15",
-      "icon": "Atome",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-04T09:15:00.000Z"
-    },
-    {
       "id": "acc-tonik-01",
       "name": "Tonik Bank",
       "institution": "Tonik Digital Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 7703",
-      "balance": 115000,
+      "balance": 0,
       "baseApy": 4,
       "currentApy": 4.5,
-      "dailyInterestEstimate": 14.17,
+      "dailyInterestEstimate": 0,
       "tierInfo": "Group Stash 4.50% + 6.00% 6-Month Time Deposit",
       "color": "#7c3aed",
       "icon": "Tonik",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-04T08:00:00.000Z",
+      "lastSynced": "2026-08-08T15:20:40.802Z",
       "subAccounts": [
         {
           "name": "Group Stash (Family)",
@@ -137,57 +205,6 @@
           "apy": 6
         }
       ]
-    },
-    {
-      "id": "acc-bpi-01",
-      "name": "BPI Preferred Checking & Savings",
-      "institution": "Bank of the Philippine Islands",
-      "type": "traditional_bank",
-      "accountNumber": "•••• 4410",
-      "balance": 350000,
-      "baseApy": 0.0625,
-      "currentApy": 0.0625,
-      "dailyInterestEstimate": 0.6,
-      "tierInfo": "Primary Payroll & Wire Settlement Account",
-      "color": "#b91c1c",
-      "icon": "BPI",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-04T07:00:00.000Z"
-    },
-    {
-      "id": "acc-gcash-wallet-01",
-      "name": "GCash E-Wallet",
-      "institution": "Mynt / GCash",
-      "type": "e_wallet",
-      "accountNumber": "0917 •••• 981",
-      "balance": 28400,
-      "baseApy": 0,
-      "currentApy": 0,
-      "dailyInterestEstimate": 0,
-      "tierInfo": "GInvest staging & daily payment rails",
-      "color": "#007dfe",
-      "icon": "GCash",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-04T12:00:00.000Z"
-    },
-    {
-      "id": "acc-maya-wallet-01",
-      "name": "Maya Wallet",
-      "institution": "Maya Philippines",
-      "type": "e_wallet",
-      "accountNumber": "0917 •••• 981",
-      "balance": 12850,
-      "baseApy": 0,
-      "currentApy": 0,
-      "dailyInterestEstimate": 0,
-      "tierInfo": "Everyday QR payments & Maya Credit settlement",
-      "color": "#10b981",
-      "icon": "MayaWallet",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-04T12:00:00.000Z"
     }
   ],
   "funds": [
@@ -200,18 +217,18 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 478.811055,
-      "previousNavpu": 476.95,
-      "navpuDate": "2026-08-03",
-      "unitsHeld": 2.0885,
+      "currentNavpu": 497.009196,
+      "previousNavpu": 488.4863,
+      "navpuDate": "2026-08-05",
+      "unitsHeld": 2.0419,
       "investedCapital": 1000,
-      "averageCost": 478.811055,
-      "currentMarketValue": 1000,
-      "unrealizedGain": 0,
-      "unrealizedGainPercent": 0,
+      "averageCost": 489.74,
+      "currentMarketValue": 1014.84,
+      "unrealizedGain": 14.84,
+      "unrealizedGainPercent": 1.48,
       "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 27.54,
+        "oneYearReturn": 33.93,
         "threeYearCagr": 19.85,
         "fiveYearCagr": 18.2,
         "volatility30d": 16.5,
@@ -272,9 +289,21 @@
         {
           "date": "2026-08-03",
           "navpu": 478.811055
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 479.4868
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 480.7079
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 488.4863
         }
       ],
-      "pendingBuyOrders": 1000,
+      "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "orderNumber": "SGC2608015853033",
       "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)"
@@ -288,9 +317,9 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 143,
-      "previousNavpu": 142.15,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 144.6562,
+      "previousNavpu": 144.6562,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 128,
@@ -363,7 +392,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 143
+          "navpu": 142.9682
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 143.1149
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 144.6562
         }
       ]
     },
@@ -377,7 +414,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 47.5422,
-      "previousNavpu": 47.4545,
+      "previousNavpu": 47.5422,
       "navpuDate": "2026-08-06",
       "unitsHeld": 4.2169,
       "investedCapital": 200,
@@ -462,9 +499,9 @@
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 109.35,
-      "previousNavpu": 108.9,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 112.1497,
+      "previousNavpu": 112.1497,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 102.5,
@@ -537,7 +574,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 109.35
+          "navpu": 109.2712
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 109.9747
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 112.1497
         }
       ]
     },
@@ -550,9 +595,9 @@
       "category": "Money Market / Liquidity",
       "currency": "PHP",
       "riskRating": "Conservative",
-      "currentNavpu": 136.56,
-      "previousNavpu": 136.45,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 140.2315,
+      "previousNavpu": 140.2315,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 130.8,
@@ -625,7 +670,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 136.56
+          "navpu": 136.5487
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 137.7526
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 140.2315
         }
       ]
     },
@@ -638,9 +691,9 @@
       "category": "Domestic Equity Index",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 11.82,
-      "previousNavpu": 11.75,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 12.0808,
+      "previousNavpu": 12.0808,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 11.2,
@@ -713,7 +766,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 11.82
+          "navpu": 11.8304
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 11.8648
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 12.0808
         }
       ]
     },
@@ -726,9 +787,9 @@
       "category": "Fixed Income / Bond",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 2.285,
-      "previousNavpu": 2.281,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 2.3436,
+      "previousNavpu": 2.3436,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 2.2,
@@ -801,7 +862,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 2.285
+          "navpu": 2.2829
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 2.3025
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 2.3436
         }
       ]
     },
@@ -814,9 +883,9 @@
       "category": "Global Thematic Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 174.6,
-      "previousNavpu": 173.8,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 178.0704,
+      "previousNavpu": 178.0704,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 160,
@@ -889,7 +958,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 174.6
+          "navpu": 174.5813
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 175.2344
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 178.0704
         }
       ]
     },
@@ -902,9 +979,9 @@
       "category": "Global Thematic Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 196.4,
-      "previousNavpu": 195.8,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 201.5352,
+      "previousNavpu": 201.5352,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 185,
@@ -977,7 +1054,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 196.4
+          "navpu": 196.4176
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 197.8185
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 201.5352
         }
       ]
     },
@@ -990,9 +1075,9 @@
       "category": "Domestic Equity ESG",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 1.284,
-      "previousNavpu": 1.278,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 1.3032,
+      "previousNavpu": 1.3032,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 1.22,
@@ -1065,7 +1150,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 1.284
+          "navpu": 1.2852
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 1.2926
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 1.3032
         }
       ]
     },
@@ -1078,9 +1171,9 @@
       "category": "Fixed Income / Preferred Securities",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.135,
-      "previousNavpu": 1.13,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 1.1629,
+      "previousNavpu": 1.1629,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 1.07,
@@ -1153,7 +1246,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 1.135
+          "navpu": 1.1379
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 1.1421
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 1.1629
         }
       ]
     },
@@ -1166,9 +1267,9 @@
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.265,
-      "previousNavpu": 1.258,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 1.2922,
+      "previousNavpu": 1.2922,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 1.17,
@@ -1241,7 +1342,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 1.265
+          "navpu": 1.2663
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 1.2673
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 1.2922
         }
       ]
     },
@@ -1254,9 +1363,9 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 194.5,
-      "previousNavpu": 193.6,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 199.4714,
+      "previousNavpu": 199.4714,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 173,
@@ -1329,7 +1438,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 194.5
+          "navpu": 195.0571
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 195.7848
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 199.4714
         }
       ]
     },
@@ -1342,9 +1459,9 @@
       "category": "Domestic Equity Index",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 772.4,
-      "previousNavpu": 768.1,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 789.331,
+      "previousNavpu": 789.331,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 730,
@@ -1417,7 +1534,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 772.4
+          "navpu": 774.2792
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 777.8178
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 789.331
         }
       ]
     },
@@ -1430,9 +1555,9 @@
       "category": "Fixed Income / Bond",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.162,
-      "previousNavpu": 1.157,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 1.1882,
+      "previousNavpu": 1.1882,
+      "navpuDate": "2026-08-08",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 1.1,
@@ -1505,7 +1630,15 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 1.162
+          "navpu": 1.1653
+        },
+        {
+          "date": "2026-08-05",
+          "navpu": 1.1643
+        },
+        {
+          "date": "2026-08-08",
+          "navpu": 1.1882
         }
       ]
     }
@@ -1515,23 +1648,23 @@
       "id": "card-atome-01",
       "cardName": "Atome Card (Mastercard)",
       "cardholderName": "Danilo Vallejo",
-      "cardNumber": "•••• 5956",
+      "cardNumber": "•••• •••• •••• 5956",
       "cardBrand": "Mastercard",
-      "totalLimit": 10000.00,
+      "totalLimit": 7460,
       "availableLimit": 5811.42,
-      "outstandingBalance": 4188.58,
-      "dueDate": "2026-08-18",
-      "statementDate": "2026-08-03",
+      "outstandingBalance": 1648.58,
+      "dueDate": "2026-09-11",
+      "statementDate": "2026-09-01",
       "billingCycleDay": 18,
-      "minAmountDue": 209.43,
-      "annualFee": 0.00,
-      "interestRateApr": 0.00,
+      "minAmountDue": 82.43,
+      "annualFee": 0,
+      "interestRateApr": 0,
       "status": "active",
       "transactions": [
         {
           "id": "ctx-01",
           "merchant": "GrabFood Philippines",
-          "amount": 489.00,
+          "amount": 489,
           "type": "purchase",
           "category": "Food & Dining",
           "date": "2026-08-07T14:22:00.000Z",
@@ -1540,7 +1673,7 @@
         {
           "id": "ctx-02",
           "merchant": "ShopeePay Top-up",
-          "amount": 1200.00,
+          "amount": 1200,
           "type": "purchase",
           "category": "Shopping",
           "date": "2026-08-05T09:15:00.000Z",
@@ -1558,7 +1691,7 @@
         {
           "id": "ctx-04",
           "merchant": "Atome Bill Repayment (via Maya)",
-          "amount": 3500.00,
+          "amount": 3500,
           "type": "bill_payment",
           "category": "Payment / Credit",
           "date": "2026-07-28T11:05:00.000Z",
@@ -1573,11 +1706,11 @@
       "name": "Atome Card / PayLater",
       "provider": "Atome Philippines",
       "type": "bnpl",
-      "outstandingBalance": 9450,
-      "creditLimit": 50000,
-      "billingCycleDueDate": "2026-08-18",
+      "outstandingBalance": 1648.58,
+      "creditLimit": 7460,
+      "billingCycleDueDate": "2026-09-11",
       "nominalMonthlyRate": 0,
-      "effectiveApr": 34.8,
+      "effectiveApr": 0,
       "monthlyAdminFee": 150,
       "monthlyPayment": 3150,
       "remainingTermsMonths": 3,
@@ -1591,72 +1724,54 @@
       "name": "Maya Credit",
       "provider": "Maya Bank",
       "type": "revolving_credit",
-      "outstandingBalance": 16500,
-      "creditLimit": 30000,
+      "outstandingBalance": 0,
+      "creditLimit": 50000,
       "billingCycleDueDate": "2026-08-13",
       "nominalMonthlyRate": 3.99,
-      "effectiveApr": 59.9,
+      "effectiveApr": 59.92,
       "monthlyAdminFee": 0,
       "monthlyPayment": 16500,
       "remainingTermsMonths": 1,
       "isZeroInterestPromo": false,
       "daysUntilDue": 9,
       "latePenaltyPercent": 5,
-      "status": "warning"
+      "status": "paid_off"
     },
     {
       "id": "liab-ggives",
       "name": "GGives Installment (Gadget)",
       "provider": "Fuse Lending / GCash",
       "type": "bnpl",
-      "outstandingBalance": 24800,
+      "outstandingBalance": 0,
       "creditLimit": 60000,
       "billingCycleDueDate": "2026-08-22",
       "nominalMonthlyRate": 1.99,
-      "effectiveApr": 26.85,
+      "effectiveApr": 26.68,
       "monthlyAdminFee": 0,
       "monthlyPayment": 4546.67,
       "remainingTermsMonths": 6,
       "isZeroInterestPromo": false,
       "daysUntilDue": 18,
       "latePenaltyPercent": 3,
-      "status": "active"
+      "status": "paid_off"
     },
     {
       "id": "liab-lazpaylater",
       "name": "LazPayLater",
       "provider": "Lazada Philippines",
       "type": "bnpl",
-      "outstandingBalance": 5800,
-      "creditLimit": 25000,
+      "outstandingBalance": 0,
+      "creditLimit": 30000,
       "billingCycleDueDate": "2026-08-16",
       "nominalMonthlyRate": 2.5,
-      "effectiveApr": 34.5,
+      "effectiveApr": 34.49,
       "monthlyAdminFee": 0,
       "monthlyPayment": 2045,
       "remainingTermsMonths": 3,
       "isZeroInterestPromo": false,
       "daysUntilDue": 12,
       "latePenaltyPercent": 5,
-      "status": "active"
-    },
-    {
-      "id": "liab-bpi-cc",
-      "name": "BPI Visa Signature Card",
-      "provider": "Bank of the Philippine Islands",
-      "type": "credit_card",
-      "outstandingBalance": 38450,
-      "creditLimit": 300000,
-      "billingCycleDueDate": "2026-08-25",
-      "nominalMonthlyRate": 3,
-      "effectiveApr": 42.58,
-      "monthlyAdminFee": 0,
-      "monthlyPayment": 38450,
-      "remainingTermsMonths": 1,
-      "isZeroInterestPromo": true,
-      "daysUntilDue": 21,
-      "latePenaltyPercent": 5,
-      "status": "active"
+      "status": "paid_off"
     }
   ],
   "cashFlow": {
@@ -1708,25 +1823,416 @@
   },
   "syncLogs": [
     {
-      "id": "log-01",
-      "timestamp": "2026-08-04T12:00:00.000Z",
-      "source": "ATRAM NAVPU Live Scraper",
+      "id": "log-1786203637316-h13u",
+      "timestamp": "2026-08-08T15:40:37.316Z",
+      "source": "GInvest Ingestion",
       "status": "success",
-      "message": "Fetched 5 UITF daily valuation feeds from ATRAM & UITF portal successfully."
+      "message": "Synchronized ATRAM Global Technology Feeder Fund from GFunds statement: 2.0419 units @ ₱497.009196."
     },
     {
-      "id": "log-02",
-      "timestamp": "2026-08-04T11:50:00.000Z",
-      "source": "Maya Bank Ingestion Rail",
+      "id": "log-1786203573212-c760",
+      "timestamp": "2026-08-08T15:39:33.212Z",
+      "source": "GitHub Cloud Sync",
       "status": "success",
-      "message": "Processed webhook for Maya Savings boosted 10.0% tier."
+      "message": "Manual / Auto save operation recorded at 2026-08-08 15:39:33"
     },
     {
-      "id": "log-03",
-      "timestamp": "2026-08-04T11:45:00.000Z",
-      "source": "MariBank Daily Accrual Worker",
+      "id": "log-1786202469906-np6k",
+      "timestamp": "2026-08-08T15:21:09.906Z",
+      "source": "GitHub Cloud Sync",
       "status": "success",
-      "message": "Calculated daily interest accrual of ₱19.05 @ 3.75% p.a."
+      "message": "Manual / Auto save operation recorded at 2026-08-08 15:21:09"
+    },
+    {
+      "id": "log-1786202461451-e1hb",
+      "timestamp": "2026-08-08T15:21:01.451Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786202440805-afux",
+      "timestamp": "2026-08-08T15:20:40.805Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
+    },
+    {
+      "id": "log-1786201157524-iyz0",
+      "timestamp": "2026-08-08T14:59:17.524Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual UI Request: Synchronized NAVPUs for 15 Philippine UITF/Feeder Funds."
+    },
+    {
+      "id": "log-1786199804803-3jvc",
+      "timestamp": "2026-08-08T14:36:44.803Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 14:36:44"
+    },
+    {
+      "id": "log-1786198761335-51rg",
+      "timestamp": "2026-08-08T14:19:21.335Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
+    },
+    {
+      "id": "log-1786198724534-kv7r",
+      "timestamp": "2026-08-08T14:18:44.535Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
+    },
+    {
+      "id": "log-1786198667674-yq4a",
+      "timestamp": "2026-08-08T14:17:47.674Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
+    },
+    {
+      "id": "log-1786198587380-8s9s",
+      "timestamp": "2026-08-08T14:16:27.380Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱10,000"
+    },
+    {
+      "id": "log-1786198102668-0ztn",
+      "timestamp": "2026-08-08T14:08:22.668Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Updated Atome Card (Mastercard): Total Limit ₱10,000, Available Limit ₱5,811.42, Outstanding: ₱4,188.58"
+    },
+    {
+      "id": "log-1786198061300-3dd9",
+      "timestamp": "2026-08-08T14:07:41.300Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Updated Atome Card (Mastercard): Total Limit ₱7,460, Available Limit ₱5,811.42, Outstanding: ₱1,648.58"
+    },
+    {
+      "id": "log-1786197115707-mvt3",
+      "timestamp": "2026-08-08T13:51:55.708Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 13:51:55"
+    },
+    {
+      "id": "log-1786196231816-t8tf",
+      "timestamp": "2026-08-08T13:37:11.816Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 13:37:11"
+    },
+    {
+      "id": "log-1786196208926-xggl",
+      "timestamp": "2026-08-08T13:36:48.926Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated GCash (E-Wallet) (•••• ••• 5676) balance to ₱2,706.59 @ 0% APY."
+    },
+    {
+      "id": "log-1786195434676-58xd",
+      "timestamp": "2026-08-08T13:23:54.676Z",
+      "source": "NAVPU Scraper Worker",
+      "status": "success",
+      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
+    },
+    {
+      "id": "log-1786195434020-03jy",
+      "timestamp": "2026-08-08T13:23:54.020Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
+    },
+    {
+      "id": "log-1786195421839-kce9",
+      "timestamp": "2026-08-08T13:23:41.839Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 13:23:41"
+    },
+    {
+      "id": "log-1786195391765-e97n",
+      "timestamp": "2026-08-08T13:23:11.765Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated GCash (E-Wallet) (0917 •••• 981) balance to ₱771.83 @ 0% APY."
+    },
+    {
+      "id": "log-1786195332500-nnq7",
+      "timestamp": "2026-08-08T13:22:12.500Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786195327709-pg2t",
+      "timestamp": "2026-08-08T13:22:07.709Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786195317875-tkat",
+      "timestamp": "2026-08-08T13:21:57.875Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786195310428-u35y",
+      "timestamp": "2026-08-08T13:21:50.428Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786195279197-ckqp",
+      "timestamp": "2026-08-08T13:21:19.197Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194645157-e5so",
+      "timestamp": "2026-08-08T13:10:45.157Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194634449-lz6y",
+      "timestamp": "2026-08-08T13:10:34.450Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194624224-y7y4",
+      "timestamp": "2026-08-08T13:10:24.224Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194578156-xh77",
+      "timestamp": "2026-08-08T13:09:38.156Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194560506-dubn",
+      "timestamp": "2026-08-08T13:09:20.506Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786193923406-kwab",
+      "timestamp": "2026-08-08T12:58:43.406Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 12:58:43"
+    },
+    {
+      "id": "log-1786193916772-ziuv",
+      "timestamp": "2026-08-08T12:58:36.773Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated MariBank Savings (•••• •••• 046) balance to ₱1,115.68 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786193489608-qj6c",
+      "timestamp": "2026-08-08T12:51:29.608Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated MariBank Savings (•••• •••• 046) balance to ₱1,117.18 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786192930152-ktix",
+      "timestamp": "2026-08-08T12:42:10.152Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 12:42:10"
+    },
+    {
+      "id": "log-1786192916314-8709",
+      "timestamp": "2026-08-08T12:41:56.314Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Atome Savings (•••• •••• ••2626) balance to ₱701.13 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786192105241-d4nk",
+      "timestamp": "2026-08-08T12:28:25.241Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Atome Savings (•••• •••• ••2626) balance to ₱701.18 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786191881756-97wh",
+      "timestamp": "2026-08-08T12:24:41.757Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,000.44 @ 4% APY."
+    },
+    {
+      "id": "log-1786191789097-yfc1",
+      "timestamp": "2026-08-08T12:23:09.097Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya Savings (•••• 7280) balance to ₱100,006.58 @ 3% APY."
+    },
+    {
+      "id": "log-1786191622149-iq0j",
+      "timestamp": "2026-08-08T12:20:22.149Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (8088 3230 7280) balance to ₱5,000.44 @ 4% APY."
+    },
+    {
+      "id": "log-1786191056629-drj7",
+      "timestamp": "2026-08-08T12:10:56.629Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 12:10:56"
+    },
+    {
+      "id": "log-1786190753080-4vk0",
+      "timestamp": "2026-08-08T12:05:53.080Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 12:05:53"
+    },
+    {
+      "id": "log-1786189730285-njzv",
+      "timestamp": "2026-08-08T11:48:50.285Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189715544-bmtd",
+      "timestamp": "2026-08-08T11:48:35.544Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189703255-eshr",
+      "timestamp": "2026-08-08T11:48:23.255Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189678842-nav4",
+      "timestamp": "2026-08-08T11:47:58.842Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189671334-az4m",
+      "timestamp": "2026-08-08T11:47:51.334Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189583078-ec3b",
+      "timestamp": "2026-08-08T11:46:23.078Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189172630-z7bl",
+      "timestamp": "2026-08-08T11:39:32.630Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 11:39:32"
+    },
+    {
+      "id": "log-1786188864340-66ay",
+      "timestamp": "2026-08-08T11:34:24.340Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786187252334-xpbm",
+      "timestamp": "2026-08-08T11:07:32.334Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 11:07:32"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "tx-yield-1786174414745-acc-custom-1786121765629",
+      "institution": "Maya Bank ",
+      "referenceNumber": "NET-YIELD-acc-custom-1786121765629-2026-08-08",
+      "type": "INTEREST_CREDIT",
+      "amount": 0.44,
+      "grossAmount": 0.55,
+      "withholdingTax": 0.11,
+      "taxRate": "20% Withholding Tax",
+      "grossApy": 4,
+      "runningBalance": 5000.44,
+      "subject": "Daily Net Interest Credited (4% p.a. less 20% WHT)",
+      "timestamp": "2026-08-08T07:33:34.743Z",
+      "parsedAt": "2026-08-08T07:33:34.743Z"
+    },
+    {
+      "id": "tx-yield-1786174414745-acc-atome-01",
+      "institution": "Netbank (via Atome)",
+      "referenceNumber": "NET-YIELD-acc-atome-01-2026-08-08",
+      "type": "INTEREST_CREDIT",
+      "amount": 0.05,
+      "grossAmount": 0.06,
+      "withholdingTax": 0.01,
+      "taxRate": "20% Withholding Tax",
+      "grossApy": 3.25,
+      "runningBalance": 701.18,
+      "subject": "Daily Net Interest Credited (3.25% p.a. less 20% WHT)",
+      "timestamp": "2026-08-08T07:33:34.743Z",
+      "parsedAt": "2026-08-08T07:33:34.743Z"
+    },
+    {
+      "id": "tx-yield-1786174414745-acc-maya-01",
+      "institution": "Maya Bank",
+      "referenceNumber": "NET-YIELD-acc-maya-01-2026-08-08",
+      "type": "INTEREST_CREDIT",
+      "amount": 6.58,
+      "grossAmount": 8.22,
+      "withholdingTax": 1.64,
+      "taxRate": "20% Withholding Tax",
+      "grossApy": 3,
+      "runningBalance": 100006.58,
+      "subject": "Daily Net Interest Credited (3% p.a. less 20% WHT)",
+      "timestamp": "2026-08-08T07:33:34.743Z",
+      "parsedAt": "2026-08-08T07:33:34.743Z"
+    },
+    {
+      "id": "tx-yield-1786174414745-acc-maribank-01",
+      "institution": "MariBank Philippines",
+      "referenceNumber": "NET-YIELD-acc-maribank-01-2026-08-08",
+      "type": "INTEREST_CREDIT",
+      "amount": 0.08,
+      "grossAmount": 0.1,
+      "withholdingTax": 0.02,
+      "taxRate": "20% Withholding Tax",
+      "grossApy": 3.25,
+      "runningBalance": 1115.68,
+      "subject": "Daily Net Interest Credited (3.25% p.a. less 20% WHT)",
+      "timestamp": "2026-08-08T07:33:34.743Z",
+      "parsedAt": "2026-08-08T07:33:34.743Z"
     }
   ]
 }

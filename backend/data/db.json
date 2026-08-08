@@ -217,18 +217,18 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 488.4863,
+      "currentNavpu": 497.009196,
       "previousNavpu": 488.4863,
-      "navpuDate": "2026-08-08",
-      "unitsHeld": 2.0885,
+      "navpuDate": "2026-08-05",
+      "unitsHeld": 2.0419,
       "investedCapital": 1000,
-      "averageCost": 478.811055,
-      "currentMarketValue": 1020.2,
-      "unrealizedGain": 20.2,
-      "unrealizedGainPercent": 2.02,
+      "averageCost": 489.74,
+      "currentMarketValue": 1014.84,
+      "unrealizedGain": 14.84,
+      "unrealizedGainPercent": 1.48,
       "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 27.54,
+        "oneYearReturn": 33.93,
         "threeYearCagr": 19.85,
         "fiveYearCagr": 18.2,
         "volatility30d": 16.5,
@@ -303,7 +303,7 @@
           "navpu": 488.4863
         }
       ],
-      "pendingBuyOrders": 1000,
+      "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "orderNumber": "SGC2608015853033",
       "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)"
@@ -1823,6 +1823,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786203637316-h13u",
+      "timestamp": "2026-08-08T15:40:37.316Z",
+      "source": "GInvest Ingestion",
+      "status": "success",
+      "message": "Synchronized ATRAM Global Technology Feeder Fund from GFunds statement: 2.0419 units @ ₱497.009196."
+    },
+    {
       "id": "log-1786203573212-c760",
       "timestamp": "2026-08-08T15:39:33.212Z",
       "source": "GitHub Cloud Sync",
@@ -2164,13 +2171,6 @@
       "source": "GitHub Cloud Sync",
       "status": "success",
       "message": "Manual / Auto save operation recorded at 2026-08-08 11:07:32"
-    },
-    {
-      "id": "log-1786187228587-2eom",
-      "timestamp": "2026-08-08T11:07:08.587Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 11:07:08"
     }
   ],
   "transactions": [

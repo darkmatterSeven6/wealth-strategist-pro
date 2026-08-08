@@ -871,6 +871,8 @@ export default function GInvestIntelligence({
             </form>
           </div>
         </div>
+      )}
+
       {/* Fund Screenshot OCR Import Modal */}
       <FundScreenshotUploadModal
         isOpen={isScreenshotModalOpen}

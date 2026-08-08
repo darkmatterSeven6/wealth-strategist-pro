@@ -124,16 +124,19 @@ function parseFundStatementText(rawText, metadata = {}) {
   }
 
   // 8. Fund Name heuristics from context
-  if (fullText.includes('Technology') || fullText.includes('Tech')) {
+  const lower = fullText.toLowerCase();
+  if (lower.includes('technology') || lower.includes('tech')) {
     result.fundNameDetected = 'ATRAM Global Technology Feeder Fund';
-  } else if (fullText.includes('Multi-Asset') || fullText.includes('ALFM')) {
+  } else if (lower.includes('multi-asset') || lower.includes('alfm')) {
     result.fundNameDetected = 'ALFM Global Multi-Asset Income Fund Inc - PHP';
-  } else if (fullText.includes('Consumer')) {
+  } else if (lower.includes('consumer')) {
     result.fundNameDetected = 'ATRAM Global Consumer Trends Feeder Fund';
-  } else if (fullText.includes('Infra')) {
+  } else if (lower.includes('infra')) {
     result.fundNameDetected = 'ATRAM Global Infra Equity Feeder Fund';
-  } else if (fullText.includes('REIT')) {
+  } else if (lower.includes('reit')) {
     result.fundNameDetected = 'Manulife Global REIT Feeder Fund';
+  } else if (lower.includes('stock index') || lower.includes('psei') || lower.includes('psif')) {
+    result.fundNameDetected = 'Philippine Stock Index Fund (Units)';
   }
 
   // Sanity check: if NAVPU and Units exist but Value is missing, calculate it
