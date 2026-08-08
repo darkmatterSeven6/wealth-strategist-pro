@@ -1661,21 +1661,21 @@
       "cardName": "Atome Card (Mastercard)",
       "cardNumber": "•••• 5956",
       "cardBrand": "Mastercard",
-      "totalLimit": 10000.00,
+      "totalLimit": 10000,
       "availableLimit": 5811.42,
       "outstandingBalance": 4188.58,
-      "dueDate": "2026-08-18",
-      "statementDate": "2026-08-03",
+      "dueDate": "2026-09-11",
+      "statementDate": "2026-09-01",
       "billingCycleDay": 18,
       "minAmountDue": 209.43,
-      "annualFee": 0.00,
-      "interestRateApr": 0.00,
+      "annualFee": 0,
+      "interestRateApr": 0,
       "status": "active",
       "transactions": [
         {
           "id": "ctx-01",
           "merchant": "GrabFood Philippines",
-          "amount": 489.00,
+          "amount": 489,
           "type": "purchase",
           "category": "Food & Dining",
           "date": "2026-08-07T14:22:00.000Z",
@@ -1684,7 +1684,7 @@
         {
           "id": "ctx-02",
           "merchant": "ShopeePay Top-up",
-          "amount": 1200.00,
+          "amount": 1200,
           "type": "purchase",
           "category": "Shopping",
           "date": "2026-08-05T09:15:00.000Z",
@@ -1702,7 +1702,7 @@
         {
           "id": "ctx-04",
           "merchant": "Atome Bill Repayment (via Maya)",
-          "amount": 3500.00,
+          "amount": 3500,
           "type": "bill_payment",
           "category": "Payment / Credit",
           "date": "2026-07-28T11:05:00.000Z",
@@ -1717,9 +1717,9 @@
       "name": "Atome Card / PayLater",
       "provider": "Atome Philippines",
       "type": "bnpl",
-      "outstandingBalance": 0,
-      "creditLimit": 50000,
-      "billingCycleDueDate": "2026-08-18",
+      "outstandingBalance": 4188.58,
+      "creditLimit": 10000,
+      "billingCycleDueDate": "2026-09-11",
       "nominalMonthlyRate": 0,
       "effectiveApr": 0,
       "monthlyAdminFee": 150,
@@ -1728,7 +1728,7 @@
       "isZeroInterestPromo": true,
       "daysUntilDue": 14,
       "latePenaltyPercent": 5,
-      "status": "paid_off"
+      "status": "active"
     },
     {
       "id": "liab-maya-credit",
@@ -1833,6 +1833,20 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1786198102668-0ztn",
+      "timestamp": "2026-08-08T14:08:22.668Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Updated Atome Card (Mastercard): Total Limit ₱10,000, Available Limit ₱5,811.42, Outstanding: ₱4,188.58"
+    },
+    {
+      "id": "log-1786198061300-3dd9",
+      "timestamp": "2026-08-08T14:07:41.300Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Updated Atome Card (Mastercard): Total Limit ₱7,460, Available Limit ₱5,811.42, Outstanding: ₱1,648.58"
+    },
     {
       "id": "log-1786197115707-mvt3",
       "timestamp": "2026-08-08T13:51:55.708Z",
@@ -2168,20 +2182,6 @@
       "source": "GitHub Cloud Sync",
       "status": "success",
       "message": "Manual / Auto save operation recorded at 2026-08-08 10:50:36"
-    },
-    {
-      "id": "log-1786185732483-ubrl",
-      "timestamp": "2026-08-08T10:42:12.483Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786185732148-b6tt",
-      "timestamp": "2026-08-08T10:42:12.148Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
     }
   ],
   "transactions": [

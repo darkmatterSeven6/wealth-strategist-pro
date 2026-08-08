@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const dataStore = require('../services/dataStore');
 const bnplEngine = require('../services/bnplEngine');
+const sqliteDb = require('../services/sqliteDb');
 
 // GET all liabilities & drag analysis
 router.get('/', (req, res) => {
@@ -30,8 +31,8 @@ router.get('/cards', (req, res) => {
   });
 });
 
-// POST add or update liability
-router.post('/', (req, res) => {
+// POST add or create new liability
+router.post('/', async (req, res) => {
   const {
     name,
     provider,
@@ -52,18 +53,21 @@ router.post('/', (req, res) => {
 
   const db = dataStore.getDb();
   const balance = parseFloat(outstandingBalance);
+  const limit = creditLimit ? parseFloat(creditLimit) : balance * 2;
   const nominalRate = nominalMonthlyRate ? parseFloat(nominalMonthlyRate) : 0;
   const adminFee = monthlyAdminFee ? parseFloat(monthlyAdminFee) : 0;
   const effectiveApr = bnplEngine.calculateEffectiveApr(nominalRate, adminFee, balance);
+  const dueDate = billingCycleDueDate || new Date(Date.now() + 14 * 86400000).toISOString().split('T')[0];
+  const newId = `liab-${Date.now()}`;
 
   const newLiab = {
-    id: `liab-${Date.now()}`,
+    id: newId,
     name,
     provider: provider || name,
     type: type || 'bnpl',
     outstandingBalance: balance,
-    creditLimit: creditLimit ? parseFloat(creditLimit) : balance * 2,
-    billingCycleDueDate: billingCycleDueDate || new Date(Date.now() + 14 * 86400000).toISOString().split('T')[0],
+    creditLimit: limit,
+    billingCycleDueDate: dueDate,
     nominalMonthlyRate: nominalRate,
     effectiveApr,
     monthlyAdminFee: adminFee,
@@ -74,6 +78,27 @@ router.post('/', (req, res) => {
     status: 'active'
   };
 
+  // SQLite Persistence
+  try {
+    const rawDb = sqliteDb.getRawDb();
+    if (rawDb) {
+      rawDb.run(
+        `INSERT OR REPLACE INTO liabilities (
+          id, name, provider, type, outstanding_balance, credit_limit,
+          nominal_monthly_rate, effective_apr, monthly_admin_fee, monthly_payment,
+          remaining_terms_months, billing_cycle_due_date, is_zero_interest_promo, status
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        [
+          newId, name, provider || name, type || 'bnpl', balance, limit,
+          nominalRate, effectiveApr, adminFee, newLiab.monthlyPayment,
+          newLiab.remainingTermsMonths, dueDate, newLiab.isZeroInterestPromo ? 1 : 0, 'active'
+        ]
+      );
+    }
+  } catch (sqlErr) {
+    console.warn('[SQLITE LIABILITIES INSERT WARN]:', sqlErr.message);
+  }
+
   db.liabilities.push(newLiab);
   dataStore.saveDb(db);
   dataStore.addSyncLog('Liabilities Tracker', 'success', `Added liability line: ${name} (₱${balance.toLocaleString()})`);
@@ -81,8 +106,8 @@ router.post('/', (req, res) => {
   res.json({ success: true, liability: newLiab });
 });
 
-// POST pay off / record payment
-router.post('/pay', (req, res) => {
+// POST pay off / record payment for general liability
+router.post('/pay', async (req, res) => {
   const { liabilityId, paymentAmount } = req.body;
   if (!liabilityId || !paymentAmount) {
     return res.status(400).json({ success: false, error: 'liabilityId and paymentAmount are required.' });
@@ -102,6 +127,19 @@ router.post('/pay', (req, res) => {
     liab.status = 'paid_off';
   }
 
+  // SQLite Persistence
+  try {
+    const rawDb = sqliteDb.getRawDb();
+    if (rawDb) {
+      rawDb.run(
+        `UPDATE liabilities SET outstanding_balance = ?, status = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?`,
+        [liab.outstandingBalance, liab.status, liab.id]
+      );
+    }
+  } catch (sqlErr) {
+    console.warn('[SQLITE LIABILITIES PAY WARN]:', sqlErr.message);
+  }
+
   dataStore.saveDb(db);
   dataStore.addSyncLog('Debt Payoff Action', 'success', `Paid ₱${payAmt.toLocaleString()} towards ${liab.name}. Remaining: ₱${liab.outstandingBalance.toLocaleString()}`);
 
@@ -112,40 +150,207 @@ router.post('/pay', (req, res) => {
   });
 });
 
-// POST update existing liability
+/**
+ * POST /api/liabilities/update
+ * Universal update route supporting Atome Credit Card settings, card limits, and general liabilities
+ */
 router.post('/update', (req, res) => {
   const {
     id,
+    card_name,
+    cardName,
     name,
+    card_number,
+    cardNumber,
+    total_limit,
+    totalLimit,
+    available_limit,
+    availableLimit,
+    outstanding_balance,
+    outstandingBalance,
+    due_date,
+    dueDate,
+    statement_date,
+    statementDate,
+    billing_cycle_day,
+    billingCycleDay,
+    billing_cycle_due_date,
+    billingCycleDueDate,
+    nominal_monthly_rate,
+    nominalMonthlyRate,
+    monthly_admin_fee,
+    monthlyAdminFee,
+    monthly_payment,
+    monthlyPayment,
+    remaining_terms_months,
+    remainingTermsMonths,
+    is_zero_interest_promo,
+    isZeroInterestPromo,
     provider,
     type,
-    outstandingBalance,
-    creditLimit,
-    billingCycleDueDate,
-    nominalMonthlyRate,
-    monthlyAdminFee,
-    monthlyPayment,
-    remainingTermsMonths,
-    isZeroInterestPromo,
     status
   } = req.body;
 
-  if (!id) {
-    return res.status(400).json({ success: false, error: 'Liability ID is required.' });
-  }
+  const targetCardName = card_name || cardName || (type === 'credit_card' ? name : null);
+  const targetCardNumber = card_number || cardNumber;
+  const rawTotalLimit = total_limit !== undefined ? total_limit : (totalLimit !== undefined ? totalLimit : req.body.creditLimit);
+  const rawAvailLimit = available_limit !== undefined ? available_limit : availableLimit;
+  const rawDueDate = due_date || dueDate || billing_cycle_due_date || billingCycleDueDate;
+  const rawStatementDate = statement_date || statementDate;
+
+  const isCardTarget = Boolean(
+    targetCardName ||
+    targetCardNumber ||
+    rawTotalLimit !== undefined ||
+    rawAvailLimit !== undefined ||
+    id === 1 ||
+    id === '1' ||
+    id === 'card-atome-01' ||
+    type === 'credit_card' ||
+    (name && name.toLowerCase().includes('atome')) ||
+    (id && id.toString().includes('atome'))
+  );
+
+  console.log(`[LIABILITIES ENGINE] Received update request for ${isCardTarget ? 'Card ID ' + (id || 1) : 'Liability ID ' + id}`);
 
   const db = dataStore.getDb();
+  if (!db.creditCards) db.creditCards = [];
+  if (!db.liabilities) db.liabilities = [];
+
+  if (isCardTarget) {
+    const totalLimitNum = rawTotalLimit !== undefined ? (parseFloat(rawTotalLimit) || 0) : 10000.00;
+    const availLimitNum = rawAvailLimit !== undefined 
+      ? (parseFloat(rawAvailLimit) || 0) 
+      : (outstandingBalance !== undefined ? Math.max(0, totalLimitNum - parseFloat(outstandingBalance)) : 5811.42);
+    const resolvedDueDate = rawDueDate || '2026-08-18';
+    const resolvedStatementDate = rawStatementDate || '2026-08-03';
+    const cardIdParam = id || 'card-atome-01';
+
+    // 1. UPDATE SQLite credit_cards table
+    const sql = `
+      UPDATE credit_cards 
+      SET 
+        card_name = COALESCE(?, card_name),
+        card_number = COALESCE(?, card_number),
+        total_limit = ?,
+        available_limit = ?,
+        due_date = ?,
+        statement_date = ?,
+        updated_at = CURRENT_TIMESTAMP
+      WHERE id = ? OR card_id = ? OR card_name LIKE '%Atome%'
+    `;
+
+    const rawDb = sqliteDb.getRawDb();
+    if (rawDb) {
+      rawDb.run(
+        sql,
+        [
+          targetCardName || null,
+          targetCardNumber || null,
+          totalLimitNum,
+          availLimitNum,
+          resolvedDueDate,
+          resolvedStatementDate,
+          typeof id === 'number' ? id : 1,
+          typeof cardIdParam === 'string' ? cardIdParam : 'card-atome-01'
+        ],
+        function (err) {
+          if (err) {
+            console.error('❌ [LIABILITIES UPDATE ERROR]:', err.message);
+          } else {
+            console.log(`🟢 [LIABILITIES ENGINE] Atome Card updated in SQLite: Available ₱${availLimitNum} / Total ₱${totalLimitNum}`);
+          }
+        }
+      );
+
+      // Also update SQLite liabilities table for Atome Card
+      const outstandingBal = Math.max(0, parseFloat((totalLimitNum - availLimitNum).toFixed(2)));
+      rawDb.run(
+        `UPDATE liabilities 
+         SET outstanding_balance = ?, credit_limit = ?, billing_cycle_due_date = ?, status = CASE WHEN ? = 0 THEN 'paid_off' ELSE 'active' END, updated_at = CURRENT_TIMESTAMP 
+         WHERE id = 'liab-atome-card' OR name LIKE '%Atome%'`,
+        [outstandingBal, totalLimitNum, resolvedDueDate, outstandingBal]
+      );
+    }
+
+    // 2. UPDATE dataStore in-memory JSON state
+    let cardIdx = db.creditCards.findIndex(c => c.id === cardIdParam || (c.cardName && c.cardName.includes('Atome')));
+    if (cardIdx === -1) {
+      if (db.creditCards.length > 0) cardIdx = 0;
+    }
+
+    let updatedCard = null;
+    if (cardIdx !== -1) {
+      const card = db.creditCards[cardIdx];
+      if (targetCardName) card.cardName = targetCardName;
+      if (targetCardNumber) card.cardNumber = targetCardNumber;
+      card.totalLimit = totalLimitNum;
+      card.availableLimit = availLimitNum;
+      card.outstandingBalance = parseFloat(Math.max(0, totalLimitNum - availLimitNum).toFixed(2));
+      card.minAmountDue = parseFloat(Math.max(0, card.outstandingBalance * 0.05).toFixed(2));
+      card.dueDate = resolvedDueDate;
+      card.statementDate = resolvedStatementDate;
+      if (billing_cycle_day || billingCycleDay) card.billingCycleDay = parseInt(billing_cycle_day || billingCycleDay);
+      if (status) card.status = status;
+      updatedCard = card;
+    } else {
+      updatedCard = {
+        id: 'card-atome-01',
+        cardName: targetCardName || 'Atome Card (Mastercard)',
+        cardNumber: targetCardNumber || '•••• 5956',
+        cardBrand: 'Mastercard',
+        totalLimit: totalLimitNum,
+        availableLimit: availLimitNum,
+        outstandingBalance: parseFloat(Math.max(0, totalLimitNum - availLimitNum).toFixed(2)),
+        minAmountDue: parseFloat(Math.max(0, (totalLimitNum - availLimitNum) * 0.05).toFixed(2)),
+        dueDate: resolvedDueDate,
+        statementDate: resolvedStatementDate,
+        billingCycleDay: 18,
+        annualFee: 0.00,
+        interestRateApr: 0.00,
+        status: 'active',
+        transactions: []
+      };
+      db.creditCards.push(updatedCard);
+    }
+
+    // Sync to general liabilities table if Atome card is present
+    const atomeLiab = db.liabilities.find(l => l.id === 'liab-atome-card' || (l.name && l.name.includes('Atome')));
+    if (atomeLiab) {
+      atomeLiab.outstandingBalance = updatedCard.outstandingBalance;
+      atomeLiab.creditLimit = updatedCard.totalLimit;
+      atomeLiab.billingCycleDueDate = resolvedDueDate;
+      atomeLiab.status = updatedCard.outstandingBalance === 0 ? 'paid_off' : 'active';
+    }
+
+    dataStore.saveDb(db);
+    dataStore.addSyncLog(
+      'Atome Card Settings',
+      'success',
+      `Atome Card settings saved: Available ₱${availLimitNum.toLocaleString()} / Total ₱${totalLimitNum.toLocaleString()}`
+    );
+
+    return res.json({
+      success: true,
+      message: 'Atome Card settings saved.',
+      card: updatedCard,
+      liability: atomeLiab
+    });
+  }
+
+  // GENERAL LIABILITY UPDATE HANDLER
   const idx = db.liabilities.findIndex(l => l.id === id);
   if (idx === -1) {
-    return res.status(404).json({ success: false, error: 'Liability not found.' });
+    return res.status(404).json({ success: false, error: 'Liability record not found.' });
   }
 
   const existing = db.liabilities[idx];
-  const balance = outstandingBalance !== undefined ? parseFloat(outstandingBalance) : existing.outstandingBalance;
-  const limit = creditLimit !== undefined ? parseFloat(creditLimit) : (existing.creditLimit || balance * 2);
-  const nominalRate = nominalMonthlyRate !== undefined ? parseFloat(nominalMonthlyRate) : (existing.nominalMonthlyRate || 0);
-  const adminFee = monthlyAdminFee !== undefined ? parseFloat(monthlyAdminFee) : (existing.monthlyAdminFee || 0);
+  const balance = (outstanding_balance !== undefined ? parseFloat(outstanding_balance) : (outstandingBalance !== undefined ? parseFloat(outstandingBalance) : existing.outstandingBalance)) || 0;
+  const limit = (total_limit !== undefined ? parseFloat(total_limit) : (req.body.creditLimit !== undefined ? parseFloat(req.body.creditLimit) : (existing.creditLimit || balance * 2))) || 0;
+  const nominalRate = (nominal_monthly_rate !== undefined ? parseFloat(nominal_monthly_rate) : (nominalMonthlyRate !== undefined ? parseFloat(nominalMonthlyRate) : (existing.nominalMonthlyRate || 0))) || 0;
+  const adminFee = (monthly_admin_fee !== undefined ? parseFloat(monthly_admin_fee) : (monthlyAdminFee !== undefined ? parseFloat(monthlyAdminFee) : (existing.monthlyAdminFee || 0))) || 0;
   const effectiveApr = bnplEngine.calculateEffectiveApr(nominalRate, adminFee, balance);
+  const resolvedDueDate = rawDueDate || existing.billingCycleDueDate;
 
   const updatedLiab = {
     ...existing,
@@ -154,15 +359,38 @@ router.post('/update', (req, res) => {
     type: type || existing.type,
     outstandingBalance: balance,
     creditLimit: limit,
-    billingCycleDueDate: billingCycleDueDate || existing.billingCycleDueDate,
+    billingCycleDueDate: resolvedDueDate,
     nominalMonthlyRate: nominalRate,
     effectiveApr,
     monthlyAdminFee: adminFee,
-    monthlyPayment: monthlyPayment !== undefined ? parseFloat(monthlyPayment) : existing.monthlyPayment,
-    remainingTermsMonths: remainingTermsMonths !== undefined ? parseInt(remainingTermsMonths) : existing.remainingTermsMonths,
-    isZeroInterestPromo: isZeroInterestPromo !== undefined ? Boolean(isZeroInterestPromo) : existing.isZeroInterestPromo,
+    monthlyPayment: monthly_payment !== undefined ? parseFloat(monthly_payment) : (monthlyPayment !== undefined ? parseFloat(monthlyPayment) : existing.monthlyPayment),
+    remainingTermsMonths: remaining_terms_months !== undefined ? parseInt(remaining_terms_months) : (remainingTermsMonths !== undefined ? parseInt(remainingTermsMonths) : existing.remainingTermsMonths),
+    isZeroInterestPromo: is_zero_interest_promo !== undefined ? Boolean(is_zero_interest_promo) : (isZeroInterestPromo !== undefined ? Boolean(isZeroInterestPromo) : existing.isZeroInterestPromo),
     status: status || (balance === 0 ? 'paid_off' : existing.status || 'active')
   };
+
+  // SQLite Persistence for general liability
+  try {
+    const rawDb = sqliteDb.getRawDb();
+    if (rawDb) {
+      rawDb.run(
+        `UPDATE liabilities 
+         SET name = ?, provider = ?, type = ?, outstanding_balance = ?, credit_limit = ?,
+             nominal_monthly_rate = ?, effective_apr = ?, monthly_admin_fee = ?, monthly_payment = ?,
+             remaining_terms_months = ?, billing_cycle_due_date = ?, is_zero_interest_promo = ?, status = ?,
+             updated_at = CURRENT_TIMESTAMP
+         WHERE id = ?`,
+        [
+          updatedLiab.name, updatedLiab.provider, updatedLiab.type, updatedLiab.outstandingBalance, updatedLiab.creditLimit,
+          updatedLiab.nominalMonthlyRate, updatedLiab.effectiveApr, updatedLiab.monthlyAdminFee, updatedLiab.monthlyPayment,
+          updatedLiab.remainingTermsMonths, updatedLiab.billingCycleDueDate, updatedLiab.isZeroInterestPromo ? 1 : 0, updatedLiab.status,
+          updatedLiab.id
+        ]
+      );
+    }
+  } catch (sqlErr) {
+    console.warn('[SQLITE LIABILITIES UPDATE WARN]:', sqlErr.message);
+  }
 
   db.liabilities[idx] = updatedLiab;
   dataStore.saveDb(db);
@@ -170,72 +398,38 @@ router.post('/update', (req, res) => {
 
   res.json({
     success: true,
+    message: 'Liability updated successfully.',
     liability: updatedLiab
   });
 });
 
-// DELETE liability
-router.delete('/:id', (req, res) => {
-  const { id } = req.params;
-  const db = dataStore.getDb();
-  const idx = db.liabilities.findIndex(l => l.id === id);
-  if (idx === -1) {
-    return res.status(404).json({ success: false, error: 'Liability not found.' });
-  }
-
-  const removed = db.liabilities.splice(idx, 1)[0];
-  dataStore.saveDb(db);
-  dataStore.addSyncLog('Liabilities Tracker', 'info', `Removed liability line: ${removed.name}`);
-
-  res.json({
-    success: true,
-    message: `Removed ${removed.name}`
-  });
+// POST update credit card limits and metadata (Dedicated Card Route)
+router.post('/card/update', (req, res) => {
+  // Re-use universal update router
+  return router.handle({ ...req, url: '/update' }, res);
 });
 
-// ==========================================
-// CREDIT CARD & REVOLVING FACILITY ENDPOINTS
-// ==========================================
-
-// POST record new card transaction (purchase or bill payment)
+// POST record card purchase or credit transaction
 router.post('/card/transaction', (req, res) => {
   const {
     cardId = 'card-atome-01',
     merchant,
     amount,
-    type = 'purchase', // 'purchase', 'bill_payment', 'refund'
-    category = 'General',
-    ref
+    type = 'purchase',
+    category = 'Shopping'
   } = req.body;
 
-  if (!merchant || amount === undefined) {
-    return res.status(400).json({ success: false, error: 'Merchant and transaction amount are required.' });
+  if (!merchant || !amount || parseFloat(amount) <= 0) {
+    return res.status(400).json({ success: false, error: 'Merchant and positive amount are required.' });
   }
 
   const db = dataStore.getDb();
   if (!db.creditCards) db.creditCards = [];
 
-  let card = db.creditCards.find(c => c.id === cardId);
+  let card = db.creditCards.find(c => c.id === cardId || (c.cardName && c.cardName.includes('Atome')));
+  if (!card && db.creditCards.length > 0) card = db.creditCards[0];
   if (!card) {
-    // If card doesn't exist, initialize default Atome Card
-    card = {
-      id: cardId,
-      cardName: 'Atome Card (Mastercard)',
-      cardNumber: '•••• 5956',
-      cardBrand: 'Mastercard',
-      totalLimit: 10000.00,
-      availableLimit: 5811.42,
-      outstandingBalance: 4188.58,
-      dueDate: '2026-08-18',
-      statementDate: '2026-08-03',
-      billingCycleDay: 18,
-      minAmountDue: 209.43,
-      annualFee: 0.00,
-      interestRateApr: 0.00,
-      status: 'active',
-      transactions: []
-    };
-    db.creditCards.push(card);
+    return res.status(404).json({ success: false, error: 'Credit card not found.' });
   }
 
   const txAmount = parseFloat(amount);
@@ -246,122 +440,68 @@ router.post('/card/transaction', (req, res) => {
     type,
     category,
     date: new Date().toISOString(),
-    ref: ref || `ATM-TX-${Math.floor(10000 + Math.random() * 90000)}`
+    ref: `REF-${Math.floor(100000 + Math.random() * 900000)}`
   };
 
+  if (type === 'purchase') {
+    if (txAmount > card.availableLimit) {
+      return res.status(400).json({
+        success: false,
+        error: `Transaction declined. Amount ₱${txAmount.toLocaleString()} exceeds available limit of ₱${card.availableLimit.toLocaleString()}.`
+      });
+    }
+    card.availableLimit = parseFloat((card.availableLimit - txAmount).toFixed(2));
+    card.outstandingBalance = parseFloat((card.outstandingBalance + txAmount).toFixed(2));
+  } else {
+    card.availableLimit = parseFloat(Math.min(card.totalLimit, card.availableLimit + txAmount).toFixed(2));
+    card.outstandingBalance = parseFloat(Math.max(0, card.outstandingBalance - txAmount).toFixed(2));
+  }
+
+  card.minAmountDue = parseFloat(Math.max(0, card.outstandingBalance * 0.05).toFixed(2));
   if (!card.transactions) card.transactions = [];
   card.transactions.unshift(txRecord);
-  if (card.transactions.length > 100) {
-    card.transactions = card.transactions.slice(0, 100);
+
+  // Sync to SQLite
+  try {
+    const rawDb = sqliteDb.getRawDb();
+    if (rawDb) {
+      rawDb.run(
+        `UPDATE credit_cards SET available_limit = ?, updated_at = CURRENT_TIMESTAMP WHERE card_id = ? OR id = 1`,
+        [card.availableLimit, card.id]
+      );
+      rawDb.run(
+        `INSERT INTO card_transactions (transaction_id, card_id, merchant_name, amount, transaction_type, reference_number, category)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [txRecord.id, card.id, txRecord.merchant, txRecord.amount, txRecord.type, txRecord.ref, txRecord.category]
+      );
+      rawDb.run(
+        `UPDATE liabilities SET outstanding_balance = ?, updated_at = CURRENT_TIMESTAMP WHERE id = 'liab-atome-card'`,
+        [card.outstandingBalance]
+      );
+    }
+  } catch (sqlErr) {
+    console.warn('[SQLITE TRANSACTION SYNC WARN]:', sqlErr.message);
   }
 
-  // Balance recalculation
-  if (type === 'purchase' || type === 'fee') {
-    card.availableLimit = parseFloat(Math.max(0, card.availableLimit - txAmount).toFixed(2));
-    card.outstandingBalance = parseFloat((card.totalLimit - card.availableLimit).toFixed(2));
-  } else if (type === 'bill_payment' || type === 'refund') {
-    card.availableLimit = parseFloat(Math.min(card.totalLimit, card.availableLimit + txAmount).toFixed(2));
-    card.outstandingBalance = parseFloat(Math.max(0, card.totalLimit - card.availableLimit).toFixed(2));
-  }
-
-  // Keep min amount due updated (~5% of outstanding balance)
-  card.minAmountDue = parseFloat(Math.max(0, card.outstandingBalance * 0.05).toFixed(2));
-
-  // Sync to general liabilities table if Atome card is present
+  // Sync to liabilities in memory
   const atomeLiab = (db.liabilities || []).find(l => l.id === 'liab-atome-card');
   if (atomeLiab) {
     atomeLiab.outstandingBalance = card.outstandingBalance;
-    atomeLiab.creditLimit = card.totalLimit;
-    if (atomeLiab.outstandingBalance === 0) {
-      atomeLiab.status = 'paid_off';
-    } else {
-      atomeLiab.status = 'active';
-    }
+    atomeLiab.status = card.outstandingBalance === 0 ? 'paid_off' : 'active';
   }
 
   dataStore.saveDb(db);
   dataStore.addSyncLog(
-    'Atome Card Activity',
+    'Atome Card Transaction',
     'success',
-    `Recorded ${type === 'bill_payment' ? 'Bill Repayment' : 'Purchase'} [₱${txAmount.toLocaleString()}] at ${merchant}. Available Limit: ₱${card.availableLimit.toLocaleString()}`
+    `${type === 'purchase' ? 'Charged' : 'Credited'} ₱${txAmount.toLocaleString()} at ${merchant}. Available Limit: ₱${card.availableLimit.toLocaleString()}`
   );
 
   res.json({
     success: true,
     card,
     transaction: txRecord,
-    message: `Transaction recorded successfully.`
-  });
-});
-
-// POST update credit card limits and metadata
-router.post('/card/update', (req, res) => {
-  const {
-    id = 'card-atome-01',
-    cardName,
-    cardNumber,
-    totalLimit,
-    availableLimit,
-    outstandingBalance,
-    dueDate,
-    statementDate,
-    billingCycleDay,
-    status
-  } = req.body;
-
-  const db = dataStore.getDb();
-  if (!db.creditCards) db.creditCards = [];
-
-  let card = db.creditCards.find(c => c.id === id);
-  if (!card) {
-    return res.status(404).json({ success: false, error: 'Credit card not found.' });
-  }
-
-  if (cardName !== undefined) card.cardName = cardName;
-  if (cardNumber !== undefined) card.cardNumber = cardNumber;
-  if (dueDate !== undefined) card.dueDate = dueDate;
-  if (statementDate !== undefined) card.statementDate = statementDate;
-  if (billingCycleDay !== undefined) card.billingCycleDay = parseInt(billingCycleDay);
-  if (status !== undefined) card.status = status;
-
-  if (totalLimit !== undefined) {
-    card.totalLimit = parseFloat(totalLimit) || 0;
-  }
-
-  if (availableLimit !== undefined) {
-    card.availableLimit = parseFloat(availableLimit) || 0;
-    card.outstandingBalance = parseFloat(Math.max(0, card.totalLimit - card.availableLimit).toFixed(2));
-  } else if (outstandingBalance !== undefined) {
-    card.outstandingBalance = parseFloat(outstandingBalance) || 0;
-    card.availableLimit = parseFloat(Math.max(0, card.totalLimit - card.outstandingBalance).toFixed(2));
-  }
-
-  card.minAmountDue = parseFloat(Math.max(0, card.outstandingBalance * 0.05).toFixed(2));
-
-  // Sync to general liabilities table if Atome card is present
-  const atomeLiab = (db.liabilities || []).find(l => l.id === 'liab-atome-card');
-  if (atomeLiab) {
-    atomeLiab.outstandingBalance = card.outstandingBalance;
-    atomeLiab.creditLimit = card.totalLimit;
-    if (dueDate) atomeLiab.billingCycleDueDate = dueDate;
-    if (atomeLiab.outstandingBalance === 0) {
-      atomeLiab.status = 'paid_off';
-    } else {
-      atomeLiab.status = 'active';
-    }
-  }
-
-  dataStore.saveDb(db);
-  dataStore.addSyncLog(
-    'Atome Card Settings',
-    'success',
-    `Updated ${card.cardName}: Total Limit ₱${card.totalLimit.toLocaleString()}, Available Limit ₱${card.availableLimit.toLocaleString()}, Outstanding: ₱${card.outstandingBalance.toLocaleString()}`
-  );
-
-  res.json({
-    success: true,
-    card,
-    message: 'Credit card details updated successfully.'
+    message: 'Transaction recorded successfully.'
   });
 });
 
@@ -380,13 +520,13 @@ router.post('/card/pay', (req, res) => {
   const db = dataStore.getDb();
   if (!db.creditCards) db.creditCards = [];
 
-  const card = db.creditCards.find(c => c.id === id);
+  let card = db.creditCards.find(c => c.id === id || (c.cardName && c.cardName.includes('Atome')));
+  if (!card && db.creditCards.length > 0) card = db.creditCards[0];
   if (!card) {
     return res.status(404).json({ success: false, error: 'Credit card not found.' });
   }
 
   const payAmt = parseFloat(paymentAmount);
-  const prevBalance = card.outstandingBalance;
 
   // Restore available limit (cannot exceed total limit)
   card.availableLimit = parseFloat(Math.min(card.totalLimit, card.availableLimit + payAmt).toFixed(2));
@@ -406,6 +546,28 @@ router.post('/card/pay', (req, res) => {
 
   if (!card.transactions) card.transactions = [];
   card.transactions.unshift(txRecord);
+
+  // Sync to SQLite
+  try {
+    const rawDb = sqliteDb.getRawDb();
+    if (rawDb) {
+      rawDb.run(
+        `UPDATE credit_cards SET available_limit = ?, updated_at = CURRENT_TIMESTAMP WHERE card_id = ? OR id = 1`,
+        [card.availableLimit, card.id]
+      );
+      rawDb.run(
+        `INSERT INTO card_transactions (transaction_id, card_id, merchant_name, amount, transaction_type, reference_number, category)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [txRecord.id, card.id, txRecord.merchant, txRecord.amount, txRecord.type, txRecord.ref, txRecord.category]
+      );
+      rawDb.run(
+        `UPDATE liabilities SET outstanding_balance = ?, status = CASE WHEN ? = 0 THEN 'paid_off' ELSE 'active' END, updated_at = CURRENT_TIMESTAMP WHERE id = 'liab-atome-card'`,
+        [card.outstandingBalance, card.outstandingBalance]
+      );
+    }
+  } catch (sqlErr) {
+    console.warn('[SQLITE BILL PAY SYNC WARN]:', sqlErr.message);
+  }
 
   // Sync to general liabilities table if Atome card is present
   const atomeLiab = (db.liabilities || []).find(l => l.id === 'liab-atome-card');
@@ -429,6 +591,33 @@ router.post('/card/pay', (req, res) => {
     transaction: txRecord,
     message: `Payment of ₱${payAmt.toLocaleString()} processed successfully!`
   });
+});
+
+// DELETE liability
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  const db = dataStore.getDb();
+  const idx = db.liabilities.findIndex(l => l.id === id);
+  if (idx === -1) {
+    return res.status(404).json({ success: false, error: 'Liability not found.' });
+  }
+
+  const removed = db.liabilities.splice(idx, 1)[0];
+
+  // SQLite Persistence
+  try {
+    const rawDb = sqliteDb.getRawDb();
+    if (rawDb) {
+      rawDb.run(`DELETE FROM liabilities WHERE id = ?`, [id]);
+    }
+  } catch (sqlErr) {
+    console.warn('[SQLITE DELETE WARN]:', sqlErr.message);
+  }
+
+  dataStore.saveDb(db);
+  dataStore.addSyncLog('Liabilities Tracker', 'success', `Deleted liability: ${removed.name}`);
+
+  res.json({ success: true, message: `Removed ${removed.name}` });
 });
 
 module.exports = router;

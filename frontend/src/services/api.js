@@ -125,7 +125,7 @@ export const api = {
     return res.json();
   },
   updateCreditCard: async (data) => {
-    const res = await fetch(`${API_BASE}/liabilities/card/update`, {
+    const res = await fetch(`${API_BASE}/liabilities/update`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

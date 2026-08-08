@@ -189,20 +189,32 @@ export default function AtomeCardLiability({
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const res = await api.updateCreditCard({
-        id: card.id,
+      const payload = {
+        id: card.id || 1,
+        card_name: editForm.cardName,
         cardName: editForm.cardName,
+        card_number: editForm.cardNumber,
         cardNumber: editForm.cardNumber,
+        total_limit: parseFloat(editForm.totalLimit),
         totalLimit: parseFloat(editForm.totalLimit),
+        available_limit: parseFloat(editForm.availableLimit),
         availableLimit: parseFloat(editForm.availableLimit),
+        due_date: editForm.dueDate,
         dueDate: editForm.dueDate,
-        statementDate: editForm.statementDate
-      });
+        statement_date: editForm.statementDate,
+        statementDate: editForm.statementDate,
+        billing_cycle_day: 18,
+        billingCycleDay: 18
+      };
+
+      const res = await api.updateCreditCard(payload);
 
       if (res.success) {
-        if (showToast) showToast('success', 'Card Settings Updated', `Updated limits for ${editForm.cardName}`);
+        if (showToast) showToast('success', 'Card Settings Saved', `Available ₱${parseFloat(editForm.availableLimit).toLocaleString()} / Total ₱${parseFloat(editForm.totalLimit).toLocaleString()}`);
         setIsEditModalOpen(false);
         if (onRefresh) onRefresh();
+      } else {
+        if (showToast) showToast('error', 'Update Failed', res.error || 'Unable to save settings');
       }
     } catch (err) {
       if (showToast) showToast('error', 'Update Failed', err.message);
