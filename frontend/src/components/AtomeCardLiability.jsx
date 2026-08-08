@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   CreditCard,
+  Atom,
   PlusCircle,
   ArrowDownRight,
   ArrowUpRight,
@@ -31,6 +32,8 @@ export default function AtomeCardLiability({
   const defaultCard = {
     id: 'card-atome-01',
     cardName: 'Atome Card (Mastercard)',
+    cardholderName: 'Danilo Vallejo',
+    cardholder_name: 'Danilo Vallejo',
     cardNumber: '•••• 5956',
     cardBrand: 'Mastercard',
     totalLimit: 10000.00,
@@ -124,6 +127,7 @@ export default function AtomeCardLiability({
 
   const [editForm, setEditForm] = useState({
     cardName: card.cardName || 'Atome Card (Mastercard)',
+    cardholderName: card.cardholder_name || card.cardholderName || 'Danilo Vallejo',
     cardNumber: card.cardNumber || '•••• 5956',
     totalLimit: totalLimit.toString(),
     availableLimit: availableLimit.toString(),
@@ -193,6 +197,8 @@ export default function AtomeCardLiability({
         id: card.id || 1,
         card_name: editForm.cardName,
         cardName: editForm.cardName,
+        cardholder_name: editForm.cardholderName || 'Danilo Vallejo',
+        cardholderName: editForm.cardholderName || 'Danilo Vallejo',
         card_number: editForm.cardNumber,
         cardNumber: editForm.cardNumber,
         total_limit: parseFloat(editForm.totalLimit),
@@ -236,8 +242,8 @@ export default function AtomeCardLiability({
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800/80 pb-5 mb-6">
         <div>
           <div className="flex items-center space-x-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-600 via-pink-600 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-600/20 text-white font-black text-xs">
-              ATM
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-rose-600 via-pink-600 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-600/25 text-white" title="Atome Revolving Line">
+              <Atom className="w-4 h-4 text-white" />
             </div>
             <div>
               <div className="flex items-center space-x-2">
@@ -348,7 +354,9 @@ export default function AtomeCardLiability({
               <div className="flex items-end justify-between">
                 <div>
                   <div className="text-[8px] text-slate-400 uppercase tracking-widest">Cardholder</div>
-                  <div className="text-xs font-bold text-slate-200 tracking-wider">DANIEL SANTOS</div>
+                  <div className="text-xs font-bold tracking-wider text-slate-100 uppercase">
+                    {card.cardholder_name || card.cardholderName || editForm.cardholderName || "Danilo Vallejo"}
+                  </div>
                 </div>
 
                 <div className="text-right mr-4">
@@ -742,6 +750,17 @@ export default function AtomeCardLiability({
             <form onSubmit={handleSaveEdit} className="space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
+                  <label className="block text-slate-400 font-bold mb-1">Cardholder Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={editForm.cardholderName}
+                    onChange={(e) => setEditForm({ ...editForm, cardholderName: e.target.value })}
+                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500 font-semibold"
+                    placeholder="Danilo Vallejo"
+                  />
+                </div>
+                <div>
                   <label className="block text-slate-400 font-bold mb-1">Card Display Name</label>
                   <input
                     type="text"
@@ -751,16 +770,17 @@ export default function AtomeCardLiability({
                     className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-cyan-500"
                   />
                 </div>
-                <div>
-                  <label className="block text-slate-400 font-bold mb-1">Card Number (Masked)</label>
-                  <input
-                    type="text"
-                    required
-                    value={editForm.cardNumber}
-                    onChange={(e) => setEditForm({ ...editForm, cardNumber: e.target.value })}
-                    className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-mono focus:outline-none focus:border-cyan-500"
-                  />
-                </div>
+              </div>
+
+              <div>
+                <label className="block text-slate-400 font-bold mb-1">Card Number (Masked)</label>
+                <input
+                  type="text"
+                  required
+                  value={editForm.cardNumber}
+                  onChange={(e) => setEditForm({ ...editForm, cardNumber: e.target.value })}
+                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-mono focus:outline-none focus:border-cyan-500"
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-3">

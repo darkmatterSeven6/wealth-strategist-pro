@@ -1,6 +1,6 @@
 {
   "profile": {
-    "name": "Daniel Santos",
+    "name": "Danilo Vallejo",
     "currency": "PHP",
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
@@ -1518,6 +1518,7 @@
     {
       "id": "card-atome-01",
       "cardName": "Atome Card (Mastercard)",
+      "cardholderName": "Danilo Vallejo",
       "cardNumber": "•••• 5956",
       "cardBrand": "Mastercard",
       "totalLimit": 10000.00,

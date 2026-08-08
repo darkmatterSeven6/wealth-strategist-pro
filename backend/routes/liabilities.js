@@ -159,6 +159,8 @@ router.post('/update', (req, res) => {
     id,
     card_name,
     cardName,
+    cardholder_name,
+    cardholderName,
     name,
     card_number,
     cardNumber,
@@ -192,6 +194,7 @@ router.post('/update', (req, res) => {
   } = req.body;
 
   const targetCardName = card_name || cardName || (type === 'credit_card' ? name : null);
+  const targetCardholderName = cardholder_name || cardholderName || 'Danilo Vallejo';
   const targetCardNumber = card_number || cardNumber;
   const rawTotalLimit = total_limit !== undefined ? total_limit : (totalLimit !== undefined ? totalLimit : req.body.creditLimit);
   const rawAvailLimit = available_limit !== undefined ? available_limit : availableLimit;
@@ -283,6 +286,8 @@ router.post('/update', (req, res) => {
     if (cardIdx !== -1) {
       const card = db.creditCards[cardIdx];
       if (targetCardName) card.cardName = targetCardName;
+      card.cardholderName = targetCardholderName;
+      card.cardholder_name = targetCardholderName;
       if (targetCardNumber) card.cardNumber = targetCardNumber;
       card.totalLimit = totalLimitNum;
       card.availableLimit = availLimitNum;
@@ -297,6 +302,8 @@ router.post('/update', (req, res) => {
       updatedCard = {
         id: 'card-atome-01',
         cardName: targetCardName || 'Atome Card (Mastercard)',
+        cardholderName: targetCardholderName,
+        cardholder_name: targetCardholderName,
         cardNumber: targetCardNumber || '•••• 5956',
         cardBrand: 'Mastercard',
         totalLimit: totalLimitNum,

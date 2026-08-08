@@ -1,6 +1,6 @@
 {
   "profile": {
-    "name": "Daniel Santos",
+    "name": "Danilo Vallejo",
     "currency": "PHP",
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
@@ -1659,15 +1659,16 @@
     {
       "id": "card-atome-01",
       "cardName": "Atome Card (Mastercard)",
-      "cardNumber": "•••• 5956",
+      "cardholderName": "Danilo Vallejo",
+      "cardNumber": "•••• •••• •••• 5956",
       "cardBrand": "Mastercard",
-      "totalLimit": 10000,
+      "totalLimit": 7460,
       "availableLimit": 5811.42,
-      "outstandingBalance": 4188.58,
+      "outstandingBalance": 1648.58,
       "dueDate": "2026-09-11",
       "statementDate": "2026-09-01",
       "billingCycleDay": 18,
-      "minAmountDue": 209.43,
+      "minAmountDue": 82.43,
       "annualFee": 0,
       "interestRateApr": 0,
       "status": "active",
@@ -1717,8 +1718,8 @@
       "name": "Atome Card / PayLater",
       "provider": "Atome Philippines",
       "type": "bnpl",
-      "outstandingBalance": 4188.58,
-      "creditLimit": 10000,
+      "outstandingBalance": 1648.58,
+      "creditLimit": 7460,
       "billingCycleDueDate": "2026-09-11",
       "nominalMonthlyRate": 0,
       "effectiveApr": 0,
@@ -1833,6 +1834,34 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1786198761335-51rg",
+      "timestamp": "2026-08-08T14:19:21.335Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
+    },
+    {
+      "id": "log-1786198724534-kv7r",
+      "timestamp": "2026-08-08T14:18:44.535Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
+    },
+    {
+      "id": "log-1786198667674-yq4a",
+      "timestamp": "2026-08-08T14:17:47.674Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
+    },
+    {
+      "id": "log-1786198587380-8s9s",
+      "timestamp": "2026-08-08T14:16:27.380Z",
+      "source": "Atome Card Settings",
+      "status": "success",
+      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱10,000"
+    },
     {
       "id": "log-1786198102668-0ztn",
       "timestamp": "2026-08-08T14:08:22.668Z",
@@ -2154,34 +2183,6 @@
       "source": "Automated Aggregation Pipeline",
       "status": "success",
       "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786186783129-tmon",
-      "timestamp": "2026-08-08T10:59:43.129Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 10:59:43"
-    },
-    {
-      "id": "log-1786186773304-ggz2",
-      "timestamp": "2026-08-08T10:59:33.304Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786186772728-xtsa",
-      "timestamp": "2026-08-08T10:59:32.728Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786186236342-23j5",
-      "timestamp": "2026-08-08T10:50:36.343Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 10:50:36"
     }
   ],
   "transactions": [
