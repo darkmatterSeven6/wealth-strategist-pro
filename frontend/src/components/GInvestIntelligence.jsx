@@ -13,9 +13,12 @@ import {
   ShieldCheck,
   Clock,
   Camera,
-  UploadCloud
+  UploadCloud,
+  Eye,
+  Building2
 } from 'lucide-react';
 import FundScreenshotUploadModal from './FundScreenshotUploadModal';
+import FundHoldingsModal from './FundHoldingsModal';
 
 export default function GInvestIntelligence({ 
   fundsData, 
@@ -31,6 +34,10 @@ export default function GInvestIntelligence({
   // Search & Filter State
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('ALL');
+
+  // Fund Holdings Modal State
+  const [selectedFundForHoldings, setSelectedFundForHoldings] = useState(null);
+  const [isHoldingsModalOpen, setIsHoldingsModalOpen] = useState(false);
 
   // Edit Holding State
   const [editingFund, setEditingFund] = useState(null);
@@ -205,6 +212,11 @@ export default function GInvestIntelligence({
     }
 
     return badges;
+  };
+
+  const handleOpenHoldingsBreakdown = (fund) => {
+    setSelectedFundForHoldings(fund);
+    setIsHoldingsModalOpen(true);
   };
 
   const handleOpenEdit = (fund) => {
@@ -419,19 +431,27 @@ export default function GInvestIntelligence({
                   return (
                     <tr 
                       key={fund.id} 
-                      className={`hover:bg-slate-800/40 transition ${
+                      onClick={() => handleOpenHoldingsBreakdown(fund)}
+                      className={`group cursor-pointer hover:bg-slate-800/60 transition ${
                         hasPosition 
                           ? 'bg-gradient-to-r from-purple-950/25 via-emerald-950/15 to-transparent border-l-2 border-emerald-400' 
                           : ''
                       }`}
+                      title="Click row to view Target Fund Top Holdings breakdown"
                     >
                       
                       {/* Fund Name, Type & Badges (Matching User's Reference Layout) */}
                       <td className="py-4 px-4">
                         <div className="space-y-1.5">
                           {/* 1. Fund Name */}
-                          <div className="font-bold text-white text-sm tracking-tight">
-                            {fund.name}
+                          <div className="flex items-center space-x-2 flex-wrap">
+                            <span className="font-bold text-white text-sm tracking-tight group-hover:text-purple-300 transition">
+                              {fund.name}
+                            </span>
+                            <span className="opacity-0 group-hover:opacity-100 transition duration-150 inline-flex items-center space-x-1 px-1.5 py-0.5 rounded text-[10px] font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                              <Eye className="w-2.5 h-2.5" />
+                              <span>Holdings</span>
+                            </span>
                           </div>
 
                           {/* 2. Fund Type / Category & Metadata */}
@@ -564,15 +584,30 @@ export default function GInvestIntelligence({
                         </span>
                       </td>
 
-                      {/* Edit Holding */}
+                      {/* Action Buttons */}
                       <td className="py-4 px-4 text-center">
-                        <button
-                          onClick={() => handleOpenEdit(fund)}
-                          className="p-1.5 bg-slate-800 hover:bg-purple-600 hover:text-white text-slate-300 rounded-lg border border-slate-700 transition shadow-sm"
-                          title="Edit Holding & Orders"
-                        >
-                          <Edit3 className="w-3.5 h-3.5" />
-                        </button>
+                        <div className="flex items-center justify-center space-x-1.5">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleOpenHoldingsBreakdown(fund);
+                            }}
+                            className="p-1.5 bg-slate-800/80 hover:bg-purple-600 hover:text-white text-purple-300 rounded-lg border border-slate-700 transition shadow-sm cursor-pointer"
+                            title="View Target Fund Breakdown & Constituents"
+                          >
+                            <Eye className="w-3.5 h-3.5" />
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleOpenEdit(fund);
+                            }}
+                            className="p-1.5 bg-slate-800 hover:bg-emerald-600 hover:text-white text-slate-300 rounded-lg border border-slate-700 transition shadow-sm cursor-pointer"
+                            title="Edit Holding & Orders"
+                          >
+                            <Edit3 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );
@@ -881,6 +916,14 @@ export default function GInvestIntelligence({
         onSuccess={() => {
           if (onScrapeNavpu) onScrapeNavpu();
         }}
+      />
+
+      {/* Target Fund Top Holdings Breakdown Modal */}
+      <FundHoldingsModal
+        isOpen={isHoldingsModalOpen}
+        onClose={() => setIsHoldingsModalOpen(false)}
+        fund={selectedFundForHoldings}
+        onOpenEditHolding={(f) => handleOpenEdit(f)}
       />
 
     </div>
