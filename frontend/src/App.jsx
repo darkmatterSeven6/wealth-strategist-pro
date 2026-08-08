@@ -11,6 +11,7 @@ import ExitConfirmationModal from './components/ExitConfirmationModal';
 import ExitScreen from './components/ExitScreen';
 import { api } from './services/api';
 import { CheckCircle2, AlertCircle, GitBranch, X, Database } from 'lucide-react';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -37,8 +38,55 @@ export default function App() {
   const [syncLogs, setSyncLogs] = useState([]);
   const [macroData, setMacroData] = useState(null);
 
-  // Helper for floating notifications
+  // Helper for floating dark-mode notifications
   const showToast = (type, title, text) => {
+    const formatted = text ? `${title}: ${text}` : title;
+    if (type === 'success') {
+      toast.success(formatted, {
+        style: {
+          background: '#0F172A',
+          color: '#34D399',
+          border: '1px solid #059669',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)'
+        },
+        iconTheme: {
+          primary: '#10B981',
+          secondary: '#0F172A',
+        },
+      });
+    } else if (type === 'error') {
+      toast.error(formatted, {
+        style: {
+          background: '#0F172A',
+          color: '#F87171',
+          border: '1px solid #DC2626',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)'
+        },
+        iconTheme: {
+          primary: '#EF4444',
+          secondary: '#0F172A',
+        },
+      });
+    } else {
+      toast(formatted, {
+        icon: '⚠️',
+        style: {
+          background: '#0F172A',
+          color: '#FBBF24',
+          border: '1px solid #D97706',
+          borderRadius: '8px',
+          fontSize: '13px',
+          fontWeight: '600',
+          boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)'
+        }
+      });
+    }
     setToastMessage({ type, title, text, id: Date.now() });
     setTimeout(() => {
       setToastMessage((prev) => (prev?.id ? null : prev));
@@ -505,6 +553,14 @@ export default function App() {
           <span className="text-slate-400">Zero Cloud Dependencies • 100% Local JSON Persistence</span>
         </div>
       </footer>
+
+      {/* Dark-Mode Toast Notification Provider */}
+      <Toaster 
+        position="top-right" 
+        toastOptions={{
+          duration: 5000,
+        }} 
+      />
 
     </div>
   );

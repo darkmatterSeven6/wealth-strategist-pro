@@ -17,6 +17,44 @@ import {
   Landmark
 } from 'lucide-react';
 
+import toast from 'react-hot-toast';
+
+const showSuccessToast = (message) => {
+  toast.success(message, {
+    style: {
+      background: '#0F172A',
+      color: '#34D399',
+      border: '1px solid #059669',
+      borderRadius: '8px',
+      fontSize: '13px',
+      fontWeight: '600',
+      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)'
+    },
+    iconTheme: {
+      primary: '#10B981',
+      secondary: '#0F172A',
+    },
+  });
+};
+
+const showErrorToast = (message) => {
+  toast.error(message, {
+    style: {
+      background: '#0F172A',
+      color: '#F87171',
+      border: '1px solid #DC2626',
+      borderRadius: '8px',
+      fontSize: '13px',
+      fontWeight: '600',
+      boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)'
+    },
+    iconTheme: {
+      primary: '#EF4444',
+      secondary: '#0F172A',
+    },
+  });
+};
+
 export default function Navbar({ 
   activeTab, 
   setActiveTab, 
@@ -54,10 +92,10 @@ export default function Navbar({
         const data = await response.json();
         console.log('[UI] Sync response:', data);
       }
-      alert('IMAP Email Sync triggered successfully! Check terminal for live logs.');
+      showSuccessToast('IMAP Email Sync triggered successfully! Check terminal for live logs.');
     } catch (err) {
       console.error('[UI Sync Error]:', err);
-      alert('Sync request failed. Verify backend process on PORT 5001.');
+      showErrorToast('Sync request failed. Verify backend process on PORT 5001.');
     }
   };
 

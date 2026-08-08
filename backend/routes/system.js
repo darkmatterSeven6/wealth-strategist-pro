@@ -29,16 +29,27 @@ router.get('/sync-status', async (req, res) => {
   }
 });
 
-// POST /api/system/shutdown - Graceful exit
+const { exec } = require('child_process');
+
+// POST /api/system/shutdown - Graceful exit and teardown of all server processes
 router.post('/shutdown', (req, res) => {
   res.json({
     success: true,
-    message: 'DV Financials backend shutting down gracefully.'
+    message: 'DV Financials backend shutting down and terminating processes...'
   });
 
-  console.log('[System] Exit request received. Shutting down gracefully...');
+  console.log('[System] Exit request received. Releasing ports 5001 & 5173 and closing terminal processes...');
+  
   setTimeout(() => {
-    process.exit(0);
+    if (process.platform === 'win32') {
+      exec('taskkill /F /IM node.exe', (err) => {
+        if (err) {
+          process.exit(0);
+        }
+      });
+    } else {
+      process.exit(0);
+    }
   }, 1000);
 });
 

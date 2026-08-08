@@ -13,12 +13,12 @@ taskkill /F /IM node.exe >nul 2>&1
 timeout /t 1 /nobreak >nul
 
 echo [DV FINANCIALS] Starting Backend Service (Port 5001)...
-start "DV Financials Backend" cmd /k "cd /d "%~dp0backend" && set PATH=C:\Users\danie\nodejs;%%PATH%% && npm run dev"
+start "DV Financials Backend" cmd /c "cd /d "%~dp0backend" && set PATH=C:\Users\danie\nodejs;%%PATH%% && npm run dev"
 
 timeout /t 2 /nobreak >nul
 
 echo [DV FINANCIALS] Starting Frontend Dashboard (Port 5173)...
-start "DV Financials Frontend" cmd /k "cd /d "%~dp0frontend" && set PATH=C:\Users\danie\nodejs;%%PATH%% && npm run dev"
+start "DV Financials Frontend" cmd /c "cd /d "%~dp0frontend" && set PATH=C:\Users\danie\nodejs;%%PATH%% && npm run dev"
 
 timeout /t 3 /nobreak >nul
 
