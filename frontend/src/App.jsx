@@ -210,17 +210,26 @@ export default function App() {
     if (saved) {
       setSavedToGitHubOnExit(true);
       setIsExited(true);
-      // Attempt browser tab close
+      try {
+        await api.shutdownSystem();
+      } catch (e) {
+        console.warn('[System Shutdown Call Note]:', e);
+      }
       try {
         window.close();
       } catch (e) {}
     }
   };
 
-  const handleExitWithoutSaving = () => {
+  const handleExitWithoutSaving = async () => {
     setIsExitModalOpen(false);
     setSavedToGitHubOnExit(false);
     setIsExited(true);
+    try {
+      await api.shutdownSystem();
+    } catch (e) {
+      console.warn('[System Shutdown Call Note]:', e);
+    }
     try {
       window.close();
     } catch (e) {}
