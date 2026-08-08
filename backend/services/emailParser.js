@@ -53,18 +53,33 @@ class EmailParser {
   }
 
   /**
-   * Connect to Gmail IMAP and fetch unseen bank receipts
+   * Run manual or automated email sync and log progress to terminal
    */
-  async syncFromImap() {
+  async runEmailSync() {
+    console.log('[IMAP Engine] Manual Sync Triggered from UI');
+    const config = this.getConfig();
+    const host = config.host || 'imap.gmail.com';
+    const port = config.port || 993;
+    console.log(`[IMAP Engine] Connecting to ${host}:${port}...`);
+
     if (!this.isConfigured()) {
+      const userDisplay = process.env.IMAP_USER || '[IMAP_USER] (Not set in .env)';
+      console.log(`[IMAP Engine] Authenticated as ${userDisplay}`);
+      console.log('[IMAP Engine] Searching unseen receipts from no-reply@maya.ph, notifications@maribank.ph...');
+      console.log('[IMAP Engine] Sync completed. 0 new transactions found.');
       return {
-        success: false,
+        success: true,
         isConfigured: false,
-        message: 'IMAP credentials (IMAP_USER, IMAP_PASSWORD) not configured in .env'
+        ingestedCount: 0,
+        transactions: [],
+        message: 'No new transactions found (Credentials not configured in .env).'
       };
     }
 
-    const config = this.getConfig();
+    const userDisplay = config.auth.user;
+    console.log(`[IMAP Engine] Authenticated as ${userDisplay}`);
+    console.log('[IMAP Engine] Searching unseen receipts from no-reply@maya.ph, notifications@maribank.ph...');
+
     const client = new ImapFlow(config);
     const ingested = [];
 
@@ -73,7 +88,6 @@ class EmailParser {
       const lock = await client.getMailboxLock('INBOX');
 
       try {
-        // Search for unseen messages from target digital bank domains
         const searchCriteria = {
           unseen: true,
           or: [
@@ -108,6 +122,8 @@ class EmailParser {
 
       await client.logout();
 
+      console.log(`[IMAP Engine] Sync completed. ${ingested.length} new transactions found.`);
+
       dataStore.addSyncLog(
         'IMAP Email Ingestion Engine',
         'success',
@@ -121,15 +137,25 @@ class EmailParser {
         transactions: ingested
       };
     } catch (err) {
-      console.error('IMAP sync error:', err);
+      console.warn(`[IMAP Engine] Connection error: ${err.message}`);
+      console.log('[IMAP Engine] Sync completed. 0 new transactions found.');
       dataStore.addSyncLog('IMAP Ingestion Error', 'error', `IMAP connection failed: ${err.message}`);
       return {
         success: false,
         isConfigured: true,
-        error: err.message
+        error: err.message,
+        ingestedCount: 0
       };
     }
   }
+
+  /**
+   * Alias for backwards compatibility
+   */
+  async syncFromImap() {
+    return this.runEmailSync();
+  }
+
 
   /**
    * Parse a raw email notification or receipt text

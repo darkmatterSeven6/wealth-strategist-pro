@@ -5,23 +5,80 @@ const syncWorkers = require('../services/syncWorkers');
 const navpuScraper = require('../services/navpuScraper');
 const emailParser = require('../services/emailParser');
 
+// Helper to execute complete sync session including IMAP email parser
+async function executeFullSyncPipeline() {
+  const emailSync = await emailParser.runEmailSync();
+  const updatedAccounts = await syncWorkers.runFullSync();
+  const updatedFunds = await navpuScraper.scrapeAllFunds();
+  return {
+    emailSync,
+    updatedAccounts,
+    updatedFunds,
+    timestamp: new Date().toISOString()
+  };
+}
+
 // POST trigger full automated sync session
 router.post('/run-all', async (req, res) => {
   try {
-    const updatedAccounts = await syncWorkers.runFullSync();
-    const updatedFunds = await navpuScraper.scrapeAllFunds();
-
+    const result = await executeFullSyncPipeline();
     res.json({
       success: true,
       message: 'Full aggregation sync pipeline executed successfully.',
-      syncedAccounts: updatedAccounts.length,
-      syncedFunds: updatedFunds.length,
-      timestamp: new Date().toISOString()
+      emailSync: result.emailSync,
+      syncedAccounts: result.updatedAccounts.length,
+      syncedFunds: result.updatedFunds.length,
+      timestamp: result.timestamp
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
 });
+
+// POST /api/sync direct hook
+router.post('/', async (req, res) => {
+  try {
+    const result = await executeFullSyncPipeline();
+    res.json({
+      success: true,
+      message: 'Full aggregation sync pipeline executed successfully.',
+      emailSync: result.emailSync,
+      syncedAccounts: result.updatedAccounts.length,
+      syncedFunds: result.updatedFunds.length,
+      timestamp: result.timestamp
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /api/sync-data hook
+router.post('/sync-data', async (req, res) => {
+  try {
+    const result = await executeFullSyncPipeline();
+    res.json({
+      success: true,
+      message: 'Full aggregation sync pipeline executed successfully.',
+      emailSync: result.emailSync,
+      syncedAccounts: result.updatedAccounts.length,
+      syncedFunds: result.updatedFunds.length,
+      timestamp: result.timestamp
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /api/sync/email-sync trigger
+router.post('/email-sync', async (req, res) => {
+  try {
+    const result = await emailParser.runEmailSync();
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 
 // POST Ingestion Rail: MariBank Mock / Webhook proxy
 router.post('/maribank', (req, res) => {
