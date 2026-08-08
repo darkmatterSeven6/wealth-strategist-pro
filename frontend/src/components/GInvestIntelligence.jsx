@@ -353,17 +353,17 @@ export default function GInvestIntelligence({
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
         {/* Category Filter Tabs */}
-        <div className="flex overflow-x-auto space-x-2 pb-1 no-scrollbar">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition cursor-pointer ${
                 selectedCategory === cat
                   ? 'bg-purple-600 text-white shadow-glow-purple font-bold'
-                  : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800'
+                  : 'bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-slate-800 hover:border-slate-700'
               }`}
             >
               {cat}
@@ -372,7 +372,7 @@ export default function GInvestIntelligence({
         </div>
 
         {/* Quick Search */}
-        <div className="relative min-w-[240px]">
+        <div className="relative w-full lg:w-64 xl:w-72 shrink-0">
           <Search className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
