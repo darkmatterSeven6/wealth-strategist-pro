@@ -47,6 +47,40 @@
       ]
     },
     {
+      "id": "acc-custom-1786121765629",
+      "name": "Maya - Rainy Days Fund account",
+      "institution": "Maya Bank ",
+      "type": "digital_bank",
+      "accountNumber": "•••• 6554",
+      "balance": 5000.44,
+      "baseApy": 4,
+      "currentApy": 4,
+      "dailyInterestEstimate": 0.44,
+      "tierInfo": "4% p.a. custom account",
+      "color": "#3b82f6",
+      "icon": "CustomBank",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T11:07:01.226Z"
+    },
+    {
+      "id": "acc-atome-01",
+      "name": "Atome Savings (Netbank)",
+      "institution": "Netbank (via Atome)",
+      "type": "digital_bank",
+      "accountNumber": "•••• 1948",
+      "balance": 701.18,
+      "baseApy": 3.25,
+      "currentApy": 3.25,
+      "dailyInterestEstimate": 0.06,
+      "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
+      "color": "#facc15",
+      "icon": "Atome",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T11:07:01.226Z"
+    },
+    {
       "id": "acc-maribank-01",
       "name": "MariBank Savings",
       "institution": "MariBank Philippines",
@@ -62,6 +96,23 @@
       "isLiquid": true,
       "status": "connected",
       "lastSynced": "2026-08-08T11:07:01.225Z"
+    },
+    {
+      "id": "acc-gcash-wallet-01",
+      "name": "GCash E-Wallet",
+      "institution": "Mynt / GCash",
+      "type": "e_wallet",
+      "accountNumber": "0917 •••• 981",
+      "balance": 771.83,
+      "baseApy": 0,
+      "currentApy": 0,
+      "dailyInterestEstimate": 0,
+      "tierInfo": "GInvest staging & daily payment rails",
+      "color": "#007dfe",
+      "icon": "GCash",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T11:07:01.226Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -91,23 +142,6 @@
           "apy": 3
         }
       ]
-    },
-    {
-      "id": "acc-atome-01",
-      "name": "Atome Savings (Netbank)",
-      "institution": "Netbank (via Atome)",
-      "type": "digital_bank",
-      "accountNumber": "•••• 1948",
-      "balance": 701.18,
-      "baseApy": 3.25,
-      "currentApy": 3.25,
-      "dailyInterestEstimate": 0.06,
-      "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
-      "color": "#facc15",
-      "icon": "Atome",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.226Z"
     },
     {
       "id": "acc-tonik-01",
@@ -156,23 +190,6 @@
       "lastSynced": "2026-08-08T11:07:01.226Z"
     },
     {
-      "id": "acc-gcash-wallet-01",
-      "name": "GCash E-Wallet",
-      "institution": "Mynt / GCash",
-      "type": "e_wallet",
-      "accountNumber": "0917 •••• 981",
-      "balance": 771.83,
-      "baseApy": 0,
-      "currentApy": 0,
-      "dailyInterestEstimate": 0,
-      "tierInfo": "GInvest staging & daily payment rails",
-      "color": "#007dfe",
-      "icon": "GCash",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.226Z"
-    },
-    {
       "id": "acc-maya-wallet-01",
       "name": "Maya Wallet",
       "institution": "Maya Philippines",
@@ -185,23 +202,6 @@
       "tierInfo": "Everyday QR payments & Maya Credit settlement",
       "color": "#10b981",
       "icon": "MayaWallet",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.226Z"
-    },
-    {
-      "id": "acc-custom-1786121765629",
-      "name": "Maya - Rainy Days Fund account",
-      "institution": "Maya Bank ",
-      "type": "digital_bank",
-      "accountNumber": "•••• 6554",
-      "balance": 5000.44,
-      "baseApy": 4,
-      "currentApy": 4,
-      "dailyInterestEstimate": 0.44,
-      "tierInfo": "4% p.a. custom account",
-      "color": "#3b82f6",
-      "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
       "lastSynced": "2026-08-08T11:07:01.226Z"
@@ -1778,6 +1778,55 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786190753080-4vk0",
+      "timestamp": "2026-08-08T12:05:53.080Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 12:05:53"
+    },
+    {
+      "id": "log-1786189730285-njzv",
+      "timestamp": "2026-08-08T11:48:50.285Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189715544-bmtd",
+      "timestamp": "2026-08-08T11:48:35.544Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189703255-eshr",
+      "timestamp": "2026-08-08T11:48:23.255Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189678842-nav4",
+      "timestamp": "2026-08-08T11:47:58.842Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189671334-az4m",
+      "timestamp": "2026-08-08T11:47:51.334Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786189583078-ec3b",
+      "timestamp": "2026-08-08T11:46:23.078Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
       "id": "log-1786189172630-z7bl",
       "timestamp": "2026-08-08T11:39:32.630Z",
       "source": "GitHub Cloud Sync",
@@ -2077,55 +2126,6 @@
       "source": "NAVPU Scraper Worker",
       "status": "success",
       "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786179631288-uo91",
-      "timestamp": "2026-08-08T09:00:31.288Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786174414750-uxd9",
-      "timestamp": "2026-08-08T07:33:34.750Z",
-      "source": "Midnight Net Yield Accrual (Manual Run)",
-      "status": "success",
-      "message": "Accrued ₱7.14 net interest across 4 digital bank accounts (₱1.79 20% WHT deducted)."
-    },
-    {
-      "id": "log-1786163316078-3rw5",
-      "timestamp": "2026-08-08T04:28:36.078Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 04:28:36"
-    },
-    {
-      "id": "log-1786163162158-8w1x",
-      "timestamp": "2026-08-08T04:26:02.158Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 04:26:02"
-    },
-    {
-      "id": "log-1786163000704-ikg8",
-      "timestamp": "2026-08-08T04:23:20.704Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 04:23:20"
-    },
-    {
-      "id": "log-1786122148023-lxen",
-      "timestamp": "2026-08-07T17:02:28.023Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-07 17:02:28"
-    },
-    {
-      "id": "log-1786122088839-yvkf",
-      "timestamp": "2026-08-07T17:01:28.839Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Atome Savings (Netbank) balance to ₱701.13 @ 3.25% APY."
     }
   ],
   "transactions": [
