@@ -14,6 +14,7 @@ const analyticsRoute = require('./routes/analytics');
 const systemRoute = require('./routes/system');
 const dataStore = require('./services/dataStore');
 const accrualEngine = require('./services/accrualEngine');
+const navpuScraper = require('./services/navpuScraper');
 
 const app = express();
 const server = http.createServer(app);
@@ -21,6 +22,9 @@ const PORT = process.env.PORT || 5001;
 
 // Initialize Midnight Net Yield Accrual Engine (12:01 AM Asia/Manila Cron)
 accrualEngine.init();
+
+// Initialize Daily 6:00 PM PHT NAVPU Valuation Worker (Asia/Manila Cron)
+navpuScraper.initScheduler();
 
 // Middleware
 app.use(cors({ origin: '*' }));

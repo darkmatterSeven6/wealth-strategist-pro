@@ -371,23 +371,23 @@
       "id": "fund-alfm-multi-asset",
       "name": "ALFM Global Multi-Asset Income Fund Inc - PHP",
       "provider": "BPI Wealth / ALFM",
-      "platform": "GCash GInvest, Maya Funds",
+      "platform": "GCash GInvest",
       "targetFund": "BlackRock Global Multi-Asset Income Fund",
       "category": "Multi-Asset Dividend Income",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 47.1875,
-      "previousNavpu": 47.165,
-      "navpuDate": "2026-07-31",
-      "unitsHeld": 2.1192,
-      "investedCapital": 100,
-      "averageCost": 47.1875,
-      "currentMarketValue": 99.99,
-      "unrealizedGain": -0.01,
-      "unrealizedGainPercent": -0.01,
+      "currentNavpu": 47.5422,
+      "previousNavpu": 47.4545,
+      "navpuDate": "2026-08-06",
+      "unitsHeld": 4.2169,
+      "investedCapital": 200,
+      "averageCost": 47.4282,
+      "currentMarketValue": 200.48,
+      "unrealizedGain": 0.48,
+      "unrealizedGainPercent": 0.24,
       "dividendYieldPAnnum": 5.85,
       "metrics": {
-        "oneYearReturn": 5,
+        "oneYearReturn": 6.94,
         "threeYearCagr": 7.6,
         "fiveYearCagr": 8.1,
         "volatility30d": 6.8,
@@ -398,63 +398,59 @@
       },
       "historicalNavpu": [
         {
-          "date": "2025-08-01",
-          "navpu": 48.5073
+          "date": "2025-08-06",
+          "navpu": 44.4568
         },
         {
           "date": "2025-09-01",
-          "navpu": 48.9174
+          "navpu": 44.8174
         },
         {
           "date": "2025-10-01",
-          "navpu": 49.2033
+          "navpu": 45.2033
         },
         {
           "date": "2025-11-03",
-          "navpu": 49.4717
+          "navpu": 45.4717
         },
         {
           "date": "2025-12-01",
-          "navpu": 49.8618
+          "navpu": 45.8618
         },
         {
           "date": "2026-01-02",
-          "navpu": 50.2865
+          "navpu": 46.2865
         },
         {
           "date": "2026-02-02",
-          "navpu": 50.5946
+          "navpu": 46.5946
         },
         {
           "date": "2026-03-02",
-          "navpu": 50.8514
+          "navpu": 46.8514
         },
         {
           "date": "2026-04-01",
-          "navpu": 51.2177
+          "navpu": 47.0177
         },
         {
           "date": "2026-05-02",
-          "navpu": 51.6507
+          "navpu": 47.1507
         },
         {
           "date": "2026-06-01",
-          "navpu": 51.9837
+          "navpu": 47.2837
         },
         {
           "date": "2026-07-01",
-          "navpu": 52.2358
+          "navpu": 47.3358
         },
         {
-          "date": "2026-08-03",
-          "navpu": 52.5764
-        },
-        {
-          "date": "2026-08-04",
-          "navpu": 52.97
+          "date": "2026-08-06",
+          "navpu": 47.5422
         }
       ],
-      "pendingBuyOrders": 100,
+      "pendingBuyOrders": 500,
       "pendingSellOrders": 0
     },
     {
