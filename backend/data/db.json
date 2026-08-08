@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-08T18:12:26.962Z"
+    "lastSyncTimestamp": "2026-08-08T20:08:45.048Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -25,14 +25,14 @@
       "accountNumber": "•••• 7280",
       "balance": 100013.16,
       "baseApy": 3.5,
-      "currentApy": 3,
-      "dailyInterestEstimate": 8.22,
+      "currentApy": 5,
+      "dailyInterestEstimate": 13.7,
       "tierInfo": "Base 3.5% + 6.5% Mission Boost (Spend ₱30k+ via Maya Card & Bills paid)",
       "color": "#00d084",
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z",
+      "lastSynced": "2026-08-08T20:08:45.047Z",
       "subAccounts": [
         {
           "name": "Personal Goals: Japan 2027",
@@ -61,7 +61,7 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z"
+      "lastSynced": "2026-08-08T20:08:45.048Z"
     },
     {
       "id": "acc-maya-wallet-01",
@@ -69,7 +69,7 @@
       "institution": "Maya Philippines",
       "type": "e_wallet",
       "accountNumber": "0917 •••• 981",
-      "balance": 2000.46,
+      "balance": 1261.05,
       "baseApy": 0,
       "currentApy": 0,
       "dailyInterestEstimate": 0,
@@ -78,7 +78,7 @@
       "icon": "MayaWallet",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z"
+      "lastSynced": "2026-08-08T20:09:53.291Z"
     },
     {
       "id": "acc-maribank-01",
@@ -86,7 +86,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1116.26,
+      "balance": 1116.36,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.1,
@@ -95,7 +95,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z"
+      "lastSynced": "2026-08-08T20:08:45.048Z"
     },
     {
       "id": "acc-atome-01",
@@ -112,7 +112,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z"
+      "lastSynced": "2026-08-08T20:08:45.048Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -120,7 +120,7 @@
       "institution": "GCash",
       "type": "e_wallet",
       "accountNumber": "•••• ••• 5676",
-      "balance": 2706.59,
+      "balance": 1706.59,
       "baseApy": 0,
       "currentApy": 0,
       "dailyInterestEstimate": 0,
@@ -129,7 +129,7 @@
       "icon": "GCash",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z"
+      "lastSynced": "2026-08-08T20:10:32.474Z"
     },
     {
       "id": "acc-bpi-01",
@@ -146,7 +146,7 @@
       "icon": "BPI",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z"
+      "lastSynced": "2026-08-08T20:08:45.048Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -163,7 +163,7 @@
       "icon": "GoTyme",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z",
+      "lastSynced": "2026-08-08T20:08:45.048Z",
       "subAccounts": [
         {
           "name": "Auto & Insurance Buffer",
@@ -192,7 +192,7 @@
       "icon": "Tonik",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T18:12:26.962Z",
+      "lastSynced": "2026-08-08T20:08:45.048Z",
       "subAccounts": [
         {
           "name": "Group Stash (Family)",
@@ -1808,6 +1808,48 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786219989979-lifj",
+      "timestamp": "2026-08-08T20:13:09.979Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 20:13:09"
+    },
+    {
+      "id": "log-1786219832476-nklc",
+      "timestamp": "2026-08-08T20:10:32.476Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated GCash (E-Wallet) (•••• ••• 5676) balance to ₱1,706.59 @ 0% APY."
+    },
+    {
+      "id": "log-1786219793293-fuyv",
+      "timestamp": "2026-08-08T20:09:53.293Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya Wallet (0917 •••• 981) balance to ₱1,261.05 @ 0% APY."
+    },
+    {
+      "id": "log-1786219734049-xxv2",
+      "timestamp": "2026-08-08T20:08:54.049Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786219725049-h0yv",
+      "timestamp": "2026-08-08T20:08:45.049Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
+    },
+    {
+      "id": "log-1786219717207-tg1f",
+      "timestamp": "2026-08-08T20:08:37.207Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya Savings (•••• 7280) balance to ₱100,013.16 @ 5% APY."
+    },
+    {
       "id": "log-1786216530597-psa3",
       "timestamp": "2026-08-08T19:15:30.597Z",
       "source": "GitHub Cloud Sync",
@@ -2114,48 +2156,6 @@
       "source": "NAVPU Scraper Worker",
       "status": "success",
       "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786195434020-03jy",
-      "timestamp": "2026-08-08T13:23:54.020Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786195421839-kce9",
-      "timestamp": "2026-08-08T13:23:41.839Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 13:23:41"
-    },
-    {
-      "id": "log-1786195391765-e97n",
-      "timestamp": "2026-08-08T13:23:11.765Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated GCash (E-Wallet) (0917 •••• 981) balance to ₱771.83 @ 0% APY."
-    },
-    {
-      "id": "log-1786195332500-nnq7",
-      "timestamp": "2026-08-08T13:22:12.500Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786195327709-pg2t",
-      "timestamp": "2026-08-08T13:22:07.709Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786195317875-tkat",
-      "timestamp": "2026-08-08T13:21:57.875Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
     }
   ],
   "transactions": [
