@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-08T13:23:54.018Z"
+    "lastSyncTimestamp": "2026-08-08T15:20:40.802Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -32,7 +32,7 @@
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:23:54.018Z",
+      "lastSynced": "2026-08-08T15:20:40.801Z",
       "subAccounts": [
         {
           "name": "Personal Goals: Japan 2027",
@@ -61,7 +61,7 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:23:54.018Z"
+      "lastSynced": "2026-08-08T15:20:40.801Z"
     },
     {
       "id": "acc-maya-wallet-01",
@@ -78,7 +78,7 @@
       "icon": "MayaWallet",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:23:54.018Z"
+      "lastSynced": "2026-08-08T15:20:40.801Z"
     },
     {
       "id": "acc-maribank-01",
@@ -86,7 +86,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1115.78,
+      "balance": 1115.88,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.1,
@@ -95,7 +95,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:23:54.018Z"
+      "lastSynced": "2026-08-08T15:20:40.801Z"
     },
     {
       "id": "acc-atome-01",
@@ -112,7 +112,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:23:54.018Z"
+      "lastSynced": "2026-08-08T15:20:40.801Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -129,7 +129,7 @@
       "icon": "GCash",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:36:48.924Z"
+      "lastSynced": "2026-08-08T15:20:40.801Z"
     },
     {
       "id": "acc-bpi-01",
@@ -146,7 +146,7 @@
       "icon": "BPI",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:23:54.018Z"
+      "lastSynced": "2026-08-08T15:20:40.801Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -163,7 +163,7 @@
       "icon": "GoTyme",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:23:54.018Z",
+      "lastSynced": "2026-08-08T15:20:40.802Z",
       "subAccounts": [
         {
           "name": "Auto & Insurance Buffer",
@@ -192,7 +192,7 @@
       "icon": "Tonik",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T13:23:54.018Z",
+      "lastSynced": "2026-08-08T15:20:40.802Z",
       "subAccounts": [
         {
           "name": "Group Stash (Family)",
@@ -1823,11 +1823,25 @@
   },
   "syncLogs": [
     {
-      "id": "log-1786202050632-nmeq",
-      "timestamp": "2026-08-08T15:14:10.632Z",
+      "id": "log-1786202469906-np6k",
+      "timestamp": "2026-08-08T15:21:09.906Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 15:21:09"
+    },
+    {
+      "id": "log-1786202461451-e1hb",
+      "timestamp": "2026-08-08T15:21:01.451Z",
       "source": "NAVPU Valuation Engine",
       "status": "success",
       "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786202440805-afux",
+      "timestamp": "2026-08-08T15:20:40.805Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
     },
     {
       "id": "log-1786201157524-iyz0",
@@ -2157,20 +2171,6 @@
       "source": "NAVPU Scraper Worker",
       "status": "success",
       "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786187221241-ddc8",
-      "timestamp": "2026-08-08T11:07:01.241Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786186831470-l84l",
-      "timestamp": "2026-08-08T11:00:31.470Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 11:00:31"
     }
   ],
   "transactions": [
