@@ -3,6 +3,7 @@ const router = express.Router();
 const dataStore = require('../services/dataStore');
 const syncWorkers = require('../services/syncWorkers');
 const navpuScraper = require('../services/navpuScraper');
+const emailParser = require('../services/emailParser');
 
 // POST trigger full automated sync session
 router.post('/run-all', async (req, res) => {
@@ -121,6 +122,26 @@ router.post('/atome', (req, res) => {
   res.json({ success: true, message: 'Atome ingestion processed' });
 });
 
+// POST Ingestion Rail: Email Receipt Parser Engine
+router.post('/email-receipt', (req, res) => {
+  const { from, subject, body, date } = req.body;
+  if (!body && !subject) {
+    return res.status(400).json({ success: false, error: 'Email subject or body is required.' });
+  }
+
+  const result = emailParser.ingestAndApply({ from, subject, body, date });
+  res.json(result);
+});
+
+// GET parsed transactions list
+router.get('/transactions', (req, res) => {
+  const db = dataStore.getDb();
+  res.json({
+    success: true,
+    transactions: db.transactions || []
+  });
+});
+
 // POST E-statement upload / parser hook
 router.post('/statement-upload', (req, res) => {
   const { rawContent, fileType, institution } = req.body;
@@ -150,3 +171,4 @@ router.get('/logs', (req, res) => {
 });
 
 module.exports = router;
+
