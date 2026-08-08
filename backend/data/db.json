@@ -64,23 +64,6 @@
       "lastSynced": "2026-08-08T12:24:41.752Z"
     },
     {
-      "id": "acc-atome-01",
-      "name": "Atome Savings",
-      "institution": "Atome (via Netbank )",
-      "type": "digital_bank",
-      "accountNumber": "•••• •••• ••2626",
-      "balance": 701.13,
-      "baseApy": 3.25,
-      "currentApy": 3.25,
-      "dailyInterestEstimate": 0.05,
-      "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
-      "color": "#facc15",
-      "icon": "Atome",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-08T12:41:56.290Z"
-    },
-    {
       "id": "acc-maribank-01",
       "name": "MariBank Savings",
       "institution": "MariBank Philippines",
@@ -113,6 +96,57 @@
       "isLiquid": true,
       "status": "connected",
       "lastSynced": "2026-08-08T11:07:01.226Z"
+    },
+    {
+      "id": "acc-maya-wallet-01",
+      "name": "Maya Wallet",
+      "institution": "Maya Philippines",
+      "type": "e_wallet",
+      "accountNumber": "0917 •••• 981",
+      "balance": 2000.46,
+      "baseApy": 0,
+      "currentApy": 0,
+      "dailyInterestEstimate": 0,
+      "tierInfo": "Everyday QR payments & Maya Credit settlement",
+      "color": "#10b981",
+      "icon": "MayaWallet",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T11:07:01.226Z"
+    },
+    {
+      "id": "acc-bpi-01",
+      "name": "BPI Preferred Checking & Savings",
+      "institution": "Bank of the Philippine Islands",
+      "type": "traditional_bank",
+      "accountNumber": "•••• 4410",
+      "balance": 0,
+      "baseApy": 0.0625,
+      "currentApy": 0.0625,
+      "dailyInterestEstimate": 0,
+      "tierInfo": "Primary Payroll & Wire Settlement Account",
+      "color": "#b91c1c",
+      "icon": "BPI",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T11:07:01.226Z"
+    },
+    {
+      "id": "acc-atome-01",
+      "name": "Atome Savings",
+      "institution": "Atome (via Netbank )",
+      "type": "digital_bank",
+      "accountNumber": "•••• •••• ••2626",
+      "balance": 701.13,
+      "baseApy": 3.25,
+      "currentApy": 3.25,
+      "dailyInterestEstimate": 0.05,
+      "tierInfo": "3.25% p.a. direct Netbank partner high-yield account",
+      "color": "#facc15",
+      "icon": "Atome",
+      "isLiquid": true,
+      "status": "connected",
+      "lastSynced": "2026-08-08T12:41:56.290Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -171,40 +205,6 @@
           "apy": 6
         }
       ]
-    },
-    {
-      "id": "acc-bpi-01",
-      "name": "BPI Preferred Checking & Savings",
-      "institution": "Bank of the Philippine Islands",
-      "type": "traditional_bank",
-      "accountNumber": "•••• 4410",
-      "balance": 0,
-      "baseApy": 0.0625,
-      "currentApy": 0.0625,
-      "dailyInterestEstimate": 0,
-      "tierInfo": "Primary Payroll & Wire Settlement Account",
-      "color": "#b91c1c",
-      "icon": "BPI",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.226Z"
-    },
-    {
-      "id": "acc-maya-wallet-01",
-      "name": "Maya Wallet",
-      "institution": "Maya Philippines",
-      "type": "e_wallet",
-      "accountNumber": "0917 •••• 981",
-      "balance": 2000.46,
-      "baseApy": 0,
-      "currentApy": 0,
-      "dailyInterestEstimate": 0,
-      "tierInfo": "Everyday QR payments & Maya Credit settlement",
-      "color": "#10b981",
-      "icon": "MayaWallet",
-      "isLiquid": true,
-      "status": "connected",
-      "lastSynced": "2026-08-08T11:07:01.226Z"
     }
   ],
   "funds": [
@@ -1778,6 +1778,41 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786194645157-e5so",
+      "timestamp": "2026-08-08T13:10:45.157Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194634449-lz6y",
+      "timestamp": "2026-08-08T13:10:34.450Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194624224-y7y4",
+      "timestamp": "2026-08-08T13:10:24.224Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194578156-xh77",
+      "timestamp": "2026-08-08T13:09:38.156Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
+      "id": "log-1786194560506-dubn",
+      "timestamp": "2026-08-08T13:09:20.506Z",
+      "source": "Account Manager",
+      "status": "info",
+      "message": "Updated account card display order."
+    },
+    {
       "id": "log-1786193923406-kwab",
       "timestamp": "2026-08-08T12:58:43.406Z",
       "source": "GitHub Cloud Sync",
@@ -2088,41 +2123,6 @@
     {
       "id": "log-1786183847142-qxwa",
       "timestamp": "2026-08-08T10:10:47.142Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786183846682-fwgz",
-      "timestamp": "2026-08-08T10:10:46.682Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786183790128-zyb3",
-      "timestamp": "2026-08-08T10:09:50.128Z",
-      "source": "NAVPU Scraper Worker",
-      "status": "success",
-      "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."
-    },
-    {
-      "id": "log-1786183789756-wr7s",
-      "timestamp": "2026-08-08T10:09:49.756Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786183141537-94zf",
-      "timestamp": "2026-08-08T09:59:01.537Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 09:59:01"
-    },
-    {
-      "id": "log-1786183137585-z2xp",
-      "timestamp": "2026-08-08T09:58:57.585Z",
       "source": "NAVPU Scraper Worker",
       "status": "success",
       "message": "Updated NAVPUs for 15 Philippine UITF/Feeder Funds."

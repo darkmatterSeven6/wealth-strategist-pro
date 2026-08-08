@@ -15,7 +15,164 @@ import {
   Shield,
   GripVertical
 } from 'lucide-react';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import {
+  DndContext,
+  closestCenter,
+  PointerSensor,
+  KeyboardSensor,
+  useSensor,
+  useSensors,
+  DragOverlay,
+  defaultDropAnimationSideEffects
+} from '@dnd-kit/core';
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  rectSortingStrategy
+} from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+
+function AccountCardContent({ acc, onOpenOverride, isOverlay = false }) {
+  const isBoosted = acc.currentApy >= 6.0;
+
+  return (
+    <div className={`p-5 rounded-2xl glass-panel-interactive border relative flex flex-col justify-between group h-full select-none transition-all duration-200 ${
+      isOverlay
+        ? 'border-emerald-500 shadow-2xl shadow-emerald-950/90 ring-2 ring-emerald-500 scale-105 bg-slate-900/95 backdrop-blur-md cursor-grabbing'
+        : 'border-slate-800/80 bg-slate-900/40 hover:border-slate-700'
+    }`}>
+      <div>
+        {/* Card Top Row */}
+        <div className="flex items-start justify-between">
+          <div className="flex items-center space-x-3">
+            {/* Drag Handle Affordance */}
+            <div 
+              className="p-1.5 -ml-1 text-slate-500 group-hover:text-emerald-400 rounded-lg hover:bg-slate-800/60 transition pointer-events-none"
+              title="Drag to reorder account"
+            >
+              <GripVertical className="w-4 h-4" />
+            </div>
+            <div 
+              className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-slate-950 shadow-md shrink-0 pointer-events-none"
+              style={{ backgroundColor: acc.color || '#3b82f6' }}
+            >
+              <Wallet className="w-5 h-5 text-white" />
+            </div>
+            <div className="pointer-events-none">
+              <h4 className="font-bold text-slate-100 text-sm">{acc.name}</h4>
+              <p className="text-xs text-slate-400 font-mono">{acc.institution} • {acc.accountNumber}</p>
+            </div>
+          </div>
+
+          {/* APY Badge */}
+          <div className="shrink-0 ml-2 pointer-events-none">
+            <div className={`shrink-0 whitespace-nowrap h-auto py-1 px-3 border text-xs font-semibold tracking-wide rounded-full flex items-center justify-center shadow-sm ${
+              isBoosted 
+                ? 'bg-amber-950/60 border-amber-800/40 text-amber-400 animate-pulse' 
+                : 'bg-emerald-950/60 border-emerald-800/40 text-emerald-400'
+            }`}>
+              {acc.currentApy}% p.a.
+            </div>
+          </div>
+        </div>
+
+        {/* Balance Display */}
+        <div className="mt-4 pt-3 border-t border-slate-800/60 pointer-events-none">
+          <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Current Balance</span>
+          <div className="text-xl sm:text-2xl font-extrabold text-white font-mono mt-0.5">
+            ₱{acc.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+          </div>
+        </div>
+
+        {/* Tier Info & Sub-Accounts */}
+        <div className="mt-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs pointer-events-none">
+          <div className="flex items-center justify-between text-slate-300">
+            <span className="text-[11px] text-slate-400">Interest Tier</span>
+            <span className="font-semibold text-emerald-400">{acc.tierInfo}</span>
+          </div>
+          {acc.dailyInterestEstimate > 0 && (
+            <div className="flex items-center justify-between text-slate-300 mt-1">
+              <span className="text-[11px] text-slate-400">Est. Daily Gain</span>
+              <span className="font-mono font-bold text-white">+₱{acc.dailyInterestEstimate.toFixed(2)}</span>
+            </div>
+          )}
+        </div>
+
+        {/* Sub Accounts / Stashes if any */}
+        {acc.subAccounts && acc.subAccounts.length > 0 && (
+          <div className="mt-2.5 space-y-1 pointer-events-none">
+            <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Pockets & Stashes</span>
+            {acc.subAccounts.map((stash, idx) => (
+              <div key={idx} className="flex items-center justify-between text-[11px] px-2 py-1 bg-slate-900/40 rounded-lg">
+                <span className="text-slate-300">{stash.name}</span>
+                <span className="font-mono text-slate-200">₱{stash.balance.toLocaleString()}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Card Footer Actions */}
+      <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between">
+        <div className="flex items-center space-x-1.5 text-[10px] text-slate-500 pointer-events-none">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+          <span>Synced {acc.lastSynced ? new Date(acc.lastSynced).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Live'}</span>
+        </div>
+
+        {!isOverlay && (
+          <button
+            type="button"
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              onOpenOverride(acc);
+            }}
+            className="px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition flex items-center space-x-1 cursor-pointer z-20 relative"
+          >
+            <Sliders className="w-3 h-3 text-cyan-400" />
+            <span>Override</span>
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function SortableAccountCard({ acc, onOpenOverride }) {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id: String(acc.id) });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 0 : 1,
+    opacity: isDragging ? 0.3 : 1,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className="cursor-grab active:cursor-grabbing touch-none select-none h-full"
+    >
+      <AccountCardContent 
+        acc={acc} 
+        onOpenOverride={onOpenOverride}
+        isOverlay={false}
+      />
+    </div>
+  );
+}
 
 export default function AccountAggregator({ 
   accounts, 
@@ -32,12 +189,28 @@ export default function AccountAggregator({
   const [newApy, setNewApy] = useState('');
   const [newTierInfo, setNewTierInfo] = useState('');
 
+  // Active item state for smooth DragOverlay preview
+  const [activeId, setActiveId] = useState(null);
+  const activeAccount = accounts.find(a => String(a.id) === String(activeId));
+
   // Add Account State
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [addName, setAddName] = useState('');
   const [addInstitution, setAddInstitution] = useState('');
   const [addBalance, setAddBalance] = useState('');
   const [addApy, setAddApy] = useState('3.5');
+
+  // Configure Sensors with distance threshold to permit button clicks cleanly
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 5,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
 
   const totalLiquid = accounts
     .filter(a => a.isLiquid)
@@ -46,21 +219,29 @@ export default function AccountAggregator({
   const totalDailyInterest = accounts.reduce((sum, a) => sum + (a.dailyInterestEstimate || 0), 0);
   const totalAnnualInterest = totalDailyInterest * 365;
 
-  const handleDragEnd = (result) => {
-    if (!result.destination) return;
-    if (result.destination.index === result.source.index) return;
+  const handleDragStart = (event) => {
+    setActiveId(event.active.id);
+  };
 
-    const items = Array.from(accounts);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+  const handleDragEnd = (event) => {
+    const { active, over } = event;
+    setActiveId(null);
 
-    const updatedWithIndices = items.map((item, index) => ({
-      ...item,
-      position_index: index,
-    }));
+    if (!over || active.id === over.id) return;
 
-    if (onReorderAccounts) {
-      onReorderAccounts(updatedWithIndices);
+    const oldIndex = accounts.findIndex(a => String(a.id) === String(active.id));
+    const newIndex = accounts.findIndex(a => String(a.id) === String(over.id));
+
+    if (oldIndex !== -1 && newIndex !== -1) {
+      const reordered = arrayMove(accounts, oldIndex, newIndex);
+      const updatedWithIndices = reordered.map((item, index) => ({
+        ...item,
+        position_index: index,
+      }));
+
+      if (onReorderAccounts) {
+        onReorderAccounts(updatedWithIndices);
+      }
     }
   };
 
@@ -167,139 +348,48 @@ export default function AccountAggregator({
         </div>
       </div>
 
-      {/* Account Cards Grid with Drag-and-Drop */}
-      <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="bank-grid" direction="both">
-          {(provided) => (
-            <div 
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[300px]"
-            >
-              {accounts.map((acc, index) => {
-                const isBoosted = acc.currentApy >= 6.0;
-                return (
-                  <Draggable key={String(acc.id)} draggableId={String(acc.id)} index={index}>
-                    {(provided, snapshot) => (
-                      <div 
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                        style={{
-                          ...provided.draggableProps.style,
-                          // Prevent unwanted scale displacement on drag start in CSS Grid
-                          transform: snapshot.isDragging
-                            ? provided.draggableProps.style?.transform
-                            : 'none',
-                        }}
-                        className={`transition-all duration-150 ease-out ${
-                          snapshot.isDragging 
-                            ? 'opacity-90 scale-105 shadow-2xl z-50 ring-2 ring-emerald-500 rounded-2xl bg-slate-900/95 backdrop-blur-md cursor-grabbing' 
-                            : 'cursor-grab'
-                        }`}
-                      >
-                        <div className="p-5 rounded-2xl glass-panel-interactive border border-slate-800/80 relative flex flex-col justify-between group h-full select-none">
-                          <div>
-                            {/* Card Top Row */}
-                            <div className="flex items-start justify-between">
-                              <div className="flex items-center space-x-3">
-                                {/* Drag Handle Affordance */}
-                                <div 
-                                  className="p-1.5 -ml-1 text-slate-500 hover:text-emerald-400 rounded-lg hover:bg-slate-800/60 transition pointer-events-none"
-                                  title="Drag to reorder account"
-                                >
-                                  <GripVertical className="w-4 h-4" />
-                                </div>
-                                <div 
-                                  className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-slate-950 shadow-md shrink-0 pointer-events-none"
-                                  style={{ backgroundColor: acc.color || '#3b82f6' }}
-                                >
-                                  <Wallet className="w-5 h-5 text-white" />
-                                </div>
-                                <div className="pointer-events-none">
-                                  <h4 className="font-bold text-slate-100 text-sm">{acc.name}</h4>
-                                  <p className="text-xs text-slate-400 font-mono">{acc.institution} • {acc.accountNumber}</p>
-                                </div>
-                              </div>
+      {/* 2D CSS Grid Sortable Matrix with @dnd-kit */}
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+      >
+        <SortableContext
+          items={accounts.map(a => String(a.id))}
+          strategy={rectSortingStrategy}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[300px]">
+            {accounts.map((acc) => (
+              <SortableAccountCard
+                key={String(acc.id)}
+                acc={acc}
+                onOpenOverride={handleOpenOverride}
+              />
+            ))}
+          </div>
+        </SortableContext>
 
-                              {/* APY Badge */}
-                              <div className="shrink-0 ml-2 pointer-events-none">
-                                <div className={`shrink-0 whitespace-nowrap h-auto py-1 px-3 border text-xs font-semibold tracking-wide rounded-full flex items-center justify-center shadow-sm ${
-                                  isBoosted 
-                                    ? 'bg-amber-950/60 border-amber-800/40 text-amber-400 animate-pulse' 
-                                    : 'bg-emerald-950/60 border-emerald-800/40 text-emerald-400'
-                                }`}>
-                                  {acc.currentApy}% p.a.
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Balance Display */}
-                            <div className="mt-4 pt-3 border-t border-slate-800/60 pointer-events-none">
-                              <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Current Balance</span>
-                              <div className="text-xl sm:text-2xl font-extrabold text-white font-mono mt-0.5">
-                                ₱{acc.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-                              </div>
-                            </div>
-
-                            {/* Tier Info & Sub-Accounts */}
-                            <div className="mt-3 p-2.5 rounded-xl bg-slate-900/60 border border-slate-800/60 text-xs pointer-events-none">
-                              <div className="flex items-center justify-between text-slate-300">
-                                <span className="text-[11px] text-slate-400">Interest Tier</span>
-                                <span className="font-semibold text-emerald-400">{acc.tierInfo}</span>
-                              </div>
-                              {acc.dailyInterestEstimate > 0 && (
-                                <div className="flex items-center justify-between text-slate-300 mt-1">
-                                  <span className="text-[11px] text-slate-400">Est. Daily Gain</span>
-                                  <span className="font-mono font-bold text-white">+₱{acc.dailyInterestEstimate.toFixed(2)}</span>
-                                </div>
-                              )}
-                            </div>
-
-                            {/* Sub Accounts / Stashes if any */}
-                            {acc.subAccounts && acc.subAccounts.length > 0 && (
-                              <div className="mt-2.5 space-y-1 pointer-events-none">
-                                <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Pockets & Stashes</span>
-                                {acc.subAccounts.map((stash, idx) => (
-                                  <div key={idx} className="flex items-center justify-between text-[11px] px-2 py-1 bg-slate-900/40 rounded-lg">
-                                    <span className="text-slate-300">{stash.name}</span>
-                                    <span className="font-mono text-slate-200">₱{stash.balance.toLocaleString()}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-
-                          {/* Card Footer Actions */}
-                          <div className="mt-4 pt-3 border-t border-slate-800/60 flex items-center justify-between">
-                            <div className="flex items-center space-x-1.5 text-[10px] text-slate-500 pointer-events-none">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                              <span>Synced {acc.lastSynced ? new Date(acc.lastSynced).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'Live'}</span>
-                            </div>
-
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                handleOpenOverride(acc);
-                              }}
-                              className="px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition flex items-center space-x-1 cursor-pointer z-10"
-                            >
-                              <Sliders className="w-3 h-3 text-cyan-400" />
-                              <span>Override</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </Draggable>
-                );
-              })}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </DragDropContext>
+        <DragOverlay
+          dropAnimation={{
+            sideEffects: defaultDropAnimationSideEffects({
+              styles: {
+                active: {
+                  opacity: '0.4',
+                },
+              },
+            }),
+          }}
+        >
+          {activeAccount ? (
+            <AccountCardContent
+              acc={activeAccount}
+              onOpenOverride={handleOpenOverride}
+              isOverlay={true}
+            />
+          ) : null}
+        </DragOverlay>
+      </DndContext>
 
       {/* Manual Override Modal */}
       {isOverrideOpen && selectedAccount && (
