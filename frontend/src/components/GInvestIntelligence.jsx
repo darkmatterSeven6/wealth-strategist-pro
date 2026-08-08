@@ -69,6 +69,7 @@ export default function GInvestIntelligence({
   const categories = [
     'ALL', 
     `⭐ My Active Holdings (${activeHoldingsCount})`,
+    '💵 Dividend Funds',
     'Global Equity / Tech', 
     'Global Thematic', 
     'Multi-Asset & Bonds', 
@@ -92,6 +93,13 @@ export default function GInvestIntelligence({
     if (selectedCategory === 'ALL') return true;
     if (selectedCategory.startsWith('⭐ My Active Holdings')) {
       return (fund.unitsHeld || 0) > 0 || (fund.pendingBuyOrders || 0) > 0 || (fund.investedCapital || 0) > 0;
+    }
+    if (selectedCategory === '💵 Dividend Funds') {
+      return (fund.dividendYieldPAnnum || 0) > 0 ||
+        fund.name?.toLowerCase().includes('income') ||
+        fund.name?.toLowerCase().includes('reit') ||
+        fund.category?.includes('REIT') ||
+        fund.category?.includes('Income');
     }
     if (selectedCategory === 'Global Equity / Tech') {
       return (fund.category?.includes('Global Equity') || fund.category?.includes('Tech')) && !fund.category?.includes('Thematic');
