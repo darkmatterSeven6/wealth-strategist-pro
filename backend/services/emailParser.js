@@ -172,7 +172,13 @@ class EmailParser {
     else if (this.senderPatterns.gotyme.test(from) || /gotyme/i.test(subject)) institution = 'GoTyme Bank';
     else if (this.senderPatterns.gcash.test(from) || /gcash|ginvest/i.test(subject)) institution = 'GCash / GInvest';
     else if (this.senderPatterns.tonik.test(from) || /tonik/i.test(subject)) institution = 'Tonik Bank';
-    else if (this.senderPatterns.atome.test(from) || /atome/i.test(subject)) institution = 'Atome Savings';
+    else if (this.senderPatterns.atome.test(from) || /atome/i.test(subject)) {
+      if (/card|mastercard|paylater|purchase|pos|spent/i.test(text)) {
+        institution = 'Atome Card (Mastercard)';
+      } else {
+        institution = 'Atome Savings';
+      }
+    }
 
     // 1. Extract Amount (PHP / ₱)
     const amountMatch = text.match(/(?:PHP|Php|₱|\bAmount:?\s*PHP?)\s*([0-9]{1,3}(?:,[0-9]{3})*(?:\.[0-9]{2})?|[0-9]+(?:\.[0-9]{2})?)/i);
@@ -188,16 +194,16 @@ class EmailParser {
       type = 'Daily Interest Earned';
     } else if (/cash\s*in|deposit|received\s*money|money\s*received|funds?\s*credited|fund\s*transfer\s*received/i.test(text)) {
       type = 'Deposit';
-    } else if (/sent\s*money|money\s*sent|transfer\s*to|paid|payment\s*to|debit|purchase/i.test(text)) {
+    } else if (/bill\s*payment|pay\s*bills|bill\s*repayment|paid\s*bill|utility/i.test(text)) {
+      type = 'Bill Payment';
+    } else if (/sent\s*money|money\s*sent|transfer\s*to|paid|payment\s*to|debit|purchase|spent/i.test(text)) {
       type = 'Debit';
     } else if (/ginvest|gfunds|feeder\s*fund|subscription|buy\s*fund/i.test(text)) {
       type = 'Fund Purchase';
-    } else if (/bill\s*payment|pay\s*bills|utility/i.test(text)) {
-      type = 'Bill Payment';
     }
 
     // 4. Extract Running Balance if available
-    const balMatch = text.match(/(?:Available\s*Balance|New\s*Balance|Remaining\s*Balance|Total\s*Balance)[:\s]*(?:PHP|Php|₱)?\s*([0-9]{1,3}(?:,[0-9]{3})*(?:\.[0-9]{2})?|[0-9]+(?:\.[0-9]{2})?)/i);
+    const balMatch = text.match(/(?:Available\s*Balance|New\s*Balance|Remaining\s*Balance|Total\s*Balance|Available\s*Limit)[:\s]*(?:PHP|Php|₱)?\s*([0-9]{1,3}(?:,[0-9]{3})*(?:\.[0-9]{2})?|[0-9]+(?:\.[0-9]{2})?)/i);
     const runningBalance = balMatch ? parseFloat(balMatch[1].replace(/,/g, '')) : null;
 
     const parsedRecord = {
@@ -245,7 +251,7 @@ class EmailParser {
     if (record.institution.includes('MariBank')) matchedAccount = db.accounts.find(a => a.id === 'acc-maribank-01');
     else if (record.institution.includes('Maya')) matchedAccount = db.accounts.find(a => a.id === 'acc-maya-01');
     else if (record.institution.includes('GoTyme')) matchedAccount = db.accounts.find(a => a.id === 'acc-gotyme-01');
-    else if (record.institution.includes('Atome')) matchedAccount = db.accounts.find(a => a.id === 'acc-atome-01');
+    else if (record.institution === 'Atome Savings') matchedAccount = db.accounts.find(a => a.id === 'acc-atome-01');
     else if (record.institution.includes('Tonik')) matchedAccount = db.accounts.find(a => a.id === 'acc-tonik-01');
 
     if (matchedAccount) {
@@ -257,6 +263,42 @@ class EmailParser {
         matchedAccount.balance = parseFloat(Math.max(0, matchedAccount.balance - record.amount).toFixed(2));
       }
       matchedAccount.lastSynced = new Date().toISOString();
+    }
+
+    // Auto-update Atome Credit Card if card receipt or bill payment
+    if (record.institution.includes('Atome Card') || (record.institution.includes('Atome') && record.type === 'Debit')) {
+      if (!db.creditCards) db.creditCards = [];
+      const card = db.creditCards.find(c => c.id === 'card-atome-01');
+      if (card) {
+        const isPayment = record.type === 'Bill Payment' || record.type === 'Deposit';
+        const isPurchase = record.type === 'Debit' || record.type === 'Transfer';
+        
+        if (isPurchase) {
+          card.availableLimit = parseFloat(Math.max(0, card.availableLimit - record.amount).toFixed(2));
+          card.outstandingBalance = parseFloat((card.totalLimit - card.availableLimit).toFixed(2));
+        } else if (isPayment) {
+          card.availableLimit = parseFloat(Math.min(card.totalLimit, card.availableLimit + record.amount).toFixed(2));
+          card.outstandingBalance = parseFloat(Math.max(0, card.totalLimit - card.availableLimit).toFixed(2));
+        }
+
+        if (!card.transactions) card.transactions = [];
+        card.transactions.unshift({
+          id: `ctx-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+          merchant: record.subject || 'Atome Card Transaction',
+          amount: record.amount,
+          type: isPayment ? 'bill_payment' : 'purchase',
+          category: isPayment ? 'Payment / Credit' : 'Shopping',
+          date: record.timestamp,
+          ref: record.referenceNumber
+        });
+
+        // Sync to liabilities
+        const atomeLiab = (db.liabilities || []).find(l => l.id === 'liab-atome-card');
+        if (atomeLiab) {
+          atomeLiab.outstandingBalance = card.outstandingBalance;
+          atomeLiab.creditLimit = card.totalLimit;
+        }
+      }
     }
 
     dataStore.saveDb(db);

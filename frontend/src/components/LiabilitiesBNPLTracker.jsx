@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AtomeCardLiability from './AtomeCardLiability';
 import { 
   CreditCard, 
   AlertTriangle, 
@@ -27,10 +28,14 @@ export default function LiabilitiesBNPLTracker({
   onPayLiability, 
   onCreateLiability,
   onUpdateLiability,
-  onDeleteLiability
+  onDeleteLiability,
+  onRefresh,
+  showToast
 }) {
   const data = liabilitiesData || {};
   const liabilities = data.enrichedLiabilities || [];
+  const creditCards = data.creditCards || [];
+  const primaryCard = creditCards.length > 0 ? creditCards[0] : null;
   const liquidity = data.liquidity || {};
   const cashFlow = data.cashFlowSummary || {};
 
@@ -76,8 +81,11 @@ export default function LiabilitiesBNPLTracker({
 
   // Notification Toast
   const [toastMsg, setToastMsg] = useState(null);
-  const showToast = (msg) => {
-    setToastMsg(msg);
+  const triggerToast = (msg, title = 'Notification', detail = '') => {
+    if (showToast) {
+      showToast('info', typeof msg === 'string' ? msg : title, detail);
+    }
+    setToastMsg(typeof msg === 'string' ? msg : `${title}: ${detail}`);
     setTimeout(() => setToastMsg(null), 3500);
   };
 
@@ -121,7 +129,7 @@ export default function LiabilitiesBNPLTracker({
     });
 
     setEditingLiab(null);
-    showToast(`Updated balance & credit line for ${editForm.name}`);
+    triggerToast(`Updated balance & credit line for ${editForm.name}`);
   };
 
   // Open Quick Edit
@@ -154,7 +162,7 @@ export default function LiabilitiesBNPLTracker({
     }
 
     setIsQuickEditOpen(false);
-    showToast('All liability balances & credit lines updated successfully!');
+    triggerToast('All liability balances & credit lines updated successfully!');
   };
 
   // Delete handler
@@ -162,7 +170,7 @@ export default function LiabilitiesBNPLTracker({
     if (window.confirm(`Are you sure you want to remove "${liab.name}" from your tracked liabilities?`)) {
       if (onDeleteLiability) {
         await onDeleteLiability(liab.id);
-        showToast(`Removed ${liab.name}`);
+        triggerToast(`Removed ${liab.name}`);
       }
     }
   };
@@ -178,7 +186,7 @@ export default function LiabilitiesBNPLTracker({
     if (!payingLiab || !onPayLiability) return;
     await onPayLiability(payingLiab.id, parseFloat(payAmount));
     setPayingLiab(null);
-    showToast(`Payment of ₱${parseFloat(payAmount).toLocaleString()} recorded for ${payingLiab.name}!`);
+    triggerToast(`Payment of ₱${parseFloat(payAmount).toLocaleString()} recorded for ${payingLiab.name}!`);
   };
 
   // Create handler
@@ -217,7 +225,7 @@ export default function LiabilitiesBNPLTracker({
       remainingTermsMonths: '12',
       isZeroInterestPromo: false
     });
-    showToast(`Added new credit facility: ${addForm.name}`);
+    triggerToast(`Added new credit facility: ${addForm.name}`);
   };
 
   // Compute total available credit metrics
@@ -352,6 +360,13 @@ export default function LiabilitiesBNPLTracker({
           </div>
         </div>
       </div>
+
+      {/* DEDICATED ATOME CARD (MASTERCARD) REVOLVING FACILITY */}
+      <AtomeCardLiability
+        creditCardData={primaryCard}
+        onRefresh={onRefresh}
+        showToast={showToast}
+      />
 
       {/* Active Credit & BNPL Table */}
       <div className="rounded-2xl glass-panel border border-slate-800/80 overflow-hidden shadow-xl">

@@ -1655,6 +1655,62 @@
       ]
     }
   ],
+  "creditCards": [
+    {
+      "id": "card-atome-01",
+      "cardName": "Atome Card (Mastercard)",
+      "cardNumber": "•••• 5956",
+      "cardBrand": "Mastercard",
+      "totalLimit": 10000.00,
+      "availableLimit": 5811.42,
+      "outstandingBalance": 4188.58,
+      "dueDate": "2026-08-18",
+      "statementDate": "2026-08-03",
+      "billingCycleDay": 18,
+      "minAmountDue": 209.43,
+      "annualFee": 0.00,
+      "interestRateApr": 0.00,
+      "status": "active",
+      "transactions": [
+        {
+          "id": "ctx-01",
+          "merchant": "GrabFood Philippines",
+          "amount": 489.00,
+          "type": "purchase",
+          "category": "Food & Dining",
+          "date": "2026-08-07T14:22:00.000Z",
+          "ref": "ATM-TX-98421"
+        },
+        {
+          "id": "ctx-02",
+          "merchant": "ShopeePay Top-up",
+          "amount": 1200.00,
+          "type": "purchase",
+          "category": "Shopping",
+          "date": "2026-08-05T09:15:00.000Z",
+          "ref": "ATM-TX-97812"
+        },
+        {
+          "id": "ctx-03",
+          "merchant": "SM Supermarket BGC",
+          "amount": 2499.58,
+          "type": "purchase",
+          "category": "Groceries",
+          "date": "2026-08-02T19:40:00.000Z",
+          "ref": "ATM-TX-96540"
+        },
+        {
+          "id": "ctx-04",
+          "merchant": "Atome Bill Repayment (via Maya)",
+          "amount": 3500.00,
+          "type": "bill_payment",
+          "category": "Payment / Credit",
+          "date": "2026-07-28T11:05:00.000Z",
+          "ref": "PAY-ATM-44192"
+        }
+      ]
+    }
+  ],
   "liabilities": [
     {
       "id": "liab-atome-card",

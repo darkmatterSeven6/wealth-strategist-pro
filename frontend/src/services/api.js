@@ -112,6 +112,34 @@ export const api = {
     });
     return res.json();
   },
+  getCreditCards: async () => {
+    const res = await fetch(`${API_BASE}/liabilities/cards`);
+    return res.json();
+  },
+  addCardTransaction: async (data) => {
+    const res = await fetch(`${API_BASE}/liabilities/card/transaction`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
+  updateCreditCard: async (data) => {
+    const res = await fetch(`${API_BASE}/liabilities/card/update`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
+  payCreditCard: async (data) => {
+    const res = await fetch(`${API_BASE}/liabilities/card/pay`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    return res.json();
+  },
 
   // Analytics & Summary
   getNetWorthSummary: async () => {

@@ -475,6 +475,8 @@ export default function App() {
             onCreateLiability={handleCreateLiability}
             onUpdateLiability={handleUpdateLiability}
             onDeleteLiability={handleDeleteLiability}
+            onRefresh={loadAllData}
+            showToast={showToast}
           />
         )}
 
