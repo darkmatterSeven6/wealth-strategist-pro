@@ -39,7 +39,7 @@ class NavpuScraper {
   }
 
   /**
-   * Scrape / Fetch latest NAVPU for all configured funds
+   * Scrape / Fetch latest NAVPU for all configured funds across the database
    * @param {boolean} isScheduled
    */
   async scrapeAllFunds(isScheduled = false) {
@@ -53,7 +53,7 @@ class NavpuScraper {
     const funds = db.funds || [];
     const results = [];
     const todayStr = new Date().toISOString().split('T')[0];
-    const triggerSource = isScheduled ? 'Automated 6:00 PM PHT Worker' : 'Manual UI Request';
+    const triggerSource = isScheduled ? 'Automated 6:00 PM PHT Worker' : 'Manual Sync / Fetch';
 
     try {
       for (const fund of funds) {
@@ -62,8 +62,12 @@ class NavpuScraper {
         let scrapedNavpu = null;
 
         try {
-          // 1. ALFM / BPI Wealth Funds
-          if (fund.id === 'fund-alfm-multi-asset' || fund.id.includes('alfm') || (fund.provider && fund.provider.includes('ALFM'))) {
+          // 1. ALFM / BPI Wealth Mutual Funds
+          if (
+            fund.id.includes('alfm') || 
+            fund.id.includes('bpi') || 
+            (fund.provider && (fund.provider.includes('ALFM') || fund.provider.includes('BPI Wealth')))
+          ) {
             scrapedNavpu = await this.scrapeAlfmPortal(fund.id);
             if (scrapedNavpu && scrapedNavpu > 0) {
               latestNavpu = scrapedNavpu;
@@ -128,8 +132,13 @@ class NavpuScraper {
       dataStore.addSyncLog(
         'NAVPU Valuation Engine',
         'success',
-        `${triggerSource}: Synchronized NAVPUs for ${results.length} Philippine UITF/Feeder Funds.`
+        `${triggerSource}: Synchronized NAVPUs & Market Values for ${results.length} Philippine Funds (ALFM, ATRAM, Manulife).`
       );
+
+      // Broadcast live update via WebSocket to all connected browser tabs
+      if (typeof global.broadcastEvent === 'function') {
+        global.broadcastEvent('DATA_UPDATED', { type: 'FUNDS_SYNC', count: results.length });
+      }
 
       console.log(`✅ [NAVPU Scraper] Sync completed successfully (${triggerSource}).`);
       return results;
@@ -153,19 +162,38 @@ class NavpuScraper {
       if (response.status === 200 && response.data) {
         const $ = cheerio.load(response.data);
         let extracted = null;
+
         $('tr, .fund-row, div').each((i, el) => {
           const txt = $(el).text();
-          if (txt.includes('Global Multi-Asset') || txt.includes('Global Multi Asset')) {
+          
+          if (fundId === 'fund-alfm-multi-asset' && (txt.includes('Global Multi-Asset') || txt.includes('Global Multi Asset'))) {
             const matches = txt.match(/4[0-9]\.[0-9]{2,4}/g);
-            if (matches && matches.length > 0) {
-              extracted = parseFloat(matches[0]);
-            }
+            if (matches && matches.length > 0) extracted = parseFloat(matches[0]);
+          } else if (fundId === 'fund-alfm-multi-asset-usd' && (txt.includes('USD') || txt.includes('Dollar')) && txt.includes('Multi-Asset')) {
+            const matches = txt.match(/0\.[89][0-9]{2,4}/g);
+            if (matches && matches.length > 0) extracted = parseFloat(matches[0]);
+          } else if (fundId === 'fund-alfm-money-market' && txt.includes('Money Market')) {
+            const matches = txt.match(/14[0-9]\.[0-9]{2,4}/g);
+            if (matches && matches.length > 0) extracted = parseFloat(matches[0]);
+          } else if (fundId === 'fund-alfm-growth' && txt.includes('Growth Fund')) {
+            const matches = txt.match(/2[0-9]{2}\.[0-9]{2,4}/g);
+            if (matches && matches.length > 0) extracted = parseFloat(matches[0]);
+          } else if (fundId === 'fund-alfm-peso-bond' && txt.includes('Peso Bond')) {
+            const matches = txt.match(/3[0-9]{2}\.[0-9]{2,4}/g);
+            if (matches && matches.length > 0) extracted = parseFloat(matches[0]);
+          } else if (fundId === 'fund-alfm-dollar-bond' && txt.includes('Dollar Bond')) {
+            const matches = txt.match(/4[0-9]{2}\.[0-9]{2,4}/g);
+            if (matches && matches.length > 0) extracted = parseFloat(matches[0]);
+          } else if ((fundId === 'fund-bpi-philippine-stock-index' || fundId === 'fund-alfm-psif') && (txt.includes('Stock Index') || txt.includes('PSIF'))) {
+            const matches = txt.match(/7[0-9]{2}\.[0-9]{2,4}/g);
+            if (matches && matches.length > 0) extracted = parseFloat(matches[0]);
           }
         });
+
         if (extracted) return extracted;
       }
     } catch (e) {
-      // Fallback to secondary source
+      // Fallback
     }
 
     // Secondary: Philippine Investment Funds Association (PIFA / UITF)
@@ -174,19 +202,31 @@ class NavpuScraper {
       if (response.status === 200 && response.data) {
         const $ = cheerio.load(response.data);
         let extracted = null;
+
         $('tr').each((i, el) => {
           const rowText = $(el).text();
-          if (rowText.includes('ALFM') && (rowText.includes('Multi-Asset') || rowText.includes('Income'))) {
+          if (fundId === 'fund-alfm-multi-asset' && rowText.includes('ALFM') && (rowText.includes('Multi-Asset') || rowText.includes('Income'))) {
             const valStr = $(el).find('td').last().text().trim().replace(/[^0-9.]/g, '');
-            if (valStr && parseFloat(valStr) > 30) {
-              extracted = parseFloat(valStr);
-            }
+            if (valStr && parseFloat(valStr) > 30) extracted = parseFloat(valStr);
+          } else if (fundId === 'fund-alfm-money-market' && rowText.includes('ALFM') && rowText.includes('Money Market')) {
+            const valStr = $(el).find('td').last().text().trim().replace(/[^0-9.]/g, '');
+            if (valStr && parseFloat(valStr) > 100) extracted = parseFloat(valStr);
+          } else if (fundId === 'fund-alfm-growth' && rowText.includes('ALFM') && rowText.includes('Growth')) {
+            const valStr = $(el).find('td').last().text().trim().replace(/[^0-9.]/g, '');
+            if (valStr && parseFloat(valStr) > 100) extracted = parseFloat(valStr);
+          } else if (fundId === 'fund-alfm-peso-bond' && rowText.includes('ALFM') && rowText.includes('Peso Bond')) {
+            const valStr = $(el).find('td').last().text().trim().replace(/[^0-9.]/g, '');
+            if (valStr && parseFloat(valStr) > 100) extracted = parseFloat(valStr);
+          } else if ((fundId === 'fund-bpi-philippine-stock-index' || fundId === 'fund-alfm-psif') && rowText.includes('Stock Index')) {
+            const valStr = $(el).find('td').last().text().trim().replace(/[^0-9.]/g, '');
+            if (valStr && parseFloat(valStr) > 500) extracted = parseFloat(valStr);
           }
         });
+
         if (extracted) return extracted;
       }
     } catch (e) {
-      // Graceful fallback
+      // Fallback
     }
 
     return null;
@@ -219,6 +259,15 @@ class NavpuScraper {
           } else if (fundId.includes('money-market') && (text.includes('Money Market') || text.includes('Liquid'))) {
             const valStr = $(el).find('td').eq(2).text().trim().replace(/[^0-9.]/g, '');
             if (valStr) extractedVal = parseFloat(valStr);
+          } else if (fundId.includes('consumer') && text.includes('Consumer')) {
+            const valStr = $(el).find('td').eq(2).text().trim().replace(/[^0-9.]/g, '');
+            if (valStr) extractedVal = parseFloat(valStr);
+          } else if (fundId.includes('health') && text.includes('Health')) {
+            const valStr = $(el).find('td').eq(2).text().trim().replace(/[^0-9.]/g, '');
+            if (valStr) extractedVal = parseFloat(valStr);
+          } else if (fundId.includes('equity-opportunity') && (text.includes('Opportunity') || text.includes('Morgan'))) {
+            const valStr = $(el).find('td').eq(2).text().trim().replace(/[^0-9.]/g, '');
+            if (valStr) extractedVal = parseFloat(valStr);
           }
         });
 
@@ -248,11 +297,18 @@ class NavpuScraper {
 
         $('tr, .fund-item').each((i, el) => {
           const text = $(el).text();
-          if (fundId.includes('reit') && (text.includes('Asian REIT') || text.includes('Global REIT'))) {
+          if (fundId.includes('reit') && !fundId.includes('apac') && (text.includes('Asian REIT') || text.includes('Global REIT'))) {
             const matches = text.match(/1[0-9]{2}\.[0-9]{2,4}/g);
-            if (matches && matches.length > 0) {
-              extractedVal = parseFloat(matches[0]);
-            }
+            if (matches && matches.length > 0) extractedVal = parseFloat(matches[0]);
+          } else if (fundId.includes('apac') && (text.includes('Asia Pacific REIT') || text.includes('APAC REIT'))) {
+            const matches = text.match(/1\.[0-9]{2,4}/g);
+            if (matches && matches.length > 0) extractedVal = parseFloat(matches[0]);
+          } else if (fundId.includes('preferred') && text.includes('Preferred')) {
+            const matches = text.match(/1\.[0-9]{2,4}/g);
+            if (matches && matches.length > 0) extractedVal = parseFloat(matches[0]);
+          } else if (fundId.includes('dynamic-bond') && text.includes('Dynamic Bond')) {
+            const matches = text.match(/1\.[0-9]{2,4}/g);
+            if (matches && matches.length > 0) extractedVal = parseFloat(matches[0]);
           }
         });
 

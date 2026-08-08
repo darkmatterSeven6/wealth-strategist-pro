@@ -138,6 +138,8 @@ function broadcastEvent(event, data) {
   });
 }
 
+global.broadcastEvent = broadcastEvent;
+
 // Global server client error handler
 server.on('clientError', (err, socket) => {
   if (err.code === 'ECONNRESET' || !socket.writable) {
