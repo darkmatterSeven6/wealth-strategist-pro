@@ -306,75 +306,14 @@
       "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "orderNumber": "SGC2608015853033",
-      "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)",
-      "targetFundManager": "Fidelity International",
-      "benchmark": "MSCI AC World Information Technology Index",
-      "top10Weight": "42.80%",
-      "top_holdings": [
-        {
-          "name": "Microsoft Corp.",
-          "ticker": "MSFT",
-          "sector": "Information Technology / Cloud",
-          "weight": "8.20%",
-          "description": "Global leader in enterprise cloud computing (Azure), generative AI integrations (Copilot), and enterprise productivity software."
-        },
-        {
-          "name": "Apple Inc.",
-          "ticker": "AAPL",
-          "sector": "Consumer Electronics / Hardware",
-          "weight": "5.70%",
-          "description": "Global consumer technology ecosystem across iPhone, Mac, Wearables, and high-margin recurring Digital Services."
-        },
-        {
-          "name": "NVIDIA Corporation",
-          "ticker": "NVDA",
-          "sector": "AI Accelerators & GPUs",
-          "weight": "5.40%",
-          "description": "Dominant global provider of accelerated GPU computing platforms, networking fabrics (InfiniBand), and AI model training infrastructure."
-        },
-        {
-          "name": "Taiwan Semiconductor (TSMC)",
-          "ticker": "TSM",
-          "sector": "Semiconductor Foundry",
-          "weight": "4.80%",
-          "description": "World's premier semiconductor manufacturing foundry fabricating leading-edge 3nm and 2nm nodes for global tech leaders."
-        },
-        {
-          "name": "Visa Inc.",
-          "ticker": "V",
-          "sector": "Financial Technology / Payments",
-          "weight": "4.30%",
-          "description": "Operates the world's largest retail electronic payments processing network with industry-leading operating margins."
-        },
-        {
-          "name": "Salesforce Inc.",
-          "ticker": "CRM",
-          "sector": "Enterprise Software / SaaS",
-          "weight": "3.90%",
-          "description": "Premier provider of cloud-based Customer Relationship Management (CRM) platforms, Data Cloud, and autonomous AI agents."
-        },
-        {
-          "name": "Alphabet Inc. (Google)",
-          "ticker": "GOOGL",
-          "sector": "Digital Advertising / Cloud & AI",
-          "weight": "3.70%",
-          "description": "Dominates global internet search, Android mobile operating ecosystem, YouTube video monetization, and Google Cloud Platform."
-        },
-        {
-          "name": "Samsung Electronics",
-          "ticker": "005930.KS",
-          "sector": "Semiconductors & Memory",
-          "weight": "3.50%",
-          "description": "Major global manufacturer of High Bandwidth Memory (HBM3e), DRAM/NAND flash storage, smartphones, and OLED displays."
-        }
-      ]
+      "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)"
     },
     {
       "id": "fund-atram-infra",
       "name": "ATRAM Global Infra Equity Feeder Fund",
       "provider": "ATRAM Trust Corporation",
       "platform": "GCash GInvest",
-      "targetFund": "UBS (Lux) Infrastructure Equity Fund",
+      "targetFund": "Franklin Global Listed Infrastructure Fund",
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
@@ -463,67 +402,6 @@
           "date": "2026-08-08",
           "navpu": 144.6562
         }
-      ],
-      "targetFundManager": "UBS Asset Management",
-      "benchmark": "FTSE Global Core Infrastructure 50/50 Index",
-      "top10Weight": "41.60%",
-      "top_holdings": [
-        {
-          "name": "Targa Resources Corp.",
-          "ticker": "TRGP",
-          "sector": "Energy Infrastructure / Midstream",
-          "weight": "4.71%",
-          "description": "Major North American natural gas gathering, processing, and pipeline operator in the prolific Permian Basin."
-        },
-        {
-          "name": "ONEOK Inc.",
-          "ticker": "OKE",
-          "sector": "Energy Infrastructure / NGLs",
-          "weight": "4.62%",
-          "description": "Integrated natural gas liquids (NGL) processing and long-haul transmission interstate pipeline network."
-        },
-        {
-          "name": "Williams Companies Inc.",
-          "ticker": "WMB",
-          "sector": "Energy Infrastructure / Gas",
-          "weight": "4.33%",
-          "description": "Transports over 30% of all natural gas consumed in the United States via critical interstate pipeline systems."
-        },
-        {
-          "name": "Kinder Morgan Inc.",
-          "ticker": "KMI",
-          "sector": "Energy Infrastructure / Pipelines",
-          "weight": "4.31%",
-          "description": "Operates 83,000 miles of pipelines and 140 energy terminals transporting natural gas, gasoline, and crude oil."
-        },
-        {
-          "name": "Flughafen Zürich AG",
-          "ticker": "FHZN.SW",
-          "sector": "Transportation / Airports",
-          "weight": "4.23%",
-          "description": "Owns and operates Zurich Airport, Switzerland's premier international passenger and air freight aviation hub."
-        },
-        {
-          "name": "Entergy Corporation",
-          "ticker": "ETR",
-          "sector": "Regulated Utilities / Power",
-          "weight": "3.93%",
-          "description": "Electric power generation and retail distribution utility serving 3 million customers across the US Deep South."
-        },
-        {
-          "name": "Union Pacific Corp.",
-          "ticker": "UNP",
-          "sector": "Freight Rail Transportation",
-          "weight": "3.69%",
-          "description": "Premier Class I freight railroad network spanning 23 western US states, transporting grain, energy, and intermodal freight."
-        },
-        {
-          "name": "Enbridge Inc.",
-          "ticker": "ENB",
-          "sector": "Energy Pipeline Infrastructure",
-          "weight": "3.55%",
-          "description": "Critical North American energy infrastructure network delivering millions of barrels of crude oil and natural gas daily."
-        }
       ]
     },
     {
@@ -531,7 +409,7 @@
       "name": "ALFM Global Multi-Asset Income Fund Inc - PHP",
       "provider": "BPI Wealth / ALFM",
       "platform": "GCash GInvest",
-      "targetFund": "BGF (BlackRock) Global Multi-Asset Income Fund",
+      "targetFund": "BlackRock Global Multi-Asset Income Fund",
       "category": "Multi-Asset Dividend Income",
       "currency": "PHP",
       "riskRating": "Aggressive",
@@ -610,75 +488,14 @@
         }
       ],
       "pendingBuyOrders": 500,
-      "pendingSellOrders": 0,
-      "targetFundManager": "BlackRock Financial Management",
-      "benchmark": "50% MSCI World / 50% Bloomberg Global Aggregate Bond Index",
-      "top10Weight": "18.40%",
-      "top_holdings": [
-        {
-          "name": "iShares MSCI EM USD ETF",
-          "ticker": "EMB",
-          "sector": "Emerging Market Debt / Bonds",
-          "weight": "2.03%",
-          "description": "High-yield bond fund tracking sovereign and corporate debt instruments across emerging market economies."
-        },
-        {
-          "name": "iShares $ High Yield Corp Bond ETF",
-          "ticker": "HYG",
-          "sector": "Corporate Fixed Income",
-          "weight": "0.96%",
-          "description": "Diversified basket of liquid, high-yield corporate bonds providing consistent monthly dividend cash flow."
-        },
-        {
-          "name": "Samsung Electronics GDS",
-          "ticker": "SMSN.L",
-          "sector": "Technology / Dividend Equities",
-          "weight": "0.29%",
-          "description": "Global technology hardware giant providing balance through solid preferred stock dividend distributions."
-        },
-        {
-          "name": "Microsoft Corp.",
-          "ticker": "MSFT",
-          "sector": "Technology / Dividend Growth",
-          "weight": "0.27%",
-          "description": "Core growth equity holding providing resilient cash balance alongside recurring quarterly dividend growth."
-        },
-        {
-          "name": "British American Tobacco",
-          "ticker": "BTI",
-          "sector": "Consumer Staples / High Yield",
-          "weight": "0.25%",
-          "description": "High-dividend defensive consumer staple generating predictable, recession-resilient operating cash flows."
-        },
-        {
-          "name": "American Electric Power Inc.",
-          "ticker": "AEP",
-          "sector": "Regulated Electric Utilities",
-          "weight": "0.24%",
-          "description": "Essential utility infrastructure operator providing stable regulated base returns and steady quarterly cash distributions."
-        },
-        {
-          "name": "AstraZeneca PLC",
-          "ticker": "AZN",
-          "sector": "Healthcare & Pharmaceuticals",
-          "weight": "0.23%",
-          "description": "Global biopharmaceutical innovator with robust oncology franchise, resilient global revenue, and dividend yield."
-        },
-        {
-          "name": "Shell PLC",
-          "ticker": "SHEL",
-          "sector": "Integrated Global Energy",
-          "weight": "0.22%",
-          "description": "Diversified energy major returning massive capital to shareholders through strong progressive dividends and buybacks."
-        }
-      ]
+      "pendingSellOrders": 0
     },
     {
       "id": "fund-manulife-reit",
       "name": "Manulife Global REIT Feeder Fund",
       "provider": "Manulife Investment Management",
       "platform": "GCash GInvest",
-      "targetFund": "Manulife Global Fund - Global REIT Fund",
+      "targetFund": "Manulife Global Fund - Asian REIT Fund",
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
@@ -767,53 +584,6 @@
           "date": "2026-08-08",
           "navpu": 112.1497
         }
-      ],
-      "targetFundManager": "Manulife Investment Management",
-      "benchmark": "FTSE EPRA Nareit Developed Index",
-      "top10Weight": "44.50%",
-      "top_holdings": [
-        {
-          "name": "Prologis Inc.",
-          "ticker": "PLD",
-          "sector": "Industrial & Logistics REIT",
-          "weight": "7.80%",
-          "description": "Global leader in modern logistics and supply chain warehouse real estate strategically positioned near high-density consumption hubs."
-        },
-        {
-          "name": "Equinix Inc.",
-          "ticker": "EQIX",
-          "sector": "Digital Infrastructure / Data Centers",
-          "weight": "6.90%",
-          "description": "Premier global digital infrastructure REIT providing interconnection and data center colocation for cloud and AI networks."
-        },
-        {
-          "name": "Welltower Inc.",
-          "ticker": "WELL",
-          "sector": "Healthcare & Senior Housing REIT",
-          "weight": "5.40%",
-          "description": "Capitalizes on structural aging demographics with premier senior living communities and post-acute healthcare properties."
-        },
-        {
-          "name": "Public Storage",
-          "ticker": "PSA",
-          "sector": "Self-Storage Facilities",
-          "weight": "4.60%",
-          "description": "Largest owner and operator of self-storage properties across the US with low operating expense ratios and resilient pricing."
-        },
-        {
-          "name": "Simon Property Group",
-          "ticker": "SPG",
-          "sector": "Retail & Mixed-Use Properties",
-          "weight": "4.20%",
-          "description": "Premier retail real estate investment trust owning high-productivity Class-A shopping destinations and premium outlets."
-        },
-        {
-          "name": "Realty Income Corp.",
-          "ticker": "O",
-          "sector": "Triple Net Lease Commercial",
-          "weight": "3.80%",
-          "description": "The 'Monthly Dividend Company' holding 15,000+ commercial properties under long-term net lease agreements with defensive tenants."
-        }
       ]
     },
     {
@@ -821,7 +591,7 @@
       "name": "ATRAM Peso Money Market Fund",
       "provider": "ATRAM Trust Corporation",
       "platform": "GCash GInvest",
-      "targetFund": "Philippine Short-Term Sovereign Debt & Bank Time Deposits",
+      "targetFund": "Philippine Short-Term Treasury Bills & Time Deposits",
       "category": "Money Market / Liquidity",
       "currency": "PHP",
       "riskRating": "Conservative",
@@ -910,46 +680,6 @@
           "date": "2026-08-08",
           "navpu": 140.2315
         }
-      ],
-      "targetFundManager": "ATRAM Trust Corporation",
-      "benchmark": "Bloomberg Philippine Sovereign Bond 1-3 Month Index",
-      "top10Weight": "100.00%",
-      "top_holdings": [
-        {
-          "name": "Republic of the Philippines 91-Day T-Bills",
-          "ticker": "PH91DTB",
-          "sector": "Sovereign Debt (Gov)",
-          "weight": "35.00%",
-          "description": "Short-term sovereign debt securities issued by the Bureau of the Treasury with zero credit default risk."
-        },
-        {
-          "name": "Republic of the Philippines 182-Day T-Bills",
-          "ticker": "PH182DTB",
-          "sector": "Sovereign Debt (Gov)",
-          "weight": "25.00%",
-          "description": "6-month sovereign debt paper providing capital preservation and liquidity buffer."
-        },
-        {
-          "name": "BDO Unibank Institutional Time Deposit",
-          "ticker": "BDO-TD",
-          "sector": "Tier-1 Bank Cash Equiv",
-          "weight": "18.00%",
-          "description": "Short-term institutional bank time deposit earning attractive money-market interest rates."
-        },
-        {
-          "name": "BPI Short-Term Certificate of Deposit",
-          "ticker": "BPI-CD",
-          "sector": "Tier-1 Bank Cash Equiv",
-          "weight": "12.00%",
-          "description": "High-grade short term deposit instrument ensuring daily liquidity for fund redemptions."
-        },
-        {
-          "name": "BSP Overnight Reverse Repurchase (RRP)",
-          "ticker": "BSP-RRP",
-          "sector": "Central Bank Liquidity",
-          "weight": "10.00%",
-          "description": "Ultra-liquid overnight reverse repo facility directly with the Bangko Sentral ng Pilipinas."
-        }
       ]
     },
     {
@@ -957,7 +687,7 @@
       "name": "ATRAM Philippine Equity Smart Index Fund",
       "provider": "ATRAM Trust Corporation",
       "platform": "GCash GInvest",
-      "targetFund": "ATRAM Smart Index Portfolio",
+      "targetFund": "FactSet Philippines Smart Equity Index",
       "category": "Domestic Equity Index",
       "currency": "PHP",
       "riskRating": "Aggressive",
@@ -1045,46 +775,6 @@
         {
           "date": "2026-08-08",
           "navpu": 12.0808
-        }
-      ],
-      "targetFundManager": "ATRAM Trust Corporation",
-      "benchmark": "Enhanced PSEi Smart Beta Index",
-      "top10Weight": "62.40%",
-      "top_holdings": [
-        {
-          "name": "SM Investments Corp.",
-          "ticker": "SM",
-          "sector": "Conglomerate",
-          "weight": "13.80%",
-          "description": "Anchor holding across Philippine retail banking, property development, and retail department stores."
-        },
-        {
-          "name": "BDO Unibank Inc.",
-          "ticker": "BDO",
-          "sector": "Commercial Banking",
-          "weight": "10.90%",
-          "description": "Dominant universal bank with high net interest margins and nationwide branch distribution."
-        },
-        {
-          "name": "International Container Terminal Services",
-          "ticker": "ICT",
-          "sector": "Port Logistics",
-          "weight": "9.40%",
-          "description": "Smart-beta factor overweight due to exceptional return on invested capital and international container volume growth."
-        },
-        {
-          "name": "SM Prime Holdings",
-          "ticker": "SMPH",
-          "sector": "Real Estate",
-          "weight": "9.10%",
-          "description": "Commercial shopping mall developer with predictable leasing rental streams."
-        },
-        {
-          "name": "Bank of the Philippine Islands",
-          "ticker": "BPI",
-          "sector": "Universal Banking",
-          "weight": "8.50%",
-          "description": "Tier-1 Philippine lender benefiting from robust consumer credit growth and digital banking efficiency."
         }
       ]
     },
@@ -1278,60 +968,6 @@
           "date": "2026-08-08",
           "navpu": 178.0704
         }
-      ],
-      "targetFundManager": "Fidelity International",
-      "benchmark": "MSCI AC World Consumer Discretionary + Staples Index",
-      "top10Weight": "46.20%",
-      "top_holdings": [
-        {
-          "name": "Amazon.com Inc.",
-          "ticker": "AMZN",
-          "sector": "E-Commerce, Cloud & AI",
-          "weight": "8.50%",
-          "description": "Global powerhouse in e-commerce fulfillment logistics, digital subscriptions (Prime), and high-margin cloud infrastructure (AWS)."
-        },
-        {
-          "name": "LVMH Moët Hennessy Louis Vuitton",
-          "ticker": "MC.PA",
-          "sector": "Luxury Goods & Fashion",
-          "weight": "6.20%",
-          "description": "World's preeminent luxury conglomerate controlling iconic heritage houses including Louis Vuitton, Dior, and Tiffany & Co."
-        },
-        {
-          "name": "Hermès International",
-          "ticker": "RMS.PA",
-          "sector": "Ultra-Luxury Goods",
-          "weight": "5.10%",
-          "description": "Iconic French luxury house with exceptional pricing power, unmatched artisan craftsmanship, and long waiting lists."
-        },
-        {
-          "name": "L'Oréal S.A.",
-          "ticker": "OR.PA",
-          "sector": "Beauty & Personal Care",
-          "weight": "4.80%",
-          "description": "World leader in beauty, skincare, and cosmetics with extensive distribution across luxury and mass market channels."
-        },
-        {
-          "name": "Nike Inc.",
-          "ticker": "NKE",
-          "sector": "Athletic Footwear & Apparel",
-          "weight": "4.10%",
-          "description": "Global leader in athletic footwear, performance sportswear, and direct-to-consumer digital commerce."
-        },
-        {
-          "name": "Booking Holdings Inc.",
-          "ticker": "BKNG",
-          "sector": "Online Travel & Leisure",
-          "weight": "3.90%",
-          "description": "Dominant digital travel platform operating Booking.com, Priceline, and Agoda with superior operating cash generation."
-        },
-        {
-          "name": "Costco Wholesale Corp.",
-          "ticker": "COST",
-          "sector": "Consumer Staples / Retail",
-          "weight": "3.60%",
-          "description": "Membership warehouse club with incredible customer loyalty, 90%+ renewal rates, and high inventory turnover."
-        }
       ]
     },
     {
@@ -1339,7 +975,7 @@
       "name": "ATRAM Global Health Care Feeder Fund",
       "provider": "ATRAM Trust Corporation",
       "platform": "GCash GInvest",
-      "targetFund": "Fidelity Funds - Global Health Care Fund",
+      "targetFund": "Wellington Global Health Care Fund",
       "category": "Global Thematic Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
@@ -1427,46 +1063,6 @@
         {
           "date": "2026-08-08",
           "navpu": 201.5352
-        }
-      ],
-      "targetFundManager": "Fidelity International",
-      "benchmark": "MSCI AC World Health Care Index",
-      "top10Weight": "42.10%",
-      "top_holdings": [
-        {
-          "name": "Eli Lilly and Company",
-          "ticker": "LLY",
-          "sector": "Pharmaceuticals & Biotech",
-          "weight": "8.90%",
-          "description": "Pioneer in blockbuster GLP-1 metabolic health (diabetes and obesity) therapies, oncology, and neuroscience."
-        },
-        {
-          "name": "Novo Nordisk A/S",
-          "ticker": "NVO",
-          "sector": "Pharmaceuticals / Diabetes & Obesity",
-          "weight": "7.60%",
-          "description": "Global leader in diabetes and obesity treatment with exponential global adoption of Ozempic and Wegovy."
-        },
-        {
-          "name": "UnitedHealth Group Inc.",
-          "ticker": "UNH",
-          "sector": "Managed Healthcare Services",
-          "weight": "6.40%",
-          "description": "Largest healthcare enterprise in the United States offering health insurance (UnitedHealthcare) and health tech (Optum)."
-        },
-        {
-          "name": "Thermo Fisher Scientific Inc.",
-          "ticker": "TMO",
-          "sector": "Life Sciences Tools & Diagnostics",
-          "weight": "5.10%",
-          "description": "Essential global supplier of analytical instruments, laboratory reagents, and clinical trials software."
-        },
-        {
-          "name": "Johnson & Johnson",
-          "ticker": "JNJ",
-          "sector": "Diversified MedTech & Pharma",
-          "weight": "4.80%",
-          "description": "Global healthcare powerhouse specializing in innovative surgical medtech, orthopedics, and therapeutics."
         }
       ]
     },
@@ -1667,7 +1263,7 @@
       "name": "Manulife Asia Pacific REIT Fund of Funds",
       "provider": "Manulife Investment Management",
       "platform": "GCash GInvest",
-      "targetFund": "Manulife Global Fund - Asia Pacific REIT Fund",
+      "targetFund": "Asia Pacific Real Estate Investment Trusts Basket",
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
@@ -1756,39 +1352,6 @@
           "date": "2026-08-08",
           "navpu": 1.2922
         }
-      ],
-      "targetFundManager": "Manulife Investment Management",
-      "benchmark": "FTSE EPRA Nareit Asia ex-Japan REITs Index",
-      "top10Weight": "45.00%",
-      "top_holdings": [
-        {
-          "name": "CapitaLand Ascendas REIT",
-          "ticker": "A17U.SI",
-          "sector": "Singapore Industrial & Tech Parks",
-          "weight": "8.10%",
-          "description": "Singapore's first and largest business space and industrial REIT with data centers across the UK and Europe."
-        },
-        {
-          "name": "Link Real Estate Investment Trust",
-          "ticker": "0823.HK",
-          "sector": "Retail & Logistics (Hong Kong)",
-          "weight": "7.20%",
-          "description": "Asia's largest REIT managing essential community shopping centers, carparks, and fresh markets."
-        },
-        {
-          "name": "Nippon Prologis REIT Inc.",
-          "ticker": "3283.T",
-          "sector": "Japanese Modern Logistics",
-          "weight": "6.50%",
-          "description": "Focuses on state-of-the-art logistics facilities in Tokyo and Osaka metropolitan areas."
-        },
-        {
-          "name": "Goodman Group",
-          "ticker": "GMG.AX",
-          "sector": "Industrial Property & Data Centers",
-          "weight": "5.80%",
-          "description": "Leading global property group specializing in industrial property and hyper-scale powered data center campuses."
-        }
       ]
     },
     {
@@ -1796,7 +1359,7 @@
       "name": "ATRAM Global Equity Opportunity Feeder Fund",
       "provider": "ATRAM Trust Corporation",
       "platform": "GCash GInvest",
-      "targetFund": "Morgan Stanley Investment Funds – Global Opportunity Fund",
+      "targetFund": "Morgan Stanley Investment Funds - Global Opportunity Fund",
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
@@ -1886,88 +1449,15 @@
           "navpu": 199.4714
         }
       ],
-      "targetFundManager": "Morgan Stanley Investment Management",
-      "benchmark": "MSCI All Country World Index (ACWI)",
-      "top10Weight": "54.10%",
-      "top_holdings": [
-        {
-          "name": "SK Hynix Inc.",
-          "ticker": "000660.KS",
-          "sector": "Information Technology / Memory Chips",
-          "weight": "9.67%",
-          "description": "Global leader in high-bandwidth memory (HBM) supply for AI hardware accelerators."
-        },
-        {
-          "name": "Taiwan Semiconductor (TSMC)",
-          "ticker": "TSM",
-          "sector": "Information Technology / Foundries",
-          "weight": "8.83%",
-          "description": "The world's largest semiconductor foundry, manufacturing chips for Apple, Nvidia, and AMD."
-        },
-        {
-          "name": "ServiceNow Inc.",
-          "ticker": "NOW",
-          "sector": "Information Technology / Enterprise Software",
-          "weight": "6.51%",
-          "description": "Enterprise cloud platform automating digital workflows and operational infrastructure."
-        },
-        {
-          "name": "Uber Technologies Inc.",
-          "ticker": "UBER",
-          "sector": "Consumer Discretionary / Mobility",
-          "weight": "6.33%",
-          "description": "Dominant global ride-hailing, freight logistics, and food delivery platform."
-        },
-        {
-          "name": "ASML Holding NV",
-          "ticker": "ASML",
-          "sector": "Information Technology / Semiconductor Equip.",
-          "weight": "5.64%",
-          "description": "Monopolistic Dutch manufacturer of Extreme Ultraviolet (EUV) lithography systems."
-        },
-        {
-          "name": "Meta Platforms Inc.",
-          "ticker": "META",
-          "sector": "Communication Services / Digital Ad",
-          "weight": "5.24%",
-          "description": "Global social media ecosystem across Facebook, Instagram, WhatsApp, and AI infrastructure."
-        },
-        {
-          "name": "Samsung Electronics Co.",
-          "ticker": "005930.KS",
-          "sector": "Information Technology / Hardware",
-          "weight": "4.51%",
-          "description": "Major global technology conglomerate specializing in DRAM memory, displays, and mobile devices."
-        },
-        {
-          "name": "Spotify Technology SA",
-          "ticker": "SPOT",
-          "sector": "Communication Services / Digital Media",
-          "weight": "4.26%",
-          "description": "World's leading audio streaming subscription platform with global user base."
-        },
-        {
-          "name": "Hermès International",
-          "ticker": "RMS.PA",
-          "sector": "Consumer Discretionary / Ultra-Luxury",
-          "weight": "3.81%",
-          "description": "Premier French ultra-luxury fashion house possessing extreme pricing power and margin stability."
-        },
-        {
-          "name": "DoorDash Inc.",
-          "ticker": "DASH",
-          "sector": "Consumer Discretionary / Local Logistics",
-          "weight": "3.67%",
-          "description": "Leading North American local commerce and on-demand delivery logistics platform."
-        }
-      ]
+      "pendingBuyOrders": 1000,
+      "pendingSellOrders": 0
     },
     {
       "id": "fund-bpi-philippine-stock-index",
       "name": "Philippine Stock Index Fund (Units)",
       "provider": "BPI Wealth",
       "platform": "GCash GInvest",
-      "targetFund": "Philippine Stock Exchange Index (PSEi) Constituents",
+      "targetFund": "Philippine Stock Exchange Composite Index (PSEi)",
       "category": "Domestic Equity Index",
       "currency": "PHP",
       "riskRating": "Aggressive",
@@ -2055,60 +1545,6 @@
         {
           "date": "2026-08-08",
           "navpu": 789.331
-        }
-      ],
-      "targetFundManager": "BPI Wealth / Asset Management",
-      "benchmark": "PSEi (Philippine Stock Exchange Index)",
-      "top10Weight": "67.80%",
-      "top_holdings": [
-        {
-          "name": "SM Investments Corp.",
-          "ticker": "SM",
-          "sector": "Conglomerate / Banking & Retail",
-          "weight": "14.50%",
-          "description": "Philippines' largest conglomerate with market-leading positions in banking (BDO), property (SM Prime), and retail stores."
-        },
-        {
-          "name": "BDO Unibank Inc.",
-          "ticker": "BDO",
-          "sector": "Universal Banking & Financial Services",
-          "weight": "11.20%",
-          "description": "Largest universal bank in the Philippines in terms of total assets, loans, deposits, and nationwide branch footprint."
-        },
-        {
-          "name": "SM Prime Holdings",
-          "ticker": "SMPH",
-          "sector": "Real Estate & Commercial Malls",
-          "weight": "10.40%",
-          "description": "Largest integrated property developer and shopping mall operator in the Philippines with prime commercial landbanks."
-        },
-        {
-          "name": "Ayala Land Inc.",
-          "ticker": "ALI",
-          "sector": "Real Estate & Masterplanned Estates",
-          "weight": "8.90%",
-          "description": "Premier Philippine masterplanned estate developer, residential builder, commercial office, and shopping mall operator."
-        },
-        {
-          "name": "Bank of the Philippine Islands",
-          "ticker": "BPI",
-          "sector": "Universal Banking & Digital Finance",
-          "weight": "8.10%",
-          "description": "Oldest operating bank in Southeast Asia with superior return on equity (ROE), wealth management, and digital retail adoption."
-        },
-        {
-          "name": "International Container Terminal Services",
-          "ticker": "ICT",
-          "sector": "Port Terminal Operations & Logistics",
-          "weight": "7.60%",
-          "description": "Global port management giant operating 33+ marine container terminals across 20 countries with stellar cash flow."
-        },
-        {
-          "name": "Ayala Corporation",
-          "ticker": "AC",
-          "sector": "Diversified Conglomerate",
-          "weight": "7.10%",
-          "description": "One of the oldest conglomerates in the Philippines with core stakes in real estate, banking, telecommunications, and renewables."
         }
       ]
     },
@@ -2371,6 +1807,20 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1786216456492-z4ka",
+      "timestamp": "2026-08-08T19:14:16.492Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 19:14:16"
+    },
+    {
+      "id": "log-1786216327873-ly3q",
+      "timestamp": "2026-08-08T19:12:07.873Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Global Equity Opportunity Feeder Fund (GCash GInvest): 0 units."
+    },
     {
       "id": "log-1786215462619-s1jx",
       "timestamp": "2026-08-08T18:57:42.619Z",
@@ -2703,20 +2153,6 @@
     {
       "id": "log-1786194645157-e5so",
       "timestamp": "2026-08-08T13:10:45.157Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786194634449-lz6y",
-      "timestamp": "2026-08-08T13:10:34.450Z",
-      "source": "Account Manager",
-      "status": "info",
-      "message": "Updated account card display order."
-    },
-    {
-      "id": "log-1786194624224-y7y4",
-      "timestamp": "2026-08-08T13:10:24.224Z",
       "source": "Account Manager",
       "status": "info",
       "message": "Updated account card display order."
