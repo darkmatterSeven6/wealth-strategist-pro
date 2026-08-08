@@ -1778,6 +1778,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786197115707-mvt3",
+      "timestamp": "2026-08-08T13:51:55.708Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-08 13:51:55"
+    },
+    {
       "id": "log-1786196231816-t8tf",
       "timestamp": "2026-08-08T13:37:11.816Z",
       "source": "GitHub Cloud Sync",
@@ -2119,13 +2126,6 @@
       "source": "Automated Aggregation Pipeline",
       "status": "success",
       "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786185720902-aolo",
-      "timestamp": "2026-08-08T10:42:00.902Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 10:42:00"
     }
   ],
   "transactions": [
