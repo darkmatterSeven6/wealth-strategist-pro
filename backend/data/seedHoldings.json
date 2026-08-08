@@ -539,5 +539,86 @@
         "description": "Leading global property group specializing in industrial property and hyper-scale powered data center campuses."
       }
     ]
+  },
+  {
+    "fund_id": "fund-atram-equity-opportunity",
+    "fund_name": "ATRAM Global Equity Opportunity Feeder Fund",
+    "target_fund": "Morgan Stanley Investment Funds – Global Opportunity Fund",
+    "target_manager": "Morgan Stanley Investment Management",
+    "target_fund_manager": "Morgan Stanley Investment Management",
+    "benchmark": "MSCI All Country World Index (ACWI)",
+    "top_10_weight": "54.10%",
+    "holdings": [
+      {
+        "name": "SK Hynix Inc.",
+        "ticker": "000660.KS",
+        "sector": "Information Technology / Memory Chips",
+        "weight": "9.67%",
+        "description": "Global leader in high-bandwidth memory (HBM) supply for AI hardware accelerators."
+      },
+      {
+        "name": "Taiwan Semiconductor (TSMC)",
+        "ticker": "TSM",
+        "sector": "Information Technology / Foundries",
+        "weight": "8.83%",
+        "description": "The world's largest semiconductor foundry, manufacturing chips for Apple, Nvidia, and AMD."
+      },
+      {
+        "name": "ServiceNow Inc.",
+        "ticker": "NOW",
+        "sector": "Information Technology / Enterprise Software",
+        "weight": "6.51%",
+        "description": "Enterprise cloud platform automating digital workflows and operational infrastructure."
+      },
+      {
+        "name": "Uber Technologies Inc.",
+        "ticker": "UBER",
+        "sector": "Consumer Discretionary / Mobility",
+        "weight": "6.33%",
+        "description": "Dominant global ride-hailing, freight logistics, and food delivery platform."
+      },
+      {
+        "name": "ASML Holding NV",
+        "ticker": "ASML",
+        "sector": "Information Technology / Semiconductor Equip.",
+        "weight": "5.64%",
+        "description": "Monopolistic Dutch manufacturer of Extreme Ultraviolet (EUV) lithography systems."
+      },
+      {
+        "name": "Meta Platforms Inc.",
+        "ticker": "META",
+        "sector": "Communication Services / Digital Ad",
+        "weight": "5.24%",
+        "description": "Global social media ecosystem across Facebook, Instagram, WhatsApp, and AI infrastructure."
+      },
+      {
+        "name": "Samsung Electronics Co.",
+        "ticker": "005930.KS",
+        "sector": "Information Technology / Hardware",
+        "weight": "4.51%",
+        "description": "Major global technology conglomerate specializing in DRAM memory, displays, and mobile devices."
+      },
+      {
+        "name": "Spotify Technology SA",
+        "ticker": "SPOT",
+        "sector": "Communication Services / Digital Media",
+        "weight": "4.26%",
+        "description": "World's leading audio streaming subscription platform with global user base."
+      },
+      {
+        "name": "Hermès International",
+        "ticker": "RMS.PA",
+        "sector": "Consumer Discretionary / Ultra-Luxury",
+        "weight": "3.81%",
+        "description": "Premier French ultra-luxury fashion house possessing extreme pricing power and margin stability."
+      },
+      {
+        "name": "DoorDash Inc.",
+        "ticker": "DASH",
+        "sector": "Consumer Discretionary / Local Logistics",
+        "weight": "3.67%",
+        "description": "Leading North American local commerce and on-demand delivery logistics platform."
+      }
+    ]
   }
 ]
