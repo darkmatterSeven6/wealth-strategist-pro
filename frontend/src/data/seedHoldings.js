@@ -466,6 +466,52 @@ export const SEED_HOLDINGS = [
     ]
   },
   {
+    fund_id: "fund-atram-medium-term-bond",
+    match_keywords: ["bond", "medium term", "peso bond"],
+    fund_name: "ATRAM Medium Term Peso Bond Fund",
+    target_fund: "Markit iBoxx ALBI Philippines Sovereign & Corporate Bonds",
+    target_fund_manager: "ATRAM Trust Corporation",
+    benchmark: "Bloomberg Philippine Sovereign Bond 1-5 Year Index",
+    top_10_weight: "65.00%",
+    holdings: [
+      {
+        name: "Republic of the Philippines FXTN 10-60",
+        ticker: "PH-FXTN-10-60",
+        sector: "Sovereign Debt (Gov)",
+        weight: "20.00%",
+        description: "Philippine government sovereign bond offering steady coupon income with low default risk."
+      },
+      {
+        name: "Republic of the Philippines RTB 05-12",
+        ticker: "PH-RTB-05-12",
+        sector: "Retail Treasury Bond",
+        weight: "15.00%",
+        description: "Retail treasury bond issued by the government, providing retail investors accessible fixed income."
+      },
+      {
+        name: "Ayala Corporation 5.0% 2028",
+        ticker: "AC-28",
+        sector: "Corporate Bonds",
+        weight: "10.00%",
+        description: "High-grade corporate bond from the Philippines' oldest and largest conglomerate."
+      },
+      {
+        name: "SM Prime Holdings 4.5% 2027",
+        ticker: "SMPH-27",
+        sector: "Corporate Bonds",
+        weight: "10.00%",
+        description: "Secured corporate debt from a leading property developer in Southeast Asia."
+      },
+      {
+        name: "BDO Unibank 4.25% 2026",
+        ticker: "BDO-26",
+        sector: "Corporate Bonds",
+        weight: "10.00%",
+        description: "Senior unsecured notes from the largest bank in the Philippines."
+      }
+    ]
+  },
+  {
     fund_id: "fund-atram-health-care",
     match_keywords: ["health", "healthcare", "pharma"],
     fund_name: "ATRAM Global Health Care Feeder Fund",

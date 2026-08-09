@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-08T20:08:45.048Z"
+    "lastSyncTimestamp": "2026-08-09T21:04:15.988Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -32,7 +32,7 @@
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:08:45.047Z",
+      "lastSynced": "2026-08-09T21:04:15.988Z",
       "subAccounts": [
         {
           "name": "Personal Goals: Japan 2027",
@@ -61,7 +61,7 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:08:45.048Z"
+      "lastSynced": "2026-08-09T21:04:15.988Z"
     },
     {
       "id": "acc-maya-wallet-01",
@@ -78,7 +78,7 @@
       "icon": "MayaWallet",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:09:53.291Z"
+      "lastSynced": "2026-08-09T21:04:15.988Z"
     },
     {
       "id": "acc-maribank-01",
@@ -86,7 +86,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1116.36,
+      "balance": 1116.46,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.1,
@@ -95,7 +95,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:08:45.048Z"
+      "lastSynced": "2026-08-09T21:04:15.988Z"
     },
     {
       "id": "acc-atome-01",
@@ -112,7 +112,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:08:45.048Z"
+      "lastSynced": "2026-08-09T21:04:15.988Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -129,7 +129,7 @@
       "icon": "GCash",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:10:32.474Z"
+      "lastSynced": "2026-08-09T21:04:15.988Z"
     },
     {
       "id": "acc-bpi-01",
@@ -146,7 +146,7 @@
       "icon": "BPI",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:08:45.048Z"
+      "lastSynced": "2026-08-09T21:04:15.988Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -163,7 +163,7 @@
       "icon": "GoTyme",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:08:45.048Z",
+      "lastSynced": "2026-08-09T21:04:15.988Z",
       "subAccounts": [
         {
           "name": "Auto & Insurance Buffer",
@@ -192,7 +192,7 @@
       "icon": "Tonik",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-08T20:08:45.048Z",
+      "lastSynced": "2026-08-09T21:04:15.988Z",
       "subAccounts": [
         {
           "name": "Group Stash (Family)",
@@ -1808,6 +1808,41 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786317955078-xfg7",
+      "timestamp": "2026-08-09T23:25:55.078Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-09 23:25:55"
+    },
+    {
+      "id": "log-1786317946518-lgut",
+      "timestamp": "2026-08-09T23:25:46.518Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-09 23:25:46"
+    },
+    {
+      "id": "log-1786314891838-cyqz",
+      "timestamp": "2026-08-09T22:34:51.838Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786309467224-ycem",
+      "timestamp": "2026-08-09T21:04:27.224Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786309456047-zexn",
+      "timestamp": "2026-08-09T21:04:16.047Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
+    },
+    {
       "id": "log-1786251582587-u6hp",
       "timestamp": "2026-08-09T04:59:42.588Z",
       "source": "GitHub Cloud Sync",
@@ -2121,41 +2156,6 @@
       "source": "Atome Card Settings",
       "status": "success",
       "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
-    },
-    {
-      "id": "log-1786198724534-kv7r",
-      "timestamp": "2026-08-08T14:18:44.535Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
-    },
-    {
-      "id": "log-1786198667674-yq4a",
-      "timestamp": "2026-08-08T14:17:47.674Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱7,460"
-    },
-    {
-      "id": "log-1786198587380-8s9s",
-      "timestamp": "2026-08-08T14:16:27.380Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Atome Card settings saved: Available ₱5,811.42 / Total ₱10,000"
-    },
-    {
-      "id": "log-1786198102668-0ztn",
-      "timestamp": "2026-08-08T14:08:22.668Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Updated Atome Card (Mastercard): Total Limit ₱10,000, Available Limit ₱5,811.42, Outstanding: ₱4,188.58"
-    },
-    {
-      "id": "log-1786198061300-3dd9",
-      "timestamp": "2026-08-08T14:07:41.300Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Updated Atome Card (Mastercard): Total Limit ₱7,460, Available Limit ₱5,811.42, Outstanding: ₱1,648.58"
     }
   ],
   "transactions": [

@@ -169,13 +169,17 @@ export default function GInvestIntelligence({
 
     // Maya Funds
     if (p.includes('maya')) {
+      let label = 'Maya Funds';
+      if (p.includes('investa')) label = 'Maya Funds (Investa Funds)';
+      else if (p.includes('seedbox') || p.includes('seed box')) label = 'Maya Funds (Seed Box)';
+
       badges.push(
         <span 
           key="maya" 
           className="inline-flex items-center space-x-1.5 px-2.5 py-1 text-[11px] font-medium rounded-lg bg-[#0d2a21] text-[#34d399] border border-[#144f3c]"
         >
           <span className="w-2 h-2 rounded-full bg-[#10b981] shadow-[0_0_6px_rgba(16,185,129,0.8)] shrink-0"></span>
-          <span>Maya Funds</span>
+          <span>{label}</span>
         </span>
       );
     }
@@ -194,7 +198,7 @@ export default function GInvestIntelligence({
     }
 
     // GoTyme
-    if (p.includes('gotyme') || p.includes('seedbox')) {
+    if (p.includes('gotyme') || (p.includes('seedbox') && !p.includes('maya'))) {
       badges.push(
         <span 
           key="gotyme" 
@@ -649,7 +653,8 @@ export default function GInvestIntelligence({
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-white text-xs font-semibold focus:outline-none focus:border-purple-500"
                 >
                   <option value="GCash GInvest">🔵 GCash GInvest (GFunds)</option>
-                  <option value="Maya Funds">🟢 Maya Funds</option>
+                  <option value="Maya Funds (Investa Funds)">🟢 Maya Funds (Investa Funds)</option>
+                  <option value="Maya Funds (Seedbox Funds)">🟢 Maya Funds (Seedbox Funds)</option>
                   <option value="GCash GInvest, Maya Funds">🟣 Both GCash GInvest & Maya Funds</option>
                   <option value="BPI Wealth">🔴 BPI Wealth / BPI Trade</option>
                   <option value="GoTyme">🔷 GoTyme (Seedbox)</option>
@@ -792,7 +797,8 @@ export default function GInvestIntelligence({
                     className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-white text-xs font-semibold focus:outline-none focus:border-purple-500"
                   >
                     <option value="GCash GInvest">🔵 GCash GInvest (GFunds)</option>
-                    <option value="Maya Funds">🟢 Maya Funds</option>
+                    <option value="Maya Funds (Investa Funds)">🟢 Maya Funds (Investa Funds)</option>
+                    <option value="Maya Funds (Seedbox Funds)">🟢 Maya Funds (Seedbox Funds)</option>
                     <option value="GCash GInvest, Maya Funds">🟣 Both GCash GInvest & Maya Funds</option>
                     <option value="BPI Wealth">🔴 BPI Wealth / BPI Trade</option>
                     <option value="GoTyme">🔷 GoTyme (Seedbox)</option>
