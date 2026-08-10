@@ -394,7 +394,7 @@
       "id": "fund-alfm-multi-asset",
       "name": "ALFM Global Multi-Asset Income Fund Inc - PHP",
       "provider": "BPI Wealth / ALFM",
-      "platform": "GCash GInvest, Maya Funds",
+      "platform": "GCash GInvest",
       "targetFund": "BlackRock Global Multi-Asset Income Fund",
       "category": "Multi-Asset Dividend Income",
       "currency": "PHP",
@@ -403,11 +403,11 @@
       "previousNavpu": 52.83,
       "navpuDate": "2026-08-04",
       "unitsHeld": 4.2169,
-      "investedCapital": 200,
+      "investedCapital": 211.69,
       "averageCost": 50.2,
       "currentMarketValue": 200.48,
-      "unrealizedGain": 0.48,
-      "unrealizedGainPercent": 0.24,
+      "unrealizedGain": -11.21,
+      "unrealizedGainPercent": -5.3,
       "dividendYieldPAnnum": 5.85,
       "metrics": {
         "oneYearReturn": 9.2,
@@ -1746,6 +1746,20 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786325316861-5e5i",
+      "timestamp": "2026-08-10T01:28:36.861Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-10 01:28:36"
+    },
+    {
+      "id": "log-1786324928517-iv2u",
+      "timestamp": "2026-08-10T01:22:08.517Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ALFM Global Multi-Asset Income Fund Inc - PHP (GCash GInvest): 4.2169 units."
+    },
+    {
       "id": "log-1786324753225-fdj4",
       "timestamp": "2026-08-10T01:19:13.225Z",
       "source": "GitHub Cloud Sync",
@@ -2080,20 +2094,6 @@
       "source": "GitHub Cloud Sync",
       "status": "success",
       "message": "Manual / Auto save operation recorded at 2026-08-08 18:10:15"
-    },
-    {
-      "id": "log-1786212582106-ge4y",
-      "timestamp": "2026-08-08T18:09:42.106Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786212571121-ewu8",
-      "timestamp": "2026-08-08T18:09:31.121Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
     }
   ],
   "transactions": [
