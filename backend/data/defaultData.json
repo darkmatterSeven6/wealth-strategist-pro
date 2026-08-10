@@ -657,7 +657,8 @@
       ],
       "pendingBuyOrders": 50,
       "est_completion_date": "2026-08-13",
-      "has_active_holding": 0
+      "has_active_holding": 0,
+      "pending_units": 0.366
     },
     {
       "id": "fund-atram-ph-smart-index",
@@ -837,7 +838,8 @@
       ],
       "pendingBuyOrders": 100,
       "est_completion_date": "2026-08-14",
-      "has_active_holding": 0
+      "has_active_holding": 0,
+      "pending_units": 43.7254
     },
     {
       "id": "fund-atram-consumer-trends",

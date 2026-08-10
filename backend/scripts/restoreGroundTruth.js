@@ -48,6 +48,7 @@ function updateJSONStore(filePath) {
       fund.investedCapital = 0.00;
       fund.currentNavpu = 136.5800;
       fund.pendingBuyOrders = 50.00;
+      fund.pending_units = 0.3660;
       fund.est_completion_date = '2026-08-13';
       fund.has_active_holding = 0;
     }
@@ -57,6 +58,7 @@ function updateJSONStore(filePath) {
       fund.investedCapital = 0.00;
       fund.currentNavpu = 2.2870;
       fund.pendingBuyOrders = 100.00;
+      fund.pending_units = 43.7254;
       fund.est_completion_date = '2026-08-14';
       fund.has_active_holding = 0;
     }

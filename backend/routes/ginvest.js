@@ -19,7 +19,9 @@ try {
 
 // GET all funds enriched with quant metrics
 router.get('/funds', (req, res) => {
-  const db = dataStore.getDb();
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  // FORCE clear backend in-memory state cache
+  const db = dataStore.reloadFromDisk();
   let rawFunds = db.funds || [];
   const riskFreeRate = db.macroRegime?.phThreeMonthTBillRate || 5.50;
 

@@ -221,11 +221,11 @@
       "previousNavpu": 268.9,
       "navpuDate": "2026-08-04",
       "unitsHeld": 2.0419,
-      "investedCapital": 446.16,
+      "investedCapital": 1000,
       "averageCost": 218.5,
       "currentMarketValue": 1014.84,
-      "unrealizedGain": 568.68,
-      "unrealizedGainPercent": 127.46,
+      "unrealizedGain": 14.84,
+      "unrealizedGainPercent": 1.48,
       "dividendYieldPAnnum": 0,
       "metrics": {
         "oneYearReturn": 27.54,
@@ -298,7 +298,8 @@
       "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "pending_units": 0,
-      "est_completion_date": null
+      "est_completion_date": null,
+      "has_active_holding": 1
     },
     {
       "id": "fund-atram-infra",
@@ -386,7 +387,8 @@
           "date": "2026-08-04",
           "navpu": 143
         }
-      ]
+      ],
+      "has_active_holding": 0
     },
     {
       "id": "fund-alfm-multi-asset",
@@ -401,11 +403,11 @@
       "previousNavpu": 52.83,
       "navpuDate": "2026-08-04",
       "unitsHeld": 4.2169,
-      "investedCapital": 211.69,
+      "investedCapital": 200,
       "averageCost": 50.2,
       "currentMarketValue": 200.48,
-      "unrealizedGain": -11.21,
-      "unrealizedGainPercent": -5.3,
+      "unrealizedGain": 0.48,
+      "unrealizedGainPercent": 0.24,
       "dividendYieldPAnnum": 5.85,
       "metrics": {
         "oneYearReturn": 9.2,
@@ -476,9 +478,10 @@
         }
       ],
       "pendingBuyOrders": 500,
-      "est_completion_date": "2026-08-12",
+      "est_completion_date": "2026-08-14",
       "pendingSellOrders": 0,
-      "pending_units": 10.5169
+      "pending_units": 10.5169,
+      "has_active_holding": 1
     },
     {
       "id": "fund-manulife-reit",
@@ -566,7 +569,8 @@
           "date": "2026-08-04",
           "navpu": 109.35
         }
-      ]
+      ],
+      "has_active_holding": 0
     },
     {
       "id": "fund-alfm-money-market",
@@ -658,7 +662,8 @@
       "pendingBuyOrders": 50,
       "est_completion_date": "2026-08-13",
       "pendingSellOrders": 0,
-      "pending_units": 0
+      "pending_units": 0.366,
+      "has_active_holding": 0
     },
     {
       "id": "fund-atram-ph-smart-index",
@@ -750,7 +755,8 @@
       "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "pending_units": 0,
-      "est_completion_date": null
+      "est_completion_date": null,
+      "has_active_holding": 0
     },
     {
       "id": "fund-atram-medium-term-bond",
@@ -840,9 +846,10 @@
         }
       ],
       "pendingBuyOrders": 100,
-      "est_completion_date": "2026-08-13",
+      "est_completion_date": "2026-08-14",
       "pendingSellOrders": 0,
-      "pending_units": 0
+      "pending_units": 43.7254,
+      "has_active_holding": 0
     },
     {
       "id": "fund-atram-consumer-trends",
@@ -934,7 +941,8 @@
       "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "pending_units": 0,
-      "est_completion_date": null
+      "est_completion_date": null,
+      "has_active_holding": 0
     },
     {
       "id": "fund-atram-health-care",
@@ -1026,7 +1034,8 @@
       "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "pending_units": 0,
-      "est_completion_date": null
+      "est_completion_date": null,
+      "has_active_holding": 0
     },
     {
       "id": "fund-atram-sdg-fund",
@@ -1118,7 +1127,8 @@
       "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "pending_units": 0,
-      "est_completion_date": null
+      "est_completion_date": null,
+      "has_active_holding": 0
     },
     {
       "id": "fund-manulife-preferred-income",
@@ -1206,7 +1216,8 @@
           "date": "2026-08-04",
           "navpu": 1.135
         }
-      ]
+      ],
+      "has_active_holding": 0
     },
     {
       "id": "fund-manulife-apac-reit",
@@ -1294,7 +1305,8 @@
           "date": "2026-08-04",
           "navpu": 1.265
         }
-      ]
+      ],
+      "has_active_holding": 0
     },
     {
       "id": "fund-atram-equity-opportunity",
@@ -1308,12 +1320,12 @@
       "currentNavpu": 194.5,
       "previousNavpu": 193.6,
       "navpuDate": "2026-08-04",
-      "unitsHeld": 300,
-      "investedCapital": 51900,
+      "unitsHeld": 0,
+      "investedCapital": 0,
       "averageCost": 173,
-      "currentMarketValue": 58350,
-      "unrealizedGain": 6450,
-      "unrealizedGainPercent": 12.43,
+      "currentMarketValue": 0,
+      "unrealizedGain": 0,
+      "unrealizedGainPercent": 0,
       "dividendYieldPAnnum": 0,
       "metrics": {
         "oneYearReturn": 18.6,
@@ -1385,7 +1397,8 @@
       ],
       "pendingBuyOrders": 1000,
       "pending_units": 6.9865,
-      "est_completion_date": "2026-08-14"
+      "est_completion_date": "2026-08-14",
+      "has_active_holding": 0
     },
     {
       "id": "fund-bpi-philippine-stock-index",
@@ -1477,7 +1490,8 @@
       "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
       "pending_units": 0,
-      "est_completion_date": null
+      "est_completion_date": null,
+      "has_active_holding": 0
     },
     {
       "id": "fund-manulife-asia-dynamic-bond",
@@ -1565,7 +1579,8 @@
           "date": "2026-08-04",
           "navpu": 1.162
         }
-      ]
+      ],
+      "has_active_holding": 0
     }
   ],
   "creditCards": [
@@ -1730,6 +1745,13 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1786324753225-fdj4",
+      "timestamp": "2026-08-10T01:19:13.225Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-10 01:19:13"
+    },
     {
       "id": "log-1786324301195-a65o",
       "timestamp": "2026-08-10T01:11:41.195Z",
@@ -2069,13 +2091,6 @@
     {
       "id": "log-1786212571121-ewu8",
       "timestamp": "2026-08-08T18:09:31.121Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786212547206-g9s6",
-      "timestamp": "2026-08-08T18:09:07.206Z",
       "source": "Automated Aggregation Pipeline",
       "status": "success",
       "message": "Synchronized 9 accounts with live accruals and statement hooks."
