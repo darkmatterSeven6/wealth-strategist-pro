@@ -62,6 +62,14 @@ export const api = {
     });
     return res.json();
   },
+  activatePendingOrder: async (fundId) => {
+    const res = await fetch(`${API_BASE}/ginvest/activate-pending-order`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fundId })
+    });
+    return res.json();
+  },
   parseScreenshotText: async (rawText, metadata) => {
     const res = await fetch(`${API_BASE}/ginvest/parse-text`, {
       method: 'POST',

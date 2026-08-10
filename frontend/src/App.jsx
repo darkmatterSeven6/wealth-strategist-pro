@@ -304,6 +304,18 @@ export default function App() {
     setHasUnsavedChanges(true);
   };
 
+  const handleActivatePending = async (fundId) => {
+    const res = await api.activatePendingOrder(fundId);
+    if (res.success) {
+      showToast('success', 'Units Activated', res.message || 'Pending units successfully converted to active.');
+      await loadAllData();
+      setHasUnsavedChanges(true);
+    } else {
+      showToast('error', 'Activation Failed', res.error);
+    }
+    return res;
+  };
+
   const handleUpdateHolding = async (payload) => {
     await api.updateHolding(payload);
     await loadAllData();
@@ -429,7 +441,7 @@ export default function App() {
       )}
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <main className="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         {activeTab === 'overview' && (
           <DashboardOverview
             data={summaryData}
@@ -453,6 +465,7 @@ export default function App() {
             fundsData={fundsData}
             onScrapeNavpu={handleScrapeNavpu}
             onUpdateHolding={handleUpdateHolding}
+            onActivatePending={handleActivatePending}
             onCreateFund={handleCreateFund}
             isScraping={isScraping}
           />

@@ -155,9 +155,9 @@ const allFunds = [
     historicalNavpu: generateHistory(109.35, 11.20)
   },
   {
-    id: "fund-atram-money-market",
-    name: "ATRAM Peso Money Market Fund",
-    provider: "ATRAM Trust Corporation",
+    id: "fund-alfm-money-market",
+    name: "ALFM Money Market Fund",
+    provider: "BPI Wealth / ALFM",
     platform: "Maya Funds (Seedbox Funds)",
     targetFund: "Philippine Short-Term Treasury Bills & Time Deposits",
     category: "Money Market / Liquidity",
@@ -183,7 +183,7 @@ const allFunds = [
       alpha: 0.05,
       beta: 0.02
     },
-    historicalNavpu: generateHistory(136.56, 4.75)
+    historicalNavpu: generateHistory(136.58, 4.75)
   },
   {
     id: "fund-atram-ph-smart-index",

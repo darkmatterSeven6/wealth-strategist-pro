@@ -420,11 +420,11 @@ export const SEED_HOLDINGS = [
     ]
   },
   {
-    fund_id: "fund-atram-money-market",
+    fund_id: "fund-alfm-money-market",
     match_keywords: ["money market", "liquidity", "t-bill"],
-    fund_name: "ATRAM Money Market Fund",
+    fund_name: "ALFM Money Market Fund",
     target_fund: "Philippine Short-Term Sovereign Debt & Bank Time Deposits",
-    target_fund_manager: "ATRAM Trust Corporation",
+    target_fund_manager: "BPI Wealth / ALFM",
     benchmark: "Bloomberg Philippine Sovereign Bond 1-3 Month Index",
     top_10_weight: "100.00%",
     holdings: [

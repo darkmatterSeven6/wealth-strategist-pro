@@ -24,6 +24,7 @@ export default function GInvestIntelligence({
   fundsData, 
   onScrapeNavpu, 
   onUpdateHolding, 
+  onActivatePending,
   onCreateFund, 
   isScraping 
 }) {
@@ -46,6 +47,8 @@ export default function GInvestIntelligence({
   const [editPlatform, setEditPlatform] = useState('GCash GInvest');
   const [editPendingBuy, setEditPendingBuy] = useState('0');
   const [editPendingSell, setEditPendingSell] = useState('0');
+  const [editPendingUnits, setEditPendingUnits] = useState('0');
+  const [editEstCompletionDate, setEditEstCompletionDate] = useState('');
 
   // Screenshot OCR Modal State
   const [isScreenshotModalOpen, setIsScreenshotModalOpen] = useState(false);
@@ -238,6 +241,8 @@ export default function GInvestIntelligence({
     setEditPlatform(fund.platform || 'GCash GInvest');
     setEditPendingBuy((fund.pendingBuyOrders || 0).toString());
     setEditPendingSell((fund.pendingSellOrders || 0).toString());
+    setEditPendingUnits((fund.pending_units || 0).toString());
+    setEditEstCompletionDate(fund.est_completion_date || '');
   };
 
   const handleSaveHolding = (e) => {
@@ -249,7 +254,9 @@ export default function GInvestIntelligence({
       averageCost: parseFloat(editCost) || (editingFund.currentNavpu || 0),
       platform: editPlatform,
       pendingBuyOrders: parseFloat(editPendingBuy) || 0,
-      pendingSellOrders: parseFloat(editPendingSell) || 0
+      pendingSellOrders: parseFloat(editPendingSell) || 0,
+      pending_units: parseFloat(editPendingUnits) || 0,
+      est_completion_date: editEstCompletionDate || null
     });
     setEditingFund(null);
   };
@@ -441,8 +448,8 @@ export default function GInvestIntelligence({
                   const hasPosition = (fund.unitsHeld || 0) > 0 || (fund.pendingBuyOrders || 0) > 0 || (fund.investedCapital || 0) > 0;
 
                   return (
+                    <React.Fragment key={fund.id}>
                     <tr 
-                      key={fund.id} 
                       onClick={() => handleOpenHoldingsBreakdown(fund)}
                       className={`group cursor-pointer hover:bg-slate-800/60 transition ${
                         hasPosition 
@@ -622,6 +629,52 @@ export default function GInvestIntelligence({
                         </div>
                       </td>
                     </tr>
+                    {(fund.pending_units > 0 || fund.pendingBuyOrders > 0) && (
+                      <tr className="bg-[#0b1424] border-b border-indigo-900/30">
+                        <td colSpan={11} className="py-2.5 px-4 relative overflow-hidden">
+                          <div className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500"></div>
+                          <div className="flex items-center justify-between text-xs">
+                            <div className="flex items-center space-x-4 pl-3">
+                              <span className="font-bold text-indigo-400 uppercase tracking-wider flex items-center space-x-1.5">
+                                <Clock className="w-3.5 h-3.5" />
+                                <span>Pending Order Sub-Ledger</span>
+                              </span>
+                              
+                              <div className="flex space-x-4">
+                                <div className="flex space-x-1.5 items-center">
+                                  <span className="text-slate-400">Est. Completion:</span>
+                                  <span className="text-slate-200 font-mono font-medium">{fund.est_completion_date || 'TBD'}</span>
+                                </div>
+                                <div className="flex space-x-1.5 items-center">
+                                  <span className="text-slate-400">Pending Amount:</span>
+                                  <span className="text-indigo-300 font-mono font-medium">₱{(fund.pendingBuyOrders || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+                                </div>
+                                {(fund.pending_units > 0) && (
+                                  <div className="flex space-x-1.5 items-center">
+                                    <span className="text-slate-400">Pending Units:</span>
+                                    <span className="text-indigo-300 font-mono font-medium">{fund.pending_units.toLocaleString('en-US', { minimumFractionDigits: 4, maximumFractionDigits: 4 })} units</span>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  onActivatePending(fund.id);
+                                }}
+                                className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-bold shadow-md hover:shadow-indigo-500/25 transition disabled:opacity-50"
+                                disabled={!fund.pending_units || fund.pending_units <= 0}
+                              >
+                                1-Click Activate Units
+                              </button>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                    </React.Fragment>
                   );
                 })
               )}
@@ -716,6 +769,33 @@ export default function GInvestIntelligence({
                     value={editPendingSell}
                     onChange={(e) => setEditPendingSell(e.target.value)}
                     className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-white font-mono focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Pending Units
+                  </label>
+                  <input
+                    type="number"
+                    step="0.0001"
+                    value={editPendingUnits}
+                    onChange={(e) => setEditPendingUnits(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-white font-mono focus:outline-none focus:border-purple-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">
+                    Est. Completion Date
+                  </label>
+                  <input
+                    type="date"
+                    value={editEstCompletionDate}
+                    onChange={(e) => setEditEstCompletionDate(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2 text-white font-mono focus:outline-none focus:border-purple-500 [color-scheme:dark]"
                   />
                 </div>
               </div>

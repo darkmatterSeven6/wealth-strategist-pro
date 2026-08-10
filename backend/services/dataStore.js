@@ -13,15 +13,17 @@ class DataStore {
   init() {
     try {
       if (!fs.existsSync(DB_PATH)) {
-        const defaultRaw = fs.readFileSync(DEFAULT_DATA_PATH, 'utf-8');
-        fs.writeFileSync(DB_PATH, defaultRaw, 'utf-8');
+        // Database is locked from auto-seeding. Initialize empty struct if missing.
+        this.data = { funds: [], summary: {}, macroData: {} };
+        this.saveDb(this.data);
+      } else {
+        const raw = fs.readFileSync(DB_PATH, 'utf-8');
+        this.data = JSON.parse(raw);
       }
-      const raw = fs.readFileSync(DB_PATH, 'utf-8');
-      this.data = JSON.parse(raw);
     } catch (err) {
       console.error('Error initializing DataStore:', err);
-      const defaultRaw = fs.readFileSync(DEFAULT_DATA_PATH, 'utf-8');
-      this.data = JSON.parse(defaultRaw);
+      // Database is locked from auto-seeding. Do not fallback.
+      this.data = { funds: [], summary: {}, macroData: {} };
     }
   }
 

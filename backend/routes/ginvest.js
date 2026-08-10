@@ -88,6 +88,8 @@ router.post('/update-holding', (req, res) => {
   if (dividendYieldPAnnum !== undefined) fund.dividendYieldPAnnum = parseFloat(dividendYieldPAnnum);
   if (pendingBuyOrders !== undefined) fund.pendingBuyOrders = parseFloat(pendingBuyOrders);
   if (pendingSellOrders !== undefined) fund.pendingSellOrders = parseFloat(pendingSellOrders);
+  if (req.body.pending_units !== undefined) fund.pending_units = parseFloat(req.body.pending_units);
+  if (req.body.est_completion_date !== undefined) fund.est_completion_date = req.body.est_completion_date;
 
   if (investedCapital !== undefined) {
     fund.investedCapital = parseFloat(investedCapital);
@@ -110,6 +112,53 @@ router.post('/update-holding', (req, res) => {
     message: `Updated holding for ${fund.name}`,
     fund
   });
+});
+
+// POST activate pending order (transfer pending units to active)
+router.post('/activate-pending-order', (req, res) => {
+  const { fundId } = req.body;
+  if (!fundId) return res.status(400).json({ success: false, error: 'fundId is required.' });
+
+  const db = dataStore.getDb();
+  const fund = db.funds.find(f => f.id === fundId);
+  if (!fund) return res.status(404).json({ success: false, error: 'Fund not found.' });
+
+  if (!fund.pending_units || fund.pending_units <= 0) {
+    return res.status(400).json({ success: false, error: 'No pending units to activate.' });
+  }
+
+  // Transfer pending to active
+  const newUnits = (fund.unitsHeld || 0) + fund.pending_units;
+  const newInvestedCapital = (fund.investedCapital || 0) + (fund.pendingBuyOrders || 0);
+
+  fund.unitsHeld = newUnits;
+  fund.investedCapital = parseFloat(newInvestedCapital.toFixed(2));
+  
+  if (fund.unitsHeld > 0) {
+    fund.averageCost = parseFloat((fund.investedCapital / fund.unitsHeld).toFixed(4));
+  }
+
+  // Clear pending
+  fund.pending_units = 0;
+  fund.pendingBuyOrders = 0;
+  fund.est_completion_date = null;
+
+  // Recalculate
+  const currentMarketValue = parseFloat((fund.unitsHeld * (fund.currentNavpu || 100)).toFixed(2));
+  fund.currentMarketValue = currentMarketValue;
+  fund.unrealizedGain = parseFloat((currentMarketValue - fund.investedCapital).toFixed(2));
+  fund.unrealizedGainPercent = fund.investedCapital > 0 
+    ? parseFloat(((fund.unrealizedGain / fund.investedCapital) * 100).toFixed(2)) 
+    : 0;
+
+  dataStore.saveDb(db);
+  dataStore.addSyncLog('GInvest Pending Order', 'success', `Activated pending order for ${fund.name}: +${newUnits - (fund.unitsHeld - fund.pending_units)} units.`);
+
+  if (typeof global.broadcastEvent === 'function') {
+    global.broadcastEvent('DATA_UPDATED', { type: 'FUNDS_SYNC', fundId: fund.id });
+  }
+
+  res.json({ success: true, fund });
 });
 
 // POST add new fund

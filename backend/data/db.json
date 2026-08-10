@@ -217,18 +217,18 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 497.009196,
-      "previousNavpu": 497.009196,
-      "navpuDate": "2026-08-05",
+      "currentNavpu": 497.0092,
+      "previousNavpu": 268.9,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 2.0419,
-      "investedCapital": 1000,
-      "averageCost": 489.7399,
+      "investedCapital": 446.16,
+      "averageCost": 218.5,
       "currentMarketValue": 1014.84,
-      "unrealizedGain": 14.84,
-      "unrealizedGainPercent": 1.48,
+      "unrealizedGain": 568.68,
+      "unrealizedGainPercent": 127.46,
       "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 33.93,
+        "oneYearReturn": 27.54,
         "threeYearCagr": 19.85,
         "fiveYearCagr": 18.2,
         "volatility30d": 16.5,
@@ -240,73 +240,65 @@
       "historicalNavpu": [
         {
           "date": "2025-08-01",
-          "navpu": 375.42
+          "navpu": 211.5023
         },
         {
           "date": "2025-09-01",
-          "navpu": 384.91
+          "navpu": 216.8544
         },
         {
           "date": "2025-10-01",
-          "navpu": 391.53
+          "navpu": 220.5868
         },
         {
           "date": "2025-11-03",
-          "navpu": 397.75
+          "navpu": 224.09
         },
         {
           "date": "2025-12-01",
-          "navpu": 406.8
+          "navpu": 229.1805
         },
         {
           "date": "2026-01-02",
-          "navpu": 416.64
+          "navpu": 234.7248
         },
         {
           "date": "2026-02-02",
-          "navpu": 423.78
+          "navpu": 238.7459
         },
         {
           "date": "2026-03-02",
-          "navpu": 429.72
+          "navpu": 242.0978
         },
         {
           "date": "2026-04-01",
-          "navpu": 438.21
+          "navpu": 246.8782
         },
         {
-          "date": "2026-05-04",
-          "navpu": 449.6
+          "date": "2026-05-02",
+          "navpu": 252.5299
         },
         {
           "date": "2026-06-01",
-          "navpu": 461.15
+          "navpu": 256.8764
         },
         {
           "date": "2026-07-01",
-          "navpu": 472.3
+          "navpu": 260.1669
         },
         {
           "date": "2026-08-03",
-          "navpu": 478.811055
+          "navpu": 264.6133
         },
         {
           "date": "2026-08-04",
-          "navpu": 479.4868
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 497.009196
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 497.009196
+          "navpu": 269.75
         }
       ],
       "pendingBuyOrders": 0,
       "pendingSellOrders": 0,
-      "orderNumber": "SGC2608015853033",
-      "orderStatus": "Buy Order Placed (Processing - Est. Aug 07, 2026)"
+      "pending_units": 0,
+      "est_completion_date": null
     },
     {
       "id": "fund-atram-infra",
@@ -317,9 +309,9 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 144.6562,
-      "previousNavpu": 144.6562,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 143,
+      "previousNavpu": 142.15,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 128,
@@ -392,15 +384,7 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 142.9682
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 143.1149
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 144.6562
+          "navpu": 143
         }
       ]
     },
@@ -408,23 +392,23 @@
       "id": "fund-alfm-multi-asset",
       "name": "ALFM Global Multi-Asset Income Fund Inc - PHP",
       "provider": "BPI Wealth / ALFM",
-      "platform": "GCash GInvest",
+      "platform": "GCash GInvest, Maya Funds",
       "targetFund": "BlackRock Global Multi-Asset Income Fund",
       "category": "Multi-Asset Dividend Income",
       "currency": "PHP",
-      "riskRating": "Aggressive",
+      "riskRating": "Moderate",
       "currentNavpu": 47.5422,
-      "previousNavpu": 47.5422,
-      "navpuDate": "2026-08-06",
+      "previousNavpu": 52.83,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 4.2169,
-      "investedCapital": 200,
-      "averageCost": 47.4282,
+      "investedCapital": 211.69,
+      "averageCost": 50.2,
       "currentMarketValue": 200.48,
-      "unrealizedGain": 0.48,
-      "unrealizedGainPercent": 0.24,
+      "unrealizedGain": -11.21,
+      "unrealizedGainPercent": -5.3,
       "dividendYieldPAnnum": 5.85,
       "metrics": {
-        "oneYearReturn": 6.94,
+        "oneYearReturn": 9.2,
         "threeYearCagr": 7.6,
         "fiveYearCagr": 8.1,
         "volatility30d": 6.8,
@@ -435,60 +419,66 @@
       },
       "historicalNavpu": [
         {
-          "date": "2025-08-06",
-          "navpu": 44.4568
+          "date": "2025-08-01",
+          "navpu": 48.5073
         },
         {
           "date": "2025-09-01",
-          "navpu": 44.8174
+          "navpu": 48.9174
         },
         {
           "date": "2025-10-01",
-          "navpu": 45.2033
+          "navpu": 49.2033
         },
         {
           "date": "2025-11-03",
-          "navpu": 45.4717
+          "navpu": 49.4717
         },
         {
           "date": "2025-12-01",
-          "navpu": 45.8618
+          "navpu": 49.8618
         },
         {
           "date": "2026-01-02",
-          "navpu": 46.2865
+          "navpu": 50.2865
         },
         {
           "date": "2026-02-02",
-          "navpu": 46.5946
+          "navpu": 50.5946
         },
         {
           "date": "2026-03-02",
-          "navpu": 46.8514
+          "navpu": 50.8514
         },
         {
           "date": "2026-04-01",
-          "navpu": 47.0177
+          "navpu": 51.2177
         },
         {
           "date": "2026-05-02",
-          "navpu": 47.1507
+          "navpu": 51.6507
         },
         {
           "date": "2026-06-01",
-          "navpu": 47.2837
+          "navpu": 51.9837
         },
         {
           "date": "2026-07-01",
-          "navpu": 47.3358
+          "navpu": 52.2358
         },
         {
-          "date": "2026-08-06",
-          "navpu": 47.5422
+          "date": "2026-08-03",
+          "navpu": 52.5764
+        },
+        {
+          "date": "2026-08-04",
+          "navpu": 52.97
         }
       ],
       "pendingBuyOrders": 500,
-      "pendingSellOrders": 0
+      "est_completion_date": "2026-08-12",
+      "pendingSellOrders": 0,
+      "pending_units": 10.5169
     },
     {
       "id": "fund-manulife-reit",
@@ -499,9 +489,9 @@
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 112.1497,
-      "previousNavpu": 112.1497,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 109.35,
+      "previousNavpu": 108.9,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 102.5,
@@ -574,30 +564,22 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 109.2712
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 109.9747
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 112.1497
+          "navpu": 109.35
         }
       ]
     },
     {
-      "id": "fund-atram-money-market",
-      "name": "ATRAM Peso Money Market Fund",
-      "provider": "ATRAM Trust Corporation",
-      "platform": "GCash GInvest",
+      "id": "fund-alfm-money-market",
+      "name": "ALFM Money Market Fund",
+      "provider": "BPI Wealth / ALFM",
+      "platform": "Maya Funds (Seedbox Funds)",
       "targetFund": "Philippine Short-Term Treasury Bills & Time Deposits",
       "category": "Money Market / Liquidity",
       "currency": "PHP",
       "riskRating": "Conservative",
-      "currentNavpu": 140.2315,
-      "previousNavpu": 140.2315,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 136.58,
+      "previousNavpu": 136.56,
+      "navpuDate": "2026-08-10",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 130.8,
@@ -618,69 +600,65 @@
       "historicalNavpu": [
         {
           "date": "2025-08-01",
-          "navpu": 130.3675
+          "navpu": 130.3866
         },
         {
           "date": "2025-09-01",
-          "navpu": 130.9365
+          "navpu": 130.9557
         },
         {
           "date": "2025-10-01",
-          "navpu": 131.3333
+          "navpu": 131.3526
         },
         {
           "date": "2025-11-03",
-          "navpu": 131.7058
+          "navpu": 131.7251
         },
         {
           "date": "2025-12-01",
-          "navpu": 132.247
+          "navpu": 132.2663
         },
         {
           "date": "2026-01-02",
-          "navpu": 132.8364
+          "navpu": 132.8558
         },
         {
           "date": "2026-02-02",
-          "navpu": 133.2639
+          "navpu": 133.2834
         },
         {
           "date": "2026-03-02",
-          "navpu": 133.6202
+          "navpu": 133.6398
         },
         {
           "date": "2026-04-01",
-          "navpu": 134.1284
+          "navpu": 134.1481
         },
         {
           "date": "2026-05-02",
-          "navpu": 134.7293
+          "navpu": 134.749
         },
         {
           "date": "2026-06-01",
-          "navpu": 135.1914
+          "navpu": 135.2112
         },
         {
           "date": "2026-07-01",
-          "navpu": 135.5412
+          "navpu": 135.561
         },
         {
           "date": "2026-08-03",
-          "navpu": 136.0139
+          "navpu": 136.0338
         },
         {
           "date": "2026-08-04",
-          "navpu": 136.5487
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 137.7526
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 140.2315
+          "navpu": 136.58
         }
-      ]
+      ],
+      "pendingBuyOrders": 50,
+      "est_completion_date": "2026-08-13",
+      "pendingSellOrders": 0,
+      "pending_units": 0
     },
     {
       "id": "fund-atram-ph-smart-index",
@@ -691,9 +669,9 @@
       "category": "Domestic Equity Index",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 12.0808,
-      "previousNavpu": 12.0808,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 11.82,
+      "previousNavpu": 11.75,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 11.2,
@@ -766,17 +744,13 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 11.8304
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 11.8648
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 12.0808
+          "navpu": 11.82
         }
-      ]
+      ],
+      "pendingBuyOrders": 0,
+      "pendingSellOrders": 0,
+      "pending_units": 0,
+      "est_completion_date": null
     },
     {
       "id": "fund-atram-medium-term-bond",
@@ -787,9 +761,9 @@
       "category": "Fixed Income / Bond",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 2.3436,
-      "previousNavpu": 2.3436,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 2.287,
+      "previousNavpu": 2.285,
+      "navpuDate": "2026-08-10",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 2.2,
@@ -862,19 +836,13 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 2.2829
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 2.3025
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 2.3436
+          "navpu": 2.285
         }
       ],
       "pendingBuyOrders": 100,
-      "pendingSellOrders": 0
+      "est_completion_date": "2026-08-13",
+      "pendingSellOrders": 0,
+      "pending_units": 0
     },
     {
       "id": "fund-atram-consumer-trends",
@@ -885,9 +853,9 @@
       "category": "Global Thematic Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 178.0704,
-      "previousNavpu": 178.0704,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 174.6,
+      "previousNavpu": 173.8,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 160,
@@ -960,17 +928,13 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 174.5813
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 175.2344
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 178.0704
+          "navpu": 174.6
         }
-      ]
+      ],
+      "pendingBuyOrders": 0,
+      "pendingSellOrders": 0,
+      "pending_units": 0,
+      "est_completion_date": null
     },
     {
       "id": "fund-atram-health-care",
@@ -981,9 +945,9 @@
       "category": "Global Thematic Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 201.5352,
-      "previousNavpu": 201.5352,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 196.4,
+      "previousNavpu": 195.8,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 185,
@@ -1056,17 +1020,13 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 196.4176
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 197.8185
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 201.5352
+          "navpu": 196.4
         }
-      ]
+      ],
+      "pendingBuyOrders": 0,
+      "pendingSellOrders": 0,
+      "pending_units": 0,
+      "est_completion_date": null
     },
     {
       "id": "fund-atram-sdg-fund",
@@ -1077,9 +1037,9 @@
       "category": "Domestic Equity ESG",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 1.3032,
-      "previousNavpu": 1.3032,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 1.284,
+      "previousNavpu": 1.278,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 1.22,
@@ -1152,17 +1112,13 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 1.2852
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 1.2926
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 1.3032
+          "navpu": 1.284
         }
-      ]
+      ],
+      "pendingBuyOrders": 0,
+      "pendingSellOrders": 0,
+      "pending_units": 0,
+      "est_completion_date": null
     },
     {
       "id": "fund-manulife-preferred-income",
@@ -1173,9 +1129,9 @@
       "category": "Fixed Income / Preferred Securities",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.1629,
-      "previousNavpu": 1.1629,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 1.135,
+      "previousNavpu": 1.13,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 1.07,
@@ -1248,15 +1204,7 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 1.1379
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 1.1421
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 1.1629
+          "navpu": 1.135
         }
       ]
     },
@@ -1269,9 +1217,9 @@
       "category": "Global REIT Feeder",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.2922,
-      "previousNavpu": 1.2922,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 1.265,
+      "previousNavpu": 1.258,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 1.17,
@@ -1344,15 +1292,7 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 1.2663
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 1.2673
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 1.2922
+          "navpu": 1.265
         }
       ]
     },
@@ -1365,15 +1305,15 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 199.4714,
-      "previousNavpu": 199.4714,
-      "navpuDate": "2026-08-08",
-      "unitsHeld": 0,
-      "investedCapital": 0,
+      "currentNavpu": 194.5,
+      "previousNavpu": 193.6,
+      "navpuDate": "2026-08-04",
+      "unitsHeld": 300,
+      "investedCapital": 51900,
       "averageCost": 173,
-      "currentMarketValue": 0,
-      "unrealizedGain": 0,
-      "unrealizedGainPercent": 0,
+      "currentMarketValue": 58350,
+      "unrealizedGain": 6450,
+      "unrealizedGainPercent": 12.43,
       "dividendYieldPAnnum": 0,
       "metrics": {
         "oneYearReturn": 18.6,
@@ -1440,19 +1380,12 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 195.0571
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 195.7848
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 199.4714
+          "navpu": 194.5
         }
       ],
       "pendingBuyOrders": 1000,
-      "pendingSellOrders": 0
+      "pending_units": 6.9865,
+      "est_completion_date": "2026-08-14"
     },
     {
       "id": "fund-bpi-philippine-stock-index",
@@ -1463,9 +1396,9 @@
       "category": "Domestic Equity Index",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 789.331,
-      "previousNavpu": 789.331,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 772.4,
+      "previousNavpu": 768.1,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 730,
@@ -1538,17 +1471,13 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 774.2792
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 777.8178
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 789.331
+          "navpu": 772.4
         }
-      ]
+      ],
+      "pendingBuyOrders": 0,
+      "pendingSellOrders": 0,
+      "pending_units": 0,
+      "est_completion_date": null
     },
     {
       "id": "fund-manulife-asia-dynamic-bond",
@@ -1559,9 +1488,9 @@
       "category": "Fixed Income / Bond",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 1.1882,
-      "previousNavpu": 1.1882,
-      "navpuDate": "2026-08-08",
+      "currentNavpu": 1.162,
+      "previousNavpu": 1.157,
+      "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
       "averageCost": 1.1,
@@ -1634,15 +1563,7 @@
         },
         {
           "date": "2026-08-04",
-          "navpu": 1.1653
-        },
-        {
-          "date": "2026-08-05",
-          "navpu": 1.1643
-        },
-        {
-          "date": "2026-08-08",
-          "navpu": 1.1882
+          "navpu": 1.162
         }
       ]
     }
@@ -1809,6 +1730,90 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1786323737856-r4q9",
+      "timestamp": "2026-08-10T01:02:17.856Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-10 01:02:17"
+    },
+    {
+      "id": "log-1786323730652-m9ss",
+      "timestamp": "2026-08-10T01:02:10.652Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-10 01:02:10"
+    },
+    {
+      "id": "log-1786323095226-x588",
+      "timestamp": "2026-08-10T00:51:35.226Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Medium Term Peso Bond Fund (Maya Funds (Seedbox Funds)): 0 units."
+    },
+    {
+      "id": "log-1786323040314-s8ju",
+      "timestamp": "2026-08-10T00:50:40.314Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ALFM Money Market Fund (Maya Funds (Seedbox Funds)): 0 units."
+    },
+    {
+      "id": "log-1786322844190-9al2",
+      "timestamp": "2026-08-10T00:47:24.190Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ALFM Global Multi-Asset Income Fund Inc - PHP (GCash GInvest, Maya Funds): 4.2169 units."
+    },
+    {
+      "id": "log-1786322478352-vgn8",
+      "timestamp": "2026-08-10T00:41:18.352Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Global Technology Feeder Fund (GCash GInvest): 2.0419 units."
+    },
+    {
+      "id": "log-1786322431721-3rmw",
+      "timestamp": "2026-08-10T00:40:31.721Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Global Technology Feeder Fund (GCash GInvest): 2.0419 units."
+    },
+    {
+      "id": "log-1786322287014-cqb5",
+      "timestamp": "2026-08-10T00:38:07.014Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Philippine Sustainable Development And Growth Fund (GCash GInvest): 0 units."
+    },
+    {
+      "id": "log-1786322267378-dc74",
+      "timestamp": "2026-08-10T00:37:47.378Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Philippine Equity Smart Index Fund (GCash GInvest): 0 units."
+    },
+    {
+      "id": "log-1786322253269-q4mh",
+      "timestamp": "2026-08-10T00:37:33.269Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Global Health Care Feeder Fund (GCash GInvest): 0 units."
+    },
+    {
+      "id": "log-1786322240359-hzb7",
+      "timestamp": "2026-08-10T00:37:20.359Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Global Consumer Trends Feeder Fund (GCash GInvest): 0 units."
+    },
+    {
+      "id": "log-1786322167439-r7kj",
+      "timestamp": "2026-08-10T00:36:07.439Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for Philippine Stock Index Fund (Units) (GCash GInvest): 0 units."
+    },
     {
       "id": "log-1786318513566-q4xw",
       "timestamp": "2026-08-09T23:35:13.566Z",
@@ -2074,90 +2079,6 @@
       "source": "NAVPU Valuation Engine",
       "status": "success",
       "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786207399536-zezh",
-      "timestamp": "2026-08-08T16:43:19.536Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 16:43:19"
-    },
-    {
-      "id": "log-1786206183818-98tb",
-      "timestamp": "2026-08-08T16:23:03.818Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786205628325-o0ha",
-      "timestamp": "2026-08-08T16:13:48.325Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 16:13:48"
-    },
-    {
-      "id": "log-1786205480376-rh2c",
-      "timestamp": "2026-08-08T16:11:20.376Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786205469305-3ei4",
-      "timestamp": "2026-08-08T16:11:09.305Z",
-      "source": "Screenshot OCR Ingestion",
-      "status": "success",
-      "message": "Imported screenshot statement for \"ATRAM Global Technology Feeder Fund\" on GCash GInvest: 2.0419 units @ ₱497.009196 (Market Value: ₱1,014.84)."
-    },
-    {
-      "id": "log-1786205144638-owq0",
-      "timestamp": "2026-08-08T16:05:44.638Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 16:05:44"
-    },
-    {
-      "id": "log-1786204860064-c55q",
-      "timestamp": "2026-08-08T16:01:00.064Z",
-      "source": "Midnight Net Yield Accrual (Cron)",
-      "status": "success",
-      "message": "Accrued ₱7.14 net interest across 4 digital bank accounts (₱1.79 20% WHT deducted)."
-    },
-    {
-      "id": "log-1786203573212-c760",
-      "timestamp": "2026-08-08T15:39:33.212Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 15:39:33"
-    },
-    {
-      "id": "log-1786202469906-np6k",
-      "timestamp": "2026-08-08T15:21:09.906Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 15:21:09"
-    },
-    {
-      "id": "log-1786202461451-e1hb",
-      "timestamp": "2026-08-08T15:21:01.451Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786202440805-afux",
-      "timestamp": "2026-08-08T15:20:40.805Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786201157524-iyz0",
-      "timestamp": "2026-08-08T14:59:17.524Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual UI Request: Synchronized NAVPUs for 15 Philippine UITF/Feeder Funds."
     }
   ],
   "transactions": [
