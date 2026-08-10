@@ -441,7 +441,7 @@ export default function App() {
       )}
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      <main className="flex-1 max-w-[98%] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         {activeTab === 'overview' && (
           <DashboardOverview
             data={summaryData}

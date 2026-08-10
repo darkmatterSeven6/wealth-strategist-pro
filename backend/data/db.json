@@ -1731,6 +1731,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786324301195-a65o",
+      "timestamp": "2026-08-10T01:11:41.195Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-10 01:11:41"
+    },
+    {
       "id": "log-1786323737856-r4q9",
       "timestamp": "2026-08-10T01:02:17.856Z",
       "source": "GitHub Cloud Sync",
@@ -2072,13 +2079,6 @@
       "source": "Automated Aggregation Pipeline",
       "status": "success",
       "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786211258860-of0p",
-      "timestamp": "2026-08-08T17:47:38.860Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
     }
   ],
   "transactions": [

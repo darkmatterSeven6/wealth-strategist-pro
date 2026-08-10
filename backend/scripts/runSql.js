@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const DB_PATH = path.join(__dirname, '..', 'data', 'dv_financials.db');
-const SQL_PATH = path.join(__dirname, '..', 'data', 'restore.sql');
+const SQL_PATH = path.join(__dirname, '..', 'data', 'hard_restore.sql');
 
 const sql = fs.readFileSync(SQL_PATH, 'utf8');
 

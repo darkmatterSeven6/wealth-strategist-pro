@@ -476,7 +476,8 @@
       ],
       "pendingBuyOrders": 500,
       "est_completion_date": "2026-08-14",
-      "has_active_holding": 1
+      "has_active_holding": 1,
+      "pending_units": 10.5169
     },
     {
       "id": "fund-manulife-reit",
@@ -1292,7 +1293,7 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 143.132102,
+      "currentNavpu": 194.5,
       "previousNavpu": 193.6,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
