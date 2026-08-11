@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-11T12:30:45.790Z"
+    "lastSyncTimestamp": "2026-08-11T12:40:35.586Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -32,7 +32,7 @@
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z",
+      "lastSynced": "2026-08-11T12:40:35.586Z",
       "accountTypeLabel": "Maya Standard Savings"
     },
     {
@@ -50,7 +50,7 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z",
+      "lastSynced": "2026-08-11T12:40:35.586Z",
       "accountTypeLabel": "Personal Goal Account"
     },
     {
@@ -68,7 +68,7 @@
       "icon": "MayaWallet",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z"
+      "lastSynced": "2026-08-11T12:40:35.586Z"
     },
     {
       "id": "acc-maribank-01",
@@ -76,7 +76,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1116.66,
+      "balance": 1116.76,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.1,
@@ -85,7 +85,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z"
+      "lastSynced": "2026-08-11T12:40:35.586Z"
     },
     {
       "id": "acc-atome-01",
@@ -102,7 +102,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z"
+      "lastSynced": "2026-08-11T12:40:35.586Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -119,7 +119,7 @@
       "icon": "GCash",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z"
+      "lastSynced": "2026-08-11T12:40:35.586Z"
     },
     {
       "id": "acc-bpi-01",
@@ -136,7 +136,7 @@
       "icon": "BPI",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z"
+      "lastSynced": "2026-08-11T12:40:35.586Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -153,7 +153,7 @@
       "icon": "GoTyme",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z",
+      "lastSynced": "2026-08-11T12:40:35.586Z",
       "subAccounts": [
         {
           "name": "Auto & Insurance Buffer",
@@ -182,7 +182,7 @@
       "icon": "Tonik",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:30:45.790Z",
+      "lastSynced": "2026-08-11T12:40:35.586Z",
       "subAccounts": [
         {
           "name": "Group Stash (Family)",
@@ -1744,6 +1744,34 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786452286296-s1no",
+      "timestamp": "2026-08-11T12:44:46.296Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-11 12:44:46"
+    },
+    {
+      "id": "log-1786452256623-un2v",
+      "timestamp": "2026-08-11T12:44:16.623Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786452048431-p5d6",
+      "timestamp": "2026-08-11T12:40:48.431Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786452035589-3urg",
+      "timestamp": "2026-08-11T12:40:35.589Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
+    },
+    {
       "id": "log-1786452012711-yvro",
       "timestamp": "2026-08-11T12:40:12.711Z",
       "source": "GitHub Cloud Sync",
@@ -2064,34 +2092,6 @@
       "source": "GitHub Cloud Sync",
       "status": "success",
       "message": "Manual / Auto save operation recorded at 2026-08-09 04:53:20"
-    },
-    {
-      "id": "log-1786247574814-227x",
-      "timestamp": "2026-08-09T03:52:54.814Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786220018037-nu20",
-      "timestamp": "2026-08-08T20:13:38.037Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 20:13:38"
-    },
-    {
-      "id": "log-1786219989979-lifj",
-      "timestamp": "2026-08-08T20:13:09.979Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 20:13:09"
-    },
-    {
-      "id": "log-1786219832476-nklc",
-      "timestamp": "2026-08-08T20:10:32.476Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated GCash (E-Wallet) (•••• ••• 5676) balance to ₱1,706.59 @ 0% APY."
     }
   ],
   "transactions": [
