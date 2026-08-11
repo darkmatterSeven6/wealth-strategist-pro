@@ -28,33 +28,33 @@ db.serialize(() => {
 
       // Execute user's exact UPDATE statements
       const updateScript = `
-        -- 1. Update Maya Savings (Liquid Account)
+        -- 1. Update Maya Bank ( Savings )
         UPDATE digital_banks 
         SET 
-          account_type = 'LIQUID_SAVINGS',
-          badge_label = '⚡ Maya Savings',
+          account_name = 'Maya Bank ( Savings )',
+          account_type_label = 'Maya Standard Savings',
           current_balance = 100035.08,
           base_rate = 0.0300,
-          active_boost_rate = 0.0700,
-          total_effective_rate = 0.1000,
-          net_daily_gain = 21.92,
+          active_boost_rate = 0.0200,
+          total_effective_rate = 0.0500,
+          net_daily_gain = 10.96,
           pockets_json = NULL,
           last_synced_at = CURRENT_TIMESTAMP
-        WHERE account_name LIKE '%Maya Savings%' OR last_four_digits = '7280';
+        WHERE last_four_digits = '7280';
 
-        -- 2. Update Maya Personal Goals (Target Account)
+        -- 2. Update Maya - Rainy Days Fund
         UPDATE digital_banks 
         SET 
-          account_type = 'PERSONAL_GOALS',
-          badge_label = '🎯 Personal Goals',
+          account_name = 'Maya - Rainy Days Fund',
+          account_type_label = 'Personal Goal Account',
           current_balance = 5001.75,
           base_rate = 0.0400,
-          active_boost_rate = 0.0000,
-          total_effective_rate = 0.0400,
-          net_daily_gain = 0.44,
+          active_boost_rate = 0.0100,
+          total_effective_rate = 0.0500,
+          net_daily_gain = 0.55,
           pockets_json = NULL,
           last_synced_at = CURRENT_TIMESTAMP
-        WHERE account_name LIKE '%Rainy Days%' OR last_four_digits = '5798';
+        WHERE last_four_digits = '5798';
       `;
 
       db.exec(updateScript, (err) => {

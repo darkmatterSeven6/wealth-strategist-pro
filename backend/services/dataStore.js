@@ -1,7 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-const DB_PATH = path.join(__dirname, '..', 'data', 'db.json');
+const DB_FILENAME = process.env.USER_TENANT === 'wife' 
+  ? 'db_wife.json' 
+  : process.env.USER_TENANT === 'danilo' 
+    ? 'db_danilo.json' 
+    : 'db.json';
+const DB_PATH = path.join(__dirname, '..', 'data', DB_FILENAME);
 const DEFAULT_DATA_PATH = path.join(__dirname, '..', 'data', 'defaultData.json');
 
 class DataStore {

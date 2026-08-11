@@ -12,6 +12,7 @@ const liabilitiesRoute = require('./routes/liabilities');
 const syncRoute = require('./routes/sync');
 const analyticsRoute = require('./routes/analytics');
 const systemRoute = require('./routes/system');
+const householdRoutes = require('./routes/household');
 const dataStore = require('./services/dataStore');
 const accrualEngine = require('./services/accrualEngine');
 const navpuScraper = require('./services/navpuScraper');
@@ -83,6 +84,7 @@ app.use('/api/sync', syncRoute);
 app.use('/api/sync-data', syncRoute);
 app.use('/api/analytics', analyticsRoute);
 app.use('/api/system', systemRoute);
+app.use('/api/household', householdRoutes);
 
 // Health Check
 app.get('/api/health', (req, res) => {

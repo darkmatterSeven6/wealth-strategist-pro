@@ -84,6 +84,11 @@ function AccountCardContent({ acc, onOpenOverride, onOverrideAccount, isOverlay 
           <div className="text-xl sm:text-2xl font-extrabold text-white font-mono mt-0.5">
             ₱{acc.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
           </div>
+          {acc.accountTypeLabel && (
+            <div className="mt-2 inline-block px-2 py-1 bg-slate-800/50 rounded-lg text-[10px] text-slate-300 font-semibold uppercase tracking-wider border border-slate-700/50">
+              {acc.accountTypeLabel}
+            </div>
+          )}
         </div>
 
         {/* Tier Info & Sub-Accounts */}
@@ -113,14 +118,14 @@ function AccountCardContent({ acc, onOpenOverride, onOverrideAccount, isOverlay 
           </div>
         )}
         {/* Maya Boost Panel */}
-        {acc.name.includes('Maya Savings') && (
+        {(acc.name === 'Maya Bank ( Savings )' || acc.name === 'Maya - Rainy Days Fund') && (
           <div className="mt-3 p-3 bg-slate-950/60 rounded-xl border border-emerald-900/40" onPointerDown={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Boost Tier Selector</span>
+              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">{acc.name === 'Maya Bank ( Savings )' ? 'Boost Tier Selector' : 'Milestone Selector'}</span>
               <span className="text-[10px] text-emerald-400 font-bold">{acc.currentApy}% Active</span>
             </div>
             <div className="flex flex-wrap gap-1.5 mt-2.5">
-              {[
+              {(acc.name === 'Maya Bank ( Savings )' ? [
                 { rate: 3, label: 'Base' },
                 { rate: 4, label: '₱250' },
                 { rate: 5, label: '₱1k' },
@@ -128,16 +133,23 @@ function AccountCardContent({ acc, onOpenOverride, onOverrideAccount, isOverlay 
                 { rate: 7, label: '₱20k' },
                 { rate: 10, label: '₱25k' },
                 { rate: 15, label: 'Smart' }
-              ].map((tier) => (
+              ] : [
+                { rate: 4, label: 'Base' },
+                { rate: 5, label: '₱5k' },
+                { rate: 6, label: '₱50k' },
+                { rate: 8, label: '₱100k' }
+              ]).map((tier) => (
                 <button
                   key={tier.rate}
                   onClick={(e) => {
                     e.stopPropagation();
                     if (onOverrideAccount) {
+                      const baseRate = acc.name === 'Maya Bank ( Savings )' ? 3 : 4;
+                      const tierType = acc.name === 'Maya Bank ( Savings )' ? 'Mission Boost' : 'Milestone Boost';
                       onOverrideAccount({
                         accountId: acc.id,
                         currentApy: tier.rate,
-                        tierInfo: tier.rate === 3 ? 'Base 3.0%' : `Base 3.0% + ${tier.rate - 3}% Mission Boost (${tier.label})`
+                        tierInfo: tier.rate === baseRate ? `Base ${baseRate.toFixed(1)}%` : `Base ${baseRate.toFixed(1)}% + ${(tier.rate - baseRate).toFixed(1)}% ${tierType} (${tier.label})`
                       });
                     }
                   }}

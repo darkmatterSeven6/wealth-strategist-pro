@@ -14,7 +14,8 @@ import {
   Check, 
   Clock,
   SlidersHorizontal,
-  Landmark
+  Landmark,
+  Cloud
 } from 'lucide-react';
 
 import { showSuccessToast, showErrorToast } from '../utils/toast';
@@ -33,6 +34,7 @@ export default function Navbar({
   onOpenExit
 }) {
   const tabs = [
+    { id: 'household', line1: 'Household', line2: 'Overview', icon: Landmark },
     { id: 'overview', line1: 'Overview', line2: null, icon: Clock },
     { id: 'accounts', line1: 'Digital', line2: 'Banks', icon: Wallet },
     { id: 'ginvest', line1: 'GInvest', line2: '& Quant', icon: TrendingUp },
@@ -60,6 +62,24 @@ export default function Navbar({
     } catch (err) {
       console.error('[UI Sync Error]:', err);
       showErrorToast('Sync request failed. Verify backend process on PORT 5001.');
+    }
+  };
+
+  const handleHouseholdSync = async () => {
+    try {
+      const response = await fetch('http://localhost:5001/api/household/sync', {
+        method: 'POST'
+      });
+      const data = await response.json();
+      if (data.success) {
+        showSuccessToast('Household State synced successfully with Google Drive.');
+        window.location.reload(); // Refresh to fetch newly synced DBs
+      } else {
+        showErrorToast('Household Sync failed: ' + data.error);
+      }
+    } catch (err) {
+      console.error(err);
+      showErrorToast('Household Sync request failed.');
     }
   };
 
@@ -163,6 +183,19 @@ export default function Navbar({
               <div className="flex flex-col text-left leading-[1.05]">
                 <span className="text-[10px] font-bold text-slate-200">Sync</span>
                 <span className="text-[10px] font-bold text-slate-400">Data</span>
+              </div>
+            </button>
+
+            {/* Household Sync Button */}
+            <button
+              onClick={handleHouseholdSync}
+              className="flex items-center space-x-2 px-2.5 py-1.5 bg-blue-900/40 hover:bg-blue-800/60 text-blue-200 rounded-lg border border-blue-800/50 transition shadow-sm"
+              title="Sync Household State with Google Drive"
+            >
+              <Cloud className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+              <div className="flex flex-col text-left leading-[1.05]">
+                <span className="text-[10px] font-bold text-blue-200">Household</span>
+                <span className="text-[10px] font-bold text-blue-400">Sync</span>
               </div>
             </button>
 

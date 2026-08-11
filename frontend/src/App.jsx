@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Navbar from './components/Navbar';
+import MasterHouseholdDashboard from './components/MasterHouseholdDashboard';
 import DashboardOverview from './components/DashboardOverview';
 import AccountAggregator from './components/AccountAggregator';
 import GInvestIntelligence from './components/GInvestIntelligence';
@@ -442,6 +443,10 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-[98%] w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        {activeTab === 'household' && (
+          <MasterHouseholdDashboard />
+        )}
+
         {activeTab === 'overview' && (
           <DashboardOverview
             data={summaryData}

@@ -2,7 +2,12 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const fs = require('fs');
 
-const DB_PATH = path.join(__dirname, '..', 'data', 'dv_financials.db');
+const DB_FILENAME = process.env.USER_TENANT === 'wife' 
+  ? 'dv_wife.db' 
+  : process.env.USER_TENANT === 'danilo' 
+    ? 'dv_danilo.db' 
+    : 'dv_financials.db';
+const DB_PATH = path.join(__dirname, '..', 'data', DB_FILENAME);
 const SCHEMA_PATH = path.join(__dirname, '..', 'data', 'schema.sql');
 
 class SqliteService {
@@ -17,7 +22,7 @@ class SqliteService {
         if (err) {
           console.error('❌ [SQLITE INIT ERROR]:', err.message);
         } else {
-          console.log('🟢 [SQLITE ENGINE] Connected to dv_financials.db');
+          console.log(`🟢 [SQLITE ENGINE] Connected to ${DB_FILENAME}`);
           this.bootstrapSchema();
         }
       });

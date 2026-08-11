@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS digital_banks (
     account_id TEXT UNIQUE NOT NULL,
     account_name TEXT NOT NULL,
     account_type TEXT,
+    account_type_label TEXT,
     badge_label TEXT,
     last_four_digits TEXT,
     current_balance REAL DEFAULT 0.0,
