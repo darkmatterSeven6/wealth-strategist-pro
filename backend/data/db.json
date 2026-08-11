@@ -43,14 +43,14 @@
       "accountNumber": "•••• 5798",
       "balance": 5001.75,
       "baseApy": 4,
-      "currentApy": 5,
-      "dailyInterestEstimate": 0.55,
-      "tierInfo": "Base 4.0% + 1.0% Milestone Boost (₱5k)",
+      "currentApy": 4,
+      "dailyInterestEstimate": 0.44,
+      "tierInfo": "Base 4.0%",
       "color": "#3b82f6",
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:40:35.586Z",
+      "lastSynced": "2026-08-11T12:50:20.970Z",
       "accountTypeLabel": "Personal Goal Account"
     },
     {
@@ -59,7 +59,7 @@
       "institution": "Maya Philippines",
       "type": "e_wallet",
       "accountNumber": "0917 •••• 981",
-      "balance": 1261.05,
+      "balance": 1111.05,
       "baseApy": 0,
       "currentApy": 0,
       "dailyInterestEstimate": 0,
@@ -68,7 +68,7 @@
       "icon": "MayaWallet",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:40:35.586Z"
+      "lastSynced": "2026-08-11T12:46:38.616Z"
     },
     {
       "id": "acc-maribank-01",
@@ -1744,6 +1744,27 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786452819672-9x2o",
+      "timestamp": "2026-08-11T12:53:39.672Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-11 12:53:39"
+    },
+    {
+      "id": "log-1786452620972-bl1a",
+      "timestamp": "2026-08-11T12:50:20.972Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,001.75 @ 4% APY."
+    },
+    {
+      "id": "log-1786452398619-5bb3",
+      "timestamp": "2026-08-11T12:46:38.619Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya Wallet (0917 •••• 981) balance to ₱1,111.05 @ 0% APY."
+    },
+    {
       "id": "log-1786452286296-s1no",
       "timestamp": "2026-08-11T12:44:46.296Z",
       "source": "GitHub Cloud Sync",
@@ -2071,27 +2092,6 @@
       "source": "NAVPU Valuation Engine",
       "status": "success",
       "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786309456047-zexn",
-      "timestamp": "2026-08-09T21:04:16.047Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786251582587-u6hp",
-      "timestamp": "2026-08-09T04:59:42.588Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-09 04:59:42"
-    },
-    {
-      "id": "log-1786251200625-fugp",
-      "timestamp": "2026-08-09T04:53:20.625Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-09 04:53:20"
     }
   ],
   "transactions": [
