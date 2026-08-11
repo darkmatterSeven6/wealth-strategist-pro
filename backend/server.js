@@ -15,10 +15,41 @@ const systemRoute = require('./routes/system');
 const dataStore = require('./services/dataStore');
 const accrualEngine = require('./services/accrualEngine');
 const navpuScraper = require('./services/navpuScraper');
+const sqliteDb = require('./services/sqliteDb');
 
 const app = express();
 const server = http.createServer(app);
 const PORT = process.env.PORT || 5001;
+
+// Hardened Database Guard in /backend/server.js
+const verifyAndLockDatabase = async () => {
+  try {
+    // Check if tables exist first to avoid SQLITE_ERROR if schema isn't ready
+    const tables = await sqliteDb.all("SELECT name FROM sqlite_master WHERE type='table' AND name IN ('digital_banks', 'feeder_funds')");
+    if (tables.length < 2) {
+      setTimeout(verifyAndLockDatabase, 1000); // Wait for schema to initialize
+      return;
+    }
+
+    const digitalBankRows = await sqliteDb.get("SELECT COUNT(*) as count FROM digital_banks");
+    const feederFundRows = await sqliteDb.get("SELECT COUNT(*) as count FROM feeder_funds");
+
+    const totalRecords = (digitalBankRows?.count || 0) + (feederFundRows?.count || 0);
+
+    if (totalRecords > 0) {
+      console.log("🔒 [PRODUCTION GUARD]: User live financial data detected. DATABASE SEEDING PERMANENTLY BLOCKED.");
+      return; // EXIT WITHOUT EXECUTING SEED SCRIPTS
+    }
+
+    console.log("⚠️ Database completely empty. Executing initial schema setup...");
+    sqliteDb.seedInitialData();
+  } catch (err) {
+    console.error("❌ [DB GUARD ERROR]:", err.message);
+  }
+};
+
+// Delay check slightly to ensure sqlite init finishes
+setTimeout(verifyAndLockDatabase, 1000);
 
 // Initialize Midnight Net Yield Accrual Engine (12:01 AM Asia/Manila Cron)
 accrualEngine.init();
@@ -30,6 +61,14 @@ navpuScraper.initScheduler();
 app.use(cors({ origin: '*' }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+// Disable HTTP cache headers for financial state REST APIs
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+  next();
+});
 
 // API Routes
 app.use('/api/accounts', accountsRoute);

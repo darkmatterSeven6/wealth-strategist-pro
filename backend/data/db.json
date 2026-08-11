@@ -52,7 +52,7 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 5798",
-      "balance": 5000.88,
+      "balance": 5001.75,
       "baseApy": 4,
       "currentApy": 4,
       "dailyInterestEstimate": 0.44,
@@ -61,7 +61,7 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z"
+      "lastSynced": "2026-08-11T03:09:24.055Z"
     },
     {
       "id": "acc-maya-wallet-01",
@@ -218,7 +218,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 497.0092,
-      "previousNavpu": 268.9,
+      "previousNavpu": 497.0092,
       "navpuDate": "2026-08-04",
       "unitsHeld": 2.0419,
       "investedCapital": 1000,
@@ -311,7 +311,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 143,
-      "previousNavpu": 142.15,
+      "previousNavpu": 143,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -400,7 +400,7 @@
       "currency": "PHP",
       "riskRating": "Moderate",
       "currentNavpu": 47.5422,
-      "previousNavpu": 52.83,
+      "previousNavpu": 47.5422,
       "navpuDate": "2026-08-04",
       "unitsHeld": 4.2169,
       "investedCapital": 211.69,
@@ -493,7 +493,7 @@
       "currency": "PHP",
       "riskRating": "Moderate",
       "currentNavpu": 109.35,
-      "previousNavpu": 108.9,
+      "previousNavpu": 109.35,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -582,7 +582,7 @@
       "currency": "PHP",
       "riskRating": "Conservative",
       "currentNavpu": 136.58,
-      "previousNavpu": 136.56,
+      "previousNavpu": 136.58,
       "navpuDate": "2026-08-10",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -675,7 +675,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 11.82,
-      "previousNavpu": 11.75,
+      "previousNavpu": 11.82,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -768,7 +768,7 @@
       "currency": "PHP",
       "riskRating": "Moderate",
       "currentNavpu": 2.287,
-      "previousNavpu": 2.285,
+      "previousNavpu": 2.287,
       "navpuDate": "2026-08-10",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -861,7 +861,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 174.6,
-      "previousNavpu": 173.8,
+      "previousNavpu": 174.6,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -954,7 +954,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 196.4,
-      "previousNavpu": 195.8,
+      "previousNavpu": 196.4,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1047,7 +1047,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 1.284,
-      "previousNavpu": 1.278,
+      "previousNavpu": 1.284,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1140,7 +1140,7 @@
       "currency": "PHP",
       "riskRating": "Moderate",
       "currentNavpu": 1.135,
-      "previousNavpu": 1.13,
+      "previousNavpu": 1.135,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1229,7 +1229,7 @@
       "currency": "PHP",
       "riskRating": "Moderate",
       "currentNavpu": 1.265,
-      "previousNavpu": 1.258,
+      "previousNavpu": 1.265,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1318,7 +1318,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 194.5,
-      "previousNavpu": 193.6,
+      "previousNavpu": 194.5,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1410,7 +1410,7 @@
       "currency": "PHP",
       "riskRating": "Aggressive",
       "currentNavpu": 772.4,
-      "previousNavpu": 768.1,
+      "previousNavpu": 772.4,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1503,7 +1503,7 @@
       "currency": "PHP",
       "riskRating": "Moderate",
       "currentNavpu": 1.162,
-      "previousNavpu": 1.157,
+      "previousNavpu": 1.162,
       "navpuDate": "2026-08-04",
       "unitsHeld": 0,
       "investedCapital": 0,
@@ -1745,6 +1745,34 @@
     ]
   },
   "syncLogs": [
+    {
+      "id": "log-1786417767282-itqg",
+      "timestamp": "2026-08-11T03:09:27.282Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-11 03:09:27"
+    },
+    {
+      "id": "log-1786417764070-wqba",
+      "timestamp": "2026-08-11T03:09:24.070Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,001.75 @ 4% APY."
+    },
+    {
+      "id": "log-1786407612505-tdc2",
+      "timestamp": "2026-08-11T00:20:12.505Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-11 00:20:12"
+    },
+    {
+      "id": "log-1786356015546-9k2m",
+      "timestamp": "2026-08-10T10:00:15.546Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Automated 6:00 PM PHT Worker: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
     {
       "id": "log-1786325316861-5e5i",
       "timestamp": "2026-08-10T01:28:36.861Z",
@@ -2066,34 +2094,6 @@
       "source": "NAVPU Valuation Engine",
       "status": "success",
       "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786212746966-boxf",
-      "timestamp": "2026-08-08T18:12:26.966Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786212725662-ppdh",
-      "timestamp": "2026-08-08T18:12:05.662Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 18:12:05"
-    },
-    {
-      "id": "log-1786212715831-r00g",
-      "timestamp": "2026-08-08T18:11:55.831Z",
-      "source": "Liabilities Tracker",
-      "status": "success",
-      "message": "Deleted liability: Atome Card / PayLater"
-    },
-    {
-      "id": "log-1786212615434-aiu7",
-      "timestamp": "2026-08-08T18:10:15.434Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 18:10:15"
     }
   ],
   "transactions": [

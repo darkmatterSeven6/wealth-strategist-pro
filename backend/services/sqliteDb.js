@@ -35,7 +35,7 @@ class SqliteService {
         console.error('❌ [SQLITE SCHEMA ERROR]:', err.message);
       } else {
         console.log('🟢 [SQLITE ENGINE] Schema verified & tables initialized.');
-        this.seedInitialData();
+        // Seeding is now guarded by server.js
       }
     });
   }

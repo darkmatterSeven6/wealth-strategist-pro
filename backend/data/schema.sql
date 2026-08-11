@@ -55,3 +55,16 @@ CREATE TABLE IF NOT EXISTS liabilities (
     status TEXT DEFAULT 'active',
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- 4. Digital Banks Table
+CREATE TABLE IF NOT EXISTS digital_banks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    account_id TEXT UNIQUE NOT NULL,
+    bank_name TEXT NOT NULL,
+    balance REAL DEFAULT 0.0,
+    base_apy REAL DEFAULT 0.0,
+    current_apy REAL DEFAULT 0.0,
+    is_liquid BOOLEAN DEFAULT 1,
+    status TEXT DEFAULT 'active',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

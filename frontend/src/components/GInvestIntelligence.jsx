@@ -417,11 +417,11 @@ export default function GInvestIntelligence({
 
       {/* Quant Intelligence Table */}
       <div className="rounded-2xl glass-panel border border-slate-800/80 overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+        <div className="w-full">
+          <table className="w-full text-left text-xs table-fixed">
             <thead className="bg-slate-900/90 text-slate-400 uppercase font-bold text-[10px] tracking-wider border-b border-slate-800">
               <tr>
-                <th className="py-3.5 px-4 min-w-[300px]">Fund Name & Platform</th>
+                <th className="py-3.5 px-4 w-1/4">Fund Name & Platform</th>
                 <th className="py-3.5 px-4 text-right">Latest NAVPU</th>
                 <th className="py-3.5 px-4 text-right">Total Units</th>
                 <th className="py-3.5 px-4 text-right">Total Investment Value</th>

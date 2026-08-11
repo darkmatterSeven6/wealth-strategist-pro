@@ -63,9 +63,9 @@ class AccrualEngine {
         // Net Daily Yield (80% of Gross)
         const dailyNet = (balance * (grossApy / 100) * 0.80) / 365;
 
-        const newBalance = parseFloat((balance + dailyNet).toFixed(2));
+        const newBalance = balance + dailyNet;
         acc.balance = newBalance;
-        acc.dailyInterestEstimate = parseFloat(dailyNet.toFixed(2));
+        acc.dailyInterestEstimate = dailyNet;
         acc.lastSynced = now;
 
         totalNetCredited += dailyNet;
@@ -77,9 +77,9 @@ class AccrualEngine {
           institution: acc.institution || acc.name,
           referenceNumber: `NET-YIELD-${acc.id}-${new Date().toISOString().slice(0,10)}`,
           type: 'INTEREST_CREDIT',
-          amount: parseFloat(dailyNet.toFixed(2)),
-          grossAmount: parseFloat(dailyGross.toFixed(2)),
-          withholdingTax: parseFloat(withholdingTax.toFixed(2)),
+          amount: dailyNet,
+          grossAmount: dailyGross,
+          withholdingTax: withholdingTax,
           taxRate: '20% Withholding Tax',
           grossApy: grossApy,
           runningBalance: newBalance,
@@ -96,9 +96,9 @@ class AccrualEngine {
           name: acc.name,
           institution: acc.institution,
           previousBalance: balance,
-          netInterest: parseFloat(dailyNet.toFixed(2)),
-          grossInterest: parseFloat(dailyGross.toFixed(2)),
-          withholdingTax: parseFloat(withholdingTax.toFixed(2)),
+          netInterest: dailyNet,
+          grossInterest: dailyGross,
+          withholdingTax: withholdingTax,
           newBalance: newBalance,
           grossApy: grossApy
         });
@@ -124,8 +124,8 @@ class AccrualEngine {
       success: true,
       timestamp: now,
       creditedAccountsCount: creditedAccounts.length,
-      totalNetCredited: parseFloat(totalNetCredited.toFixed(2)),
-      totalTaxWithheld: parseFloat(totalTaxWithheld.toFixed(2)),
+      totalNetCredited: totalNetCredited,
+      totalTaxWithheld: totalTaxWithheld,
       creditedAccounts
     };
   }
