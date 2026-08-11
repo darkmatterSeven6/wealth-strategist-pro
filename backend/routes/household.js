@@ -7,7 +7,8 @@ const sqlite3 = require('sqlite3').verbose();
 // 1. Sync Route
 router.post('/sync', async (req, res) => {
   try {
-    const syncDir = path.resolve(process.env.USERPROFILE || 'C:\\Users\\danie', 'Google Drive\\DV_Financials_Household_Sync');
+    const defaultSyncDir = path.resolve(process.env.USERPROFILE || 'C:\\Users\\danie', 'Google Drive\\DV_Financials_Household_Sync');
+    const syncDir = process.env.HOUSEHOLD_SYNC_PATH ? path.resolve(process.env.HOUSEHOLD_SYNC_PATH) : defaultSyncDir;
     if (!fs.existsSync(syncDir)) {
       fs.mkdirSync(syncDir, { recursive: true });
     }
