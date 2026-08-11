@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-09T21:04:15.988Z"
+    "lastSyncTimestamp": "2026-08-11T03:20:32.270Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -19,20 +19,20 @@
   "accounts": [
     {
       "id": "acc-maya-01",
-      "name": "Maya Savings",
+      "name": "[⚡ Maya Savings]",
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 7280",
-      "balance": 100013.16,
-      "baseApy": 3.5,
-      "currentApy": 5,
-      "dailyInterestEstimate": 13.7,
-      "tierInfo": "Base 3.5% + 6.5% Mission Boost (Spend ₱30k+ via Maya Card & Bills paid)",
+      "balance": 100035.08,
+      "baseApy": 3,
+      "currentApy": 10,
+      "dailyInterestEstimate": 21.92,
+      "tierInfo": "Base 3.0% + 7.0% Mission Boost (Spend ₱30k+ via Maya Card & Bills paid)",
       "color": "#00d084",
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z",
+      "lastSynced": "2026-08-11T03:20:32.269Z",
       "subAccounts": [
         {
           "name": "Personal Goals: Japan 2027",
@@ -48,7 +48,7 @@
     },
     {
       "id": "acc-custom-1786121765629",
-      "name": "Maya - Rainy Days Fund",
+      "name": "[🎯 Personal Goals]",
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 5798",
@@ -56,12 +56,12 @@
       "baseApy": 4,
       "currentApy": 4,
       "dailyInterestEstimate": 0.44,
-      "tierInfo": "4% p.a. custom account",
+      "tierInfo": "4% p.a. target account",
       "color": "#3b82f6",
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:09:24.055Z"
+      "lastSynced": "2026-08-11T03:20:32.270Z"
     },
     {
       "id": "acc-maya-wallet-01",
@@ -78,7 +78,7 @@
       "icon": "MayaWallet",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z"
+      "lastSynced": "2026-08-11T03:20:32.270Z"
     },
     {
       "id": "acc-maribank-01",
@@ -86,7 +86,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1116.46,
+      "balance": 1116.56,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.1,
@@ -95,7 +95,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z"
+      "lastSynced": "2026-08-11T03:20:32.270Z"
     },
     {
       "id": "acc-atome-01",
@@ -112,7 +112,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z"
+      "lastSynced": "2026-08-11T03:20:32.270Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -129,7 +129,7 @@
       "icon": "GCash",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z"
+      "lastSynced": "2026-08-11T03:20:32.270Z"
     },
     {
       "id": "acc-bpi-01",
@@ -146,7 +146,7 @@
       "icon": "BPI",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z"
+      "lastSynced": "2026-08-11T03:20:32.270Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -163,7 +163,7 @@
       "icon": "GoTyme",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z",
+      "lastSynced": "2026-08-11T03:20:32.270Z",
       "subAccounts": [
         {
           "name": "Auto & Insurance Buffer",
@@ -192,7 +192,7 @@
       "icon": "Tonik",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-09T21:04:15.988Z",
+      "lastSynced": "2026-08-11T03:20:32.270Z",
       "subAccounts": [
         {
           "name": "Group Stash (Family)",
@@ -1746,6 +1746,34 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786422520585-8bkf",
+      "timestamp": "2026-08-11T04:28:40.585Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-11 04:28:40"
+    },
+    {
+      "id": "log-1786422512134-bbb2",
+      "timestamp": "2026-08-11T04:28:32.134Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-11 04:28:32"
+    },
+    {
+      "id": "log-1786418447868-pcmq",
+      "timestamp": "2026-08-11T03:20:47.869Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786418432274-dpqf",
+      "timestamp": "2026-08-11T03:20:32.274Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
+    },
+    {
       "id": "log-1786418420887-mk8i",
       "timestamp": "2026-08-11T03:20:20.887Z",
       "source": "GitHub Cloud Sync",
@@ -2066,34 +2094,6 @@
       "source": "GitHub Cloud Sync",
       "status": "success",
       "message": "Manual / Auto save operation recorded at 2026-08-08 18:19:24"
-    },
-    {
-      "id": "log-1786213132739-ahud",
-      "timestamp": "2026-08-08T18:18:52.739Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Atome Card settings saved: Available ₱5,605.22 / Total ₱7,460"
-    },
-    {
-      "id": "log-1786212961291-lwz0",
-      "timestamp": "2026-08-08T18:16:01.291Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Atome Card settings saved: Available ₱50,000 / Total ₱50,000"
-    },
-    {
-      "id": "log-1786212903865-xp2u",
-      "timestamp": "2026-08-08T18:15:03.865Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Atome Card settings saved: Available ₱50,000 / Total ₱50,000"
-    },
-    {
-      "id": "log-1786212837888-k557",
-      "timestamp": "2026-08-08T18:13:57.888Z",
-      "source": "Atome Card Settings",
-      "status": "success",
-      "message": "Atome Card settings saved: Available ₱50,000 / Total ₱50,000"
     }
   ],
   "transactions": [

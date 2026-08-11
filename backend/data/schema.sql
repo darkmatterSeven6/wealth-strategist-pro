@@ -60,11 +60,18 @@ CREATE TABLE IF NOT EXISTS liabilities (
 CREATE TABLE IF NOT EXISTS digital_banks (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     account_id TEXT UNIQUE NOT NULL,
-    bank_name TEXT NOT NULL,
-    balance REAL DEFAULT 0.0,
-    base_apy REAL DEFAULT 0.0,
-    current_apy REAL DEFAULT 0.0,
+    account_name TEXT NOT NULL,
+    account_type TEXT,
+    badge_label TEXT,
+    last_four_digits TEXT,
+    current_balance REAL DEFAULT 0.0,
+    base_rate REAL DEFAULT 0.0,
+    active_boost_rate REAL DEFAULT 0.0,
+    total_effective_rate REAL DEFAULT 0.0,
+    net_daily_gain REAL DEFAULT 0.0,
+    pockets_json TEXT,
     is_liquid BOOLEAN DEFAULT 1,
     status TEXT DEFAULT 'active',
+    last_synced_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

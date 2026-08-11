@@ -34,7 +34,7 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-function AccountCardContent({ acc, onOpenOverride, isOverlay = false }) {
+function AccountCardContent({ acc, onOpenOverride, onOverrideAccount, isOverlay = false }) {
   const isBoosted = acc.currentApy >= 6.0;
 
   return (
@@ -112,6 +112,49 @@ function AccountCardContent({ acc, onOpenOverride, isOverlay = false }) {
             ))}
           </div>
         )}
+        {/* Maya Boost Panel */}
+        {acc.name.includes('Maya Savings') && (
+          <div className="mt-3 p-3 bg-slate-950/60 rounded-xl border border-emerald-900/40" onPointerDown={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Boost Tier Selector</span>
+              <span className="text-[10px] text-emerald-400 font-bold">{acc.currentApy}% Active</span>
+            </div>
+            <div className="flex flex-wrap gap-1.5 mt-2.5">
+              {[
+                { rate: 3, label: 'Base' },
+                { rate: 4, label: '₱250' },
+                { rate: 5, label: '₱1k' },
+                { rate: 6, label: '₱3k' },
+                { rate: 7, label: '₱20k' },
+                { rate: 10, label: '₱25k' },
+                { rate: 15, label: 'Smart' }
+              ].map((tier) => (
+                <button
+                  key={tier.rate}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (onOverrideAccount) {
+                      onOverrideAccount({
+                        accountId: acc.id,
+                        currentApy: tier.rate,
+                        tierInfo: tier.rate === 3 ? 'Base 3.0%' : `Base 3.0% + ${tier.rate - 3}% Mission Boost (${tier.label})`
+                      });
+                    }
+                  }}
+                  className={`flex items-center px-2 py-1 rounded-full border text-[10px] font-bold transition-all duration-200 cursor-pointer ${
+                    acc.currentApy === tier.rate
+                      ? 'bg-emerald-950/80 text-emerald-300 border-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]'
+                      : 'bg-slate-900 text-slate-400 border-slate-700 hover:bg-slate-800 hover:text-slate-300'
+                  }`}
+                  title={`${tier.rate}% p.a.`}
+                >
+                  <span className={`w-1.5 h-1.5 rounded-full mr-1.5 shrink-0 ${acc.currentApy === tier.rate ? 'bg-emerald-400 animate-pulse' : 'bg-slate-600'}`}></span>
+                  <span>{tier.rate}% <span className="text-slate-500 font-normal ml-0.5">{tier.label}</span></span>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Card Footer Actions */}
@@ -140,7 +183,7 @@ function AccountCardContent({ acc, onOpenOverride, isOverlay = false }) {
   );
 }
 
-function SortableAccountCard({ acc, onOpenOverride }) {
+function SortableAccountCard({ acc, onOpenOverride, onOverrideAccount }) {
   const {
     attributes,
     listeners,
@@ -168,6 +211,7 @@ function SortableAccountCard({ acc, onOpenOverride }) {
       <AccountCardContent 
         acc={acc} 
         onOpenOverride={onOpenOverride}
+        onOverrideAccount={onOverrideAccount}
         isOverlay={false}
       />
     </div>
@@ -365,6 +409,7 @@ export default function AccountAggregator({
                 key={String(acc.id)}
                 acc={acc}
                 onOpenOverride={handleOpenOverride}
+                onOverrideAccount={onOverrideAccount}
               />
             ))}
           </div>
@@ -385,6 +430,7 @@ export default function AccountAggregator({
             <AccountCardContent
               acc={activeAccount}
               onOpenOverride={handleOpenOverride}
+              onOverrideAccount={onOverrideAccount}
               isOverlay={true}
             />
           ) : null}

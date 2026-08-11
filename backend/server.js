@@ -16,6 +16,7 @@ const dataStore = require('./services/dataStore');
 const accrualEngine = require('./services/accrualEngine');
 const navpuScraper = require('./services/navpuScraper');
 const sqliteDb = require('./services/sqliteDb');
+const monthlyResetWorker = require('./workers/monthlyResetWorker');
 
 const app = express();
 const server = http.createServer(app);
@@ -56,6 +57,9 @@ accrualEngine.init();
 
 // Initialize Daily 6:00 PM PHT NAVPU Valuation Worker (Asia/Manila Cron)
 navpuScraper.initScheduler();
+
+// Initialize 1st-of-the-month CRON for Maya Boost Reset
+monthlyResetWorker.initScheduler();
 
 // Middleware
 app.use(cors({ origin: '*' }));
