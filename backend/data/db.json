@@ -5,7 +5,7 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-11T03:20:32.270Z"
+    "lastSyncTimestamp": "2026-08-11T12:30:45.790Z"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -26,13 +26,13 @@
       "balance": 100035.08,
       "baseApy": 3,
       "currentApy": 5,
-      "dailyInterestEstimate": 10.96,
+      "dailyInterestEstimate": 13.7,
       "tierInfo": "Base 3.0% + 2.0% Mission Boost (₱1k)",
       "color": "#00d084",
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T04:30:25.445Z",
+      "lastSynced": "2026-08-11T12:30:45.790Z",
       "accountTypeLabel": "Maya Standard Savings"
     },
     {
@@ -50,7 +50,7 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z",
+      "lastSynced": "2026-08-11T12:30:45.790Z",
       "accountTypeLabel": "Personal Goal Account"
     },
     {
@@ -68,7 +68,7 @@
       "icon": "MayaWallet",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z"
+      "lastSynced": "2026-08-11T12:30:45.790Z"
     },
     {
       "id": "acc-maribank-01",
@@ -76,7 +76,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1116.56,
+      "balance": 1116.66,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.1,
@@ -85,7 +85,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z"
+      "lastSynced": "2026-08-11T12:30:45.790Z"
     },
     {
       "id": "acc-atome-01",
@@ -102,7 +102,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z"
+      "lastSynced": "2026-08-11T12:30:45.790Z"
     },
     {
       "id": "acc-gcash-wallet-01",
@@ -119,7 +119,7 @@
       "icon": "GCash",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z"
+      "lastSynced": "2026-08-11T12:30:45.790Z"
     },
     {
       "id": "acc-bpi-01",
@@ -136,7 +136,7 @@
       "icon": "BPI",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z"
+      "lastSynced": "2026-08-11T12:30:45.790Z"
     },
     {
       "id": "acc-gotyme-01",
@@ -153,7 +153,7 @@
       "icon": "GoTyme",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z",
+      "lastSynced": "2026-08-11T12:30:45.790Z",
       "subAccounts": [
         {
           "name": "Auto & Insurance Buffer",
@@ -182,7 +182,7 @@
       "icon": "Tonik",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z",
+      "lastSynced": "2026-08-11T12:30:45.790Z",
       "subAccounts": [
         {
           "name": "Group Stash (Family)",
@@ -207,18 +207,18 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 497.0092,
-      "previousNavpu": 497.0092,
-      "navpuDate": "2026-08-04",
+      "currentNavpu": 497.784509,
+      "previousNavpu": 497.784509,
+      "navpuDate": "2026-08-06",
       "unitsHeld": 2.0419,
       "investedCapital": 1000,
-      "averageCost": 218.5,
-      "currentMarketValue": 1014.84,
-      "unrealizedGain": 14.84,
-      "unrealizedGainPercent": 1.48,
+      "averageCost": 489.7399,
+      "currentMarketValue": 1016.43,
+      "unrealizedGain": 16.43,
+      "unrealizedGainPercent": 1.64,
       "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 27.54,
+        "oneYearReturn": 34.21,
         "threeYearCagr": 19.85,
         "fiveYearCagr": 18.2,
         "volatility30d": 16.5,
@@ -283,6 +283,10 @@
         {
           "date": "2026-08-04",
           "navpu": 269.75
+        },
+        {
+          "date": "2026-08-06",
+          "navpu": 497.784509
         }
       ],
       "pendingBuyOrders": 0,
@@ -389,18 +393,18 @@
       "category": "Multi-Asset Dividend Income",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 47.5422,
-      "previousNavpu": 47.5422,
-      "navpuDate": "2026-08-04",
-      "unitsHeld": 4.2169,
+      "currentNavpu": 47.6559,
+      "previousNavpu": 47.6559,
+      "navpuDate": "2026-08-07",
+      "unitsHeld": 14.7087,
       "investedCapital": 211.69,
-      "averageCost": 50.2,
-      "currentMarketValue": 200.48,
-      "unrealizedGain": -11.21,
-      "unrealizedGainPercent": -5.3,
+      "averageCost": 14.3922,
+      "currentMarketValue": 700.96,
+      "unrealizedGain": 489.27,
+      "unrealizedGainPercent": 231.13,
       "dividendYieldPAnnum": 5.85,
       "metrics": {
-        "oneYearReturn": 9.2,
+        "oneYearReturn": 7.06,
         "threeYearCagr": 7.6,
         "fiveYearCagr": 8.1,
         "volatility30d": 6.8,
@@ -465,9 +469,13 @@
         {
           "date": "2026-08-04",
           "navpu": 52.97
+        },
+        {
+          "date": "2026-08-07",
+          "navpu": 47.6559
         }
       ],
-      "pendingBuyOrders": 500,
+      "pendingBuyOrders": 0,
       "est_completion_date": "2026-08-14",
       "pendingSellOrders": 0,
       "pending_units": 10.5169,
@@ -1736,6 +1744,76 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786452012711-yvro",
+      "timestamp": "2026-08-11T12:40:12.711Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-11 12:40:12"
+    },
+    {
+      "id": "log-1786451976758-fwaw",
+      "timestamp": "2026-08-11T12:39:36.758Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786451964254-833m",
+      "timestamp": "2026-08-11T12:39:24.254Z",
+      "source": "Screenshot OCR Ingestion",
+      "status": "success",
+      "message": "Imported screenshot statement for \"ATRAM Global Technology Feeder Fund\" on GCash GInvest: 2.0419 units @ ₱497.784509 (Market Value: ₱1,016.42)."
+    },
+    {
+      "id": "log-1786451794538-g0rv",
+      "timestamp": "2026-08-11T12:36:34.538Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786451780538-4zkf",
+      "timestamp": "2026-08-11T12:36:20.538Z",
+      "source": "Screenshot OCR Ingestion",
+      "status": "success",
+      "message": "Imported screenshot statement for \"ATRAM Global Technology Feeder Fund\" on GCash GInvest: 2.0419 units @ ₱497.784509 (Market Value: ₱1,016.42)."
+    },
+    {
+      "id": "log-1786451462759-9w5v",
+      "timestamp": "2026-08-11T12:31:02.759Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786451445792-gaz3",
+      "timestamp": "2026-08-11T12:30:45.792Z",
+      "source": "Automated Aggregation Pipeline",
+      "status": "success",
+      "message": "Synchronized 9 accounts with live accruals and statement hooks."
+    },
+    {
+      "id": "log-1786451355688-ucwg",
+      "timestamp": "2026-08-11T12:29:15.688Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786451341905-gklk",
+      "timestamp": "2026-08-11T12:29:01.905Z",
+      "source": "Screenshot OCR Ingestion",
+      "status": "success",
+      "message": "Imported screenshot statement for \"ALFM Global Multi-Asset Income Fund Inc - PHP\" on GCash GInvest: 14.7087 units @ ₱47.6559 (Market Value: ₱700.95)."
+    },
+    {
+      "id": "log-1786442415357-y4tt",
+      "timestamp": "2026-08-11T10:00:15.357Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Automated 6:00 PM PHT Worker: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
       "id": "log-1786436849735-38n3",
       "timestamp": "2026-08-11T08:27:29.735Z",
       "source": "GitHub Cloud Sync",
@@ -2014,76 +2092,6 @@
       "source": "Manual Fast-Override",
       "status": "success",
       "message": "Updated GCash (E-Wallet) (•••• ••• 5676) balance to ₱1,706.59 @ 0% APY."
-    },
-    {
-      "id": "log-1786219793293-fuyv",
-      "timestamp": "2026-08-08T20:09:53.293Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya Wallet (0917 •••• 981) balance to ₱1,261.05 @ 0% APY."
-    },
-    {
-      "id": "log-1786219734049-xxv2",
-      "timestamp": "2026-08-08T20:08:54.049Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786219725049-h0yv",
-      "timestamp": "2026-08-08T20:08:45.049Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786219717207-tg1f",
-      "timestamp": "2026-08-08T20:08:37.207Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya Savings (•••• 7280) balance to ₱100,013.16 @ 5% APY."
-    },
-    {
-      "id": "log-1786216530597-psa3",
-      "timestamp": "2026-08-08T19:15:30.597Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 19:15:30"
-    },
-    {
-      "id": "log-1786216511832-61r5",
-      "timestamp": "2026-08-08T19:15:11.832Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 19:15:11"
-    },
-    {
-      "id": "log-1786216481085-o29k",
-      "timestamp": "2026-08-08T19:14:41.085Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786216456492-z4ka",
-      "timestamp": "2026-08-08T19:14:16.492Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 19:14:16"
-    },
-    {
-      "id": "log-1786216327873-ly3q",
-      "timestamp": "2026-08-08T19:12:07.873Z",
-      "source": "GInvest Holding Update",
-      "status": "success",
-      "message": "Updated holding for ATRAM Global Equity Opportunity Feeder Fund (GCash GInvest): 0 units."
-    },
-    {
-      "id": "log-1786215462619-s1jx",
-      "timestamp": "2026-08-08T18:57:42.619Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-08 18:57:42"
     }
   ],
   "transactions": [
