@@ -1750,6 +1750,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786542934743-9o8h",
+      "timestamp": "2026-08-12T13:55:34.743Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-12 13:55:34"
+    },
+    {
       "id": "log-1786542909661-187d",
       "timestamp": "2026-08-12T13:55:09.661Z",
       "source": "GitHub Cloud Sync",
@@ -2091,13 +2098,6 @@
       "source": "NAVPU Valuation Engine",
       "status": "success",
       "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786451780538-4zkf",
-      "timestamp": "2026-08-11T12:36:20.538Z",
-      "source": "Screenshot OCR Ingestion",
-      "status": "success",
-      "message": "Imported screenshot statement for \"ATRAM Global Technology Feeder Fund\" on GCash GInvest: 2.0419 units @ ₱497.784509 (Market Value: ₱1,016.42)."
     }
   ],
   "transactions": [
