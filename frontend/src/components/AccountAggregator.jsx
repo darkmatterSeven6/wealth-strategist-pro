@@ -37,6 +37,14 @@ import { CSS } from '@dnd-kit/utilities';
 function AccountCardContent({ acc, onOpenOverride, onOverrideAccount, isOverlay = false }) {
   const isBoosted = acc.currentApy >= 6.0;
 
+  const isPersonalGoal = 
+    acc.type === 'MAYA_PERSONAL_GOAL' || 
+    (acc.name && acc.name.toLowerCase().includes('rainy days'));
+
+  const displayBalance = isPersonalGoal
+    ? (acc.virtualTotalBalance || (acc.balance + (acc.accruedUncreditedInterest || 0)))
+    : acc.balance;
+
   return (
     <div className={`p-5 rounded-2xl glass-panel-interactive border relative flex flex-col justify-between group h-full select-none transition-all duration-200 ${
       isOverlay
@@ -80,10 +88,20 @@ function AccountCardContent({ acc, onOpenOverride, onOverrideAccount, isOverlay 
 
         {/* Balance Display */}
         <div className="mt-4 pt-3 border-t border-slate-800/60 pointer-events-none">
-          <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Current Balance</span>
+          <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">
+            {isPersonalGoal ? 'CURRENT VIRTUAL BALANCE (DAILY ACCRUED)' : 'Current Balance'}
+          </span>
           <div className="text-xl sm:text-2xl font-extrabold text-white font-mono mt-0.5">
-            ₱{acc.balance.toLocaleString('en-US', { minimumFractionDigits: 2 })}
+            ₱{displayBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
           </div>
+
+          {isPersonalGoal && (
+            <div className="mt-1 flex items-center text-[10px] text-slate-400 font-medium">
+              <span>Bank Principal: ₱{acc.balance.toFixed(2)}</span>
+              <span className="mx-1.5 opacity-50">|</span>
+              <span className="text-emerald-400">Uncredited: +₱{(acc.accruedUncreditedInterest || 0).toFixed(2)}</span>
+            </div>
+          )}
           {acc.accountTypeLabel && (
             <div className="mt-2 inline-block px-2 py-1 bg-slate-800/50 rounded-lg text-[10px] text-slate-300 font-semibold uppercase tracking-wider border border-slate-700/50">
               {acc.accountTypeLabel}
