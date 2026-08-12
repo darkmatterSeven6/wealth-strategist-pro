@@ -156,17 +156,17 @@ router.post('/force-ground-truth', (req, res) => {
   const account = db.accounts?.find(a => a.accountNumber?.includes('5798') || a.name?.includes('Rainy Days') || (a.last_four_digits && a.last_four_digits.includes('5798')));
   
   if (account) {
-    account.balance = 5000.00;
-    account.accruedUncreditedInterest = 2.6301;
-    account.virtualTotalBalance = 5002.6301;
-    account.lastDailyGain = 0.4384;
+    account.balance = req.body.balance || 5000.00;
+    account.accruedUncreditedInterest = req.body.accruedUncreditedInterest || 2.1918;
+    account.virtualTotalBalance = req.body.virtualTotalBalance || 5002.1918;
+    account.lastDailyGain = req.body.lastDailyGain || 0.4384;
     
     dataStore.saveDb(db);
   }
 
   return res.status(200).json({
     success: true,
-    message: 'In-memory state flushed to Ground Truth ₱5,002.63',
+    message: `In-memory state flushed to Ground Truth ₱${account ? account.virtualTotalBalance : 'N/A'}`,
     account
   });
 });

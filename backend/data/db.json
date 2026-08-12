@@ -51,10 +51,10 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-12T12:57:04.028Z",
+      "lastSynced": "2026-08-12T13:44:34.526Z",
       "accountTypeLabel": "Personal Goal Account",
-      "accruedUncreditedInterest": 2.6301,
-      "virtualTotalBalance": 5002.6301,
+      "accruedUncreditedInterest": 2.1918,
+      "virtualTotalBalance": 5002.1918,
       "lastDailyGain": 0.4384
     },
     {
@@ -1750,6 +1750,34 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786542909661-187d",
+      "timestamp": "2026-08-12T13:55:09.661Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-12 13:55:09"
+    },
+    {
+      "id": "log-1786542274528-82ap",
+      "timestamp": "2026-08-12T13:44:34.528Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,001.753 @ 4% APY."
+    },
+    {
+      "id": "log-1786542251676-oht6",
+      "timestamp": "2026-08-12T13:44:11.676Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,001.753 @ 4% APY."
+    },
+    {
+      "id": "log-1786542240534-is5x",
+      "timestamp": "2026-08-12T13:44:00.534Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,001.753 @ 4% APY."
+    },
+    {
       "id": "log-1786541992941-7ewq",
       "timestamp": "2026-08-12T13:39:52.941Z",
       "source": "GitHub Cloud Sync",
@@ -2070,34 +2098,6 @@
       "source": "Screenshot OCR Ingestion",
       "status": "success",
       "message": "Imported screenshot statement for \"ATRAM Global Technology Feeder Fund\" on GCash GInvest: 2.0419 units @ ₱497.784509 (Market Value: ₱1,016.42)."
-    },
-    {
-      "id": "log-1786451462759-9w5v",
-      "timestamp": "2026-08-11T12:31:02.759Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786451445792-gaz3",
-      "timestamp": "2026-08-11T12:30:45.792Z",
-      "source": "Automated Aggregation Pipeline",
-      "status": "success",
-      "message": "Synchronized 9 accounts with live accruals and statement hooks."
-    },
-    {
-      "id": "log-1786451355688-ucwg",
-      "timestamp": "2026-08-11T12:29:15.688Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786451341905-gklk",
-      "timestamp": "2026-08-11T12:29:01.905Z",
-      "source": "Screenshot OCR Ingestion",
-      "status": "success",
-      "message": "Imported screenshot statement for \"ALFM Global Multi-Asset Income Fund Inc - PHP\" on GCash GInvest: 14.7087 units @ ₱47.6559 (Market Value: ₱700.95)."
     }
   ],
   "transactions": [
