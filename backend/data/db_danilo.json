@@ -42,7 +42,7 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 5798",
-      "balance": 5001.75,
+      "balance": 5000,
       "baseApy": 4,
       "currentApy": 5,
       "dailyInterestEstimate": 0.55,
@@ -53,9 +53,9 @@
       "status": "connected",
       "lastSynced": "2026-08-11T03:20:32.270Z",
       "accountTypeLabel": "Personal Goal Account",
-      "accruedUncreditedInterest": 0,
-      "virtualTotalBalance": 5001.75,
-      "lastDailyGain": 0
+      "accruedUncreditedInterest": 2.63,
+      "virtualTotalBalance": 5002.63,
+      "lastDailyGain": 0.44
     },
     {
       "id": "acc-maya-wallet-01",
