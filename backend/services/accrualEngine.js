@@ -66,15 +66,18 @@ class AccrualEngine {
       let grossApy = acc.currentApy || acc.baseApy || 0;
       const balance = parseFloat(acc.balance || 0);
 
-      // MARIBANK, ATOME, MAYA GOALS HARDCODED OVERRIDES
-      if (acc.name === 'Maya Bank ( Savings )') {
-        grossApy = acc.currentApy || acc.baseApy || 5.00;
-      } else if (acc.name === 'MariBank Savings') {
-        grossApy = balance > 1000000 ? 3.75 : 3.25;
-      } else if (acc.name === 'Atome Savings') {
-        grossApy = 3.25;
-      } else if (acc.name === 'Maya - Rainy Days Fund') {
-        grossApy = 4.00;
+      const accName = (acc.name || '').toLowerCase();
+      const accType = (acc.type || '').toUpperCase();
+
+      // 1. ACCOUNT ROUTING & RATE SELECTION
+      if (accType === 'MAYA_PERSONAL_GOAL' || accName.includes('rainy days') || accName.includes('goal')) {
+        grossApy = 4.00; // Personal Goal Tier Rate
+      } else if (accType === 'MAYA_SAVINGS' || accName.includes('maya bank') || accName.includes('maya savings')) {
+        grossApy = acc.currentApy || acc.activeBoostRate || 5.00; // Boosted Savings Tier
+      } else if (accType === 'MARIBANK_SAVINGS' || accName.includes('maribank')) {
+        grossApy = balance > 1000000 ? 3.75 : 3.25; // MariBank Tier
+      } else if (accType === 'ATOME_SAVINGS' || accName.includes('atome')) {
+        grossApy = 3.25; // Atome Base Rate
       }
 
       if (balance > 0 && grossApy > 0 && acc.isLiquid) {
@@ -87,12 +90,12 @@ class AccrualEngine {
         const dailyNet = toCentavos(rawDailyYield);
 
         let newBalance = balance;
-        if (acc.name === 'Maya - Rainy Days Fund') {
-          // Virtual ledger tracking for uncredited monthly goals
+        if (accType === 'MAYA_PERSONAL_GOAL' || accName.includes('rainy days') || accName.includes('goal')) {
+          // Virtual Ledger Accumulation (Uncredited Interest)
           acc.accruedUncreditedInterest = toCentavos((acc.accruedUncreditedInterest || 0) + dailyNet);
           acc.virtualTotalBalance = toCentavos(balance + acc.accruedUncreditedInterest);
         } else {
-          // Real-time daily cash compounding
+          // Settled Daily Cash Compounding
           newBalance = toCentavos(balance + dailyNet);
           acc.balance = newBalance;
         }

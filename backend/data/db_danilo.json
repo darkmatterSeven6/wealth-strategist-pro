@@ -51,7 +51,9 @@
       "isLiquid": true,
       "status": "connected",
       "lastSynced": "2026-08-11T03:20:32.270Z",
-      "accountTypeLabel": "Personal Goal Account"
+      "accountTypeLabel": "Personal Goal Account",
+      "accruedUncreditedInterest": 0,
+      "virtualTotalBalance": 5001.75
     },
     {
       "id": "acc-maya-wallet-01",
