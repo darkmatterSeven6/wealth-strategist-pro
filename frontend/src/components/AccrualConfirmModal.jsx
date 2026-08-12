@@ -5,10 +5,10 @@ export const AccrualConfirmModal = ({ isOpen, onClose, onConfirm, isLoading }) =
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-      {/* Outer Modal Box with max height constraint */}
+      {/* Outer Modal Container */}
       <div className="w-full max-w-md max-h-[85vh] flex flex-col rounded-xl border border-slate-700 bg-slate-900 p-5 shadow-2xl text-slate-100 overflow-hidden">
         
-        {/* Scrollable Content Body (min-h-0 enables flex shrinking) */}
+        {/* Scrollable Content Body (flex-1 min-h-0 enforces flexbox shrinking) */}
         <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-3 custom-scrollbar">
           <div className="flex items-center gap-2.5 text-amber-400">
             <span className="text-xl">⚠️</span>
