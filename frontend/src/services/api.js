@@ -7,7 +7,7 @@ const API_BASE = '/api';
 export const api = {
   // Accounts
   getAccounts: async () => {
-    const res = await fetch(`${API_BASE}/accounts`);
+    const res = await fetch(`${API_BASE}/accounts`, { cache: 'no-store' });
     return res.json();
   },
   overrideAccount: async (data) => {
@@ -37,7 +37,7 @@ export const api = {
 
   // GInvest & Quant
   getFunds: async () => {
-    const res = await fetch(`${API_BASE}/ginvest/funds`);
+    const res = await fetch(`${API_BASE}/ginvest/funds`, { cache: 'no-store' });
     return res.json();
   },
   updateHolding: async (data) => {
@@ -89,7 +89,7 @@ export const api = {
 
   // Rebalancing
   getModels: async () => {
-    const res = await fetch(`${API_BASE}/rebalance/models`);
+    const res = await fetch(`${API_BASE}/rebalance/models`, { cache: 'no-store' });
     return res.json();
   },
   analyzeRebalancing: async (modelKey) => {
@@ -103,7 +103,7 @@ export const api = {
 
   // Liabilities & BNPL
   getLiabilities: async () => {
-    const res = await fetch(`${API_BASE}/liabilities`);
+    const res = await fetch(`${API_BASE}/liabilities`, { cache: 'no-store' });
     return res.json();
   },
   createLiability: async (data) => {
@@ -137,7 +137,7 @@ export const api = {
     return res.json();
   },
   getCreditCards: async () => {
-    const res = await fetch(`${API_BASE}/liabilities/cards`);
+    const res = await fetch(`${API_BASE}/liabilities/cards`, { cache: 'no-store' });
     return res.json();
   },
   addCardTransaction: async (data) => {
@@ -167,11 +167,11 @@ export const api = {
 
   // Analytics & Summary
   getNetWorthSummary: async () => {
-    const res = await fetch(`${API_BASE}/analytics/networth-summary`);
+    const res = await fetch(`${API_BASE}/analytics/networth-summary`, { cache: 'no-store' });
     return res.json();
   },
   getMacro: async () => {
-    const res = await fetch(`${API_BASE}/analytics/macro`);
+    const res = await fetch(`${API_BASE}/analytics/macro`, { cache: 'no-store' });
     return res.json();
   },
   updateMacro: async (data) => {
@@ -198,7 +198,7 @@ export const api = {
     return res.json();
   },
   getSyncLogs: async () => {
-    const res = await fetch(`${API_BASE}/sync/logs`);
+    const res = await fetch(`${API_BASE}/sync/logs`, { cache: 'no-store' });
     return res.json();
   },
   postMockRail: async (rail, payload) => {
@@ -228,7 +228,7 @@ export const api = {
     return res.json();
   },
   getSystemSyncStatus: async () => {
-    const res = await fetch(`${API_BASE}/system/sync-status`);
+    const res = await fetch(`${API_BASE}/system/sync-status`, { cache: 'no-store' });
     return res.json();
   },
   shutdownSystem: async () => {

@@ -42,7 +42,7 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 5798",
-      "balance": 5001.7534,
+      "balance": 5000,
       "baseApy": 4,
       "currentApy": 4,
       "dailyInterestEstimate": 0.44,
@@ -53,9 +53,9 @@
       "status": "connected",
       "lastSynced": "2026-08-12T12:57:04.028Z",
       "accountTypeLabel": "Personal Goal Account",
-      "accruedUncreditedInterest": 3.04,
-      "virtualTotalBalance": 5004.79,
-      "lastDailyGain": 0.44
+      "accruedUncreditedInterest": 2.6301,
+      "virtualTotalBalance": 5002.6301,
+      "lastDailyGain": 0.4384
     },
     {
       "id": "acc-maya-wallet-01",
@@ -1750,6 +1750,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786541953949-eq6m",
+      "timestamp": "2026-08-12T13:39:13.949Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-12 13:39:13"
+    },
+    {
       "id": "log-1786541128601-857n",
       "timestamp": "2026-08-12T13:25:28.601Z",
       "source": "GitHub Cloud Sync",
@@ -2091,13 +2098,6 @@
       "source": "NAVPU Valuation Engine",
       "status": "success",
       "message": "Automated 6:00 PM PHT Worker: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786436849735-38n3",
-      "timestamp": "2026-08-11T08:27:29.735Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-11 08:27:29"
     }
   ],
   "transactions": [
