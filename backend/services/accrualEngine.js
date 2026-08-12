@@ -12,10 +12,8 @@
 const cron = require('node-cron');
 const dataStore = require('./dataStore');
 
-// Currency Truncation Helper (Strict 2-Decimal Floating Protection)
-const toCentavos = (amount) => {
-  return Math.floor(Math.round(amount * 10000) / 100) / 100;
-};
+// Standard Financial Rounding (Half-Up Centavo Precision)
+const roundCentavos = (val) => Math.round(val * 100) / 100;
 
 class AccrualEngine {
   constructor() {
@@ -69,15 +67,20 @@ class AccrualEngine {
       const accName = (acc.name || '').toLowerCase();
       const accType = (acc.type || '').toUpperCase();
 
-      // 1. ACCOUNT ROUTING & RATE SELECTION
-      if (accType === 'MAYA_PERSONAL_GOAL' || accName.includes('rainy days') || accName.includes('goal')) {
-        grossApy = 4.00; // Personal Goal Tier Rate
-      } else if (accType === 'MAYA_SAVINGS' || accName.includes('maya bank') || accName.includes('maya savings')) {
-        grossApy = acc.currentApy || acc.activeBoostRate || 5.00; // Boosted Savings Tier
-      } else if (accType === 'MARIBANK_SAVINGS' || accName.includes('maribank')) {
-        grossApy = balance > 1000000 ? 3.75 : 3.25; // MariBank Tier
-      } else if (accType === 'ATOME_SAVINGS' || accName.includes('atome')) {
-        grossApy = 3.25; // Atome Base Rate
+      // 1. ROBUST ACCOUNT MATCHING & ROUTING
+      const isMayaGoal = accType.includes('GOAL') || accName.includes('rainy') || accName.includes('goal');
+      const isMayaSavings = accType.includes('MAYA') || accName.includes('maya bank');
+      const isMariBank = accType.includes('MARI') || accName.includes('maribank');
+      const isAtome = accType.includes('ATOME') || accName.includes('atome');
+
+      if (isMayaGoal) {
+        grossApy = 4.00; // Maya Personal Goal Base Rate
+      } else if (isMayaSavings) {
+        grossApy = acc.currentApy || acc.activeBoostRate || 5.00; // Boosted Maya Tier Rate
+      } else if (isMariBank) {
+        grossApy = balance > 1000000 ? 3.75 : 3.25; // MariBank Tier Rate
+      } else if (isAtome) {
+        grossApy = 3.25; // Atome Netbank Rate
       }
 
       if (balance > 0 && grossApy > 0 && acc.isLiquid) {
@@ -87,16 +90,16 @@ class AccrualEngine {
         const withholdingTax = dailyGross * 0.20;
         // Net Daily Yield (80% of Gross)
         const rawDailyYield = (balance * (grossApy / 100) * 0.80) / 365;
-        const dailyNet = toCentavos(rawDailyYield);
+        const dailyNet = roundCentavos(rawDailyYield);
 
         let newBalance = balance;
-        if (accType === 'MAYA_PERSONAL_GOAL' || accName.includes('rainy days') || accName.includes('goal')) {
-          // Virtual Ledger Accumulation (Uncredited Interest)
-          acc.accruedUncreditedInterest = toCentavos((acc.accruedUncreditedInterest || 0) + dailyNet);
-          acc.virtualTotalBalance = toCentavos(balance + acc.accruedUncreditedInterest);
+        if (isMayaGoal) {
+          // Virtual Ledger Accumulation (Uncredited Goal Interest)
+          acc.accruedUncreditedInterest = roundCentavos((acc.accruedUncreditedInterest || 0) + dailyNet);
+          acc.virtualTotalBalance = roundCentavos(balance + acc.accruedUncreditedInterest);
         } else {
-          // Settled Daily Cash Compounding
-          newBalance = toCentavos(balance + dailyNet);
+          // Real-Time Daily Cash Compounding
+          newBalance = roundCentavos(balance + dailyNet);
           acc.balance = newBalance;
         }
 
@@ -104,7 +107,7 @@ class AccrualEngine {
         acc.dailyInterestEstimate = dailyNet;
         acc.lastSynced = now;
 
-        totalNetCredited = toCentavos(totalNetCredited + dailyNet);
+        totalNetCredited = roundCentavos(totalNetCredited + dailyNet);
         totalTaxWithheld += withholdingTax;
 
         // Insert INTEREST_CREDIT ledger record
