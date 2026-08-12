@@ -23,7 +23,7 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 7280",
-      "balance": 100046.04,
+      "balance": 100035.08,
       "baseApy": 3,
       "currentApy": 5,
       "dailyInterestEstimate": 10.96,
@@ -32,7 +32,7 @@
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-12T11:35:11.893Z",
+      "lastSynced": "2026-08-12T12:08:54.273Z",
       "accountTypeLabel": "Maya Standard Savings",
       "lastDailyGain": 10.96
     },
@@ -80,16 +80,16 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1115.99,
+      "balance": 1115.92,
       "baseApy": 3.75,
       "currentApy": 3.25,
-      "dailyInterestEstimate": 0.07,
+      "dailyInterestEstimate": 0.08,
       "tierInfo": "3.75% p.a. credited daily, zero minimum balance",
       "color": "#ff5722",
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-12T11:35:11.893Z",
+      "lastSynced": "2026-08-12T12:09:06.260Z",
       "lastDailyGain": 0.07
     },
     {
@@ -98,7 +98,7 @@
       "institution": "Atome (via Netbank )",
       "type": "digital_bank",
       "accountNumber": "•••• •••• ••2626",
-      "balance": 701.33,
+      "balance": 701.28,
       "baseApy": 3.25,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.05,
@@ -107,7 +107,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-12T11:35:11.893Z",
+      "lastSynced": "2026-08-12T12:09:20.135Z",
       "lastDailyGain": 0.05
     },
     {
@@ -1750,6 +1750,34 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786536564127-fjno",
+      "timestamp": "2026-08-12T12:09:24.128Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-12 12:09:24"
+    },
+    {
+      "id": "log-1786536560137-gq9u",
+      "timestamp": "2026-08-12T12:09:20.137Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Atome Savings (•••• •••• ••2626) balance to ₱701.28 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786536546267-87wu",
+      "timestamp": "2026-08-12T12:09:06.267Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated MariBank Savings (•••• •••• 046) balance to ₱1,115.92 @ 3.25% APY."
+    },
+    {
+      "id": "log-1786536534281-lg80",
+      "timestamp": "2026-08-12T12:08:54.281Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated Maya Bank ( Savings ) (•••• 7280) balance to ₱100,035.08 @ 5% APY."
+    },
+    {
       "id": "log-1786535835405-226l",
       "timestamp": "2026-08-12T11:57:15.405Z",
       "source": "GitHub Cloud Sync",
@@ -2070,34 +2098,6 @@
       "source": "NAVPU Valuation Engine",
       "status": "success",
       "message": "Automated 6:00 PM PHT Worker: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786325316861-5e5i",
-      "timestamp": "2026-08-10T01:28:36.861Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-10 01:28:36"
-    },
-    {
-      "id": "log-1786324928517-iv2u",
-      "timestamp": "2026-08-10T01:22:08.517Z",
-      "source": "GInvest Holding Update",
-      "status": "success",
-      "message": "Updated holding for ALFM Global Multi-Asset Income Fund Inc - PHP (GCash GInvest): 4.2169 units."
-    },
-    {
-      "id": "log-1786324753225-fdj4",
-      "timestamp": "2026-08-10T01:19:13.225Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-10 01:19:13"
-    },
-    {
-      "id": "log-1786324301195-a65o",
-      "timestamp": "2026-08-10T01:11:41.195Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-10 01:11:41"
     }
   ],
   "transactions": [
