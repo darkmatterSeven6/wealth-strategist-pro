@@ -83,6 +83,24 @@ export default function Navbar({
     }
   };
 
+  const handleTestAccrual = async () => {
+    try {
+      const response = await fetch('http://localhost:5001/api/accrual/trigger-daily-test', {
+        method: 'POST'
+      });
+      const data = await response.json();
+      if (data.success) {
+        showSuccessToast('1-Day Accrual Executed Successfully!');
+        setTimeout(() => window.location.reload(), 1500); // Give toast time to show before reload
+      } else {
+        showErrorToast('Accrual Test failed: ' + data.error);
+      }
+    } catch (err) {
+      console.error(err);
+      showErrorToast('Accrual Test request failed.');
+    }
+  };
+
   return (
     <header className="sticky top-0 z-50 border-b border-slate-800/80 bg-[#070b14]/95 backdrop-blur-xl">
       <div className="max-w-[1700px] mx-auto px-4 sm:px-6">
@@ -183,6 +201,19 @@ export default function Navbar({
               <div className="flex flex-col text-left leading-[1.05]">
                 <span className="text-[10px] font-bold text-slate-200">Sync</span>
                 <span className="text-[10px] font-bold text-slate-400">Data</span>
+              </div>
+            </button>
+
+            {/* Test Daily Accrual Button */}
+            <button
+              onClick={handleTestAccrual}
+              className="flex items-center space-x-2 px-2.5 py-1.5 bg-amber-900/40 hover:bg-amber-800/60 text-amber-200 rounded-lg border border-amber-800/50 transition shadow-sm"
+              title="Trigger 1-Day Auto Accrual Dry Run"
+            >
+              <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+              <div className="flex flex-col text-left leading-[1.05]">
+                <span className="text-[10px] font-bold text-amber-200">Test Daily</span>
+                <span className="text-[10px] font-bold text-amber-400">Accrual</span>
               </div>
             </button>
 

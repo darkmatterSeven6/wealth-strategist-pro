@@ -12,10 +12,16 @@
 const cron = require('node-cron');
 const dataStore = require('./dataStore');
 
+// Currency Truncation Helper (Strict 2-Decimal Floating Protection)
+const toCentavos = (amount) => {
+  return Math.floor(Math.round(amount * 10000) / 100) / 100;
+};
+
 class AccrualEngine {
   constructor() {
     this.cronJob = null;
     this.isInitialized = false;
+    this.isRunning = false; // Lock to prevent double invocation
   }
 
   /**
@@ -43,17 +49,33 @@ class AccrualEngine {
    * @returns {Object} accrual summary
    */
   async runDailyAccrual(isManualTrigger = false) {
-    const db = dataStore.getDb();
-    const accounts = db.accounts || [];
-    const creditedAccounts = [];
-    let totalNetCredited = 0;
-    let totalTaxWithheld = 0;
-    const now = new Date().toISOString();
+    if (this.isRunning) {
+      throw new Error("Accrual engine is currently processing. Please wait.");
+    }
+    this.isRunning = true;
+    try {
+      const db = dataStore.getDb();
+      const accounts = db.accounts || [];
+      const creditedAccounts = [];
+      let totalNetCredited = 0;
+      let totalTaxWithheld = 0;
+      const now = new Date().toISOString();
 
     for (const acc of accounts) {
       // Accrue on liquid interest-bearing digital banks with positive balance
-      const grossApy = acc.currentApy || acc.baseApy || 0;
+      let grossApy = acc.currentApy || acc.baseApy || 0;
       const balance = parseFloat(acc.balance || 0);
+
+      // MARIBANK, ATOME, MAYA GOALS HARDCODED OVERRIDES
+      if (acc.name === 'Maya Bank ( Savings )') {
+        grossApy = acc.currentApy || acc.baseApy || 5.00;
+      } else if (acc.name === 'MariBank Savings') {
+        grossApy = balance > 1000000 ? 3.75 : 3.25;
+      } else if (acc.name === 'Atome Savings') {
+        grossApy = 3.25;
+      } else if (acc.name === 'Maya - Rainy Days Fund') {
+        grossApy = 4.00;
+      }
 
       if (balance > 0 && grossApy > 0 && acc.isLiquid) {
         // Gross Daily Yield
@@ -61,14 +83,25 @@ class AccrualEngine {
         // 20% Philippine Statutory Withholding Tax
         const withholdingTax = dailyGross * 0.20;
         // Net Daily Yield (80% of Gross)
-        const dailyNet = (balance * (grossApy / 100) * 0.80) / 365;
+        const rawDailyYield = (balance * (grossApy / 100) * 0.80) / 365;
+        const dailyNet = toCentavos(rawDailyYield);
 
-        const newBalance = balance + dailyNet;
-        acc.balance = newBalance;
+        let newBalance = balance;
+        if (acc.name === 'Maya - Rainy Days Fund') {
+          // Virtual ledger tracking for uncredited monthly goals
+          acc.accruedUncreditedInterest = toCentavos((acc.accruedUncreditedInterest || 0) + dailyNet);
+          acc.virtualTotalBalance = toCentavos(balance + acc.accruedUncreditedInterest);
+        } else {
+          // Real-time daily cash compounding
+          newBalance = toCentavos(balance + dailyNet);
+          acc.balance = newBalance;
+        }
+
+        acc.lastDailyGain = dailyNet;
         acc.dailyInterestEstimate = dailyNet;
         acc.lastSynced = now;
 
-        totalNetCredited += dailyNet;
+        totalNetCredited = toCentavos(totalNetCredited + dailyNet);
         totalTaxWithheld += withholdingTax;
 
         // Insert INTEREST_CREDIT ledger record
@@ -120,14 +153,17 @@ class AccrualEngine {
       logMessage
     );
 
-    return {
-      success: true,
-      timestamp: now,
-      creditedAccountsCount: creditedAccounts.length,
-      totalNetCredited: totalNetCredited,
-      totalTaxWithheld: totalTaxWithheld,
-      creditedAccounts
-    };
+      return {
+        success: true,
+        timestamp: now,
+        creditedAccountsCount: creditedAccounts.length,
+        totalNetCredited: totalNetCredited,
+        totalTaxWithheld: totalTaxWithheld,
+        creditedAccounts
+      };
+    } finally {
+      this.isRunning = false;
+    }
   }
 }
 
