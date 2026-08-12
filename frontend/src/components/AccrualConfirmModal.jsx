@@ -5,11 +5,11 @@ export const AccrualConfirmModal = ({ isOpen, onClose, onConfirm, isLoading }) =
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-      {/* Container enforcing max height & internal scrolling */}
+      {/* Outer Modal Box with max height constraint */}
       <div className="w-full max-w-md max-h-[85vh] flex flex-col rounded-xl border border-slate-700 bg-slate-900 p-5 shadow-2xl text-slate-100 overflow-hidden">
         
-        {/* Scrollable Modal Body */}
-        <div className="overflow-y-auto pr-1 space-y-3 custom-scrollbar">
+        {/* Scrollable Content Body (min-h-0 enables flex shrinking) */}
+        <div className="flex-1 min-h-0 overflow-y-auto pr-1 space-y-3 custom-scrollbar">
           <div className="flex items-center gap-2.5 text-amber-400">
             <span className="text-xl">⚠️</span>
             <h3 className="text-base font-bold leading-tight">Confirm Manual Daily Accrual Trigger</h3>
@@ -31,7 +31,7 @@ export const AccrualConfirmModal = ({ isOpen, onClose, onConfirm, isLoading }) =
           </p>
         </div>
 
-        {/* Fixed Modal Action Buttons */}
+        {/* Locked Footer Action Bar */}
         <div className="flex items-center justify-end gap-3 pt-4 mt-3 border-t border-slate-800 shrink-0">
           <button
             type="button"
@@ -47,7 +47,7 @@ export const AccrualConfirmModal = ({ isOpen, onClose, onConfirm, isLoading }) =
             onClick={onConfirm}
             disabled={isLoading}
           >
-            {isLoading ? 'Processing Accrual...' : 'Confirm & Advance Accrual (+1 Day)'}
+            {isLoading ? 'Processing...' : 'Confirm & Advance Accrual (+1 Day)'}
           </button>
         </div>
 
