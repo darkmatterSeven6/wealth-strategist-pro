@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AccrualConfirmModal } from './AccrualConfirmModal';
 import { 
   Activity, 
   RefreshCw, 
@@ -43,6 +44,9 @@ export default function Navbar({
     { id: 'sync', line1: 'Ingestion', line2: 'Rails', icon: Radio },
   ];
 
+  const [isAccrualModalOpen, setIsAccrualModalOpen] = useState(false);
+  const [isAccrualLoading, setIsAccrualLoading] = useState(false);
+
   const netWorth = summary?.netWorth || 0;
 
   const handleSyncData = async () => {
@@ -83,7 +87,8 @@ export default function Navbar({
     }
   };
 
-  const handleTestAccrual = async () => {
+  const executeTestAccrual = async () => {
+    setIsAccrualLoading(true);
     try {
       const response = await fetch('http://localhost:5001/api/accrual/trigger-daily-test', {
         method: 'POST'
@@ -91,13 +96,17 @@ export default function Navbar({
       const data = await response.json();
       if (data.success) {
         showSuccessToast('1-Day Accrual Executed Successfully!');
-        setTimeout(() => window.location.reload(), 1500); // Give toast time to show before reload
+        setTimeout(() => window.location.reload(), 1500);
       } else {
         showErrorToast('Accrual Test failed: ' + data.error);
+        setIsAccrualLoading(false);
+        setIsAccrualModalOpen(false);
       }
     } catch (err) {
       console.error(err);
       showErrorToast('Accrual Test request failed.');
+      setIsAccrualLoading(false);
+      setIsAccrualModalOpen(false);
     }
   };
 
@@ -206,7 +215,7 @@ export default function Navbar({
 
             {/* Test Daily Accrual Button */}
             <button
-              onClick={handleTestAccrual}
+              onClick={() => setIsAccrualModalOpen(true)}
               className="flex items-center space-x-2 px-2.5 py-1.5 bg-amber-900/40 hover:bg-amber-800/60 text-amber-200 rounded-lg border border-amber-800/50 transition shadow-sm"
               title="Trigger 1-Day Auto Accrual Dry Run"
             >
@@ -293,6 +302,12 @@ export default function Navbar({
           })}
         </div>
       </div>
+      <AccrualConfirmModal
+        isOpen={isAccrualModalOpen}
+        onClose={() => setIsAccrualModalOpen(false)}
+        onConfirm={executeTestAccrual}
+        isLoading={isAccrualLoading}
+      />
     </header>
   );
 }
