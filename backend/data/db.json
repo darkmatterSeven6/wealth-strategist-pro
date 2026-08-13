@@ -6,7 +6,7 @@
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
     "lastSyncTimestamp": "2026-08-12T12:57:04.028Z",
-    "lastAccrualDate": "2026-08-13"
+    "lastAccrualDate": "2026-08-14"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -24,7 +24,7 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 7280",
-      "balance": 100057,
+      "balance": 100067.97,
       "baseApy": 3,
       "currentApy": 5,
       "dailyInterestEstimate": 10.96,
@@ -33,9 +33,9 @@
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-13T11:24:22.887Z",
+      "lastSynced": "2026-08-13T16:00:00.015Z",
       "accountTypeLabel": "Maya Standard Savings",
-      "lastDailyGain": 10.96
+      "lastDailyGain": 10.97
     },
     {
       "id": "acc-custom-1786121765629",
@@ -52,10 +52,10 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-13T11:24:22.887Z",
+      "lastSynced": "2026-08-13T16:00:00.015Z",
       "accountTypeLabel": "Personal Goal Account",
-      "accruedUncreditedInterest": 2.630156164383562,
-      "virtualTotalBalance": 5002.63,
+      "accruedUncreditedInterest": 3.0685123287671234,
+      "virtualTotalBalance": 5003.07,
       "lastDailyGain": 0.44
     },
     {
@@ -81,7 +81,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1116.08,
+      "balance": 1116.16,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.08,
@@ -90,7 +90,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-13T11:24:22.887Z",
+      "lastSynced": "2026-08-13T16:00:00.015Z",
       "lastDailyGain": 0.08
     },
     {
@@ -99,7 +99,7 @@
       "institution": "Atome (via Netbank )",
       "type": "digital_bank",
       "accountNumber": "•••• •••• ••2626",
-      "balance": 701.38,
+      "balance": 701.43,
       "baseApy": 3.25,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.05,
@@ -108,7 +108,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-13T11:24:22.887Z",
+      "lastSynced": "2026-08-13T16:00:00.015Z",
       "lastDailyGain": 0.05
     },
     {
@@ -117,7 +117,7 @@
       "institution": "GCash",
       "type": "e_wallet",
       "accountNumber": "•••• ••• 5676",
-      "balance": 1706.59,
+      "balance": 712.59,
       "baseApy": 0,
       "currentApy": 0,
       "dailyInterestEstimate": 0,
@@ -126,7 +126,7 @@
       "icon": "GCash",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T12:40:35.586Z"
+      "lastSynced": "2026-08-13T15:55:09.587Z"
     },
     {
       "id": "acc-bpi-01",
@@ -767,23 +767,23 @@
       "id": "fund-atram-medium-term-bond",
       "name": "ATRAM Medium Term Peso Bond Fund",
       "provider": "ATRAM Trust Corporation",
-      "platform": "Maya Funds (Seedbox Funds)",
+      "platform": "Maya Seedbox Funds",
       "targetFund": "Markit iBoxx ALBI Philippines Sovereign & Corporate Bonds",
       "category": "Fixed Income / Bond",
       "currency": "PHP",
       "riskRating": "Moderate",
-      "currentNavpu": 2.287,
-      "previousNavpu": 2.287,
-      "navpuDate": "2026-08-10",
-      "unitsHeld": 0,
-      "investedCapital": 0,
-      "averageCost": 2.2,
-      "currentMarketValue": 0,
+      "currentNavpu": 146.727204,
+      "previousNavpu": 146.727204,
+      "navpuDate": "2026-08-14",
+      "unitsHeld": 0.682,
+      "investedCapital": 100.07,
+      "averageCost": 146.7302,
+      "currentMarketValue": 100.07,
       "unrealizedGain": 0,
       "unrealizedGainPercent": 0,
       "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 5.85,
+        "oneYearReturn": 3.71,
         "threeYearCagr": 4.6,
         "fiveYearCagr": 4.25,
         "volatility30d": 2.45,
@@ -848,12 +848,16 @@
         {
           "date": "2026-08-04",
           "navpu": 2.285
+        },
+        {
+          "date": "2026-08-14",
+          "navpu": 146.727204
         }
       ],
-      "pendingBuyOrders": 100,
+      "pendingBuyOrders": 0,
       "est_completion_date": "2026-08-14",
       "pendingSellOrders": 0,
-      "pending_units": 43.7254,
+      "pending_units": 0,
       "has_active_holding": 0
     },
     {
@@ -1756,6 +1760,41 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786637924995-lmna",
+      "timestamp": "2026-08-13T16:18:44.995Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-13 16:18:44"
+    },
+    {
+      "id": "log-1786637902900-r7qu",
+      "timestamp": "2026-08-13T16:18:22.901Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786637886367-5kj1",
+      "timestamp": "2026-08-13T16:18:06.367Z",
+      "source": "Screenshot OCR Ingestion",
+      "status": "success",
+      "message": "Imported screenshot statement for \"ATRAM Medium Term Peso Bond Fund\" on Maya Seedbox Funds: 0.682 units @ ₱146.727204 (Market Value: ₱100.06)."
+    },
+    {
+      "id": "log-1786636894214-k4cr",
+      "timestamp": "2026-08-13T16:01:34.214Z",
+      "source": "GInvest Holding Update",
+      "status": "success",
+      "message": "Updated holding for ATRAM Medium Term Peso Bond Fund (Maya Funds (Seedbox Funds)): 0.682 units."
+    },
+    {
+      "id": "log-1786636509590-3aba",
+      "timestamp": "2026-08-13T15:55:09.590Z",
+      "source": "Manual Fast-Override",
+      "status": "success",
+      "message": "Updated GCash (E-Wallet) (•••• ••• 5676) balance to ₱712.59 @ 0% APY."
+    },
+    {
       "id": "log-1786620645032-o367",
       "timestamp": "2026-08-13T11:30:45.032Z",
       "source": "GitHub Cloud Sync",
@@ -2069,41 +2108,6 @@
       "source": "Midnight Net Yield Accrual (Manual Run)",
       "status": "success",
       "message": "Accrued ₱11.50 net interest across 4 digital bank accounts (₱2.88 20% WHT deducted)."
-    },
-    {
-      "id": "log-1786532847036-xtrx",
-      "timestamp": "2026-08-12T11:07:27.036Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-12 11:07:27"
-    },
-    {
-      "id": "log-1786532832027-6k67",
-      "timestamp": "2026-08-12T11:07:12.027Z",
-      "source": "Midnight Net Yield Accrual (Manual Run)",
-      "status": "success",
-      "message": "Accrued ₱11.50 net interest across 4 digital bank accounts (₱2.88 20% WHT deducted)."
-    },
-    {
-      "id": "log-1786532817120-868a",
-      "timestamp": "2026-08-12T11:06:57.120Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Atome Savings (•••• •••• ••2626) balance to ₱701.18 @ 3.25% APY."
-    },
-    {
-      "id": "log-1786532802496-c0sj",
-      "timestamp": "2026-08-12T11:06:42.496Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated MariBank Savings (•••• •••• 046) balance to ₱1,116.76 @ 3.25% APY."
-    },
-    {
-      "id": "log-1786532785733-848u",
-      "timestamp": "2026-08-12T11:06:25.733Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya Bank ( Savings ) (•••• 7280) balance to ₱100,035.08 @ 5% APY."
     }
   ],
   "transactions": [
