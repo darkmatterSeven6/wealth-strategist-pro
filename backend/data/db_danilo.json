@@ -5,7 +5,8 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-11T03:20:32.270Z"
+    "lastSyncTimestamp": "2026-08-11T03:20:32.270Z",
+    "lastAccrualDate": "2026-08-13"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -23,7 +24,7 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 7280",
-      "balance": 100035.08,
+      "balance": 100046.04,
       "baseApy": 3,
       "currentApy": 5,
       "dailyInterestEstimate": 10.96,
@@ -32,9 +33,9 @@
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T04:30:25.445Z",
+      "lastSynced": "2026-08-13T11:25:43.725Z",
       "accountTypeLabel": "Maya Standard Savings",
-      "lastDailyGain": 0
+      "lastDailyGain": 10.96
     },
     {
       "id": "acc-custom-1786121765629",
@@ -51,10 +52,10 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z",
+      "lastSynced": "2026-08-13T11:25:43.725Z",
       "accountTypeLabel": "Personal Goal Account",
-      "accruedUncreditedInterest": 2.63,
-      "virtualTotalBalance": 5002.63,
+      "accruedUncreditedInterest": 3.0683561643835615,
+      "virtualTotalBalance": 5003.07,
       "lastDailyGain": 0.44
     },
     {
@@ -80,7 +81,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1115.92,
+      "balance": 1116,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.1,
@@ -89,8 +90,8 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z",
-      "lastDailyGain": 0
+      "lastSynced": "2026-08-13T11:25:43.725Z",
+      "lastDailyGain": 0.08
     },
     {
       "id": "acc-atome-01",
@@ -98,7 +99,7 @@
       "institution": "Atome (via Netbank )",
       "type": "digital_bank",
       "accountNumber": "•••• •••• ••2626",
-      "balance": 701.28,
+      "balance": 701.33,
       "baseApy": 3.25,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.06,
@@ -107,8 +108,8 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-11T03:20:32.270Z",
-      "lastDailyGain": 0
+      "lastSynced": "2026-08-13T11:25:43.725Z",
+      "lastDailyGain": 0.05
     },
     {
       "id": "acc-gcash-wallet-01",

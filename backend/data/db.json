@@ -5,7 +5,8 @@
     "riskProfile": "Aggressive Growth",
     "targetMonthlyLivingExpenses": 55000,
     "targetEmergencyFundMonths": 3,
-    "lastSyncTimestamp": "2026-08-12T12:57:04.028Z"
+    "lastSyncTimestamp": "2026-08-12T12:57:04.028Z",
+    "lastAccrualDate": "2026-08-13"
   },
   "macroRegime": {
     "phThreeMonthTBillRate": 5.5,
@@ -23,7 +24,7 @@
       "institution": "Maya Bank",
       "type": "digital_bank",
       "accountNumber": "•••• 7280",
-      "balance": 100046.04,
+      "balance": 100057,
       "baseApy": 3,
       "currentApy": 5,
       "dailyInterestEstimate": 10.96,
@@ -32,7 +33,7 @@
       "icon": "Maya",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-12T12:57:04.028Z",
+      "lastSynced": "2026-08-13T11:24:22.887Z",
       "accountTypeLabel": "Maya Standard Savings",
       "lastDailyGain": 10.96
     },
@@ -51,11 +52,11 @@
       "icon": "CustomBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-12T13:44:34.526Z",
+      "lastSynced": "2026-08-13T11:24:22.887Z",
       "accountTypeLabel": "Personal Goal Account",
-      "accruedUncreditedInterest": 2.1918,
-      "virtualTotalBalance": 5002.1918,
-      "lastDailyGain": 0.4384
+      "accruedUncreditedInterest": 2.630156164383562,
+      "virtualTotalBalance": 5002.63,
+      "lastDailyGain": 0.44
     },
     {
       "id": "acc-maya-wallet-01",
@@ -80,7 +81,7 @@
       "institution": "MariBank Philippines",
       "type": "digital_bank",
       "accountNumber": "•••• •••• 046",
-      "balance": 1116,
+      "balance": 1116.08,
       "baseApy": 3.75,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.08,
@@ -89,7 +90,7 @@
       "icon": "MariBank",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-12T12:57:04.028Z",
+      "lastSynced": "2026-08-13T11:24:22.887Z",
       "lastDailyGain": 0.08
     },
     {
@@ -98,7 +99,7 @@
       "institution": "Atome (via Netbank )",
       "type": "digital_bank",
       "accountNumber": "•••• •••• ••2626",
-      "balance": 701.33,
+      "balance": 701.38,
       "baseApy": 3.25,
       "currentApy": 3.25,
       "dailyInterestEstimate": 0.05,
@@ -107,7 +108,7 @@
       "icon": "Atome",
       "isLiquid": true,
       "status": "connected",
-      "lastSynced": "2026-08-12T12:57:04.028Z",
+      "lastSynced": "2026-08-13T11:24:22.887Z",
       "lastDailyGain": 0.05
     },
     {
@@ -1755,6 +1756,13 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786620645032-o367",
+      "timestamp": "2026-08-13T11:30:45.032Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-13 11:30:45"
+    },
+    {
       "id": "log-1786619888745-1ppn",
       "timestamp": "2026-08-13T11:18:08.745Z",
       "source": "GitHub Cloud Sync",
@@ -2096,13 +2104,6 @@
       "source": "Manual Fast-Override",
       "status": "success",
       "message": "Updated Maya Bank ( Savings ) (•••• 7280) balance to ₱100,035.08 @ 5% APY."
-    },
-    {
-      "id": "log-1786531233704-v55d",
-      "timestamp": "2026-08-12T10:40:33.704Z",
-      "source": "Midnight Net Yield Accrual (Manual Run)",
-      "status": "success",
-      "message": "Accrued ₱11.53 net interest across 4 digital bank accounts (₱2.88 20% WHT deducted)."
     }
   ],
   "transactions": [
