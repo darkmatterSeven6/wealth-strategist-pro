@@ -373,4 +373,71 @@ router.post('/import-screenshot-data', (req, res) => {
   }
 });
 
+// Top-Up Synchronization Route
+router.post('/top-up', (req, res) => {
+  try {
+    const { fundId, additionalCapital, additionalUnits, latestNavpu } = req.body;
+
+    const capital = parseFloat(additionalCapital);
+    const units = parseFloat(additionalUnits);
+    const navpu = parseFloat(latestNavpu);
+
+    if (isNaN(capital) || isNaN(units) || isNaN(navpu)) {
+      return res.status(400).json({ success: false, error: 'Invalid numeric payloads' });
+    }
+
+    // 1. Update JSON DataStore (Primary runtime state)
+    const jsonDb = dataStore.getDb();
+    const fund = jsonDb.funds.find(f => f.id === fundId || (f.name && f.name.toLowerCase().includes(fundId.toLowerCase())));
+    
+    if (fund) {
+      fund.unitsHeld = (fund.unitsHeld || 0) + units;
+      fund.investedCapital = parseFloat(((fund.investedCapital || 0) + capital).toFixed(2));
+      fund.currentNavpu = navpu;
+      fund.navpuDate = new Date().toISOString().split('T')[0];
+      
+      const mktVal = parseFloat((fund.unitsHeld * navpu).toFixed(2));
+      fund.currentMarketValue = mktVal;
+      fund.averageCost = fund.unitsHeld > 0 ? parseFloat((fund.investedCapital / fund.unitsHeld).toFixed(4)) : navpu;
+      fund.unrealizedGain = parseFloat((mktVal - fund.investedCapital).toFixed(2));
+      fund.unrealizedGainPercent = fund.investedCapital > 0 ? parseFloat(((fund.unrealizedGain / fund.investedCapital) * 100).toFixed(2)) : 0;
+      
+      dataStore.saveDb(jsonDb);
+    }
+
+    // 2. Update SQLite Database
+    const sqlite3 = require('sqlite3').verbose();
+    const sqlDb = new sqlite3.Database(path.join(__dirname, '../data/dv_danilo.db'));
+    
+    sqlDb.serialize(() => {
+      // Incremental Database Update on feeder_funds
+      sqlDb.run(
+        `UPDATE feeder_funds 
+         SET total_units = total_units + ?,
+             invested_capital = invested_capital + ?,
+             latest_navpu = ?,
+             total_investment_value = ROUND((total_units + ?) * ?, 2),
+             unrealized_gain = ROUND(((total_units + ?) * ?) - (invested_capital + ?), 2)
+         WHERE fund_id = ? OR fund_name LIKE ?`,
+        [units, capital, navpu, units, navpu, units, navpu, capital, fundId, `%${fundId}%`],
+        function(err) {
+          sqlDb.close();
+          if (err) return res.status(500).json({ success: false, error: err.message });
+          
+          if (typeof global.broadcastEvent === 'function') {
+            global.broadcastEvent('DATA_UPDATED', { type: 'FUNDS_SYNC', fundId });
+          }
+
+          return res.status(200).json({
+            success: true,
+            message: `Successfully topped up fund ${fundId} with +₱${capital.toFixed(2)} (${units.toFixed(4)} units).`
+          });
+        }
+      );
+    });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 module.exports = router;

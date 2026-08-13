@@ -1321,18 +1321,18 @@
       "category": "Global Equity Feeder",
       "currency": "PHP",
       "riskRating": "Aggressive",
-      "currentNavpu": 194.5,
-      "previousNavpu": 194.5,
-      "navpuDate": "2026-08-04",
-      "unitsHeld": 0,
-      "investedCapital": 0,
-      "averageCost": 173,
-      "currentMarketValue": 0,
+      "currentNavpu": 143.781156,
+      "previousNavpu": 143.781156,
+      "navpuDate": "2026-08-10",
+      "unitsHeld": 6.955,
+      "investedCapital": 1000,
+      "averageCost": 143.7815,
+      "currentMarketValue": 1000,
       "unrealizedGain": 0,
       "unrealizedGainPercent": 0,
       "dividendYieldPAnnum": 0,
       "metrics": {
-        "oneYearReturn": 18.6,
+        "oneYearReturn": 21.54,
         "threeYearCagr": 14.8,
         "fiveYearCagr": 15.2,
         "volatility30d": 15.2,
@@ -1397,12 +1397,17 @@
         {
           "date": "2026-08-04",
           "navpu": 194.5
+        },
+        {
+          "date": "2026-08-10",
+          "navpu": 143.781156
         }
       ],
-      "pendingBuyOrders": 1000,
-      "pending_units": 6.9865,
-      "est_completion_date": "2026-08-14",
-      "has_active_holding": 0
+      "pendingBuyOrders": 0,
+      "pending_units": 0,
+      "est_completion_date": null,
+      "has_active_holding": 0,
+      "pendingSellOrders": 0
     },
     {
       "id": "fund-bpi-philippine-stock-index",
@@ -1750,6 +1755,41 @@
   },
   "syncLogs": [
     {
+      "id": "log-1786618990575-y1ow",
+      "timestamp": "2026-08-13T11:03:10.575Z",
+      "source": "GitHub Cloud Sync",
+      "status": "success",
+      "message": "Manual / Auto save operation recorded at 2026-08-13 11:03:10"
+    },
+    {
+      "id": "log-1786618249587-59yn",
+      "timestamp": "2026-08-13T10:50:49.587Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786612590330-rheq",
+      "timestamp": "2026-08-13T09:16:30.330Z",
+      "source": "NAVPU Valuation Engine",
+      "status": "success",
+      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
+    },
+    {
+      "id": "log-1786612577111-g0su",
+      "timestamp": "2026-08-13T09:16:17.111Z",
+      "source": "Screenshot OCR Ingestion",
+      "status": "success",
+      "message": "Imported screenshot statement for \"ATRAM Global Equity Opportunity Feeder Fund\" on GCash GInvest: 6.955 units @ ₱143.781156 (Market Value: ₱999.99)."
+    },
+    {
+      "id": "log-1786612172559-ec8d",
+      "timestamp": "2026-08-13T09:09:32.559Z",
+      "source": "GInvest Pending Order",
+      "status": "success",
+      "message": "Activated pending order for ATRAM Global Equity Opportunity Feeder Fund: +0 units."
+    },
+    {
       "id": "log-1786546078085-pgg5",
       "timestamp": "2026-08-12T14:47:58.085Z",
       "source": "GitHub Cloud Sync",
@@ -2063,41 +2103,6 @@
       "source": "GitHub Cloud Sync",
       "status": "success",
       "message": "Manual / Auto save operation recorded at 2026-08-11 12:53:39"
-    },
-    {
-      "id": "log-1786452620972-bl1a",
-      "timestamp": "2026-08-11T12:50:20.972Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya - Rainy Days Fund (•••• 5798) balance to ₱5,001.75 @ 4% APY."
-    },
-    {
-      "id": "log-1786452398619-5bb3",
-      "timestamp": "2026-08-11T12:46:38.619Z",
-      "source": "Manual Fast-Override",
-      "status": "success",
-      "message": "Updated Maya Wallet (0917 •••• 981) balance to ₱1,111.05 @ 0% APY."
-    },
-    {
-      "id": "log-1786452286296-s1no",
-      "timestamp": "2026-08-11T12:44:46.296Z",
-      "source": "GitHub Cloud Sync",
-      "status": "success",
-      "message": "Manual / Auto save operation recorded at 2026-08-11 12:44:46"
-    },
-    {
-      "id": "log-1786452256623-un2v",
-      "timestamp": "2026-08-11T12:44:16.623Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
-    },
-    {
-      "id": "log-1786452048431-p5d6",
-      "timestamp": "2026-08-11T12:40:48.431Z",
-      "source": "NAVPU Valuation Engine",
-      "status": "success",
-      "message": "Manual Sync / Fetch: Synchronized NAVPUs & Market Values for 15 Philippine Funds (ALFM, ATRAM, Manulife)."
     }
   ],
   "transactions": [
