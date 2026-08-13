@@ -14,6 +14,7 @@ const analyticsRoute = require('./routes/analytics');
 const systemRoute = require('./routes/system');
 const householdRoutes = require('./routes/household');
 const accrualRoute = require('./routes/accrual');
+const reconcileRoute = require('./routes/reconcile');
 const dataStore = require('./services/dataStore');
 const accrualEngine = require('./services/accrualEngine');
 const navpuScraper = require('./services/navpuScraper');
@@ -87,6 +88,7 @@ app.use('/api/analytics', analyticsRoute);
 app.use('/api/system', systemRoute);
 app.use('/api/household', householdRoutes);
 app.use('/api/accrual', accrualRoute);
+app.use('/api', reconcileRoute);
 
 // Health Check
 app.get('/api/health', (req, res) => {
